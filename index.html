@@ -257,6 +257,7 @@ footer{border-top:1px solid var(--b12);padding:clamp(48px,7vw,80px) 0 30px;backg
       <a href="#about" data-nav="about">About</a>
       <a href="#contact" data-nav="contact">Contact</a>
     </nav>
+    <a href="https://billing.stripe.com/p/login/4gM00lbnqbFr9pbfkXgbm00" target="_blank" rel="noopener" class="lum-navcta" style="border-color:var(--b28);color:var(--dim);font-size:12px;padding:9px 18px">Manage Subscription</a>
     <a href="#contact" class="lum-navcta" data-nav="contact">Start your website</a>
     <button class="lum-menubtn" id="menuBtn" aria-label="Menu">☰</button>
   </div>
@@ -267,6 +268,7 @@ footer{border-top:1px solid var(--b12);padding:clamp(48px,7vw,80px) 0 30px;backg
     <a href="#pricing" data-nav="pricing">Pricing</a>
     <a href="#about" data-nav="about">About</a>
     <a href="#contact" data-nav="contact">Contact</a>
+    <a href="https://billing.stripe.com/p/login/4gM00lbnqbFr9pbfkXgbm00" target="_blank" rel="noopener" class="lum-navcta" style="border-color:var(--b28);color:var(--dim);text-align:center;margin-top:8px">Manage Subscription</a>
     <a href="#contact" class="lum-navcta" data-nav="contact">Start your website</a>
   </div>
 </header>
@@ -373,7 +375,7 @@ footer{border-top:1px solid var(--b12);padding:clamp(48px,7vw,80px) 0 30px;backg
   <div class="section">
     <div class="wrap">
       <div class="founder" data-reveal>
-        <div class="founder-photo">L</div>
+        <img src="images/founder-jacob.jpg" alt="Jacob, Founder of Luminate Web Design" class="founder-photo" style="object-fit:cover">
         <div>
           <div class="eyebrow" style="margin-bottom:18px">The founder</div>
           <p class="founder-quote">"Every business deserves a website that makes people trust them before they say a word."</p>
@@ -473,7 +475,7 @@ footer{border-top:1px solid var(--b12);padding:clamp(48px,7vw,80px) 0 30px;backg
         <p>Luminate Web Design &amp; Development was started to give Augusta's small businesses, ministries, and nonprofits the kind of website usually reserved for big budgets.</p>
       </div>
       <div class="founder" data-reveal>
-        <div class="founder-photo">L</div>
+        <img src="images/founder-jacob.jpg" alt="Jacob, Founder of Luminate Web Design" class="founder-photo" style="object-fit:cover">
         <div>
           <p style="color:var(--dim);font-size:15px;line-height:1.85;margin-bottom:18px">Jacob founded Luminate after seeing how many great local businesses were being held back by outdated, hard-to-use websites — or no website at all. Today, Luminate designs and builds custom sites for businesses, churches, and nonprofits across the CSRA, and stays on as a long-term partner through its care plans.</p>
           <p style="color:var(--dim);font-size:15px;line-height:1.85">Every project is handled personally — one point of contact, real conversations, and a site that's actually built for how your business works.</p>
@@ -597,6 +599,8 @@ footer{border-top:1px solid var(--b12);padding:clamp(48px,7vw,80px) 0 30px;backg
         <div data-reveal>
           <div class="form-card" id="formCard">
             <form id="contactForm">
+              <input type="hidden" name="access_key" value="2fac6cbf-8123-421e-8b5c-772702296900">
+              <input type="hidden" name="subject" value="New project inquiry — Luminate Web Design">
               <div class="form-row">
                 <div class="field">
                   <label for="f-name">Name *</label>
@@ -850,7 +854,7 @@ function setupReveal(){
 }
 
 // ---------- Contact form ----------
-document.getElementById('contactForm').addEventListener('submit', function(e){
+document.getElementById('contactForm').addEventListener('submit', async function(e){
   e.preventDefault();
   var name = document.getElementById('f-name');
   var email = document.getElementById('f-email');
@@ -864,8 +868,40 @@ document.getElementById('contactForm').addEventListener('submit', function(e){
     email.classList.add('err'); valid = false;
   }
   if(!valid) return;
-  document.getElementById('contactForm').style.display = 'none';
-  document.getElementById('thankYou').style.display = 'block';
+
+  var btn = this.querySelector('.submit-btn');
+  btn.disabled = true;
+  btn.textContent = 'Sending…';
+
+  try {
+    var res = await fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      headers: {'Content-Type':'application/json','Accept':'application/json'},
+      body: JSON.stringify({
+        access_key: '2fac6cbf-8123-421e-8b5c-772702296900',
+        subject: 'New project inquiry — Luminate Web Design',
+        name: name.value.trim(),
+        email: email.value.trim(),
+        business: document.getElementById('f-business').value.trim(),
+        phone: document.getElementById('f-phone').value.trim(),
+        project_type: document.getElementById('f-type').value,
+        message: message.value.trim()
+      })
+    });
+    var data = await res.json();
+    if(data.success){
+      document.getElementById('contactForm').style.display = 'none';
+      document.getElementById('thankYou').style.display = 'block';
+    } else {
+      btn.disabled = false;
+      btn.textContent = 'Send project details';
+      alert('Something went wrong. Please try again or email us directly.');
+    }
+  } catch(err) {
+    btn.disabled = false;
+    btn.textContent = 'Send project details';
+    alert('Something went wrong. Please try again or email us directly.');
+  }
 });
 
 // ---------- Init ----------
