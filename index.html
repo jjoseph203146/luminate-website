@@ -1,0 +1,876 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Luminate Web Design &amp; Development — Augusta, GA</title>
+<meta name="description" content="Premium, conversion-focused websites for Augusta's businesses, ministries, and nonprofits.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#0D1B2E; --navy2:#0A1524; --card:#101F35; --card2:#152A45;
+  --ink:#FFFFFF; --dim:#B8C4D4; --dim2:#7E8DA0; --accent:#F0EBE1;
+  --green:#5FB88E; --red:#E0796B;
+  --b12:rgba(184,196,212,.12); --b14:rgba(184,196,212,.14); --b16:rgba(184,196,212,.16);
+  --b18:rgba(184,196,212,.18); --b24:rgba(184,196,212,.24); --b28:rgba(184,196,212,.28); --b3:rgba(184,196,212,.30);
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{background:var(--navy);color:var(--ink);font-family:'DM Sans',sans-serif;-webkit-font-smoothing:antialiased;min-height:100vh;overflow-x:hidden;}
+::selection{background:var(--accent);color:var(--navy)}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+.serif{font-family:'Playfair Display',serif}
+.wrap{max-width:1280px;margin:0 auto;padding:0 clamp(20px,5vw,72px)}
+.eyebrow{font-size:12px;letter-spacing:.32em;text-transform:uppercase;color:var(--dim2);font-weight:600}
+.section{padding:clamp(56px,9vw,120px) 0}
+.section-head{max-width:680px;margin-bottom:clamp(32px,5vw,56px)}
+.section-head h2{font-size:clamp(28px,4.2vw,46px);font-weight:600;line-height:1.15;margin:14px 0 0;}
+.section-head p{color:var(--dim);font-size:16px;line-height:1.7;margin:16px 0 0;max-width:560px}
+.italic{font-style:italic;color:var(--accent)}
+
+/* ---------- Nav ---------- */
+header.nav{position:sticky;top:0;z-index:50;background:rgba(13,27,46,.78);backdrop-filter:blur(12px);border-bottom:1px solid var(--b12)}
+.nav-row{display:flex;align-items:center;justify-content:space-between;padding:18px clamp(20px,5vw,72px)}
+.logo{display:flex;align-items:center;gap:10px;font-family:'Playfair Display',serif;font-size:20px;font-weight:700;letter-spacing:.04em;cursor:pointer}
+.logo-mark{width:34px;height:34px;border:1px solid var(--b28);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:17px;color:var(--accent)}
+.lum-navlinks{display:flex;gap:36px;align-items:center}
+.lum-navlinks a{font-size:14px;color:var(--dim);letter-spacing:.02em;transition:color .2s ease;padding:4px 0;border-bottom:1px solid transparent}
+.lum-navlinks a:hover, .lum-navlinks a.active{color:var(--ink);border-color:var(--accent)}
+.lum-navcta{border:1px solid var(--accent);color:var(--accent);font-size:13px;letter-spacing:.04em;padding:10px 22px;border-radius:999px;transition:all .25s ease;white-space:nowrap}
+.lum-navcta:hover{background:var(--accent);color:var(--navy)}
+.lum-menubtn{display:none;background:none;border:1px solid var(--b24);border-radius:8px;width:42px;height:42px;color:var(--ink);font-size:18px;cursor:pointer;align-items:center;justify-content:center}
+.mobile-menu{display:none;flex-direction:column;gap:2px;background:var(--navy2);border-bottom:1px solid var(--b14);padding:8px clamp(20px,5vw,72px) 18px}
+.mobile-menu.open{display:flex}
+.mobile-menu a{padding:14px 4px;color:var(--dim);font-size:15px;border-bottom:1px solid var(--b12)}
+.mobile-menu a.active{color:var(--accent)}
+.mobile-menu .lum-navcta{margin-top:14px;text-align:center}
+@media (max-width:940px){
+  .lum-navlinks,.nav-row > .lum-navcta{display:none}
+  .lum-menubtn{display:flex}
+}
+
+/* ---------- Buttons ---------- */
+.btn{display:inline-flex;align-items:center;gap:10px;padding:15px 30px;border-radius:999px;font-size:14px;letter-spacing:.03em;font-weight:600;cursor:pointer;border:1px solid transparent;transition:all .25s ease;white-space:nowrap}
+.btn-fill{background:var(--accent);color:var(--navy)}
+.btn-fill:hover{background:transparent;color:var(--accent);border-color:var(--accent)}
+.btn-outline{border:1px solid var(--b28);color:var(--ink)}
+.btn-outline:hover{background:var(--accent);color:var(--navy);border-color:var(--accent)}
+
+/* ---------- Hero ---------- */
+.hero{padding:clamp(48px,8vw,100px) 0 clamp(40px,6vw,72px)}
+.hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(32px,5vw,64px);align-items:center}
+.hero h1{font-size:clamp(36px,6.4vw,76px);font-weight:600;line-height:1.08;margin:0 0 22px}
+.hero p.lead{font-size:clamp(16px,1.6vw,19px);color:var(--dim);line-height:1.7;max-width:540px;margin:0 0 32px}
+.hero-cta-row{display:flex;gap:18px;align-items:center;flex-wrap:wrap;margin-bottom:28px}
+.hero-phone{font-size:14px;color:var(--dim2)}
+.hero-phone a{color:var(--accent);border-bottom:1px solid var(--b28)}
+.hero-visual{position:relative;aspect-ratio:4/5;border:1px solid var(--b18);border-radius:18px;background:linear-gradient(155deg,var(--card2),var(--navy2));display:flex;flex-direction:column;justify-content:space-between;padding:clamp(24px,3vw,40px);overflow:hidden}
+.hero-visual .big-l{font-family:'Playfair Display',serif;font-size:clamp(90px,14vw,180px);font-weight:700;color:var(--accent);line-height:1;opacity:.92}
+.hero-visual .est{font-size:13px;color:var(--dim2);letter-spacing:.06em}
+.hero-visual .tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:18px}
+.hero-visual .tags span{border:1px solid var(--b24);border-radius:999px;padding:6px 14px;font-size:12px;color:var(--dim)}
+
+/* ---------- Marquee ---------- */
+.marquee{border-top:1px solid var(--b12);border-bottom:1px solid var(--b12);overflow:hidden;white-space:nowrap;padding:22px 0}
+.marquee-track{display:inline-flex;align-items:center;animation:lum-marquee 38s linear infinite;}
+.marquee-track:hover{animation-play-state:paused}
+.marquee-track span{font-family:'Playfair Display',serif;font-size:clamp(16px,2vw,22px);color:var(--dim2);padding:0 28px;letter-spacing:.02em}
+.marquee-track span.dia{color:var(--accent);opacity:.6;font-size:14px}
+@keyframes lum-marquee{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+
+/* ---------- Stats ---------- */
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--b12);border:1px solid var(--b12);border-radius:18px;overflow:hidden}
+.stats .stat{background:var(--navy);padding:clamp(28px,4vw,46px) clamp(20px,3vw,36px)}
+.stats .stat .num{font-family:'Playfair Display',serif;font-size:clamp(28px,4vw,42px);font-weight:600;color:var(--accent);margin-bottom:6px}
+.stats .stat .lbl{font-size:13px;color:var(--dim2)}
+.stats .stat .lbl b{color:var(--dim);display:block;font-size:14px;margin-bottom:2px;font-weight:600}
+@media (max-width:760px){.stats{grid-template-columns:1fr}}
+
+/* ---------- Cards / grids ---------- */
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:22px}
+.grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+@media (max-width:980px){.grid-3{grid-template-columns:repeat(2,1fr)} .grid-4{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:640px){.grid-3,.grid-2,.grid-4{grid-template-columns:1fr}}
+
+.service-card{border:1px solid var(--b14);border-radius:16px;padding:30px 26px;background:var(--navy);transition:background .3s ease,border-color .3s ease}
+.service-card:hover{background:var(--card);border-color:var(--b28)}
+.service-card .num{font-family:'Playfair Display',serif;color:var(--accent);font-size:14px;letter-spacing:.1em;margin-bottom:18px;display:block}
+.service-card h3{font-size:20px;font-weight:600;margin:0 0 10px}
+.service-card p{color:var(--dim);font-size:14px;line-height:1.7;margin:0}
+
+/* ---------- Pricing ---------- */
+.pricing-card{border:1px solid var(--b16);border-radius:18px;padding:30px 26px;background:var(--card);display:flex;flex-direction:column;height:100%}
+.pricing-card.featured{border:1px solid var(--accent);background:var(--card2)}
+.pricing-card .pname{font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink);margin-bottom:14px;font-weight:600}
+.pricing-card.featured .pname{color:var(--accent)}
+.pricing-card .pprice{font-family:'Playfair Display',serif;font-size:clamp(26px,3.4vw,34px);font-weight:600;margin-bottom:2px}
+.pricing-card .pnote{font-size:12px;color:var(--dim2);margin-bottom:6px}
+.pricing-card .pplan{font-size:12px;color:var(--dim2);margin-bottom:18px}
+.pricing-card .pdesc{font-size:14px;color:var(--dim);line-height:1.6;margin-bottom:20px;min-height:62px}
+.pricing-card .care{font-size:12px;color:var(--green);border-top:1px solid var(--b14);padding-top:14px;margin-bottom:18px}
+.pricing-card ul{list-style:none;padding:0;margin:0 0 26px;flex:1}
+.pricing-card li{font-size:13px;color:var(--dim);padding:7px 0;border-bottom:1px solid var(--b12);display:flex;gap:10px;align-items:flex-start}
+.pricing-card li::before{content:"✓";color:var(--accent);font-size:12px;flex:none;margin-top:1px}
+.pricing-cta{display:block;text-align:center;border:1px solid var(--b24);border-radius:999px;padding:13px;font-size:13px;font-weight:600;letter-spacing:.03em;color:var(--ink);transition:all .25s ease;cursor:pointer}
+.pricing-card.featured .pricing-cta{border-color:var(--accent);background:var(--accent);color:var(--navy)}
+.pricing-cta:hover{background:var(--accent);color:var(--navy);border-color:var(--accent)}
+
+/* ---------- Testimonials ---------- */
+.testi-card{border:1px solid var(--b14);border-radius:16px;padding:28px 26px;background:var(--navy)}
+.testi-card .quote{font-family:'Playfair Display',serif;font-style:italic;font-size:17px;line-height:1.6;color:var(--ink);margin:0 0 22px}
+.testi-card .who{font-size:13px;color:var(--dim2)}
+.testi-card .who b{color:var(--ink);display:block;font-size:14px;margin-bottom:2px;font-weight:600;font-style:normal}
+
+/* ---------- Founder ---------- */
+.founder{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(32px,5vw,64px);align-items:center}
+.founder-photo{aspect-ratio:1;border-radius:18px;border:1px solid var(--b18);background:linear-gradient(155deg,var(--card2),var(--navy2));display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:90px;color:var(--accent)}
+.founder-quote{font-family:'Playfair Display',serif;font-style:italic;font-size:clamp(20px,2.6vw,30px);line-height:1.5;margin:0 0 22px}
+@media (max-width:860px){.founder{grid-template-columns:1fr}.founder-photo{max-width:280px}}
+
+/* ---------- Hero: split on wide screens, centered (no visual) on narrow ---------- */
+@media (max-width:860px){
+  .hero-grid{grid-template-columns:1fr;text-align:center}
+  .hero-grid .hero-visual{display:none}
+  .hero-cta-row{justify-content:center}
+  .hero-copy{max-width:760px;margin:0 auto}
+  .hero p.lead{margin:0 auto 32px}
+}
+
+/* ---------- Work ---------- */
+.work-card{position:relative;border:1px solid var(--b14);border-radius:16px;overflow:hidden;transition:border-color .3s ease}
+.work-card:hover{border-color:var(--b3)}
+.work-img{aspect-ratio:4/3;width:100%;display:flex;align-items:center;justify-content:center;overflow:hidden;font-family:'Playfair Display',serif;font-size:32px;color:var(--accent);transition:transform .7s cubic-bezier(.2,.6,.2,1)}
+.work-img img{width:100%;height:100%;object-fit:cover;display:block}
+.work-card:hover .work-img{transform:scale(1.05)}
+.work-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(13,27,46,0) 30%,rgba(13,27,46,.95) 100%);opacity:0;transition:opacity .45s ease;display:flex;flex-direction:column;justify-content:flex-end;padding:22px}
+.work-card:hover .work-overlay{opacity:1}
+.work-overlay p{font-size:13px;color:var(--dim);margin:8px 0 0;line-height:1.6}
+.work-info{padding:18px 4px 0}
+.work-info .tag{font-size:12px;color:var(--dim2);letter-spacing:.08em;text-transform:uppercase}
+.work-info h3{font-size:18px;font-weight:600;margin:6px 0 0}
+.work-overlay h3{color:var(--ink);margin:0;font-size:18px}
+.work-overlay .tag{font-size:12px;color:var(--accent);letter-spacing:.08em;text-transform:uppercase}
+
+/* ---------- Services page ---------- */
+.service-row{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(28px,4vw,56px);padding:clamp(36px,5vw,64px) 0;border-bottom:1px solid var(--b12)}
+.service-row:last-child{border-bottom:none}
+.service-row .num-big{font-family:'Playfair Display',serif;font-size:48px;color:var(--accent);opacity:.5;margin-bottom:10px}
+.service-row h3{font-size:clamp(24px,3vw,34px);font-weight:600;margin:0 0 14px}
+.service-row .desc{color:var(--dim);font-size:15px;line-height:1.8;margin-bottom:20px}
+.service-row .forwho{display:inline-block;border:1px solid var(--b18);border-radius:999px;padding:8px 18px;font-size:12px;color:var(--dim2);letter-spacing:.04em}
+.included-list{list-style:none;padding:0;margin:0;display:grid;gap:12px}
+.included-list li{display:flex;gap:12px;align-items:flex-start;font-size:14px;color:var(--dim);border:1px solid var(--b12);border-radius:10px;padding:13px 16px}
+.included-list li::before{content:"—";color:var(--accent);flex:none}
+@media (max-width:860px){.service-row{grid-template-columns:1fr}}
+
+/* ---------- FAQ ---------- */
+.faq-item{border-bottom:1px solid var(--b14)}
+.faq-q{display:flex;justify-content:space-between;align-items:center;padding:22px 4px;cursor:pointer;font-size:16px;font-weight:600;gap:20px}
+.faq-q .icon{font-size:20px;color:var(--accent);flex:none;transition:transform .25s ease}
+.faq-item.open .faq-q .icon{transform:rotate(45deg)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .3s ease}
+.faq-item.open .faq-a{max-height:240px}
+.faq-a p{color:var(--dim);font-size:14px;line-height:1.7;margin:0 0 22px;padding-right:40px}
+
+/* ---------- Care plan ---------- */
+.care-list{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.care-list li{display:flex;gap:12px;align-items:center;font-size:14px;color:var(--dim);border:1px solid var(--b12);border-radius:10px;padding:14px 18px;background:var(--navy)}
+.care-list li::before{content:"✓";color:var(--green);font-weight:700}
+@media (max-width:640px){.care-list{grid-template-columns:1fr}}
+
+/* ---------- Values / process ---------- */
+.value-card{border:1px solid var(--b14);border-radius:16px;padding:26px;background:var(--navy)}
+.value-card h3{font-size:18px;font-weight:600;margin:0 0 8px}
+.value-card p{color:var(--dim);font-size:14px;line-height:1.7;margin:0}
+.process-step{display:flex;gap:20px;padding:24px 0;border-bottom:1px solid var(--b12)}
+.process-step:last-child{border-bottom:none}
+.process-step .pnum{font-family:'Playfair Display',serif;font-size:28px;color:var(--accent);flex:none;width:50px}
+.process-step h3{font-size:18px;font-weight:600;margin:0 0 6px}
+.process-step p{color:var(--dim);font-size:14px;line-height:1.7;margin:0}
+
+/* ---------- Contact ---------- */
+.contact-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:clamp(32px,5vw,64px)}
+.contact-info-item{display:flex;gap:14px;align-items:flex-start;margin-bottom:22px}
+.contact-info-item .ic{width:38px;height:38px;border:1px solid var(--b24);border-radius:10px;display:flex;align-items:center;justify-content:center;color:var(--accent);flex:none}
+.contact-info-item .lbl{font-size:12px;color:var(--dim2);letter-spacing:.08em;text-transform:uppercase;margin-bottom:4px}
+.contact-info-item a, .contact-info-item span.val{font-size:15px;color:var(--ink)}
+.contact-info-item a:hover{color:var(--accent)}
+.response-badge{display:inline-flex;align-items:center;gap:10px;border:1px solid var(--b18);border-radius:999px;padding:10px 18px;font-size:13px;color:var(--green);margin-bottom:32px}
+.response-badge .dot{width:8px;height:8px;border-radius:999px;background:var(--green)}
+.form-card{border:1px solid var(--b14);border-radius:18px;padding:clamp(24px,3vw,40px);background:var(--card)}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px}
+.field{display:flex;flex-direction:column;gap:8px}
+.field label{font-size:12px;color:var(--dim2);letter-spacing:.06em;text-transform:uppercase}
+.field input, .field select, .field textarea{background:var(--navy);border:1px solid var(--b18);border-radius:10px;padding:13px 14px;color:var(--ink);font-size:14px;font-family:inherit;outline:none;transition:border-color .2s ease}
+.field input:focus, .field select:focus, .field textarea:focus{border-color:var(--accent)}
+.field input.err, .field select.err, .field textarea.err{border-color:var(--red)}
+.field textarea{resize:vertical;min-height:120px}
+.submit-btn{width:100%;background:var(--accent);color:var(--navy);border:1px solid var(--accent);border-radius:999px;padding:16px;font-size:14px;font-weight:600;letter-spacing:.03em;cursor:pointer;transition:all .25s ease;margin-top:8px}
+.submit-btn:hover{background:transparent;color:var(--accent)}
+.thankyou{text-align:center;padding:60px 20px}
+.thankyou .check{width:64px;height:64px;border-radius:999px;border:1px solid var(--green);color:var(--green);display:flex;align-items:center;justify-content:center;font-size:28px;margin:0 auto 22px}
+.thankyou h3{font-size:24px;font-weight:600;margin:0 0 10px;font-family:'Playfair Display',serif}
+.thankyou p{color:var(--dim);font-size:14px}
+@media (max-width:860px){.contact-grid{grid-template-columns:1fr}.form-row{grid-template-columns:1fr}}
+
+/* ---------- CTA band ---------- */
+.cta-band{border:1px solid var(--b16);border-radius:22px;padding:clamp(40px,6vw,72px);text-align:center;background:linear-gradient(155deg,var(--card2),var(--navy2))}
+.cta-band h2{font-size:clamp(26px,4vw,42px);font-weight:600;margin:0 0 14px}
+.cta-band p{color:var(--dim);margin:0 0 30px;font-size:15px}
+.cta-row{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+
+/* ---------- Footer ---------- */
+footer{border-top:1px solid var(--b12);padding:clamp(48px,7vw,80px) 0 30px;background:var(--navy2)}
+.footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1.2fr;gap:32px;margin-bottom:48px}
+.footer-grid h4{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--dim2);margin:0 0 18px}
+.footer-grid .flinks{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:12px}
+.footer-grid .flinks a{font-size:14px;color:var(--dim);transition:color .2s ease}
+.footer-grid .flinks a:hover{color:var(--ink)}
+.footer-tagline{color:var(--dim);font-size:14px;line-height:1.7;max-width:280px;margin-top:14px}
+.footer-bottom{border-top:1px solid var(--b12);padding-top:24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;font-size:13px;color:var(--dim2)}
+@media (max-width:860px){.footer-grid{grid-template-columns:1fr 1fr}}
+@media (max-width:540px){.footer-grid{grid-template-columns:1fr}}
+
+/* ---------- Reveal ---------- */
+[data-reveal]{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.6,.2,1)}
+[data-reveal].in{opacity:1;transform:translateY(0)}
+
+/* ---------- Pages ---------- */
+.page{display:none}
+.page.active{display:block}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-row">
+    <div class="logo" data-nav="home"><span class="logo-mark">L</span> LUMINATE</div>
+    <nav class="lum-navlinks">
+      <a href="#home" data-nav="home">Home</a>
+      <a href="#work" data-nav="work">Work</a>
+      <a href="#services" data-nav="services">Services</a>
+      <a href="#pricing" data-nav="pricing">Pricing</a>
+      <a href="#about" data-nav="about">About</a>
+      <a href="#contact" data-nav="contact">Contact</a>
+    </nav>
+    <a href="#contact" class="lum-navcta" data-nav="contact">Start your website</a>
+    <button class="lum-menubtn" id="menuBtn" aria-label="Menu">☰</button>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#home" data-nav="home">Home</a>
+    <a href="#work" data-nav="work">Work</a>
+    <a href="#services" data-nav="services">Services</a>
+    <a href="#pricing" data-nav="pricing">Pricing</a>
+    <a href="#about" data-nav="about">About</a>
+    <a href="#contact" data-nav="contact">Contact</a>
+    <a href="#contact" class="lum-navcta" data-nav="contact">Start your website</a>
+  </div>
+</header>
+
+<main>
+
+<!-- ================= HOME ================= -->
+<section class="page" id="page-home">
+
+  <div class="hero" id="hero">
+    <div class="wrap">
+      <div class="hero-grid">
+        <div class="hero-copy" data-reveal>
+          <h1>Websites that earn trust at first glance — <span class="italic">and keep it after.</span></h1>
+          <p class="lead">Premium, conversion-focused websites for Augusta's businesses, ministries, and nonprofits — built to look credible from the very first scroll.</p>
+          <div class="hero-cta-row">
+            <a href="#contact" class="btn btn-fill" data-nav="contact">Start your website</a>
+            <a href="#work" class="btn btn-outline" data-nav="work">View work</a>
+          </div>
+          <div class="hero-phone">Prefer to talk it through? Call <a href="tel:7622279287">(762) 227-9287</a></div>
+        </div>
+        <div class="hero-visual" data-reveal>
+          <div class="big-l">L</div>
+          <div>
+            <div class="est">Est. Augusta, GA / 2025</div>
+            <div class="tags"><span>Design</span><span>Development</span><span>Care</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="marquee">
+    <div class="marquee-track" id="marqueeTrack"></div>
+  </div>
+
+  <div class="section">
+    <div class="wrap">
+      <div class="stats" data-reveal>
+        <div class="stat">
+          <div class="num">10+</div>
+          <div class="lbl"><b>Websites launched</b></div>
+        </div>
+        <div class="stat">
+          <div class="num">100%</div>
+          <div class="lbl"><b>Augusta &amp; CSRA</b>Proudly local</div>
+        </div>
+        <div class="stat">
+          <div class="num">3</div>
+          <div class="lbl"><b>Business · Ministry · Nonprofit</b>Who we serve</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="wrap">
+      <div class="section-head" data-reveal>
+        <div class="eyebrow">What we do</div>
+        <h2>Everything you need to look credible online.</h2>
+        <p>From first design to ongoing care, we handle the parts of your online presence that are easy to put off — and hard to get right alone.</p>
+      </div>
+      <div class="grid-3" data-reveal>
+        <div class="service-card">
+          <span class="num">01</span>
+          <h3>Custom Website Design</h3>
+          <p>A site designed around your brand and your customers — not a recycled template. Every page is built to make a strong first impression.</p>
+        </div>
+        <div class="service-card">
+          <span class="num">02</span>
+          <h3>Local &amp; Service Businesses</h3>
+          <p>Click-to-call, map integration, hours, reviews, and clear calls to action — everything a local customer needs to choose you.</p>
+        </div>
+        <div class="service-card">
+          <span class="num">04</span>
+          <h3>Care &amp; Maintenance</h3>
+          <p>Hosting, security updates, and small content changes handled for you — so your site stays fast, safe, and current.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="wrap">
+      <div class="section-head" data-reveal>
+        <div class="eyebrow">Pricing</div>
+        <h2>Simple packages, honest pricing.</h2>
+        <p>One-time setup to get you live, plus an optional care plan to keep things running smoothly.</p>
+      </div>
+      <div class="grid-4" id="pricingGridHome" data-reveal></div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="wrap">
+      <div class="section-head" data-reveal>
+        <div class="eyebrow">What clients say</div>
+        <h2>Trusted by Augusta businesses, ministries &amp; nonprofits.</h2>
+      </div>
+      <div class="grid-3" id="testimonialsGrid" data-reveal></div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="wrap">
+      <div class="founder" data-reveal>
+        <div class="founder-photo">L</div>
+        <div>
+          <div class="eyebrow" style="margin-bottom:18px">The founder</div>
+          <p class="founder-quote">"Every business deserves a website that makes people trust them before they say a word."</p>
+          <div style="font-weight:600;font-size:16px">Jacob</div>
+          <div style="color:var(--dim2);font-size:14px;margin-top:2px">Founder · Luminate Web Design</div>
+          <p style="color:var(--dim);font-size:14px;line-height:1.8;margin-top:18px;max-width:480px">Based in Augusta, Jacob works directly with every client — from first conversation to launch and beyond — so nothing gets lost between you and the people building your site.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="wrap">
+      <div class="cta-band" data-reveal>
+        <h2>Ready for a website that earns trust?</h2>
+        <p>Tell us a bit about your business and we'll put together a plan that fits.</p>
+        <div class="cta-row">
+          <a href="#contact" class="btn btn-fill" data-nav="contact">Start your website</a>
+          <a href="#pricing" class="btn btn-outline" data-nav="pricing">See pricing</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<!-- ================= WORK ================= -->
+<section class="page" id="page-work">
+  <div class="section">
+    <div class="wrap">
+      <div class="section-head" data-reveal>
+        <div class="eyebrow">Portfolio</div>
+        <h2>Selected work.</h2>
+        <p>A look at the businesses, ministries, and nonprofits we've helped show up better online.</p>
+      </div>
+      <div class="grid-3" id="workGrid" data-reveal></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= SERVICES ================= -->
+<section class="page" id="page-services">
+  <div class="section">
+    <div class="wrap">
+      <div class="section-head" data-reveal>
+        <div class="eyebrow">Services</div>
+        <h2>What we build for you.</h2>
+        <p>Every project starts with a conversation about your business — then we design and build a site around it.</p>
+      </div>
+      <div id="servicesList"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PRICING ================= -->
+<section class="page" id="page-pricing">
+  <div class="section">
+    <div class="wrap">
+      <div class="section-head" data-reveal>
+        <div class="eyebrow">Pricing</div>
+        <h2>Transparent pricing, no surprises.</h2>
+        <p>Choose the package that fits where your business is today. Every plan can grow with you.</p>
+      </div>
+      <div class="grid-4" id="pricingGridPage" data-reveal></div>
+    </div>
+  </div>
+
+  <div class="section" style="padding-top:0">
+    <div class="wrap">
+      <div class="section-head" data-reveal>
+        <div class="eyebrow">Care plans</div>
+        <h2>What's included in ongoing care.</h2>
+        <p>Every care plan keeps your site online, secure, and up to date.</p>
+      </div>
+      <ul class="care-list" id="careList" data-reveal></ul>
+    </div>
+  </div>
+
+  <div class="section" style="padding-top:0">
+    <div class="wrap" style="max-width:840px">
+      <div class="section-head" data-reveal>
+        <div class="eyebrow">FAQ</div>
+        <h2>Common questions.</h2>
+      </div>
+      <div id="faqList" data-reveal></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= ABOUT ================= -->
+<section class="page" id="page-about">
+  <div class="section">
+    <div class="wrap">
+      <div class="section-head" data-reveal>
+        <div class="eyebrow">About</div>
+        <h2>Founder-led, Augusta-rooted.</h2>
+        <p>Luminate Web Design &amp; Development was started to give Augusta's small businesses, ministries, and nonprofits the kind of website usually reserved for big budgets.</p>
+      </div>
+      <div class="founder" data-reveal>
+        <div class="founder-photo">L</div>
+        <div>
+          <p style="color:var(--dim);font-size:15px;line-height:1.85;margin-bottom:18px">Jacob founded Luminate after seeing how many great local businesses were being held back by outdated, hard-to-use websites — or no website at all. Today, Luminate designs and builds custom sites for businesses, churches, and nonprofits across the CSRA, and stays on as a long-term partner through its care plans.</p>
+          <p style="color:var(--dim);font-size:15px;line-height:1.85">Every project is handled personally — one point of contact, real conversations, and a site that's actually built for how your business works.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section" style="padding-top:0">
+    <div class="wrap">
+      <div class="stats" data-reveal>
+        <div class="stat">
+          <div class="num">10+</div>
+          <div class="lbl"><b>Sites launched</b></div>
+        </div>
+        <div class="stat">
+          <div class="num">3 mo</div>
+          <div class="lbl"><b>Hands-on after launch</b></div>
+        </div>
+        <div class="stat">
+          <div class="num">CSRA</div>
+          <div class="lbl"><b>Augusta-based</b></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="wrap">
+      <div class="section-head" data-reveal>
+        <div class="eyebrow">What we stand for</div>
+        <h2>The principles behind every project.</h2>
+      </div>
+      <div class="grid-4" data-reveal>
+        <div class="value-card">
+          <h3>Trust by design</h3>
+          <p>Clean, credible design that makes a strong first impression — because trust is earned in seconds.</p>
+        </div>
+        <div class="value-card">
+          <h3>Craft over templates</h3>
+          <p>Every site is custom-built around your brand and your customers, not stretched over a generic theme.</p>
+        </div>
+        <div class="value-card">
+          <h3>Local &amp; personal</h3>
+          <p>You work directly with Jacob from start to finish — no account managers, no outsourcing.</p>
+        </div>
+        <div class="value-card">
+          <h3>Built to last</h3>
+          <p>Sites are built on solid foundations and backed by ongoing care, so they keep working long after launch.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="wrap" style="max-width:840px">
+      <div class="section-head" data-reveal>
+        <div class="eyebrow">How we work</div>
+        <h2>A simple, guided process.</h2>
+      </div>
+      <div data-reveal>
+        <div class="process-step">
+          <div class="pnum">01</div>
+          <div><h3>Listen</h3><p>We start with a conversation about your business, your customers, and what you need your site to do.</p></div>
+        </div>
+        <div class="process-step">
+          <div class="pnum">02</div>
+          <div><h3>Design</h3><p>We design a site around your brand — built to make a strong first impression and guide visitors toward action.</p></div>
+        </div>
+        <div class="process-step">
+          <div class="pnum">03</div>
+          <div><h3>Build</h3><p>We build, test, and refine the site, keeping you in the loop until everything is exactly right.</p></div>
+        </div>
+        <div class="process-step">
+          <div class="pnum">04</div>
+          <div><h3>Care</h3><p>After launch, we stay on to handle hosting, updates, and small changes — so your site keeps working for you.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="wrap">
+      <div class="cta-band" data-reveal>
+        <h2>Let's build something that earns trust.</h2>
+        <p>Reach out and tell us a bit about your business — we'll take it from there.</p>
+        <div class="cta-row">
+          <a href="#contact" class="btn btn-fill" data-nav="contact">Get in touch</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CONTACT ================= -->
+<section class="page" id="page-contact">
+  <div class="section">
+    <div class="wrap">
+      <div class="contact-grid">
+        <div data-reveal>
+          <div class="eyebrow">Contact</div>
+          <h2 class="serif" style="font-size:clamp(28px,4.2vw,46px);font-weight:600;margin:14px 0 16px">Let's talk about your website.</h2>
+          <p style="color:var(--dim);font-size:15px;line-height:1.8;margin:0 0 28px;max-width:440px">Tell us a little about your business and what you're looking for. We'll get back to you within one business day.</p>
+          <div class="response-badge"><span class="dot"></span> Usually responds within 1 business day</div>
+          <div>
+            <div class="contact-info-item">
+              <div class="ic">☎</div>
+              <div><div class="lbl">Phone</div><a href="tel:7622279287">(762) 227-9287</a></div>
+            </div>
+            <div class="contact-info-item">
+              <div class="ic">✉</div>
+              <div><div class="lbl">Email</div><a href="mailto:luminatewebco@gmail.com">luminatewebco@gmail.com</a></div>
+            </div>
+            <div class="contact-info-item">
+              <div class="ic">⚲</div>
+              <div><div class="lbl">Location</div><span class="val">Augusta &amp; the CSRA</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div data-reveal>
+          <div class="form-card" id="formCard">
+            <form id="contactForm">
+              <div class="form-row">
+                <div class="field">
+                  <label for="f-name">Name *</label>
+                  <input type="text" id="f-name" name="name" required>
+                </div>
+                <div class="field">
+                  <label for="f-business">Business name</label>
+                  <input type="text" id="f-business" name="business">
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="field">
+                  <label for="f-email">Email *</label>
+                  <input type="email" id="f-email" name="email" required>
+                </div>
+                <div class="field">
+                  <label for="f-phone">Phone</label>
+                  <input type="tel" id="f-phone" name="phone">
+                </div>
+              </div>
+              <div class="field" style="margin-bottom:16px">
+                <label for="f-type">Project type</label>
+                <select id="f-type" name="projectType">
+                  <option value="">Select one...</option>
+                  <option>New website</option>
+                  <option>Website redesign</option>
+                  <option>E-commerce / online store</option>
+                  <option>Booking / scheduling site</option>
+                  <option>Nonprofit / ministry site</option>
+                  <option>Ongoing care &amp; maintenance</option>
+                  <option>Not sure yet</option>
+                  <option>Other</option>
+                </select>
+              </div>
+              <div class="field" style="margin-bottom:8px">
+                <label for="f-message">Message *</label>
+                <textarea id="f-message" name="message" required placeholder="Tell us a bit about your business and what you're looking for..."></textarea>
+              </div>
+              <button type="submit" class="submit-btn">Send project details</button>
+            </form>
+            <div class="thankyou" id="thankYou" style="display:none">
+              <div class="check">✓</div>
+              <h3>Thank you — message sent.</h3>
+              <p>We'll be in touch within one business day.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <div class="logo" data-nav="home"><span class="logo-mark">L</span> LUMINATE</div>
+        <p class="footer-tagline">Premium, conversion-focused websites for Augusta's businesses, ministries, and nonprofits.</p>
+      </div>
+      <div>
+        <h4>Pages</h4>
+        <ul class="flinks">
+          <li><a href="#home" data-nav="home">Home</a></li>
+          <li><a href="#work" data-nav="work">Work</a></li>
+          <li><a href="#services" data-nav="services">Services</a></li>
+          <li><a href="#pricing" data-nav="pricing">Pricing</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Studio</h4>
+        <ul class="flinks">
+          <li><a href="#about" data-nav="about">About</a></li>
+          <li><a href="#contact" data-nav="contact">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Get in touch</h4>
+        <ul class="flinks">
+          <li><a href="tel:7622279287">(762) 227-9287</a></li>
+          <li><a href="mailto:luminatewebco@gmail.com">luminatewebco@gmail.com</a></li>
+          <li>Augusta &amp; the CSRA</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Luminate Web Design &amp; Development</span>
+      <span>Built in Augusta, Georgia</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+// ---------- Data ----------
+var clients = ["Abib Auto Sales","Dingle Tennis Academy","Rich Eatz","Elite Shaken Lemonade","Creations by Melanie","Busy B Construction","MACH Academy","Extra Credit Creations","Realistic Impressions","There Is H.O.P.E. Ministries"];
+
+var pricingTiers = [
+  { name:'Starter', price:'$300', priceNote:'one-time setup', care:'$25/mo', careName:'Essential Care', plan:'or 3 payments of $100', featured:false, desc:"A polished one-page site to get you credible and online, fast.", features:['One-page custom design','Mobile responsive build','Contact form + click-to-call','Google Business setup','Basic on-page SEO','Launch in ~2 weeks'] },
+  { name:'Business', price:'$500', priceNote:'one-time setup', care:'$35/mo', careName:'Standard Care', plan:'or 3 payments of $167', featured:true, desc:"A multi-page site that positions you as the obvious choice.", features:['Up to 5 custom pages','Everything in Starter','Services & gallery sections','Lead capture + automations','Social + maps integration','Priority launch support'] },
+  { name:'Growth', price:'$1,000', priceNote:'one-time setup', care:'$35/mo', careName:'Standard Care', plan:'or 4 payments of $250', featured:false, desc:"A larger site built to convert and scale as you grow.", features:['Up to 10 custom pages','Everything in Business','Blog or resource center','Booking / scheduling tools','Advanced SEO structure','Conversion-focused copy support'] },
+  { name:'Custom', price:'Custom quote', priceNote:'scoped to your needs', care:'$60/mo', careName:'Pro Care', plan:'flexible payment plans', featured:false, desc:"A bespoke build for e-commerce, integrations, and complex needs.", features:['Unlimited scope','E-commerce & payments','Custom integrations & APIs','Membership / portal features','Performance optimization','Dedicated ongoing partnership'] }
+];
+
+var work = [
+  { name:'Abib Auto Sales', tag:'Used Car Dealership', img:'images/work/abib-auto-sales.jpg', desc:"A clean, trustworthy storefront for a local used car dealership — full inventory showcase, financing info, and click-to-call throughout." },
+  { name:'Dingle Tennis Academy', tag:'Sports Coaching', img:'images/work/dingle-tennis-academy.jpg', desc:"A high-energy site for a tennis coaching academy, built to drive lesson sign-ups and showcase programs for all skill levels." },
+  { name:'There Is H.O.P.E. Ministries', tag:'Faith · Nonprofit', img:'images/work/hope-ministries.jpg', desc:"A warm, welcoming site for a local ministry — service times, outreach programs, and a simple way for the community to get involved." },
+  { name:'Elite Shaken Lemonade', tag:'Food & Beverage', img:'images/work/elite-shaken-lemonade.jpg', desc:"A bright, appetite-driving site for a specialty beverage brand, built to highlight flavors, locations, and booking for events." },
+  { name:'Rich Eatz', tag:'Luxury Catering', img:'images/work/rich-eatz.jpg', desc:"An elevated, image-forward site for a luxury catering brand — built to showcase menus and make inquiries effortless." },
+  { name:'Extra Credit Creations', tag:'E-Commerce', img:'images/work/extra-credit-creations.jpg', desc:"A custom storefront for a creative e-commerce brand, designed to make browsing and checkout feel as good as the products." },
+  { name:'Busy B Construction', tag:'Contractor', img:'images/work/busy-b-construction.jpg', desc:"A straightforward, credibility-first site for a local contractor — services, past projects, and an easy way to request a quote." },
+  { name:'Creations by Melanie', tag:'Custom Bakery', img:'images/work/creations-by-melanie.jpg', desc:"A delicious-looking site for a custom bakery, with a gallery of past work and a simple ordering inquiry flow." },
+  { name:'Realistic Impressions', tag:'T-Shirt Printing', img:'images/work/realistic-impressions.jpg', desc:"A bold, modern site for a local print shop — built to make ordering custom apparel feel quick and easy." },
+  { name:'MACH Academy', tag:'Nonprofit · Tennis', img:'images/work/mach-academy.jpg', desc:"A community-focused site for a youth tennis nonprofit, designed to highlight programs, impact, and ways to support the mission." }
+];
+
+var services = [
+  { kicker:'01', name:'Custom Website Design', desc:"Every Luminate site starts from a blank canvas — designed around your brand, your customers, and the impression you want to make in the first five seconds.", forWho:"For businesses ready to look as good online as they do in person.", included:['Custom layout & visual design','Brand-aligned colors, fonts & imagery','Mobile-first responsive design','Clear calls to action throughout','Fast-loading, modern build','Source files & ongoing access'] },
+  { kicker:'02', name:'Local & Service Businesses', desc:"Local customers decide fast. We build sites that make it effortless to call, find you, see your hours, and trust you're the right choice — before they even pick up the phone.", forWho:"For contractors, shops, restaurants & service providers.", included:['Click-to-call & directions','Google Business Profile setup','Hours, location & service area','Reviews & social proof sections','Local SEO basics','Lead capture forms'] },
+  { kicker:'03', name:'Personal Brands & Portfolios', desc:"For coaches, creatives, and consultants — a site that introduces you, showcases your work, and makes it easy for the right people to reach out.", forWho:"For coaches, creatives, consultants & personal brands.", included:['Personal bio & story section','Portfolio / gallery layout','Booking or inquiry forms','Social links & integrations','Testimonials section','Simple, easy-to-update structure'] },
+  { kicker:'04', name:'Care & Maintenance', desc:"Launch day isn't the finish line. Our care plans keep your site online, secure, and current — so you can focus on running your business, not your website.", forWho:"For every client, after launch.", included:['Managed hosting','Security & software updates','Uptime & performance monitoring','Small content updates','Technical support','Priority response when you need help'] }
+];
+
+var testimonials = [
+  { name:'Abib Auto Sales', role:'Used Car Dealership', quote:"Our new site looks more professional than dealerships twice our size. Customers mention it before they even walk in." },
+  { name:'There Is H.O.P.E. Ministries', role:'Faith · Nonprofit', quote:"Jacob took the time to understand our ministry and built something that actually feels like us. The whole process was easy." },
+  { name:'Rich Eatz', role:'Luxury Catering', quote:"Inquiries picked up almost immediately after launch. The site finally matches the quality of what we offer." }
+];
+
+var carePlan = ['Managed hosting','Security updates','Routine maintenance','Technical support','Small content updates','Help when you need it'];
+
+var faqs = [
+  { q:'How long does a project take?', a:"Most one-page sites launch within about two weeks, and multi-page sites typically take three to five weeks depending on scope and how quickly we get content and feedback from you." },
+  { q:'What do I need to provide?', a:"Just the basics — your logo (if you have one), any existing photos or text you'd like to use, and answers to a short discovery questionnaire. We can help fill in gaps with copywriting and stock imagery if needed." },
+  { q:'What happens after my site launches?', a:"You can choose a care plan that covers hosting, security updates, and small content changes, or you can take the files and manage things yourself. Most clients prefer to stay on a care plan for peace of mind." },
+  { q:'Can I make changes to my site later?', a:"Yes. Small updates are included in every care plan. For larger changes — new pages, redesigns, or added features — we'll provide a simple quote before getting started." }
+];
+
+// ---------- Render helpers ----------
+function pricingCardHTML(t){
+  var feat = t.featured ? ' featured' : '';
+  var feats = t.features.map(function(f){ return '<li>'+f+'</li>'; }).join('');
+  return '<div class="pricing-card'+feat+'">'+
+    '<div class="pname">'+t.name+'</div>'+
+    '<div class="pprice serif">'+t.price+'</div>'+
+    '<div class="pnote">'+t.priceNote+'</div>'+
+    '<div class="pplan">'+t.plan+'</div>'+
+    '<div class="pdesc">'+t.desc+'</div>'+
+    '<div class="care">'+t.careName+' care: '+t.care+'</div>'+
+    '<ul>'+feats+'</ul>'+
+    '<a href="#contact" class="pricing-cta" data-nav="contact">Get started</a>'+
+  '</div>';
+}
+
+document.getElementById('pricingGridHome').innerHTML = pricingTiers.map(pricingCardHTML).join('');
+document.getElementById('pricingGridPage').innerHTML = pricingTiers.map(pricingCardHTML).join('');
+
+document.getElementById('testimonialsGrid').innerHTML = testimonials.map(function(t){
+  return '<div class="testi-card"><p class="quote">"'+t.quote+'"</p><div class="who"><b>'+t.name+'</b>'+t.role+'</div></div>';
+}).join('');
+
+document.getElementById('workGrid').innerHTML = work.map(function(w){
+  return '<div class="work-card">'+
+    '<div class="work-img"><img src="'+w.img+'" alt="'+w.name+' website mockup" loading="lazy"></div>'+
+    '<div class="work-overlay"><div class="tag">'+w.tag+'</div><h3>'+w.name+'</h3><p>'+w.desc+'</p></div>'+
+    '<div class="work-info"><div class="tag">'+w.tag+'</div><h3>'+w.name+'</h3></div>'+
+  '</div>';
+}).join('');
+
+document.getElementById('servicesList').innerHTML = services.map(function(s){
+  var inc = s.included.map(function(i){return '<li>'+i+'</li>';}).join('');
+  return '<div class="service-row">'+
+    '<div><div class="num-big serif">'+s.kicker+'</div><h3>'+s.name+'</h3><p class="desc">'+s.desc+'</p><span class="forwho">'+s.forWho+'</span></div>'+
+    '<div><ul class="included-list">'+inc+'</ul></div>'+
+  '</div>';
+}).join('');
+
+document.getElementById('careList').innerHTML = carePlan.map(function(c){ return '<li>'+c+'</li>'; }).join('');
+
+document.getElementById('faqList').innerHTML = faqs.map(function(f,i){
+  return '<div class="faq-item'+(i===0?' open':'')+'" data-faq="'+i+'">'+
+    '<div class="faq-q">'+f.q+'<span class="icon">+</span></div>'+
+    '<div class="faq-a"><p>'+f.a+'</p></div>'+
+  '</div>';
+}).join('');
+
+// Marquee — duplicate list for seamless loop
+(function(){
+  var html = '';
+  for(var r=0;r<2;r++){
+    clients.forEach(function(c){ html += '<span>'+c+'</span><span class="dia">◆</span>'; });
+  }
+  document.getElementById('marqueeTrack').innerHTML = html;
+})();
+
+// ---------- FAQ accordion ----------
+document.getElementById('faqList').addEventListener('click', function(e){
+  var item = e.target.closest('.faq-item');
+  if(!item) return;
+  var wasOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item').forEach(function(f){ f.classList.remove('open'); });
+  if(!wasOpen) item.classList.add('open');
+});
+
+// ---------- Routing ----------
+var pages = ['home','work','services','pricing','about','contact'];
+function navigate(page){
+  if(pages.indexOf(page) === -1) page = 'home';
+  pages.forEach(function(p){
+    document.getElementById('page-'+p).classList.toggle('active', p === page);
+  });
+  document.querySelectorAll('[data-nav]').forEach(function(el){
+    el.classList.toggle('active', el.getAttribute('data-nav') === page);
+  });
+  document.getElementById('mobileMenu').classList.remove('open');
+  window.scrollTo({top:0, behavior:'instant'});
+  setupReveal();
+}
+function routeFromHash(){
+  var page = (location.hash || '#home').replace('#','');
+  navigate(page);
+}
+window.addEventListener('hashchange', routeFromHash);
+
+document.querySelectorAll('[data-nav]').forEach(function(el){
+  el.addEventListener('click', function(e){
+    var target = this.getAttribute('data-nav');
+    location.hash = '#'+target;
+  });
+});
+
+document.getElementById('menuBtn').addEventListener('click', function(){
+  document.getElementById('mobileMenu').classList.toggle('open');
+});
+
+// ---------- Reveal on scroll ----------
+var revealObserver = new IntersectionObserver(function(entries){
+  entries.forEach(function(entry){
+    if(entry.isIntersecting){
+      entry.target.classList.add('in');
+      revealObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.12 });
+
+function setupReveal(){
+  document.querySelectorAll('.page.active [data-reveal]:not(.in)').forEach(function(el){
+    revealObserver.observe(el);
+  });
+}
+
+// ---------- Contact form ----------
+document.getElementById('contactForm').addEventListener('submit', function(e){
+  e.preventDefault();
+  var name = document.getElementById('f-name');
+  var email = document.getElementById('f-email');
+  var message = document.getElementById('f-message');
+  var valid = true;
+  [name,email,message].forEach(function(f){
+    f.classList.remove('err');
+    if(!f.value.trim()){ f.classList.add('err'); valid = false; }
+  });
+  if(email.value.trim() && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value.trim())){
+    email.classList.add('err'); valid = false;
+  }
+  if(!valid) return;
+  document.getElementById('contactForm').style.display = 'none';
+  document.getElementById('thankYou').style.display = 'block';
+});
+
+// ---------- Init ----------
+routeFromHash();
+</script>
+
+</body>
+</html>
