@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Client Portal — Luminate Web Design</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --navy:  #0D1B2E;
+      --navy2: #0A1524;
+      --card:  #101F35;
+      --card2: #152A45;
+      --ink:   #FFFFFF;
+      --dim:   #B8C4D4;
+      --dim2:  #7E8DA0;
+      --accent:#F0EBE1;
+      --green: #5FB88E;
+      --red:   #E0796B;
+      --b12: rgba(184,196,212,.12);
+      --b14: rgba(184,196,212,.14);
+      --b24: rgba(184,196,212,.24);
+      --b28: rgba(184,196,212,.28);
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    body {
+      background: var(--navy);
+      color: var(--ink);
+      font-family: 'DM Sans', sans-serif;
+      -webkit-font-smoothing: antialiased;
+      min-height: 100vh;
+    }
+
+    /* ── Nav ── */
+    .portal-nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px clamp(20px, 5vw, 64px);
+      border-bottom: 1px solid var(--b12);
+      background: rgba(13,27,46,.78);
+      backdrop-filter: blur(12px);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    .portal-nav a { text-decoration: none; }
+    .logo-mark {
+      width: 34px; height: 34px;
+      border: 1px solid var(--b28); border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Playfair Display', serif; font-size: 17px; color: var(--accent);
+      background: var(--card);
+    }
+    .nav-user {
+      display: flex; align-items: center; gap: 12px;
+    }
+    #nav-email { font-size: 13px; color: var(--dim2); }
+    #btn-signout {
+      background: none; border: 1px solid var(--b24); border-radius: 8px;
+      color: var(--dim2); font-size: 13px; padding: 7px 14px; cursor: pointer;
+      font-family: inherit; transition: color .2s, border-color .2s;
+    }
+    #btn-signout:hover { color: var(--ink); border-color: var(--b28); }
+
+    /* ── Main layout ── */
+    .portal-main {
+      min-height: calc(100vh - 70px);
+      display: flex; align-items: center; justify-content: center;
+      padding: 40px 20px;
+    }
+    .portal-card {
+      width: 100%; max-width: 440px;
+    }
+
+    /* ── Logo block (login view only) ── */
+    .logo-block {
+      text-align: center; margin-bottom: 32px;
+    }
+    .logo-block .logo-mark {
+      margin: 0 auto 14px; width: 48px; height: 48px;
+      border-radius: 12px; font-size: 22px;
+    }
+    .logo-block .eyebrow {
+      font-size: 12px; letter-spacing: .32em; text-transform: uppercase;
+      color: var(--dim2); font-weight: 600; margin: 0;
+    }
+
+    /* ── Card ── */
+    .card {
+      background: var(--card);
+      border: 1px solid var(--b14);
+      border-radius: 16px;
+      padding: 32px;
+    }
+    .card h2 { margin: 0 0 8px; font-size: 20px; font-weight: 600; }
+    .card .sub { margin: 0 0 24px; color: var(--dim); font-size: 14px; line-height: 1.65; }
+
+    /* ── Form elements ── */
+    .field { margin-bottom: 20px; }
+    .field:last-of-type { margin-bottom: 0; }
+    label.lbl {
+      display: block; font-size: 12px; color: var(--dim2);
+      margin-bottom: 8px; letter-spacing: .06em;
+      text-transform: uppercase; font-weight: 600;
+    }
+    label.lbl .opt { font-weight: 400; text-transform: none; letter-spacing: 0; }
+    input[type="email"], input[type="text"], textarea {
+      display: block; width: 100%;
+      padding: 12px 14px;
+      background: var(--navy2); border: 1px solid var(--b24);
+      border-radius: 10px; color: var(--ink); font-size: 15px;
+      font-family: inherit; transition: border-color .2s, box-shadow .2s;
+    }
+    input[type="email"]:focus, input[type="text"]:focus, textarea:focus {
+      outline: none; border-color: var(--b28);
+      box-shadow: 0 0 0 3px rgba(240,235,225,.07);
+    }
+    textarea { resize: vertical; line-height: 1.6; }
+
+    .btn-primary {
+      display: block; width: 100%; margin-top: 20px;
+      padding: 13px; background: var(--accent); color: var(--navy);
+      border: none; border-radius: 10px; font-size: 15px;
+      font-weight: 600; font-family: inherit; cursor: pointer;
+      transition: opacity .2s;
+    }
+    .btn-primary:disabled { opacity: .6; cursor: not-allowed; }
+    .btn-ghost {
+      background: none; border: none; color: var(--dim2); font-size: 13px;
+      cursor: pointer; text-decoration: underline; padding: 0; font-family: inherit;
+    }
+    .btn-outline {
+      background: none; border: 1px solid var(--b28); border-radius: 10px;
+      color: var(--ink); font-size: 14px; padding: 11px 24px;
+      cursor: pointer; font-family: inherit; transition: border-color .2s;
+    }
+    .btn-outline:hover { border-color: var(--dim); }
+
+    /* ── Status / error banners ── */
+    .banner {
+      border-radius: 10px; padding: 12px 14px; margin-bottom: 16px;
+      font-size: 13px; line-height: 1.55;
+    }
+    .banner-error {
+      background: rgba(224,121,107,.08);
+      border: 1px solid rgba(224,121,107,.25);
+      color: var(--red);
+    }
+
+    /* ── Sent / Success / Unlinked states ── */
+    .state-center { text-align: center; }
+    .state-icon {
+      width: 52px; height: 52px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 20px; font-size: 24px;
+    }
+    .state-icon.green {
+      background: rgba(95,184,142,.1);
+      border: 1px solid rgba(95,184,142,.3);
+    }
+    .state-icon.neutral {
+      background: rgba(240,235,225,.06);
+      border: 1px solid var(--b24);
+    }
+    .state-center h2 { margin: 0 0 10px; font-size: 20px; font-weight: 600; }
+    .state-center p { margin: 0 0 20px; color: var(--dim); font-size: 14px; line-height: 1.65; }
+
+    .request-receipt {
+      background: var(--navy2); border: 1px solid var(--b14);
+      border-radius: 10px; padding: 16px; margin-bottom: 24px; text-align: left;
+    }
+    .request-receipt .rid {
+      font-size: 12px; color: var(--dim2); letter-spacing: .06em;
+      text-transform: uppercase; font-weight: 600; margin: 0 0 4px;
+    }
+    .request-receipt .rtitle { margin: 0; font-size: 15px; font-weight: 500; }
+    .request-receipt .rstatus {
+      margin: 6px 0 0; font-size: 12px; color: var(--dim2);
+    }
+    .request-receipt .rstatus span { color: var(--accent); text-transform: capitalize; }
+
+    /* ── Dashboard header ── */
+    .dash-header { margin-bottom: 32px; }
+    .dash-header .eyebrow {
+      font-size: 12px; letter-spacing: .32em; text-transform: uppercase;
+      color: var(--dim2); font-weight: 600; margin: 0 0 4px;
+    }
+    .dash-header h1 {
+      margin: 0 0 8px; font-size: clamp(22px, 3vw, 30px); font-weight: 600;
+    }
+    .dash-header p { margin: 0; color: var(--dim); font-size: 15px; line-height: 1.65; }
+
+    /* ── Footer ── */
+    .portal-footer {
+      text-align: center; margin-top: 24px;
+      font-size: 13px; color: var(--dim2);
+    }
+    .portal-footer a {
+      color: var(--accent); text-decoration: none;
+      border-bottom: 1px solid var(--b28);
+    }
+
+    /* ── Utility ── */
+    [hidden] { display: none !important; }
+  </style>
+</head>
+<body>
+
+<!-- ════════════════════════════════════
+     NAV  (user info only visible when logged in)
+════════════════════════════════════ -->
+<nav class="portal-nav">
+  <a href="/" class="logo-mark">L</a>
+  <div class="nav-user" id="nav-user" hidden>
+    <span id="nav-email"></span>
+    <button id="btn-signout">Sign out</button>
+  </div>
+</nav>
+
+<!-- ════════════════════════════════════
+     LOADING SCREEN (while we check session)
+════════════════════════════════════ -->
+<div class="portal-main" id="view-loading">
+  <p style="color:var(--dim2);font-size:14px;">Loading…</p>
+</div>
+
+<!-- ════════════════════════════════════
+     LOGIN VIEW
+════════════════════════════════════ -->
+<div class="portal-main" id="view-login" hidden>
+  <div class="portal-card">
+    <div class="logo-block">
+      <div class="logo-mark">L</div>
+      <p class="eyebrow">Luminate Client Portal</p>
+    </div>
+    <div class="card">
+      <h2>Sign in</h2>
+      <p class="sub">Enter your email and we'll send you a magic link — no password needed.</p>
+      <form id="form-login">
+        <div class="field">
+          <label class="lbl" for="input-email">Email address</label>
+          <input type="email" id="input-email" placeholder="you@example.com" required autocomplete="email">
+        </div>
+        <div id="login-error" class="banner banner-error" hidden></div>
+        <button type="submit" class="btn-primary" id="btn-login">Send magic link</button>
+      </form>
+    </div>
+    <p class="portal-footer">
+      Don't have access yet? <a href="/#contact">Contact us</a>
+    </p>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════
+     EMAIL SENT VIEW
+════════════════════════════════════ -->
+<div class="portal-main" id="view-sent" hidden>
+  <div class="portal-card">
+    <div class="logo-block">
+      <div class="logo-mark">L</div>
+      <p class="eyebrow">Luminate Client Portal</p>
+    </div>
+    <div class="card state-center">
+      <div class="state-icon neutral">✉️</div>
+      <h2>Check your email</h2>
+      <p>
+        We sent a magic link to <strong id="sent-email" style="color:var(--ink)"></strong>.
+        Click it to sign in.
+      </p>
+      <button class="btn-ghost" id="btn-diff-email">Use a different email</button>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════
+     DASHBOARD VIEW
+════════════════════════════════════ -->
+<div class="portal-main" id="view-dashboard" hidden>
+  <div class="portal-card">
+    <div class="dash-header">
+      <p class="eyebrow">New request</p>
+      <h1>Submit a request</h1>
+      <p>Describe what you need and we'll get back to you.</p>
+    </div>
+
+    <!-- ── Request form ── -->
+    <div class="card" id="panel-form">
+      <form id="form-request">
+        <div class="field">
+          <label class="lbl" for="input-title">
+            Title <span style="color:var(--red)">*</span>
+          </label>
+          <input type="text" id="input-title" placeholder="Brief summary of your request" required maxlength="160">
+        </div>
+        <div class="field">
+          <label class="lbl" for="input-desc">
+            Details <span class="opt">(optional)</span>
+          </label>
+          <textarea id="input-desc" rows="5" placeholder="Any additional context, links, or specifics…"></textarea>
+        </div>
+        <div id="request-error" class="banner banner-error" hidden></div>
+        <button type="submit" class="btn-primary" id="btn-submit">Submit request</button>
+      </form>
+    </div>
+
+    <!-- ── Unlinked account state ── -->
+    <div class="card state-center" id="panel-unlinked" hidden>
+      <div class="state-icon neutral">🔗</div>
+      <h2>Account not linked</h2>
+      <p>
+        Your account isn't linked to a client record yet.
+        Contact us and we'll get you set up.
+      </p>
+      <a href="/#contact" class="btn-primary" style="text-align:center;text-decoration:none;display:block">Contact us</a>
+      <button class="btn-ghost" id="btn-try-again" style="margin-top:14px">Try again</button>
+    </div>
+
+    <!-- ── Success state ── -->
+    <div class="card state-center" id="panel-success" hidden>
+      <div class="state-icon green">✓</div>
+      <h2>Request submitted</h2>
+      <p>We've received your request and will be in touch shortly.</p>
+      <div class="request-receipt">
+        <p class="rid" id="receipt-id"></p>
+        <p class="rtitle" id="receipt-title"></p>
+        <p class="rstatus">Status: <span id="receipt-status"></span></p>
+      </div>
+      <button class="btn-outline" id="btn-another">Submit another request</button>
+    </div>
+  </div>
+</div>
+
+
+<!-- ════════════════════════════════════
+     SUPABASE + PORTAL LOGIC
+════════════════════════════════════ -->
+<script type="module">
+import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm'
+
+// ── Config ──────────────────────────────────────────────────
+// Replace these with the values from the Luminate OS Supabase project.
+// Use the anon/public key — never the service role key.
+const SUPABASE_URL     = 'YOUR_SUPABASE_URL'
+const SUPABASE_ANON_KEY = 'YOUR_SUPABASE_ANON_KEY'
+const OS_URL           = 'https://luminate-os.vercel.app'
+// ────────────────────────────────────────────────────────────
+
+const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY)
+
+// ── View helpers ─────────────────────────────────────────────
+const $ = id => document.getElementById(id)
+
+function showView(name) {
+  ['loading','login','sent','dashboard'].forEach(v => {
+    $('view-' + v).hidden = (v !== name)
+  })
+}
+
+function showPanel(name) {
+  ['form','unlinked','success'].forEach(p => {
+    $('panel-' + p).hidden = (p !== name)
+  })
+}
+
+function setNavUser(email) {
+  if (email) {
+    $('nav-email').textContent = email
+    $('nav-user').hidden = false
+  } else {
+    $('nav-user').hidden = true
+  }
+}
+
+function setLoginBusy(busy) {
+  $('btn-login').disabled = busy
+  $('btn-login').textContent = busy ? 'Sending…' : 'Send magic link'
+}
+
+function setSubmitBusy(busy) {
+  $('btn-submit').disabled = busy
+  $('btn-submit').textContent = busy ? 'Submitting…' : 'Submit request'
+}
+
+// ── Boot: handle magic-link callback or existing session ─────
+async function boot() {
+  // Supabase puts a code in the URL when returning from a magic link
+  const params = new URLSearchParams(window.location.search)
+  const code = params.get('code')
+
+  if (code) {
+    const { error } = await supabase.auth.exchangeCodeForSession(code)
+    // Clean the code out of the URL so refresh doesn't re-run it
+    const clean = window.location.pathname
+    window.history.replaceState({}, '', clean)
+    if (error) {
+      showView('login')
+      showError('login-error', 'The sign-in link has expired or already been used. Request a new one.')
+      return
+    }
+  }
+
+  const { data: { session } } = await supabase.auth.getSession()
+  if (session) {
+    enterDashboard(session.user.email)
+  } else {
+    showView('login')
+  }
+}
+
+function enterDashboard(email) {
+  setNavUser(email)
+  showPanel('form')
+  showView('dashboard')
+}
+
+// ── Login form ───────────────────────────────────────────────
+$('form-login').addEventListener('submit', async e => {
+  e.preventDefault()
+  $('login-error').hidden = true
+  setLoginBusy(true)
+
+  const email = $('input-email').value.trim()
+  const { error } = await supabase.auth.signInWithOtp({
+    email,
+    options: { emailRedirectTo: window.location.origin + '/portal.html' },
+  })
+
+  if (error) {
+    showError('login-error', error.message || 'Something went wrong. Please try again.')
+    setLoginBusy(false)
+    return
+  }
+
+  $('sent-email').textContent = email
+  showView('sent')
+})
+
+$('btn-diff-email').addEventListener('click', () => {
+  $('input-email').value = ''
+  $('login-error').hidden = true
+  showView('login')
+})
+
+// ── Sign out ─────────────────────────────────────────────────
+$('btn-signout').addEventListener('click', async () => {
+  await supabase.auth.signOut()
+  setNavUser(null)
+  $('input-title').value = ''
+  $('input-desc').value = ''
+  showView('login')
+})
+
+// ── Request form ─────────────────────────────────────────────
+$('form-request').addEventListener('submit', async e => {
+  e.preventDefault()
+  $('request-error').hidden = true
+  setSubmitBusy(true)
+
+  const { data: { session } } = await supabase.auth.getSession()
+  if (!session) {
+    showError('request-error', 'Your session has expired. Please sign out and sign in again.')
+    setSubmitBusy(false)
+    return
+  }
+
+  const title       = $('input-title').value.trim()
+  const description = $('input-desc').value.trim()
+
+  let res, body
+  try {
+    res  = await fetch(OS_URL + '/api/requests/create', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + session.access_token,
+      },
+      body: JSON.stringify({ title, description: description || undefined }),
+    })
+    body = await res.json()
+  } catch {
+    showError('request-error', 'Could not reach the server. Check your connection and try again.')
+    setSubmitBusy(false)
+    return
+  }
+
+  setSubmitBusy(false)
+
+  if (res.ok) {
+    const r = body.request
+    $('receipt-id').textContent    = 'Request #' + r.display_id
+    $('receipt-title').textContent = r.title
+    $('receipt-status').textContent = r.status
+    $('input-title').value = ''
+    $('input-desc').value  = ''
+    showPanel('success')
+    return
+  }
+
+  if (res.status === 404) {
+    showPanel('unlinked')
+    return
+  }
+
+  const msg = res.status === 401 ? 'Your session has expired — please sign out and sign in again.'
+            : res.status === 400 ? (body?.error ?? 'Please fill in the request title.')
+            : 'Something went wrong on our end. Please try again in a moment.'
+  showError('request-error', msg)
+})
+
+$('btn-another').addEventListener('click', () => showPanel('form'))
+$('btn-try-again').addEventListener('click', () => showPanel('form'))
+
+// ── Util ─────────────────────────────────────────────────────
+function showError(id, msg) {
+  const el = $(id)
+  el.textContent = msg
+  el.hidden = false
+}
+
+// ── Go ───────────────────────────────────────────────────────
+boot()
+</script>
+
+</body>
+</html>
