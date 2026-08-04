@@ -1,0 +1,25 @@
+{
+  "name": "Luminate Web Design & Development",
+  "short_name": "Luminate",
+  "description": "Professional websites and custom business software for Augusta & the CSRA.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#FFFFFF",
+  "theme_color": "#0D1B2E",
+  "icons": [
+    {
+      "src": "images/favicon-180.png",
+      "sizes": "180x180",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "images/favicon-180.png",
+      "sizes": "180x180",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}
