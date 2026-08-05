@@ -34,20 +34,16 @@
       min-height: 100vh;
     }
 
-    /* ── Nav ── */
-    .portal-nav {
+    body { background: var(--navy2); }
+
+    /* ── Top bar ── */
+    .portal-topbar {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 18px clamp(20px, 5vw, 64px);
-      border-bottom: 1px solid var(--b12);
-      background: rgba(13,27,46,.78);
-      backdrop-filter: blur(12px);
-      position: sticky;
-      top: 0;
-      z-index: 10;
+      padding: 24px clamp(20px, 5vw, 56px);
     }
-    .portal-nav a { text-decoration: none; }
+    .portal-topbar a { text-decoration: none; }
     .logo-mark {
       width: 34px; height: 34px;
       border: 1px solid var(--b28); border-radius: 8px;
@@ -55,6 +51,11 @@
       font-family: 'Playfair Display', serif; font-size: 17px; color: var(--accent);
       background: var(--card);
     }
+    .back-link {
+      font-size: 13px; color: var(--dim); display: inline-flex; align-items: center; gap: 4px;
+      transition: color .2s;
+    }
+    .back-link:hover { color: var(--ink); }
     .nav-user {
       display: flex; align-items: center; gap: 12px;
     }
@@ -68,24 +69,51 @@
 
     /* ── Main layout ── */
     .portal-main {
-      min-height: calc(100vh - 70px);
+      min-height: calc(100vh - 82px);
       display: flex; align-items: center; justify-content: center;
-      padding: 40px 20px;
+      padding: 20px 20px 60px;
     }
     .portal-card {
       width: 100%; max-width: 440px;
     }
 
+    /* ── Split shell (login / sent) ── */
+    .split-shell {
+      width: 100%; max-width: 900px;
+      background: var(--card);
+      border: 1px solid var(--b14);
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 40px 90px -40px rgba(0,0,0,.6);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: stretch;
+    }
+    .split-left {
+      padding: clamp(32px, 5vw, 48px);
+      display: flex; flex-direction: column; justify-content: center;
+    }
+    .split-right {
+      padding: clamp(32px, 5vw, 48px);
+      background: var(--card2);
+      border-left: 1px solid var(--b14);
+      display: flex; flex-direction: column; justify-content: center;
+    }
+    @media (max-width: 760px) {
+      .split-shell { grid-template-columns: 1fr; }
+      .split-right { border-left: none; border-top: 1px solid var(--b14); }
+    }
+
     /* ── Logo block (login view only) ── */
     .logo-block {
-      text-align: center; margin-bottom: 32px;
+      margin-bottom: 28px;
     }
     .logo-block .logo-mark {
-      margin: 0 auto 14px; width: 48px; height: 48px;
-      border-radius: 12px; font-size: 22px;
+      margin: 0 0 14px; width: 44px; height: 44px;
+      border-radius: 12px; font-size: 20px;
     }
     .logo-block .eyebrow {
-      font-size: 12px; letter-spacing: .32em; text-transform: uppercase;
+      font-size: 12px; letter-spacing: .28em; text-transform: uppercase;
       color: var(--dim2); font-weight: 600; margin: 0;
     }
 
@@ -98,6 +126,38 @@
     }
     .card h2 { margin: 0 0 8px; font-size: 20px; font-weight: 600; }
     .card .sub { margin: 0 0 24px; color: var(--dim); font-size: 14px; line-height: 1.65; }
+
+    .split-left h2, .split-right h3 {
+      font-family: 'Playfair Display', serif; font-weight: 700;
+      margin: 0 0 10px; font-size: 26px;
+    }
+    .split-left .sub, .split-right .sub {
+      margin: 0 0 26px; color: var(--dim); font-size: 14px; line-height: 1.65;
+    }
+    .info-eyebrow {
+      font-size: 12px; letter-spacing: .24em; text-transform: uppercase;
+      color: var(--dim2); font-weight: 600; margin: 0 0 12px;
+    }
+    .info-contact { display: flex; flex-direction: column; gap: 14px; margin-bottom: 24px; }
+    .info-contact a {
+      display: flex; align-items: center; gap: 10px;
+      color: var(--ink); font-size: 14px; text-decoration: none;
+    }
+    .info-contact a:hover { color: var(--accent); }
+    .info-contact .ic {
+      width: 30px; height: 30px; border-radius: 8px; border: 1px solid var(--b24);
+      display: flex; align-items: center; justify-content: center; color: var(--accent); flex: none; font-size: 13px;
+    }
+    .stat-card {
+      border-radius: 14px; padding: 20px;
+      background: linear-gradient(160deg, var(--card2), var(--navy2));
+      border: 1px solid var(--b14);
+    }
+    .stat-card .num {
+      font-family: 'Playfair Display', serif; font-weight: 700; font-size: 32px; color: var(--accent);
+      line-height: 1;
+    }
+    .stat-card .lbl { font-size: 12.5px; color: var(--dim2); margin-top: 6px; }
 
     /* ── Form elements ── */
     .field { margin-bottom: 20px; }
@@ -133,6 +193,7 @@
       background: none; border: none; color: var(--dim2); font-size: 13px;
       cursor: pointer; text-decoration: underline; padding: 0; font-family: inherit;
     }
+    .split-left .btn-ghost { text-align: left; align-self: flex-start; }
     .btn-outline {
       background: none; border: 1px solid var(--b28); border-radius: 10px;
       color: var(--ink); font-size: 14px; padding: 11px 24px;
@@ -211,13 +272,16 @@
 <body>
 
 <!-- ════════════════════════════════════
-     NAV  (user info only visible when logged in)
+     TOP BAR (user info only visible when logged in)
 ════════════════════════════════════ -->
-<nav class="portal-nav">
+<nav class="portal-topbar">
   <a href="/" class="logo-mark">L</a>
-  <div class="nav-user" id="nav-user" hidden>
-    <span id="nav-email"></span>
-    <button id="btn-signout">Sign out</button>
+  <div style="display:flex;align-items:center;gap:20px">
+    <div class="nav-user" id="nav-user" hidden>
+      <span id="nav-email"></span>
+      <button id="btn-signout">Sign out</button>
+    </div>
+    <a href="/" class="back-link">Back to site ›</a>
   </div>
 </nav>
 
@@ -232,12 +296,12 @@
      LOGIN VIEW
 ════════════════════════════════════ -->
 <div class="portal-main" id="view-login" hidden>
-  <div class="portal-card">
-    <div class="logo-block">
-      <div class="logo-mark">L</div>
-      <p class="eyebrow">Luminate Client Portal</p>
-    </div>
-    <div class="card">
+  <div class="split-shell">
+    <div class="split-left">
+      <div class="logo-block">
+        <div class="logo-mark">L</div>
+        <p class="eyebrow">Luminate Client Portal</p>
+      </div>
       <h2>Sign in</h2>
       <p class="sub">Enter your email and we'll send you a magic link — no password needed.</p>
       <form id="form-login">
@@ -248,10 +312,23 @@
         <div id="login-error" class="banner banner-error" hidden></div>
         <button type="submit" class="btn-primary" id="btn-login">Send magic link</button>
       </form>
+      <p class="portal-footer" style="margin-top:24px">
+        Don't have access yet? <a href="/#contact">Contact us</a>
+      </p>
     </div>
-    <p class="portal-footer">
-      Don't have access yet? <a href="/#contact">Contact us</a>
-    </p>
+    <div class="split-right">
+      <p class="info-eyebrow">Need something else?</p>
+      <h3>We usually reply within one business day.</h3>
+      <p class="sub">Have a question before you sign in, or need to reach us directly? We're one message away.</p>
+      <div class="info-contact">
+        <a href="tel:7622279287"><span class="ic">☎</span> (762) 227-9287</a>
+        <a href="mailto:luminatewebco@gmail.com"><span class="ic">✉</span> luminatewebco@gmail.com</a>
+      </div>
+      <div class="stat-card">
+        <div class="num">24h</div>
+        <div class="lbl">Typical response time</div>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -259,19 +336,32 @@
      EMAIL SENT VIEW
 ════════════════════════════════════ -->
 <div class="portal-main" id="view-sent" hidden>
-  <div class="portal-card">
-    <div class="logo-block">
-      <div class="logo-mark">L</div>
-      <p class="eyebrow">Luminate Client Portal</p>
-    </div>
-    <div class="card state-center">
-      <div class="state-icon neutral">✉️</div>
+  <div class="split-shell">
+    <div class="split-left">
+      <div class="logo-block">
+        <div class="logo-mark">L</div>
+        <p class="eyebrow">Luminate Client Portal</p>
+      </div>
+      <div class="state-icon neutral" style="margin:0 0 20px">✉️</div>
       <h2>Check your email</h2>
-      <p>
+      <p class="sub">
         We sent a magic link to <strong id="sent-email" style="color:var(--ink)"></strong>.
         Click it to sign in.
       </p>
       <button class="btn-ghost" id="btn-diff-email">Use a different email</button>
+    </div>
+    <div class="split-right">
+      <p class="info-eyebrow">Need something else?</p>
+      <h3>We usually reply within one business day.</h3>
+      <p class="sub">Have a question before you sign in, or need to reach us directly? We're one message away.</p>
+      <div class="info-contact">
+        <a href="tel:7622279287"><span class="ic">☎</span> (762) 227-9287</a>
+        <a href="mailto:luminatewebco@gmail.com"><span class="ic">✉</span> luminatewebco@gmail.com</a>
+      </div>
+      <div class="stat-card">
+        <div class="num">24h</div>
+        <div class="lbl">Typical response time</div>
+      </div>
     </div>
   </div>
 </div>
