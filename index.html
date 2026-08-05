@@ -167,34 +167,16 @@ tailwind.config = {
   </div>
 </section>
 
+<!-- ============ CLIENT MARQUEE ============ -->
+<div class="marquee bg-navy border-y hairline overflow-hidden whitespace-nowrap py-5">
+  <div class="marquee-track inline-flex items-center" id="marqueeTrack"></div>
+</div>
+
 <!-- ============ TRUSTED PARTNERS ============ -->
 <section id="about" class="bg-navy py-20">
   <div class="max-w-[1180px] mx-auto px-6">
-    <h3 class="serif text-[26px] sm:text-[32px] font-600 track-tight leading-tight mb-3 max-w-[560px]" data-reveal>Built for businesses that take their digital presence seriously.</h3>
-    <p class="text-[14px] text-dim2 mb-8 max-w-[460px]" data-reveal>From local businesses and nonprofits to growing organizations across the CSRA, Luminate creates digital experiences designed to build trust, simplify operations, and help organizations grow.</p>
-    <div class="grid md:grid-cols-[300px_1fr] gap-8 items-center" data-reveal>
-      <div class="aspect-square rounded-2xl overflow-hidden shadow-[0_30px_60px_-30px_rgba(0,0,0,.6)] grid grid-cols-2 grid-rows-2 gap-[3px] bg-navy2">
-        <img src="images/work/abib-auto-sales.jpg" alt="Abib Auto Sales" loading="lazy" class="w-full h-full object-cover">
-        <img src="images/work/rich-eatz.jpg" alt="Rich Eatz" loading="lazy" class="w-full h-full object-cover">
-        <img src="images/work/hope-ministries.jpg" alt="There Is H.O.P.E. Ministries" loading="lazy" class="w-full h-full object-cover">
-        <img src="images/work/dingle-tennis-academy.jpg" alt="Dingle Tennis Academy" loading="lazy" class="w-full h-full object-cover">
-      </div>
-      <div class="surface p-10">
-        <div class="grid grid-cols-2 sm:grid-cols-3 gap-x-6 gap-y-6 items-center">
-          <span class="serif text-[15px] text-dim text-center">Abib Auto Sales</span>
-          <span class="serif text-[15px] text-dim text-center">Dingle Tennis Academy</span>
-          <span class="serif text-[15px] text-dim text-center">Rich Eatz</span>
-          <span class="serif text-[15px] text-dim text-center">Elite Shaken Lemonade</span>
-          <span class="serif text-[15px] text-dim text-center">Creations by Melanie</span>
-          <span class="serif text-[15px] text-dim text-center">Busy B Construction</span>
-          <span class="serif text-[15px] text-dim text-center">MACH Academy</span>
-          <span class="serif text-[15px] text-dim text-center">Realistic Impressions</span>
-          <span class="serif text-[15px] text-dim text-center">Extra Credit Creations</span>
-          <span class="serif text-[15px] text-dim text-center">There Is H.O.P.E. Ministries</span>
-        </div>
-        <p class="text-[12px] text-dim2 mt-6 pt-6 border-t hairline">Every project is built, maintained, and supported by Luminate.</p>
-      </div>
-    </div>
+    <h3 class="serif text-[26px] sm:text-[32px] font-600 track-tight leading-tight mb-3 max-w-[560px]" data-reveal>Selected work from organizations across the CSRA</h3>
+    <p class="text-[14px] text-dim2 max-w-[460px]" data-reveal>From local businesses, ministries, and nonprofits to growing organizations, Luminate builds digital experiences that help teams earn trust and operate better.</p>
   </div>
 </section>
 
@@ -413,6 +395,12 @@ tailwind.config = {
   .fld:focus{border-color:#E8E2D4}
   .fld.err{border-color:#E0796B}
   #testiTrack::-webkit-scrollbar{display:none}
+  .marquee-track{animation:lum-marquee 38s linear infinite}
+  .marquee-track:hover{animation-play-state:paused}
+  .marquee-track span{font-family:'Playfair Display',serif;font-size:clamp(15px,1.8vw,20px);color:rgba(196,209,226,.55);padding:0 26px;letter-spacing:.02em}
+  .marquee-track span.dia{color:#E8E2D4;opacity:.6;font-size:13px}
+  @keyframes lum-marquee{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+  @media (prefers-reduced-motion:reduce){.marquee-track{animation:none}}
 </style>
 
 <script>
@@ -570,6 +558,17 @@ tailwind.config = {
       +   '<span class="text-dim2">'+w.t+'</span>'
       + '</div></article>';
   }).join('');
+})();
+
+// Client marquee
+(function(){
+  var clients = ['Abib Auto Sales','Dingle Tennis Academy','Rich Eatz','Elite Shaken Lemonade','Creations by Melanie','Busy B Construction','MACH Academy','Extra Credit Creations','Realistic Impressions','There Is H.O.P.E. Ministries'];
+  var track = document.getElementById('marqueeTrack');
+  var html = '';
+  for (var r = 0; r < 2; r++) {
+    clients.forEach(function(c){ html += '<span>'+c+'</span><span class="dia">◆</span>'; });
+  }
+  track.innerHTML = html;
 })();
 
 // Pricing
