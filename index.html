@@ -2,1118 +2,552 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
-<title>Luminate Web Design &amp; Development — Augusta, GA</title>
-<link rel="icon" type="image/svg+xml" href="images/favicon.svg">
-<link rel="icon" type="image/png" sizes="180x180" href="images/favicon-180.png">
-<link rel="apple-touch-icon" href="images/favicon-180.png">
-<link rel="manifest" href="manifest.json">
-<meta name="theme-color" content="#0D1B2E">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="apple-mobile-web-app-title" content="Luminate">
-<meta name="format-detection" content="telephone=no">
-<meta name="description" content="Professional websites and custom business software that help Augusta &amp; CSRA businesses earn more customers.">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Luminate — Premium Websites &amp; Custom Software · Augusta, GA</title>
+<meta name="description" content="Luminate builds premium websites and custom software that help businesses earn trust, work smarter, and grow faster. Augusta &amp; the CSRA.">
+<link rel="icon" type="image/png" href="brand_assets/luminatelogo1.png">
+<script src="https://cdn.tailwindcss.com"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      colors: {
+        navy:'#0D1B2E', navy2:'#0A1524', card:'#101F35', card2:'#152A45',
+        ink:'#F4F7FB', dim:'#C4D1E2', dim2:'#7E8DA0',
+        accent:'#E8E2D4', accenthi:'#F3EEE3',
+        brgreen:'#3DAE7A', brred:'#E0796B',
+        line:'rgba(196,209,226,.10)',
+      },
+      fontFamily:{ serif:['"Playfair Display"','serif'], sans:['Inter','system-ui','sans-serif'] },
+    },
+  },
+};
+</script>
 <style>
-:root{
-  --navy:#0D1B2E; --navy2:#16294A; --ink:#0D1B2E; --dim:#5B6B82; --dim2:#8C9AB0;
-  --bg:#F6F9FC; --bg2:#EAF0F7; --card:#FFFFFF; --card2:#FFFFFF;
-  --cream:#F0EBE1; --creamline:#E4DCCB;
-  --green:#2F9969; --red:#D6584A;
-  --l06:rgba(13,27,46,.06); --l08:rgba(13,27,46,.08); --l12:rgba(13,27,46,.12);
-  --l16:rgba(13,27,46,.16); --l20:rgba(13,27,46,.20); --l28:rgba(13,27,46,.28); --l40:rgba(13,27,46,.40);
-  --shadow:0 24px 60px -24px rgba(13,27,46,.22);
-  --tabbar-h:64px;
-}
-*{box-sizing:border-box; -webkit-tap-highlight-color:transparent;}
-html,body{margin:0;padding:0;overscroll-behavior:none;}
-html{-webkit-text-size-adjust:100%;}
-body{background:var(--bg);color:var(--ink);font-family:'DM Sans',sans-serif;-webkit-font-smoothing:antialiased;min-height:100vh;overflow-x:hidden;overscroll-behavior-y:none;}
-::selection{background:var(--navy);color:#fff}
-a{color:inherit;text-decoration:none}
-img{max-width:100%;display:block}
-button{font-family:inherit}
-.serif{font-family:'Playfair Display',serif}
-.wrap{max-width:1280px;margin:0 auto;padding:0 clamp(20px,5vw,72px)}
-.eyebrow{font-size:12px;letter-spacing:.3em;text-transform:uppercase;color:var(--dim2);font-weight:700}
-.section{padding:clamp(48px,8vw,110px) 0}
-.section-head{max-width:680px;margin-bottom:clamp(28px,5vw,52px)}
-.section-head h2{font-size:clamp(26px,4.2vw,44px);font-weight:600;line-height:1.15;margin:14px 0 0;}
-.section-head p{color:var(--dim);font-size:16px;line-height:1.7;margin:16px 0 0;max-width:560px}
-.mark{background:linear-gradient(180deg,transparent 62%,var(--cream) 62%)}
-
-/* ---------- App bar (top, sticky) ---------- */
-header.appbar{position:sticky;top:0;z-index:60;background:rgba(255,255,255,.86);backdrop-filter:blur(14px);border-bottom:1px solid var(--l08);
-  padding-top:env(safe-area-inset-top);}
-.appbar-row{display:flex;align-items:center;justify-content:space-between;padding:14px clamp(18px,5vw,72px);gap:16px}
-.logo{display:flex;align-items:center;gap:10px;font-family:'Playfair Display',serif;font-size:19px;font-weight:700;letter-spacing:.03em;cursor:pointer}
-.logo-mark{width:34px;height:34px;border-radius:9px;overflow:hidden;flex:none;box-shadow:0 4px 12px -4px rgba(13,27,46,.35)}
-.logo-mark img{width:100%;height:100%;object-fit:cover;display:block}
-.appbar-navlinks{display:flex;gap:32px;align-items:center}
-.appbar-navlinks a{font-size:14px;color:var(--dim);letter-spacing:.01em;transition:color .2s ease;padding:4px 0;border-bottom:1px solid transparent}
-.appbar-navlinks a:hover, .appbar-navlinks a.active{color:var(--navy);border-color:var(--navy)}
-.appbar-cta{background:var(--navy);color:#fff;font-size:13px;letter-spacing:.03em;padding:11px 22px;border-radius:999px;transition:all .25s ease;white-space:nowrap;font-weight:600}
-.appbar-cta:hover{background:var(--navy2)}
-.appbar-menubtn{display:flex;background:none;border:1px solid var(--l16);border-radius:10px;width:42px;height:42px;color:var(--navy);font-size:16px;cursor:pointer;align-items:center;justify-content:center}
-@media (min-width:940px){ .appbar-menubtn{display:none} }
-@media (max-width:939px){ .appbar-navlinks, .appbar-row > a.appbar-cta{display:none} }
-
-/* ---------- Slide-down menu sheet (mobile: secondary links) ---------- */
-.menu-sheet{position:fixed;inset:0;z-index:70;display:none;}
-.menu-sheet.open{display:block}
-.menu-sheet .scrim{position:absolute;inset:0;background:rgba(13,27,46,.45);opacity:0;transition:opacity .25s ease}
-.menu-sheet.open .scrim{opacity:1}
-.menu-sheet .sheet{position:absolute;top:0;right:0;height:100%;width:min(320px,86vw);background:#fff;box-shadow:-20px 0 60px -20px rgba(13,27,46,.4);
-  padding:calc(env(safe-area-inset-top) + 22px) 22px 22px;transform:translateX(100%);transition:transform .3s cubic-bezier(.2,.7,.2,1);display:flex;flex-direction:column;}
-.menu-sheet.open .sheet{transform:translateX(0)}
-.sheet-close{align-self:flex-end;background:none;border:1px solid var(--l16);border-radius:10px;width:38px;height:38px;color:var(--navy);font-size:16px;cursor:pointer;margin-bottom:18px}
-.sheet a{padding:14px 4px;color:var(--ink);font-size:16px;border-bottom:1px solid var(--l08);font-weight:500}
-.sheet a.active{color:var(--navy);font-weight:700}
-.sheet .sheet-cta{margin-top:18px;text-align:center;background:var(--navy);color:#fff;border-radius:999px;padding:14px;font-weight:600;font-size:14px}
-.sheet .sheet-outline{margin-top:12px;text-align:center;border:1px solid var(--l20);border-radius:999px;padding:13px;font-weight:600;font-size:14px;color:var(--navy)}
-
-/* ---------- Bottom tab bar (mobile only, app-native pattern) ---------- */
-.tabbar{position:fixed;left:0;right:0;bottom:0;z-index:60;background:rgba(255,255,255,.96);backdrop-filter:blur(14px);
-  border-top:1px solid var(--l12);display:flex;padding-bottom:env(safe-area-inset-bottom);}
-.tabbar a{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;padding:9px 4px 8px;color:var(--dim2);font-size:11px;font-weight:600;letter-spacing:.01em}
-.tabbar a .ic{font-size:19px;line-height:1}
-.tabbar a.active{color:var(--navy)}
-.tabbar a.active .ic{transform:translateY(-1px)}
-@media (min-width:940px){ .tabbar{display:none} }
-body.has-tabbar{padding-bottom:calc(var(--tabbar-h) + env(safe-area-inset-bottom))}
-@media (min-width:940px){ body.has-tabbar{padding-bottom:0} }
-
-/* ---------- Buttons ---------- */
-.btn{display:inline-flex;align-items:center;gap:10px;padding:15px 30px;border-radius:999px;font-size:14px;letter-spacing:.02em;font-weight:600;cursor:pointer;border:1px solid transparent;transition:all .25s ease;white-space:nowrap}
-.btn-fill{background:var(--navy);color:#fff}
-.btn-fill:hover{background:var(--navy2)}
-.btn-outline{border:1px solid var(--l20);color:var(--navy)}
-.btn-outline:hover{background:var(--navy);color:#fff;border-color:var(--navy)}
-
-/* ---------- Hero ---------- */
-.hero{padding:clamp(36px,7vw,88px) 0 clamp(36px,6vw,64px)}
-.hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(28px,5vw,64px);align-items:center}
-.hero h1{font-size:clamp(32px,6vw,66px);font-weight:600;line-height:1.1;margin:0 0 20px}
-.hero h1 .line2{display:block;background:linear-gradient(180deg,transparent 58%,var(--cream) 58%)}
-.hero p.lead{font-size:clamp(15px,1.5vw,18px);color:var(--dim);line-height:1.7;max-width:540px;margin:0 0 30px}
-.hero-cta-row{display:flex;gap:16px;align-items:center;flex-wrap:wrap;margin-bottom:26px}
-.hero-phone{font-size:14px;color:var(--dim2)}
-.hero-phone a{color:var(--navy);border-bottom:1px solid var(--l28);font-weight:600}
-.hero-visual{position:relative;aspect-ratio:4/5;border-radius:22px;background:linear-gradient(155deg,var(--navy2),var(--navy));box-shadow:var(--shadow);display:flex;flex-direction:column;justify-content:space-between;padding:clamp(24px,3vw,38px);overflow:hidden}
-.hero-visual .big-l{font-family:'Playfair Display',serif;font-size:clamp(80px,13vw,160px);font-weight:700;color:var(--cream);line-height:1;opacity:.94}
-.hero-visual .est{font-size:12px;color:rgba(240,235,225,.6);letter-spacing:.06em}
-.hero-visual .tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px}
-.hero-visual .tags span{border:1px solid rgba(240,235,225,.28);border-radius:999px;padding:6px 13px;font-size:12px;color:var(--cream)}
-.hero-badge{position:absolute;background:#fff;border-radius:14px;padding:12px 16px;box-shadow:var(--shadow);}
-.hero-badge .n{font-family:'Playfair Display',serif;font-weight:700;font-size:20px;color:var(--navy)}
-.hero-badge .t{font-size:10.5px;color:var(--dim);letter-spacing:.02em}
-.hero-badge.b1{top:-16px;left:-14px}
-.hero-badge.b2{bottom:14px;right:-16px}
-@media (max-width:860px){
-  .hero-grid{grid-template-columns:1fr;text-align:center}
-  .hero-grid .hero-visual{display:none}
-  .hero-cta-row{justify-content:center}
-  .hero-copy{max-width:640px;margin:0 auto}
-  .hero p.lead{margin:0 auto 30px}
-}
-
-/* ---------- Trust strip / marquee ---------- */
-.trust{border-top:1px solid var(--l08);border-bottom:1px solid var(--l08);background:var(--bg2);overflow:hidden;padding:20px 0}
-.trust-label{text-align:center;font-size:11.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--dim2);font-weight:700;margin-bottom:12px}
-.marquee{overflow:hidden;white-space:nowrap}
-.marquee-track{display:inline-flex;align-items:center;animation:lum-marquee 38s linear infinite;}
-.marquee-track:hover{animation-play-state:paused}
-.marquee-track span{font-family:'Playfair Display',serif;font-size:clamp(15px,2vw,20px);color:var(--dim);padding:0 26px;letter-spacing:.01em}
-.marquee-track span.dia{color:var(--navy);opacity:.35;font-size:13px}
-@keyframes lum-marquee{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
-
-/* ---------- Solid stat band ---------- */
-.statband{background:var(--navy);border-radius:22px;overflow:hidden;display:grid;grid-template-columns:repeat(3,1fr)}
-.statband .stat{padding:clamp(28px,4vw,44px) clamp(18px,3vw,30px);border-right:1px solid rgba(240,235,225,.12)}
-.statband .stat:last-child{border-right:none}
-.statband .num{font-family:'Playfair Display',serif;font-size:clamp(26px,4vw,40px);font-weight:600;color:var(--cream);margin-bottom:6px}
-.statband .lbl{font-size:12.5px;color:rgba(240,235,225,.7)}
-.statband .lbl b{color:#fff;display:block;font-size:13.5px;margin-bottom:2px;font-weight:600}
-@media (max-width:760px){.statband{grid-template-columns:1fr}.statband .stat{border-right:none;border-bottom:1px solid rgba(240,235,225,.12)}.statband .stat:last-child{border-bottom:none}}
-
-/* ---------- Cards / grids ---------- */
-.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-.grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
-.grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
-@media (max-width:980px){.grid-3{grid-template-columns:repeat(2,1fr)} .grid-4{grid-template-columns:repeat(2,1fr)}}
-@media (max-width:640px){.grid-3,.grid-2,.grid-4{grid-template-columns:1fr}}
-
-.service-card{border:1px solid var(--l08);border-radius:18px;padding:28px 24px;background:var(--card);transition:box-shadow .3s ease,transform .3s ease;box-shadow:0 1px 0 var(--l08)}
-.service-card:hover{box-shadow:var(--shadow);transform:translateY(-2px)}
-.service-card.featured{background:linear-gradient(155deg,var(--navy2),var(--navy));border-color:transparent;color:#fff}
-.service-card .ic{width:44px;height:44px;border-radius:12px;background:var(--bg2);display:flex;align-items:center;justify-content:center;font-size:20px;margin-bottom:16px}
-.service-card.featured .ic{background:rgba(240,235,225,.14)}
-.service-card h3{font-size:19px;font-weight:600;margin:0 0 9px}
-.service-card p{color:var(--dim);font-size:14px;line-height:1.7;margin:0}
-.service-card.featured p{color:rgba(240,235,225,.82)}
-.service-card .tagpill{display:inline-block;margin-top:14px;font-size:11px;letter-spacing:.05em;text-transform:uppercase;padding:5px 12px;border-radius:999px;background:var(--cream);color:var(--navy);font-weight:700}
-
-/* ---------- Why us ---------- */
-.whyus{border:1px solid var(--l08);border-radius:22px;background:var(--bg2);padding:clamp(28px,4vw,48px)}
-.whyus-compare{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:24px}
-.whyus-compare .col h4{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--dim2);margin:0 0 12px;font-weight:700}
-.whyus-compare ul{list-style:none;margin:0;padding:0;display:grid;gap:10px}
-.whyus-compare li{font-size:14px;color:var(--dim);display:flex;gap:10px;align-items:flex-start;line-height:1.5}
-.whyus-compare .col.us li{color:var(--ink);font-weight:500}
-.whyus-compare .col.them li::before{content:"–";color:var(--l40);flex:none}
-.whyus-compare .col.us li::before{content:"✓";color:var(--green);flex:none;font-weight:700}
-@media (max-width:640px){.whyus-compare{grid-template-columns:1fr}}
-
-/* ---------- Pricing ---------- */
-.pricing-card{border:1px solid var(--l12);border-radius:20px;padding:30px 26px;background:var(--card);display:flex;flex-direction:column;height:100%;transition:transform .3s ease,box-shadow .3s ease}
-.pricing-card.featured{border:1px solid var(--navy);background:linear-gradient(155deg,var(--navy2),var(--navy));color:#fff;transform:scale(1.035);box-shadow:var(--shadow);z-index:1;position:relative}
-.pricing-card .poptag{position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:var(--cream);color:var(--navy);font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:6px 16px;border-radius:999px;white-space:nowrap}
-.pricing-card .pname{font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink);margin-bottom:14px;font-weight:700}
-.pricing-card.featured .pname{color:var(--cream)}
-.pricing-card .pprice{font-family:'Playfair Display',serif;font-size:clamp(28px,3.4vw,36px);font-weight:600;margin-bottom:2px}
-.pricing-card .pnote{font-size:12px;color:var(--dim2);margin-bottom:18px}
-.pricing-card.featured .pnote{color:rgba(240,235,225,.65)}
-.pricing-card .pdesc{font-size:14.5px;color:var(--dim);line-height:1.6;margin-bottom:20px;min-height:56px}
-.pricing-card.featured .pdesc{color:rgba(240,235,225,.85)}
-.pricing-card .mgmt{font-size:12.5px;color:var(--green);border-top:1px solid var(--l08);padding-top:14px;margin-bottom:18px}
-.pricing-card.featured .mgmt{color:#9fe3c2;border-color:rgba(240,235,225,.16)}
-.pricing-card ul{list-style:none;padding:0;margin:0 0 26px;flex:1}
-.pricing-card li{font-size:13.5px;color:var(--dim);padding:8px 0;border-bottom:1px solid var(--l08);display:flex;gap:10px;align-items:flex-start}
-.pricing-card.featured li{color:rgba(240,235,225,.9);border-color:rgba(240,235,225,.14)}
-.pricing-card li::before{content:"✓";color:var(--navy);font-size:12px;flex:none;margin-top:1px;font-weight:700}
-.pricing-card.featured li::before{color:var(--cream)}
-.pricing-cta{display:block;text-align:center;border:1px solid var(--l20);border-radius:999px;padding:14px;font-size:13.5px;font-weight:700;letter-spacing:.02em;color:var(--navy);transition:all .25s ease;cursor:pointer}
-.pricing-card.featured .pricing-cta{border-color:var(--cream);background:var(--cream);color:var(--navy)}
-.pricing-cta:hover{background:var(--navy);color:#fff;border-color:var(--navy)}
-.pricing-card.featured .pricing-cta:hover{background:#fff;color:var(--navy)}
-
-/* ---------- Testimonials ---------- */
-.testi-scroller{display:flex;gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:6px;-webkit-overflow-scrolling:touch;}
-.testi-scroller::-webkit-scrollbar{display:none}
-.testi-card{flex:0 0 min(340px,84vw);scroll-snap-align:start;border:1px solid var(--l08);border-radius:18px;padding:26px 24px;background:var(--card);box-shadow:0 1px 0 var(--l08)}
-.testi-card .quote{font-family:'Playfair Display',serif;font-style:italic;font-size:17px;line-height:1.6;color:var(--ink);margin:0 0 20px}
-.testi-card .who{font-size:13px;color:var(--dim2)}
-.testi-card .who b{color:var(--ink);display:block;font-size:14px;margin-bottom:2px;font-weight:700;font-style:normal}
-@media (min-width:760px){.testi-scroller{display:grid;grid-template-columns:repeat(3,1fr);overflow:visible}.testi-card{flex:none}}
-
-/* ---------- Founder ---------- */
-.founder{display:grid;grid-template-columns:.85fr 1.15fr;gap:clamp(28px,5vw,60px);align-items:center}
-.founder-photo{aspect-ratio:1;border-radius:20px;object-fit:cover;box-shadow:var(--shadow)}
-.founder-quote{font-family:'Playfair Display',serif;font-style:italic;font-size:clamp(19px,2.4vw,28px);line-height:1.5;margin:0 0 20px}
-@media (max-width:860px){.founder{grid-template-columns:1fr}.founder-photo{max-width:240px;margin:0 auto}}
-
-/* ---------- Work / portfolio ---------- */
-.work-scroller{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:8px;-webkit-overflow-scrolling:touch;margin:0 -20px;padding-left:20px;padding-right:20px}
-.work-scroller::-webkit-scrollbar{display:none}
-@media (min-width:820px){.work-scroller{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;overflow:visible;margin:0;padding:0}}
-.work-card{flex:0 0 82vw;max-width:360px;scroll-snap-align:start;border:1px solid var(--l08);border-radius:18px;overflow:hidden;background:var(--card);box-shadow:0 1px 0 var(--l08);transition:box-shadow .3s ease}
-.work-card:hover{box-shadow:var(--shadow)}
-@media (min-width:820px){.work-card{flex:none;max-width:none}}
-.work-img{aspect-ratio:4/3;width:100%;overflow:hidden}
-.work-img img{width:100%;height:100%;object-fit:cover;display:block}
-.work-info{padding:18px 18px 6px}
-.work-info .tag{font-size:11.5px;color:var(--dim2);letter-spacing:.08em;text-transform:uppercase;font-weight:700}
-.work-info h3{font-size:18px;font-weight:600;margin:6px 0 0}
-.work-psr{padding:0 18px 18px}
-.work-psr .row{border-top:1px solid var(--l08);padding:12px 0}
-.work-psr .row .lbl{font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--navy);font-weight:700;margin-bottom:4px}
-.work-psr .row p{margin:0;font-size:13.5px;color:var(--dim);line-height:1.6}
-.work-toggle{margin:0 18px 18px;background:var(--bg2);border:none;border-radius:999px;padding:10px 16px;font-size:12.5px;font-weight:700;color:var(--navy);cursor:pointer;display:flex;align-items:center;gap:8px;width:calc(100% - 36px)}
-.work-toggle .arrow{transition:transform .25s ease;font-size:11px}
-.work-card.open .work-toggle .arrow{transform:rotate(180deg)}
-.work-card:not(.open) .work-psr{display:none}
-
-/* ---------- Services page ---------- */
-.service-row{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(26px,4vw,54px);padding:clamp(32px,5vw,58px) 0;border-bottom:1px solid var(--l08)}
-.service-row:last-child{border-bottom:none}
-.service-row .num-big{font-family:'Playfair Display',serif;font-size:46px;color:var(--navy);opacity:.14;margin-bottom:8px}
-.service-row h3{font-size:clamp(22px,3vw,32px);font-weight:600;margin:0 0 14px}
-.service-row .desc{color:var(--dim);font-size:15px;line-height:1.8;margin-bottom:18px}
-.service-row .forwho{display:inline-block;border:1px solid var(--l16);border-radius:999px;padding:8px 18px;font-size:12px;color:var(--dim2);letter-spacing:.03em;font-weight:600}
-.included-list{list-style:none;padding:0;margin:0;display:grid;gap:11px}
-.included-list li{display:flex;gap:12px;align-items:flex-start;font-size:14px;color:var(--dim);border:1px solid var(--l08);border-radius:11px;padding:13px 16px;background:var(--bg2)}
-.included-list li::before{content:"—";color:var(--navy);flex:none}
-@media (max-width:860px){.service-row{grid-template-columns:1fr}}
-
-/* ---------- FAQ ---------- */
-.faq-item{border-bottom:1px solid var(--l08)}
-.faq-q{display:flex;justify-content:space-between;align-items:center;padding:20px 4px;cursor:pointer;font-size:15.5px;font-weight:600;gap:20px}
-.faq-q .icon{font-size:20px;color:var(--navy);flex:none;transition:transform .25s ease}
-.faq-item.open .faq-q .icon{transform:rotate(45deg)}
-.faq-a{max-height:0;overflow:hidden;transition:max-height .3s ease}
-.faq-item.open .faq-a{max-height:260px}
-.faq-a p{color:var(--dim);font-size:14px;line-height:1.7;margin:0 0 20px;padding-right:40px}
-
-/* ---------- Management plan ---------- */
-.mgmt-list{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
-.mgmt-list li{display:flex;gap:12px;align-items:center;font-size:14px;color:var(--dim);border:1px solid var(--l08);border-radius:11px;padding:14px 18px;background:var(--bg2)}
-.mgmt-list li::before{content:"✓";color:var(--green);font-weight:700}
-@media (max-width:640px){.mgmt-list{grid-template-columns:1fr}}
-
-/* ---------- Values / process ---------- */
-.value-card{border:1px solid var(--l08);border-radius:16px;padding:24px;background:var(--card)}
-.value-card h3{font-size:17px;font-weight:600;margin:0 0 8px}
-.value-card p{color:var(--dim);font-size:14px;line-height:1.7;margin:0}
-
-.process{position:relative}
-.process-track{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;position:relative}
-.process-track::before{content:"";position:absolute;top:23px;left:6%;right:6%;height:1px;background:var(--l16)}
-.process-step{position:relative;text-align:center;padding:0 4px}
-.process-step .pnum{width:46px;height:46px;border-radius:999px;background:var(--navy);color:var(--cream);font-family:'Playfair Display',serif;font-weight:700;font-size:17px;display:flex;align-items:center;justify-content:center;margin:0 auto 14px;position:relative;z-index:1}
-.process-step h3{font-size:15px;font-weight:700;margin:0 0 6px}
-.process-step p{color:var(--dim);font-size:12.5px;line-height:1.55;margin:0}
-@media (max-width:760px){
-  .process-track{grid-template-columns:1fr;gap:0}
-  .process-track::before{display:none}
-  .process-step{display:flex;gap:16px;text-align:left;padding:18px 0;border-bottom:1px solid var(--l08)}
-  .process-step:last-child{border-bottom:none}
-  .process-step .pnum{margin:0;flex:none}
-}
-
-/* ---------- Contact ---------- */
-.contact-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:clamp(28px,5vw,60px)}
-.contact-info-item{display:flex;gap:14px;align-items:flex-start;margin-bottom:20px}
-.contact-info-item .ic{width:38px;height:38px;border:1px solid var(--l16);border-radius:11px;display:flex;align-items:center;justify-content:center;color:var(--navy);flex:none}
-.contact-info-item .lbl{font-size:12px;color:var(--dim2);letter-spacing:.06em;text-transform:uppercase;margin-bottom:4px;font-weight:600}
-.contact-info-item a, .contact-info-item span.val{font-size:15px;color:var(--ink);font-weight:500}
-.contact-info-item a:hover{color:var(--navy)}
-.response-badge{display:inline-flex;align-items:center;gap:10px;border:1px solid var(--l16);border-radius:999px;padding:10px 18px;font-size:13px;color:var(--green);margin-bottom:30px;font-weight:600}
-.response-badge .dot{width:8px;height:8px;border-radius:999px;background:var(--green)}
-.form-card{border:1px solid var(--l08);border-radius:20px;padding:clamp(22px,3vw,38px);background:var(--bg2)}
-.form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px}
-.field{display:flex;flex-direction:column;gap:8px;margin-bottom:16px}
-.field label{font-size:12px;color:var(--dim2);letter-spacing:.05em;text-transform:uppercase;font-weight:600}
-.field input, .field select, .field textarea{background:#fff;border:1px solid var(--l16);border-radius:11px;padding:13px 14px;color:var(--ink);font-size:16px;font-family:inherit;outline:none;transition:border-color .2s ease}
-.field input:focus, .field select:focus, .field textarea:focus{border-color:var(--navy)}
-.field input.err, .field select.err, .field textarea.err{border-color:var(--red)}
-.field textarea{resize:vertical;min-height:110px}
-.submit-btn{width:100%;background:var(--navy);color:#fff;border:1px solid var(--navy);border-radius:999px;padding:16px;font-size:14.5px;font-weight:700;letter-spacing:.02em;cursor:pointer;transition:all .25s ease;margin-top:6px}
-.submit-btn:hover{background:var(--navy2)}
-.thankyou{text-align:center;padding:56px 20px}
-.thankyou .check{width:60px;height:60px;border-radius:999px;background:var(--green);color:#fff;display:flex;align-items:center;justify-content:center;font-size:26px;margin:0 auto 22px}
-.thankyou h3{font-size:22px;font-weight:600;margin:0 0 10px;font-family:'Playfair Display',serif}
-.thankyou p{color:var(--dim);font-size:14px}
-@media (max-width:860px){.contact-grid{grid-template-columns:1fr}.form-row{grid-template-columns:1fr}}
-
-/* ---------- CTA band ---------- */
-.cta-band{border-radius:24px;padding:clamp(38px,6vw,68px);text-align:center;background:linear-gradient(155deg,var(--navy2),var(--navy));color:#fff}
-.cta-band h2{font-size:clamp(24px,4vw,40px);font-weight:600;margin:0 0 14px}
-.cta-band p{color:rgba(240,235,225,.75);margin:0 0 28px;font-size:15px}
-.cta-row{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
-.cta-band .btn-outline{border-color:rgba(240,235,225,.4);color:#fff}
-.cta-band .btn-outline:hover{background:var(--cream);color:var(--navy);border-color:var(--cream)}
-.cta-band .btn-fill{background:var(--cream);color:var(--navy)}
-.cta-band .btn-fill:hover{background:#fff}
-
-/* ---------- Footer ---------- */
-footer{border-top:1px solid var(--l08);padding:clamp(44px,7vw,76px) 0 24px;background:var(--bg2)}
-.footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1.2fr;gap:30px;margin-bottom:44px}
-.footer-grid h4{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--dim2);margin:0 0 16px;font-weight:700}
-.footer-grid .flinks{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:12px}
-.footer-grid .flinks a{font-size:14px;color:var(--dim);transition:color .2s ease}
-.footer-grid .flinks a:hover{color:var(--navy)}
-.footer-tagline{color:var(--dim);font-size:14px;line-height:1.7;max-width:280px;margin-top:14px}
-.footer-bottom{border-top:1px solid var(--l08);padding-top:22px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;font-size:13px;color:var(--dim2)}
-@media (max-width:860px){.footer-grid{grid-template-columns:1fr 1fr}}
-@media (max-width:540px){.footer-grid{grid-template-columns:1fr}}
-
-/* ---------- Reveal ---------- */
-[data-reveal]{opacity:0;transform:translateY(22px);transition:opacity .6s ease,transform .6s cubic-bezier(.2,.6,.2,1)}
-[data-reveal].in{opacity:1;transform:translateY(0)}
-
-/* ---------- Pages ---------- */
-.page{display:none}
-.page.active{display:block}
+  html{scroll-behavior:smooth}
+  body{font-family:Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased;background:#0D1B2E;color:#F4F7FB;overflow-x:hidden}
+  ::selection{background:#E8E2D4;color:#0D1B2E}
+  .track-tight{letter-spacing:-.02em}
+  .track-wide{letter-spacing:.22em}
+  .serif{font-family:'Playfair Display',serif}
+  .hairline{border-color:rgba(196,209,226,.10)}
+  /* grain */
+  .grain::before{content:"";position:fixed;inset:0;z-index:1;pointer-events:none;opacity:.04;mix-blend-mode:soft-light;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+  /* silver-on-navy glass render placeholders */
+  .glass{background:
+      radial-gradient(60% 55% at 32% 28%, rgba(255,255,255,.55), transparent 60%),
+      conic-gradient(from 200deg at 50% 50%, #3a4f74, #cdd7e6, #22355a, #aeb9cc, #3a4f74)}
+  .glass-dark{background:
+      radial-gradient(60% 55% at 35% 30%, rgba(255,255,255,.4), transparent 60%),
+      conic-gradient(from 200deg at 50% 50%, #24365a, #9fb0cc, #1a2947, #7f8fae, #24365a)}
+  .hero-bg{background:
+      radial-gradient(120% 90% at 82% -12%, rgba(232,226,212,.16) 0%, transparent 46%),
+      radial-gradient(90% 80% at 8% 120%, rgba(61,174,122,.10) 0%, transparent 52%),
+      linear-gradient(120deg,#0A1524 0%,#0D1B2E 45%,#132743 100%)}
+  .hero-slabs{background:
+      linear-gradient(105deg, rgba(232,226,212,.08), transparent 40%),
+      repeating-linear-gradient(100deg, rgba(196,209,226,.06) 0 2px, transparent 2px 26px)}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;border-radius:999px;font-weight:600;font-size:14px;
+    padding:12px 26px;transition:transform .3s cubic-bezier(.2,.7,.2,1),box-shadow .3s cubic-bezier(.2,.7,.2,1),background-color .25s,color .25s,border-color .25s;cursor:pointer;border:1px solid transparent}
+  .btn:focus-visible{outline:none;box-shadow:0 0 0 3px rgba(232,226,212,.45)}
+  .btn-primary{background:#E8E2D4;color:#0D1B2E;box-shadow:0 12px 30px -16px rgba(232,226,212,.5)}
+  .btn-primary:hover{background:#F3EEE3;transform:translateY(-2px);box-shadow:0 18px 40px -16px rgba(232,226,212,.6)}
+  .btn-primary:active{transform:translateY(0)}
+  .btn-ghost{background:rgba(244,247,251,.02);color:#F4F7FB;border-color:rgba(196,209,226,.22)}
+  .btn-ghost:hover{border-color:rgba(232,226,212,.55);background:rgba(232,226,212,.06);transform:translateY(-2px)}
+  .btn-ghost:active{transform:translateY(0)}
+  .navlink{font-size:14px;color:rgba(196,209,226,.85);transition:color .25s}
+  .navlink:hover{color:#F4F7FB}
+  .surface{background:linear-gradient(160deg,#132743 0%,#101F35 100%);border:1px solid rgba(196,209,226,.09);border-radius:20px}
+  .floating{background:linear-gradient(160deg,#173052 0%,#152A45 100%);border:1px solid rgba(196,209,226,.12);box-shadow:0 34px 80px -34px rgba(0,0,0,.75)}
+  .card-hover{transition:transform .4s cubic-bezier(.2,.7,.2,1),box-shadow .4s cubic-bezier(.2,.7,.2,1),border-color .4s cubic-bezier(.2,.7,.2,1)}
+  .card-hover:hover{transform:translateY(-4px);border-color:rgba(232,226,212,.28);box-shadow:0 34px 70px -34px rgba(0,0,0,.7)}
+  [data-reveal]{opacity:0;transform:translateY(24px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1)}
+  [data-reveal].in{opacity:1;transform:none}
+  /* Luminous Topography (vanilla port of Motiq's LuminousTopography, MIT) */
+  #topo{position:absolute;inset:0;opacity:.7}
+  #topo svg{width:100%;height:100%;display:block}
+  #topo .mk-lt-flow{transform-box:fill-box}
+  #topo .mk-lt-dim path,#topo .mk-lt-bright path{fill:none;vector-effect:non-scaling-stroke}
+  #topo .mk-lt-bright{filter:drop-shadow(0 0 3px rgba(232,226,212,.55))}
+  #topo.mk-lt-animated .mk-lt-flow{animation:lt-flow var(--fdur,48s) linear infinite;will-change:transform}
+  #topo.mk-lt-animated .mk-lt-sweep{animation:lt-sweep 16s ease-in-out infinite alternate;will-change:transform}
+  @keyframes lt-flow{from{transform:translateY(0)}to{transform:translateY(-952px)}}
+  @keyframes lt-sweep{from{transform:translateX(-330px)}to{transform:translateX(330px)}}
+  #topo[data-paused="true"] .mk-lt-flow,#topo[data-paused="true"] .mk-lt-sweep{animation-play-state:paused!important}
+  @media (max-width:640px){#topo .mk-lt-layer[data-i="2"]{display:none}#topo .mk-lt-bright{opacity:.82}}
+  @media (prefers-reduced-motion:reduce){*{animation:none!important}[data-reveal]{opacity:1;transform:none}html{scroll-behavior:auto}#topo .mk-lt-cursor{display:none}}
 </style>
 </head>
-<body class="has-tabbar">
+<body class="grain">
 
-<header class="appbar">
-  <div class="appbar-row">
-    <div class="logo" data-nav="home"><span class="logo-mark"><img src="images/logo-mark.jpg" alt="Luminate logo"></span> LUMINATE</div>
-    <nav class="appbar-navlinks">
-      <a href="#home" data-nav="home">Home</a>
-      <a href="#services" data-nav="services">Services</a>
-      <a href="#work" data-nav="work">Work</a>
-      <a href="#pricing" data-nav="pricing">Pricing</a>
-      <a href="#about" data-nav="about">About</a>
-      <a href="#contact" data-nav="contact">Contact</a>
+<!-- ============ HERO (with nav) ============ -->
+<section class="hero-bg relative overflow-hidden text-ink">
+  <div class="absolute inset-0 hero-slabs opacity-25 pointer-events-none"></div>
+  <div id="topo" class="mk-lt-animated absolute inset-0 pointer-events-none" aria-hidden="true" data-paused="false"></div>
+
+  <div class="relative max-w-[1180px] mx-auto px-6">
+    <!-- nav -->
+    <nav class="flex items-center justify-between py-6">
+      <a href="#top" class="flex items-center gap-3">
+        <span class="w-9 h-9 rounded-[10px] overflow-hidden ring-1 ring-[rgba(232,226,212,.2)] flex-none"><img src="brand_assets/luminatelogo1.png" alt="Luminate" class="w-full h-full object-cover"></span>
+        <span class="serif text-[20px] font-700 tracking-[.14em]">LUMINATE</span>
+      </a>
+      <div class="hidden lg:flex items-center gap-8 bg-white/5 backdrop-blur px-7 py-2.5 rounded-full border hairline">
+        <a class="navlink" href="#top">Home</a>
+        <a class="navlink" href="#services">Services</a>
+        <a class="navlink" href="#work">Work</a>
+        <a class="navlink" href="#pricing">Pricing</a>
+        <a class="navlink" href="#about">About</a>
+      </div>
+      <a href="#connect" class="btn btn-primary !py-2 !px-6">Start your project</a>
     </nav>
-    <a href="#contact" class="appbar-cta" data-nav="contact">Start your project</a>
-    <button class="appbar-menubtn" id="menuBtn" aria-label="Menu">☰</button>
-  </div>
-</header>
 
-<div class="menu-sheet" id="menuSheet">
-  <div class="scrim" id="menuScrim"></div>
-  <div class="sheet">
-    <button class="sheet-close" id="sheetClose" aria-label="Close menu">✕</button>
-    <a href="#home" data-nav="home">Home</a>
-    <a href="#services" data-nav="services">Services</a>
-    <a href="#work" data-nav="work">Work</a>
-    <a href="#pricing" data-nav="pricing">Pricing</a>
-    <a href="#about" data-nav="about">About</a>
-    <a href="#contact" data-nav="contact">Contact</a>
-    <a href="/portal.html">Client Portal</a>
-    <a href="https://billing.stripe.com/p/login/4gM00lbnqbFr9pbfkXgbm00" target="_blank" rel="noopener">Manage Subscription</a>
-    <a href="#contact" class="sheet-cta" data-nav="contact">Start your project</a>
-  </div>
-</div>
-
-<main>
-
-<!-- ================= HOME ================= -->
-<section class="page" id="page-home">
-
-  <div class="hero" id="hero">
-    <div class="wrap">
-      <div class="hero-grid">
-        <div class="hero-copy" data-reveal>
-          <h1>Websites that turn visitors <span class="line2">into customers.</span></h1>
-          <p class="lead">From professional websites to custom business software, we build digital tools that help Augusta &amp; CSRA organizations grow, operate more efficiently, and earn trust online.</p>
-          <div class="hero-cta-row">
-            <a href="#contact" class="btn btn-fill" data-nav="contact">Start your project</a>
-            <a href="#work" class="btn btn-outline" data-nav="work">View work</a>
-          </div>
-          <div class="hero-phone">Prefer to talk it through? Call <a href="tel:7622279287">(762) 227-9287</a></div>
-        </div>
-        <div class="hero-visual" data-reveal>
-          <div class="hero-badge b1"><div class="n">10+</div><div class="t">Sites launched</div></div>
-          <div class="big-l">L</div>
-          <div>
-            <div class="est">Est. Augusta, GA / 2025</div>
-            <div class="tags"><span>Design</span><span>Software</span><span>Management</span></div>
-          </div>
-          <div class="hero-badge b2"><div class="n">100%</div><div class="t">Augusta &amp; CSRA</div></div>
-        </div>
+    <!-- hero content -->
+    <div id="top" class="relative pt-10 pb-28 min-h-[560px]">
+      <div class="absolute right-0 top-6 flex gap-10 text-right">
+        <div><div class="serif text-[40px] font-700 leading-none text-accent">10+</div><div class="text-[12px] text-dim2 mt-1 max-w-[120px]">Websites launched</div></div>
+        <div><div class="serif text-[40px] font-700 leading-none text-accent">100%</div><div class="text-[12px] text-dim2 mt-1">Augusta &amp; CSRA</div></div>
       </div>
-    </div>
-  </div>
 
-  <div class="trust">
-    <div class="trust-label">Trusted by local businesses, ministries &amp; nonprofits</div>
-    <div class="marquee">
-      <div class="marquee-track" id="marqueeTrack"></div>
-    </div>
-  </div>
-
-  <div class="section">
-    <div class="wrap">
-      <div class="statband" data-reveal>
-        <div class="stat">
-          <div class="num">10+</div>
-          <div class="lbl"><b>Websites launched</b></div>
-        </div>
-        <div class="stat">
-          <div class="num">100%</div>
-          <div class="lbl"><b>Augusta &amp; CSRA</b>Proudly local</div>
-        </div>
-        <div class="stat">
-          <div class="num">Founder-led</div>
-          <div class="lbl"><b>Direct communication</b>One point of contact</div>
-        </div>
+      <div class="absolute left-0 bottom-24">
+        <h1 class="serif text-[64px] sm:text-[86px] font-700 leading-[.92] track-tight">GROW<br>FASTER</h1>
+        <a href="#connect" class="btn btn-primary mt-7">Start your project</a>
       </div>
-    </div>
-  </div>
 
-  <div class="section">
-    <div class="wrap">
-      <div class="section-head" data-reveal>
-        <div class="eyebrow">What we do</div>
-        <h2>Websites — and the business software behind them.</h2>
-        <p>Most agencies stop at a homepage. We also build the client portals, dashboards, and internal tools that run the business behind it.</p>
+      <div class="absolute right-0 bottom-24 max-w-[460px] text-right">
+        <h2 class="serif text-[36px] sm:text-[48px] font-600 leading-[1.05] track-tight">Premium websites<br>&amp; custom software.</h2>
+        <p class="text-[14px] text-dim mt-5 leading-relaxed">
+          Luminate builds premium websites and custom software that help businesses earn trust, work smarter, and grow faster — with the warmth and professionalism of a trusted local partner.
+        </p>
       </div>
-      <div class="grid-3" data-reveal id="servicesTeaser"></div>
-    </div>
-  </div>
-
-  <div class="section" style="padding-top:0">
-    <div class="wrap">
-      <div class="whyus" data-reveal>
-        <div class="eyebrow">Why us</div>
-        <h2 style="font-size:clamp(24px,3.6vw,36px);font-weight:600;margin:12px 0 0">Why not Wix, Squarespace, Fiverr, GoDaddy AI, a nephew, or another agency?</h2>
-        <p style="color:var(--dim);font-size:15px;line-height:1.7;margin:14px 0 0;max-width:640px">We combine custom design, modern software, AI-assisted development, and ongoing website management to launch professional websites quickly — without sacrificing quality.</p>
-        <div class="whyus-compare">
-          <div class="col them">
-            <h4>DIY builders, freelancers &amp; other agencies</h4>
-            <ul>
-              <li>Generic templates everyone recognizes</li>
-              <li>No one to call when something breaks</li>
-              <li>You do the design, copy &amp; setup yourself</li>
-              <li>No path to custom software as you grow</li>
-            </ul>
-          </div>
-          <div class="col us">
-            <h4>Luminate</h4>
-            <ul>
-              <li>Custom-designed for your brand, not a theme</li>
-              <li>Direct, founder-led communication</li>
-              <li>We handle design, build, hosting &amp; SEO</li>
-              <li>Client portals, dashboards &amp; software when you're ready</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="section">
-    <div class="wrap">
-      <div class="section-head" data-reveal>
-        <div class="eyebrow">Pricing</div>
-        <h2>Simple packages, honest pricing.</h2>
-        <p>From a professional online presence to a full custom business system — pick the level that fits where you are.</p>
-      </div>
-      <div class="grid-3" id="pricingGridHome" data-reveal></div>
-    </div>
-  </div>
-
-  <div class="section">
-    <div class="wrap">
-      <div class="section-head" data-reveal>
-        <div class="eyebrow">What clients say</div>
-        <h2>Trusted by Augusta businesses, ministries &amp; nonprofits.</h2>
-      </div>
-      <div class="testi-scroller" id="testimonialsGrid" data-reveal></div>
-    </div>
-  </div>
-
-  <div class="section">
-    <div class="wrap">
-      <div class="founder" data-reveal>
-        <img src="images/founder-jacob.jpg" alt="Jacob, Founder of Luminate Web Design" class="founder-photo">
-        <div>
-          <div class="eyebrow" style="margin-bottom:18px">The founder</div>
-          <p class="founder-quote">"Every business deserves a website — and the software behind it — that helps them win more customers, not just look nice."</p>
-          <div style="font-weight:700;font-size:16px">Jacob</div>
-          <div style="color:var(--dim2);font-size:14px;margin-top:2px">Founder · Luminate Web Design</div>
-          <p style="color:var(--dim);font-size:14px;line-height:1.8;margin-top:18px;max-width:480px">Based in Augusta, Jacob works directly with every client — from first conversation to launch and beyond — so nothing gets lost between you and the people building your site.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="section">
-    <div class="wrap">
-      <div class="cta-band" data-reveal>
-        <h2>Ready for a website that earns you customers?</h2>
-        <p>Tell us a bit about your business and we'll put together a plan that fits.</p>
-        <div class="cta-row">
-          <a href="#contact" class="btn btn-fill" data-nav="contact">Start your project</a>
-          <a href="#pricing" class="btn btn-outline" data-nav="pricing">See pricing</a>
-        </div>
-      </div>
-    </div>
-  </div>
-
-</section>
-
-<!-- ================= WORK ================= -->
-<section class="page" id="page-work">
-  <div class="section">
-    <div class="wrap">
-      <div class="section-head" data-reveal>
-        <div class="eyebrow">Portfolio</div>
-        <h2>Real businesses. Real problems solved.</h2>
-        <p>A look at the businesses, ministries, and nonprofits we've helped show up better online — and the problems each project actually solved. Tap a project to see the story.</p>
-      </div>
-      <div class="work-scroller" id="workGrid" data-reveal></div>
     </div>
   </div>
 </section>
 
-<!-- ================= SERVICES ================= -->
-<section class="page" id="page-services">
-  <div class="section">
-    <div class="wrap">
-      <div class="section-head" data-reveal>
-        <div class="eyebrow">Services</div>
-        <h2>What we build for you.</h2>
-        <p>Every project starts with a conversation about your business — then we design and build the website, and the software behind it, around it.</p>
+<!-- ============ TRUSTED PARTNERS ============ -->
+<section id="about" class="bg-navy py-20">
+  <div class="max-w-[1180px] mx-auto px-6">
+    <h3 class="serif text-[22px] font-600 track-tight mb-8" data-reveal>Trusted by local businesses,<br>ministries &amp; nonprofits</h3>
+    <div class="grid md:grid-cols-[300px_1fr] gap-8 items-center" data-reveal>
+      <div class="aspect-square rounded-2xl glass shadow-[0_30px_60px_-30px_rgba(0,0,0,.6)] flex items-center justify-center">
+        <span class="serif text-[96px] font-700 text-navy/70">L</span>
       </div>
-      <div id="servicesList"></div>
-    </div>
-  </div>
-</section>
-
-<!-- ================= PRICING ================= -->
-<section class="page" id="page-pricing">
-  <div class="section">
-    <div class="wrap">
-      <div class="section-head" data-reveal>
-        <div class="eyebrow">Pricing</div>
-        <h2>Transparent pricing, no surprises.</h2>
-        <p>Choose the level that fits where your business is today. Every plan can grow with you — including into fully custom business software.</p>
-      </div>
-      <div class="grid-3" id="pricingGridPage" data-reveal></div>
-    </div>
-  </div>
-
-  <div class="section" style="padding-top:0">
-    <div class="wrap">
-      <div class="section-head" data-reveal>
-        <div class="eyebrow">Website Management</div>
-        <h2>What's included in ongoing management.</h2>
-        <p>Every management plan keeps your site online, secure, and up to date — so you never have to think about it.</p>
-      </div>
-      <ul class="mgmt-list" id="mgmtList" data-reveal></ul>
-    </div>
-  </div>
-
-  <div class="section" style="padding-top:0">
-    <div class="wrap" style="max-width:840px">
-      <div class="section-head" data-reveal>
-        <div class="eyebrow">FAQ</div>
-        <h2>Common questions.</h2>
-      </div>
-      <div id="faqList" data-reveal></div>
-    </div>
-  </div>
-</section>
-
-<!-- ================= ABOUT ================= -->
-<section class="page" id="page-about">
-  <div class="section">
-    <div class="wrap">
-      <div class="section-head" data-reveal>
-        <div class="eyebrow">About</div>
-        <h2>Founder-led, Augusta-rooted.</h2>
-        <p>Luminate Web Design &amp; Development was started to give Augusta's small businesses, ministries, and nonprofits the kind of website — and software — usually reserved for big budgets.</p>
-      </div>
-      <div class="founder" data-reveal>
-        <img src="images/founder-jacob.jpg" alt="Jacob, Founder of Luminate Web Design" class="founder-photo">
-        <div>
-          <p style="color:var(--dim);font-size:15px;line-height:1.85;margin-bottom:18px">Jacob founded Luminate after seeing how many great local businesses were being held back by outdated, hard-to-use websites — or no website at all. Today, Luminate designs and builds custom sites and business software for businesses, churches, and nonprofits across the CSRA, and stays on as a long-term partner through its management plans.</p>
-          <p style="color:var(--dim);font-size:15px;line-height:1.85">Every project is handled personally — one point of contact, real conversations, and a site that's actually built for how your business works.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="section" style="padding-top:0">
-    <div class="wrap">
-      <div class="statband" data-reveal>
-        <div class="stat">
-          <div class="num">10+</div>
-          <div class="lbl"><b>Sites launched</b></div>
-        </div>
-        <div class="stat">
-          <div class="num">Founder-led</div>
-          <div class="lbl"><b>Direct communication</b></div>
-        </div>
-        <div class="stat">
-          <div class="num">CSRA</div>
-          <div class="lbl"><b>Augusta-based</b></div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="section">
-    <div class="wrap">
-      <div class="section-head" data-reveal>
-        <div class="eyebrow">What we stand for</div>
-        <h2>The principles behind every project.</h2>
-      </div>
-      <div class="grid-4" data-reveal>
-        <div class="value-card">
-          <h3>Trust by design</h3>
-          <p>Clean, credible design that makes a strong first impression — because trust is earned in seconds.</p>
-        </div>
-        <div class="value-card">
-          <h3>Craft over templates</h3>
-          <p>Every site is custom-built around your brand and your customers, not stretched over a generic theme.</p>
-        </div>
-        <div class="value-card">
-          <h3>Direct communication</h3>
-          <p>You work directly with Jacob from start to finish — no account managers, no outsourcing.</p>
-        </div>
-        <div class="value-card">
-          <h3>Built to last</h3>
-          <p>Sites are built on solid foundations and backed by ongoing management, so they keep working long after launch.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="section">
-    <div class="wrap">
-      <div class="section-head" data-reveal>
-        <div class="eyebrow">How we work</div>
-        <h2>A simple, guided process.</h2>
-      </div>
-      <div class="process" data-reveal>
-        <div class="process-track" id="processTrack"></div>
-      </div>
-    </div>
-  </div>
-
-  <div class="section">
-    <div class="wrap">
-      <div class="cta-band" data-reveal>
-        <h2>Let's build something that earns you customers.</h2>
-        <p>Reach out and tell us a bit about your business — we'll take it from there.</p>
-        <div class="cta-row">
-          <a href="#contact" class="btn btn-fill" data-nav="contact">Get in touch</a>
+      <div class="surface p-10">
+        <div class="grid grid-cols-2 sm:grid-cols-3 gap-x-6 gap-y-6 items-center">
+          <span class="serif text-[15px] text-dim text-center">Abib Auto Sales</span>
+          <span class="serif text-[15px] text-dim text-center">Dingle Tennis Academy</span>
+          <span class="serif text-[15px] text-dim text-center">Rich Eatz</span>
+          <span class="serif text-[15px] text-dim text-center">Elite Shaken Lemonade</span>
+          <span class="serif text-[15px] text-dim text-center">Creations by Melanie</span>
+          <span class="serif text-[15px] text-dim text-center">Busy B Construction</span>
+          <span class="serif text-[15px] text-dim text-center">MACH Academy</span>
+          <span class="serif text-[15px] text-dim text-center">Realistic Impressions</span>
+          <span class="serif text-[15px] text-dim text-center">There Is H.O.P.E. Ministries</span>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ================= CONTACT ================= -->
-<section class="page" id="page-contact">
-  <div class="section">
-    <div class="wrap">
-      <div class="contact-grid">
-        <div data-reveal>
-          <div class="eyebrow">Contact</div>
-          <h2 class="serif" style="font-size:clamp(26px,4.2vw,44px);font-weight:600;margin:14px 0 16px">Let's talk about your project.</h2>
-          <p style="color:var(--dim);font-size:15px;line-height:1.8;margin:0 0 28px;max-width:440px">Tell us a bit about your business so we come to the call prepared. We'll get back to you within one business day.</p>
-          <div class="response-badge"><span class="dot"></span> Usually responds within 1 business day</div>
-          <div>
-            <div class="contact-info-item">
-              <div class="ic">☎</div>
-              <div><div class="lbl">Phone</div><a href="tel:7622279287">(762) 227-9287</a></div>
-            </div>
-            <div class="contact-info-item">
-              <div class="ic">✉</div>
-              <div><div class="lbl">Email</div><a href="mailto:luminatewebco@gmail.com">luminatewebco@gmail.com</a></div>
-            </div>
-            <div class="contact-info-item">
-              <div class="ic">⚲</div>
-              <div><div class="lbl">Location</div><span class="val">Augusta &amp; the CSRA</span></div>
-            </div>
-          </div>
-        </div>
+<!-- ============ WHAT SETS US APART ============ -->
+<section class="bg-navy pb-24">
+  <div class="max-w-[1180px] mx-auto px-6">
+    <h3 class="serif text-[26px] font-600 track-tight mb-8" data-reveal>What sets us apart</h3>
+    <div class="grid md:grid-cols-3 gap-4" data-reveal>
+      <div class="grid grid-cols-2 gap-4 md:col-span-2">
+        <div class="floating rounded-2xl p-7"><div class="serif text-[44px] font-700 text-accent">10+</div><div class="text-[13px] text-dim mt-2">Websites launched</div></div>
+        <div class="surface p-7"><div class="serif text-[44px] font-700 text-ink">100%</div><div class="text-[13px] text-dim2 mt-2">Augusta &amp; CSRA</div></div>
+        <div class="surface p-7"><div class="serif text-[44px] font-700 text-ink">1:1</div><div class="text-[13px] text-dim2 mt-2">Founder-led communication</div></div>
+        <div class="surface p-7"><div class="serif text-[44px] font-700 text-ink">24h</div><div class="text-[13px] text-dim2 mt-2">Typical response time</div></div>
+      </div>
+      <div class="rounded-2xl glass min-h-[220px] flex items-center justify-center">
+        <span class="serif text-[80px] font-700 text-navy/70">L</span>
+      </div>
+    </div>
+  </div>
+</section>
 
-        <div data-reveal>
-          <div class="form-card" id="formCard">
-            <form id="contactForm">
-              <input type="hidden" name="access_key" value="2fac6cbf-8123-421e-8b5c-772702296900">
-              <input type="hidden" name="subject" value="New project inquiry — Luminate Web Design">
-              <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off">
-              <div class="form-row">
-                <div class="field">
-                  <label for="f-name">Name *</label>
-                  <input type="text" id="f-name" name="name" required>
-                </div>
-                <div class="field">
-                  <label for="f-business">Business name</label>
-                  <input type="text" id="f-business" name="business">
-                </div>
-              </div>
-              <div class="form-row">
-                <div class="field">
-                  <label for="f-email">Email *</label>
-                  <input type="email" id="f-email" name="email" required>
-                </div>
-                <div class="field">
-                  <label for="f-phone">Phone</label>
-                  <input type="tel" id="f-phone" name="phone">
-                </div>
-              </div>
-              <div class="field">
-                <label for="f-does">What does your business do? *</label>
-                <input type="text" id="f-does" name="whatYouDo" required placeholder="e.g. custom cake bakery, auto dealership...">
-              </div>
-              <div class="form-row">
-                <div class="field">
-                  <label for="f-hasSite">Do you already have a website?</label>
-                  <select id="f-hasSite" name="hasWebsite">
-                    <option value="">Select one...</option>
-                    <option>Yes, and I want a redesign</option>
-                    <option>Yes, it just needs updates</option>
-                    <option>No, this would be my first</option>
-                    <option>Not sure</option>
-                  </select>
-                </div>
-                <div class="field">
-                  <label for="f-launch">Target launch date</label>
-                  <input type="text" id="f-launch" name="targetLaunch" placeholder="e.g. within 30 days">
-                </div>
-              </div>
-              <div class="field">
-                <label for="f-challenge">What's your biggest challenge right now?</label>
-                <input type="text" id="f-challenge" name="biggestChallenge" placeholder="e.g. not enough leads, outdated site...">
-              </div>
-              <div class="field">
-                <label for="f-budget">Estimated budget</label>
-                <select id="f-budget" name="budget">
-                  <option value="">Select one...</option>
-                  <option>Under $750</option>
-                  <option>$750 – $1,500</option>
-                  <option>$1,500 – $3,000</option>
-                  <option>$3,000+</option>
-                  <option>Not sure yet</option>
-                </select>
-              </div>
-              <div class="field" style="margin-bottom:8px">
-                <label for="f-message">Message *</label>
-                <textarea id="f-message" name="message" required placeholder="Anything else we should know before the call?"></textarea>
-              </div>
-              <button type="submit" class="submit-btn">Send project details</button>
-            </form>
-            <div class="thankyou" id="thankYou" style="display:none">
-              <div class="check">✓</div>
-              <h3>Thank you — message sent.</h3>
-              <p>We'll be in touch within one business day.</p>
-            </div>
-          </div>
+<!-- ============ WHAT WE DO (darker) ============ -->
+<section id="services" class="bg-navy2 py-24">
+  <div class="max-w-[1180px] mx-auto px-6">
+    <div class="track-wide text-[12px] text-dim2 font-600 mb-6" data-reveal>WHAT WE DO</div>
+    <div class="grid lg:grid-cols-[1.3fr_1fr] gap-10 items-end" data-reveal>
+      <h2 class="serif text-[40px] sm:text-[54px] font-600 leading-[1.06] track-tight">Websites — and the business software behind them.</h2>
+      <p class="text-[14px] text-dim leading-relaxed max-w-[360px]">
+        Luminate is a modern software company with the warmth and professionalism of a trusted local partner. We design and build the websites, client portals, dashboards, and internal tools that help Augusta &amp; CSRA organizations earn trust, work smarter, and grow faster.
+      </p>
+    </div>
+
+    <div class="grid lg:grid-cols-2 gap-4 mt-12" data-reveal>
+      <div class="floating rounded-2xl p-8 flex flex-col justify-between min-h-[180px]">
+        <div class="w-9 h-9 rounded-full bg-[rgba(232,226,212,.14)] flex items-center justify-center text-accent">◆</div>
+        <div><div class="serif text-[28px] font-600 text-ink">Websites, portals &amp; internal tools, brought to life</div>
+        <p class="text-[13px] text-dim mt-2">from a first professional site to the custom software that runs the business behind it</p></div>
+      </div>
+      <div class="grid gap-4">
+        <div class="floating rounded-2xl p-6 flex gap-4 items-start">
+          <div class="w-9 h-9 rounded-full bg-[rgba(232,226,212,.14)] flex items-center justify-center flex-none text-accent">✦</div>
+          <div><div class="font-700 text-[15px] text-ink">Custom-designed for your brand, not a theme</div><p class="text-[13px] text-dim mt-1">premium, credible design that makes a strong first impression</p></div>
+        </div>
+        <div class="surface rounded-2xl p-6 flex gap-4 items-start">
+          <div class="w-9 h-9 rounded-full bg-white/5 flex items-center justify-center flex-none text-accent">↔</div>
+          <div><div class="font-700 text-[15px] text-ink">End-to-end: design, build, hosting &amp; SEO</div><p class="text-[13px] text-dim2 mt-1">one point of contact from first conversation to launch and beyond</p></div>
+        </div>
+        <div class="surface rounded-2xl p-6 flex gap-4 items-start">
+          <div class="w-9 h-9 rounded-full bg-white/5 flex items-center justify-center flex-none text-accent">✷</div>
+          <div><div class="font-700 text-[15px] text-ink">For businesses, ministries, nonprofits &amp; growing companies</div><p class="text-[13px] text-dim2 mt-1">not a fit for DIY, cheapest-option shoppers, or one-off Fiverr projects</p></div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-</main>
+<!-- ============ OUR SERVICES ============ -->
+<section class="bg-navy py-24">
+  <div class="max-w-[1180px] mx-auto px-6">
+    <div class="mb-12" data-reveal>
+      <h3 class="serif text-[26px] font-600 track-tight">Our services</h3>
+      <p class="text-[14px] text-dim2 mt-2">From a professional online presence to a full custom business system — we build the level that fits where you are.</p>
+    </div>
+    <div class="grid lg:grid-cols-[1fr_1fr] gap-12 items-center">
+      <div class="divide-y hairline" data-reveal>
+        <div class="py-7 flex gap-5">
+          <div class="w-11 h-11 rounded-xl bg-[rgba(232,226,212,.10)] flex items-center justify-center text-accent flex-none">✦</div>
+          <div><h4 class="text-accent font-700 text-[17px]">Website Design &amp; Build</h4><p class="text-[13.5px] text-dim mt-1.5 leading-relaxed">Custom, mobile-first sites designed around your brand and your customers — built to earn trust and turn visitors into customers.</p></div>
+        </div>
+        <div class="py-7 flex gap-5">
+          <div class="w-11 h-11 rounded-xl bg-accent flex items-center justify-center text-navy flex-none">◈</div>
+          <div><h4 class="text-accent font-700 text-[17px]">Custom Business Software</h4><p class="text-[13.5px] text-dim mt-1.5 leading-relaxed">Client portals, dashboards, booking systems, and internal tools built to fit exactly how your business actually works.</p></div>
+        </div>
+        <div class="py-7 flex gap-5">
+          <div class="w-11 h-11 rounded-xl bg-[rgba(232,226,212,.10)] flex items-center justify-center text-accent flex-none">◉</div>
+          <div><h4 class="text-accent font-700 text-[17px]">Ongoing Management</h4><p class="text-[13.5px] text-dim mt-1.5 leading-relaxed">Hosting, security, updates, and SEO handled for you — so your site keeps working long after launch and never goes stale.</p></div>
+        </div>
+      </div>
+      <div class="aspect-square rounded-full glass shadow-[0_40px_80px_-40px_rgba(0,0,0,.6)] flex items-center justify-center" data-reveal>
+        <span class="serif text-[110px] font-700 text-navy/60">L</span>
+      </div>
+    </div>
+  </div>
+</section>
 
-<footer>
-  <div class="wrap">
-    <div class="footer-grid">
+<!-- ============ SELECTED WORK (darker) ============ -->
+<section id="work" class="bg-navy2 py-24">
+  <div class="max-w-[1180px] mx-auto px-6">
+    <div class="grid lg:grid-cols-[1fr_1.4fr] gap-10 items-start mb-14" data-reveal>
       <div>
-        <div class="logo" data-nav="home"><span class="logo-mark"><img src="images/logo-mark.jpg" alt="Luminate logo"></span> LUMINATE</div>
-        <p class="footer-tagline">Professional websites and custom business software for Augusta's businesses, ministries, and nonprofits.</p>
+        <div class="track-wide text-[12px] text-dim2 font-600 mb-4">SELECTED WORK</div>
+        <p class="text-[13.5px] text-dim leading-relaxed max-w-[300px]">A look at the businesses, ministries, and nonprofits we've helped show up better online — and the real problems each project solved.</p>
       </div>
+      <h2 class="serif text-[36px] sm:text-[52px] font-600 leading-[1.06] track-tight">Real businesses. Real problems solved.</h2>
+    </div>
+    <div class="grid sm:grid-cols-2 gap-5" id="projects" data-reveal></div>
+  </div>
+</section>
+
+<!-- ============ TRUSTED BY CLIENTS ============ -->
+<section id="clients" class="bg-navy py-24 relative overflow-hidden">
+  <div class="absolute inset-0 opacity-40 pointer-events-none" style="background:repeating-linear-gradient(120deg,transparent 0 60px,rgba(232,226,212,.03) 60px 61px)"></div>
+  <div class="max-w-[1180px] mx-auto px-6 relative">
+    <div class="flex flex-col lg:flex-row justify-between gap-8 mb-10" data-reveal>
       <div>
-        <h4>Pages</h4>
-        <ul class="flinks">
-          <li><a href="#home" data-nav="home">Home</a></li>
-          <li><a href="#services" data-nav="services">Services</a></li>
-          <li><a href="#work" data-nav="work">Work</a></li>
-          <li><a href="#pricing" data-nav="pricing">Pricing</a></li>
-        </ul>
+        <h3 class="serif text-[30px] font-600 track-tight leading-tight">Trusted across the CSRA</h3>
+        <p class="text-[14px] text-dim2 mt-3">Hear from the businesses we've helped grow.</p>
       </div>
-      <div>
-        <h4>Studio</h4>
-        <ul class="flinks">
-          <li><a href="#about" data-nav="about">About</a></li>
-          <li><a href="#contact" data-nav="contact">Contact</a></li>
-          <li><a href="/portal.html">Client Portal</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4>Get in touch</h4>
-        <ul class="flinks">
-          <li><a href="tel:7622279287">(762) 227-9287</a></li>
-          <li><a href="mailto:luminatewebco@gmail.com">luminatewebco@gmail.com</a></li>
-          <li>Augusta &amp; the CSRA</li>
-        </ul>
+      <div class="text-right">
+        <div class="flex items-center gap-3 justify-end">
+          <span class="serif text-[44px] font-700 text-accent">5.0</span>
+          <span class="text-accent text-[20px]">★★★★★</span>
+        </div>
+        <div class="text-[12px] text-dim2">Founder-led · one point of contact</div>
+        <p class="text-[13px] text-dim2 mt-2 max-w-[240px] ml-auto">Experiences that speak for themselves</p>
       </div>
     </div>
-    <div class="footer-bottom">
-      <span>© 2026 Luminate Web Design &amp; Development</span>
-      <span>Built in Augusta, Georgia</span>
+    <div class="floating rounded-2xl p-10 relative" data-reveal>
+      <div class="text-accent text-[16px] mb-4">★★★★★</div>
+      <p class="serif italic text-[18px] leading-relaxed max-w-[720px] text-ink">"Luminate gave us a website that finally looks as professional as our work. It's clean, easy to update, and we hear from new customers who found us online — something that never happened before."</p>
+      <div class="flex items-center gap-3 mt-6">
+        <span class="w-10 h-10 rounded-full bg-[rgba(232,226,212,.18)]"></span>
+        <div><div class="font-700 text-[14px] text-ink">Local business owner</div><div class="text-[12px] text-dim2">Augusta, GA · sample testimonial</div></div>
+      </div>
+      <div class="absolute right-6 top-1/2 -translate-y-1/2 flex gap-2">
+        <button class="w-9 h-9 rounded-full bg-white/10 hover:bg-white/20 transition-colors text-ink" aria-label="Previous">‹</button>
+        <button class="w-9 h-9 rounded-full bg-white/10 hover:bg-white/20 transition-colors text-ink" aria-label="Next">›</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section id="pricing" class="bg-navy py-24">
+  <div class="max-w-[1180px] mx-auto px-6 grid lg:grid-cols-[1fr_1.3fr] gap-12">
+    <div data-reveal>
+      <h3 class="serif text-[30px] font-600 track-tight leading-tight">Questions?<br>We've got answers.</h3>
+      <p class="text-[14px] text-dim2 mt-4 max-w-[300px]">Learn more about our services, process, and how we help businesses grow online.</p>
+      <a href="#connect" class="btn btn-primary mt-6">Start your project</a>
+    </div>
+    <div id="faq" data-reveal></div>
+  </div>
+</section>
+
+<!-- ============ LET'S CONNECT ============ -->
+<section id="connect" class="bg-navy2 py-24">
+  <div class="max-w-[1180px] mx-auto px-6">
+    <div class="mb-12" data-reveal>
+      <h3 class="serif text-[30px] font-600 track-tight">Let's talk about your project</h3>
+      <p class="text-[14px] text-dim2 mt-3 max-w-[460px]">Tell us a bit about your business so we come to the conversation prepared. We'll get back to you within one business day.</p>
+    </div>
+    <div class="grid lg:grid-cols-[.9fr_1.1fr] gap-12 items-center">
+      <div class="aspect-square rounded-full glass shadow-[0_40px_80px_-40px_rgba(0,0,0,.55)] flex items-center justify-center max-w-[420px]" data-reveal>
+        <span class="serif text-[120px] font-700 text-navy/60">L</span>
+      </div>
+      <form class="surface rounded-2xl p-8 grid sm:grid-cols-2 gap-4" data-reveal onsubmit="return false">
+        <input class="fld" placeholder="Your name">
+        <input class="fld" placeholder="Business name">
+        <input class="fld" placeholder="Your email">
+        <input class="fld" placeholder="Phone">
+        <input class="fld sm:col-span-2" placeholder="What does your business do?">
+        <select class="fld sm:col-span-2 text-dim2"><option>Service you're interested in</option><option>Website Design &amp; Build</option><option>Custom Business Software</option><option>Ongoing Management</option></select>
+        <textarea class="fld sm:col-span-2 min-h-[110px] resize-y" placeholder="Anything else we should know?"></textarea>
+        <button type="submit" class="btn btn-primary sm:col-span-2 w-full">Send project details</button>
+      </form>
+    </div>
+
+    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-5 mt-16 border-t hairline pt-10" data-reveal>
+      <div>
+        <div class="serif text-[18px] font-600">Prefer to talk it through?</div>
+        <p class="text-[13px] text-dim2 mt-1">Call (762) 227-9287 or email luminatewebco@gmail.com — usually answered within one business day.</p>
+      </div>
+      <div class="flex gap-3">
+        <a href="tel:7622279287" class="btn btn-ghost">Call now</a>
+        <a href="mailto:luminatewebco@gmail.com" class="btn btn-primary">Email us</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="bg-navy2 border-t hairline pt-20 pb-10">
+  <div class="max-w-[1180px] mx-auto px-6">
+    <div class="grid md:grid-cols-[1.6fr_1fr_1fr_1fr] gap-10">
+      <div>
+        <div class="flex items-center gap-3">
+          <span class="w-8 h-8 rounded-[9px] overflow-hidden ring-1 ring-[rgba(232,226,212,.2)] flex-none"><img src="brand_assets/luminatelogo1.png" alt="Luminate" class="w-full h-full object-cover"></span>
+          <span class="serif text-[18px] font-700 tracking-[.14em]">LUMINATE</span>
+        </div>
+        <p class="text-[13px] text-dim2 mt-4 max-w-[240px]">Premium websites and custom software that help businesses earn trust, work smarter, and grow faster.</p>
+      </div>
+      <div><h5 class="text-[13px] font-700 mb-4 text-ink">Services</h5><ul class="space-y-3 text-[13px] text-dim2">
+        <li><a href="#services" class="hover:text-ink transition-colors">Website Design</a></li><li><a href="#services" class="hover:text-ink transition-colors">Custom Software</a></li><li><a href="#services" class="hover:text-ink transition-colors">Ongoing Management</a></li><li><a href="#work" class="hover:text-ink transition-colors">Our Work</a></li><li><a href="#pricing" class="hover:text-ink transition-colors">Pricing</a></li></ul></div>
+      <div><h5 class="text-[13px] font-700 mb-4 text-ink">Company</h5><ul class="space-y-3 text-[13px] text-dim2">
+        <li><a href="#about" class="hover:text-ink transition-colors">About</a></li><li><a href="#connect" class="hover:text-ink transition-colors">Contact</a></li><li><a href="/portal.html" class="hover:text-ink transition-colors">Client Portal</a></li></ul></div>
+      <div><h5 class="text-[13px] font-700 mb-4 text-ink">Get in touch</h5><ul class="space-y-3 text-[13px] text-dim2">
+        <li><a href="tel:7622279287" class="hover:text-ink transition-colors">(762) 227-9287</a></li><li><a href="mailto:luminatewebco@gmail.com" class="hover:text-ink transition-colors">luminatewebco@gmail.com</a></li><li>Augusta &amp; the CSRA</li></ul></div>
+    </div>
+
+    <div class="text-center py-10">
+      <div class="serif text-[clamp(60px,16vw,190px)] font-700 track-tight leading-none text-accent/90">LUMINATE</div>
+    </div>
+
+    <div class="flex flex-col sm:flex-row justify-between items-center gap-4 border-t hairline pt-6">
+      <span class="text-[12px] text-dim2">© 2026 Luminate Web Design &amp; Development</span>
+      <span class="text-[12px] text-dim2">Built in Augusta, Georgia</span>
     </div>
   </div>
 </footer>
 
-<nav class="tabbar" id="tabbar">
-  <a href="#home" data-nav="home"><span class="ic">⌂</span>Home</a>
-  <a href="#services" data-nav="services"><span class="ic">◆</span>Services</a>
-  <a href="#work" data-nav="work"><span class="ic">▣</span>Work</a>
-  <a href="#pricing" data-nav="pricing"><span class="ic">$</span>Pricing</a>
-  <a href="#contact" data-nav="contact"><span class="ic">✉</span>Contact</a>
-</nav>
+<style>
+  .fld{background:#0C1729;border:1px solid rgba(196,209,226,.10);border-radius:12px;padding:13px 15px;color:#F4F7FB;font-size:14px;outline:none;transition:border-color .25s}
+  .fld::placeholder{color:rgba(196,209,226,.4)}
+  .fld:focus{border-color:#E8E2D4}
+</style>
 
 <script>
-// ---------- Data ----------
-var clients = ["Abib Auto Sales","Dingle Tennis Academy","Rich Eatz","Elite Shaken Lemonade","Creations by Melanie","Busy B Construction","MACH Academy","Extra Credit Creations","Realistic Impressions","There Is H.O.P.E. Ministries"];
-
-var pricingTiers = [
-  { name:'Launch', price:'$500', priceSuffix:'', priceNote:'one-time setup', mgmt:'$35/mo', mgmtName:'Essential Management', plan:'flexible payment plans available', featured:false, desc:"Perfect for businesses needing a professional online presence.", features:['Custom 1–3 page design','Mobile-first responsive build','Contact form + click-to-call','Google Business setup','Basic on-page SEO','Launch in ~1–2 weeks'] },
-  { name:'Growth', price:'$850', priceSuffix:'+', priceNote:'one-time setup', mgmt:'$45/mo', mgmtName:'Standard Management', plan:'flexible payment plans available', featured:true, desc:"Built to generate leads and grow your business.", features:['Up to 8 custom pages','Everything in Launch','Lead capture + automations','Blog or resource center','Booking / scheduling tools','Priority launch support'] },
-  { name:'Business System', price:'$2,500', priceSuffix:'+', priceNote:'starting at', mgmt:'$75/mo', mgmtName:'Pro Management', plan:'flexible payment plans available', featured:false, desc:"Client portals, dashboards, member areas, custom workflows, ecommerce, and integrations.", features:['Custom web application build','Client portals & dashboards','Membership / booking systems','E-commerce & payments','Custom integrations & APIs','Dedicated ongoing partnership'] }
-];
-
-var work = [
-  { name:'Abib Auto Sales', tag:'Used Car Dealership', img:'images/work/abib-auto-sales.jpg',
-    problem:"Their previous online presence made it hard for buyers to browse inventory or trust the dealership before visiting.",
-    solution:"We built a clean, credibility-first site with a full inventory showcase, financing info, and click-to-call throughout.",
-    result:"Buyers can now browse and vet the lot online before ever stepping onto it, so walk-ins arrive ready to buy." },
-  { name:'Dingle Tennis Academy', tag:'Sports Coaching', img:'images/work/dingle-tennis-academy.jpg',
-    problem:"Parents and players had no easy way to see programs or sign up for lessons online.",
-    solution:"We built a high-energy site with clear program pages and a simple lesson sign-up path.",
-    result:"The academy now has a professional front door that drives lesson sign-ups instead of relying on word of mouth alone." },
-  { name:'There Is H.O.P.E. Ministries', tag:'Faith · Nonprofit', img:'images/work/hope-ministries.jpg',
-    problem:"The ministry had no central place for the community to find service times or outreach programs.",
-    solution:"We built a warm, welcoming site with service times, outreach programs, and simple ways to get involved.",
-    result:"Newcomers can now find everything they need to visit or get involved without contacting the ministry directly first." },
-  { name:'Elite Shaken Lemonade', tag:'Food & Beverage', img:'images/work/elite-shaken-lemonade.jpg',
-    problem:"The brand had no online home to showcase flavors or handle event booking inquiries.",
-    solution:"We built a bright, appetite-driving site highlighting flavors, locations, and an event booking path.",
-    result:"Customers can now discover the brand and request event bookings without a phone call." },
-  { name:'Rich Eatz', tag:'Luxury Catering', img:'images/work/rich-eatz.jpg',
-    problem:"Menus and past work were scattered across social media, making it hard for prospects to picture booking them.",
-    solution:"We built an elevated, image-forward site to showcase menus and make inquiries effortless.",
-    result:"Inquiries picked up almost immediately after launch, and the site now matches the quality of the food." },
-  { name:'Extra Credit Creations', tag:'E-Commerce', img:'images/work/extra-credit-creations.jpg',
-    problem:"The brand needed a real storefront instead of relying on social media DMs to sell products.",
-    solution:"We built a custom e-commerce storefront designed for easy browsing and checkout.",
-    result:"Customers can now browse and buy directly online, giving the brand a real, scalable sales channel." },
-  { name:'Busy B Construction', tag:'Contractor', img:'images/work/busy-b-construction.jpg',
-    problem:"Homeowners had no easy way to see past work or request a quote online.",
-    solution:"We built a straightforward, credibility-first site with past projects and an easy quote-request flow.",
-    result:"The business now generates quote requests directly from the website instead of relying only on referrals." },
-  { name:'Creations by Melanie', tag:'Custom Bakery', img:'images/work/creations-by-melanie.jpg',
-    problem:"Customers had to message manually for every custom order, leading to scattered, hard-to-track requests.",
-    solution:"We built a streamlined ordering inquiry flow with a gallery of past work and a clear contact form.",
-    result:"Customers can now submit custom order requests in minutes, giving the owner organized inquiries instead of scattered messages." },
-  { name:'Realistic Impressions', tag:'T-Shirt Printing', img:'images/work/realistic-impressions.jpg',
-    problem:"The shop's online presence didn't reflect the quality or speed of their custom printing work.",
-    solution:"We built a bold, modern site designed to make ordering custom apparel feel quick and easy.",
-    result:"Customers now get a fast, guided path from browsing designs to placing an order." },
-  { name:'MACH Academy', tag:'Nonprofit · Tennis', img:'images/work/mach-academy.jpg',
-    problem:"The nonprofit needed a way to explain its programs and impact to potential donors and families.",
-    solution:"We built a community-focused site highlighting programs, impact, and ways to support the mission.",
-    result:"Families and donors can now understand the mission and get involved in one visit, instead of piecing it together from social media." },
-  { name:'Florida Tennis Family', tag:'Tennis Organization', img:'images/work/florida-tennis-family.png',
-    problem:"Clubs, players, and communities across the state had no single connected hub.",
-    solution:"We built the official site for the Florida Section of the American Tennis Association to connect clubs, players, and communities statewide.",
-    result:"The organization now has one credible, statewide home instead of fragmented communication across clubs." },
-  { name:'Alicia Fitts Show', tag:'Talk Show · Podcast', img:'images/work/alicia-fitts-show.png',
-    problem:"The show had no central home to house episodes, stories, and community spotlights in one place.",
-    solution:"We built a site to bring together positive stories, financial insights, and community spotlights for the CSRA.",
-    result:"Listeners now have one place to find the show and its content, strengthening the brand beyond social media." },
-  { name:'Odell Cleveland', tag:'Faith · Leadership Consulting', img:'images/work/odellcleveland.jpg',
-    problem:"Prospective clients had no clear way to book strategy sessions or understand his stewardship-driven approach.",
-    solution:"We built a strategic growth site designed to book strategy sessions and showcase his consulting approach.",
-    result:"Prospective clients can now book sessions directly from the site instead of going through back-and-forth messaging." }
-];
-
-var services = [
-  { kicker:'01', name:'Custom Website Design', featured:false, ic:'✦', desc:"Every Luminate site starts from a blank canvas — designed around your brand, your customers, and the impression you want to make in the first five seconds.", forWho:"For businesses ready to look as good online as they do in person.", included:['Custom layout & visual design','Brand-aligned colors, fonts & imagery','Mobile-first responsive design','Clear calls to action throughout','Fast-loading, modern build','Source files & ongoing access'] },
-  { kicker:'02', name:'Local & Service Businesses', featured:false, ic:'☎', desc:"Local customers decide fast. We build sites that make it effortless to call, find you, see your hours, and trust you're the right choice — before they even pick up the phone.", forWho:"For contractors, shops, restaurants & service providers.", included:['Click-to-call & directions','Google Business Profile setup','Hours, location & service area','Reviews & social proof sections','Local SEO basics','Lead capture forms'] },
-  { kicker:'03', name:'Business Software', featured:true, ic:'▣', desc:"Need more than a website? We build secure custom software — client portals, employee dashboards, membership sites, internal business tools, online learning platforms, e-commerce, and booking systems.", forWho:"For businesses ready to run more of their operation online.", included:['Client portals & dashboards','Employee / admin dashboards','Membership & learning platforms','Internal business tools & workflows','E-commerce & booking systems','Custom integrations & APIs'] },
-  { kicker:'04', name:'Personal Brands & Portfolios', featured:false, ic:'◆', desc:"For coaches, creatives, and consultants — a site that introduces you, showcases your work, and makes it easy for the right people to reach out.", forWho:"For coaches, creatives, consultants & personal brands.", included:['Personal bio & story section','Portfolio / gallery layout','Booking or inquiry forms','Social links & integrations','Testimonials section','Simple, easy-to-update structure'] },
-  { kicker:'05', name:'Website Management', featured:false, ic:'⟲', desc:"Launch day isn't the finish line. Our management plans keep your site online, secure, and current — so you can focus on running your business, not your website.", forWho:"For every client, after launch.", included:['Managed hosting','Security & software updates','Uptime & performance monitoring','Small content updates','Technical support','Priority response when you need help'] }
-];
-
-var testimonials = [
-  { name:'Abib Auto Sales', role:'Used Car Dealership', quote:"Our new site looks more professional than dealerships twice our size. Customers mention finding us online before they even walk in." },
-  { name:'There Is H.O.P.E. Ministries', role:'Faith · Nonprofit', quote:"Jacob took the time to understand our ministry and built something that actually feels like us. We started hearing from new visitors within the first week." },
-  { name:'Rich Eatz', role:'Luxury Catering', quote:"Inquiries picked up almost immediately after launch. The site finally matches the quality of what we offer." }
-];
-
-var mgmtPlan = ['Managed hosting','Security updates','Routine maintenance','Priority technical support','Small content updates','Direct access when you need help'];
-
-var processSteps = [
-  { name:'Discover', desc:"A conversation about your business, your customers, and what you need your site to do." },
-  { name:'Design', desc:"We design around your brand — built to make a strong first impression and guide visitors toward action." },
-  { name:'Build', desc:"We build, test, and refine, keeping you in the loop until everything is exactly right." },
-  { name:'Launch', desc:"Your site goes live — the milestone we build toward from day one." },
-  { name:'Support', desc:"We stay on to handle hosting, updates, and small changes, so your site keeps working for you." }
-];
-
-var faqs = [
-  { q:'How long does a project take?', a:"Most Launch-tier sites go live within about two weeks, and Growth or Business System projects typically take three to six weeks depending on scope and how quickly we get content and feedback from you." },
-  { q:'What do I need to provide?', a:"Just the basics — your logo (if you have one), any existing photos or text you'd like to use, and answers to a short discovery questionnaire. We can help fill in gaps with copywriting and stock imagery if needed." },
-  { q:'What happens after my site launches?', a:"You can choose a management plan that covers hosting, security updates, and small content changes, or take the files and manage things yourself. Most clients stay on a management plan for peace of mind." },
-  { q:'Can I make changes to my site later?', a:"Yes. Small updates are included in every management plan. For larger changes — new pages, redesigns, or added features — we'll provide a simple quote before getting started." }
-];
-
-// ---------- Render helpers ----------
-function pricingCardHTML(t){
-  var feat = t.featured ? ' featured' : '';
-  var tag = t.featured ? '<div class="poptag">Most Popular</div>' : '';
-  var feats = t.features.map(function(f){ return '<li>'+f+'</li>'; }).join('');
-  return '<div class="pricing-card'+feat+'" style="position:relative">'+tag+
-    '<div class="pname">'+t.name+'</div>'+
-    '<div class="pprice serif">'+t.price+t.priceSuffix+'</div>'+
-    '<div class="pnote">'+t.priceNote+'</div>'+
-    '<div class="pdesc">'+t.desc+'</div>'+
-    '<div class="mgmt">'+t.mgmtName+': '+t.mgmt+'</div>'+
-    '<ul>'+feats+'</ul>'+
-    '<a href="#contact" class="pricing-cta" data-nav="contact">Get started</a>'+
-  '</div>';
-}
-
-document.getElementById('pricingGridHome').innerHTML = pricingTiers.map(pricingCardHTML).join('');
-document.getElementById('pricingGridPage').innerHTML = pricingTiers.map(pricingCardHTML).join('');
-
-document.getElementById('testimonialsGrid').innerHTML = testimonials.map(function(t){
-  return '<div class="testi-card"><p class="quote">"'+t.quote+'"</p><div class="who"><b>'+t.name+'</b>'+t.role+'</div></div>';
-}).join('');
-
-document.getElementById('workGrid').innerHTML = work.map(function(w){
-  return '<div class="work-card">'+
-    '<div class="work-img"><img src="'+w.img+'" alt="'+w.name+' website mockup" loading="lazy"></div>'+
-    '<div class="work-info"><div class="tag">'+w.tag+'</div><h3>'+w.name+'</h3></div>'+
-    '<button class="work-toggle"><span>Problem → Solution → Result</span><span class="arrow">▾</span></button>'+
-    '<div class="work-psr">'+
-      '<div class="row"><div class="lbl">Problem</div><p>'+w.problem+'</p></div>'+
-      '<div class="row"><div class="lbl">Solution</div><p>'+w.solution+'</p></div>'+
-      '<div class="row"><div class="lbl">Result</div><p>'+w.result+'</p></div>'+
-    '</div>'+
-  '</div>';
-}).join('');
-
-document.getElementById('workGrid').addEventListener('click', function(e){
-  var btn = e.target.closest('.work-toggle');
-  if(!btn) return;
-  btn.closest('.work-card').classList.toggle('open');
-});
-
-function serviceIconCard(s, featClass){
-  return '<div class="service-card'+featClass+'"><div class="ic">'+s.ic+'</div><h3>'+s.name+'</h3><p>'+s.desc+'</p>'+(s.featured?'<span class="tagpill">Featured</span>':'')+'</div>';
-}
-document.getElementById('servicesTeaser').innerHTML = [services[0], services[2], services[4]].map(function(s){
-  return serviceIconCard(s, s.featured ? ' featured' : '');
-}).join('');
-
-document.getElementById('servicesList').innerHTML = services.map(function(s){
-  var inc = s.included.map(function(i){return '<li>'+i+'</li>';}).join('');
-  return '<div class="service-row">'+
-    '<div><div class="num-big serif">'+s.kicker+'</div><h3>'+s.name+'</h3><p class="desc">'+s.desc+'</p><span class="forwho">'+s.forWho+'</span></div>'+
-    '<div><ul class="included-list">'+inc+'</ul></div>'+
-  '</div>';
-}).join('');
-
-document.getElementById('mgmtList').innerHTML = mgmtPlan.map(function(c){ return '<li>'+c+'</li>'; }).join('');
-
-document.getElementById('processTrack').innerHTML = processSteps.map(function(p,i){
-  return '<div class="process-step"><div class="pnum">'+(i+1)+'</div><div><h3>'+p.name+'</h3><p>'+p.desc+'</p></div></div>';
-}).join('');
-
-document.getElementById('faqList').innerHTML = faqs.map(function(f,i){
-  return '<div class="faq-item'+(i===0?' open':'')+'" data-faq="'+i+'">'+
-    '<div class="faq-q">'+f.q+'<span class="icon">+</span></div>'+
-    '<div class="faq-a"><p>'+f.a+'</p></div>'+
-  '</div>';
-}).join('');
-
-// Marquee — duplicate list for seamless loop
+// ===== Luminous Topography — vanilla port of Motiq's LuminousTopography (MIT) =====
 (function(){
-  var html = '';
-  for(var r=0;r<2;r++){
-    clients.forEach(function(c){ html += '<span>'+c+'</span><span class="dia">◆</span>'; });
-  }
-  document.getElementById('marqueeTrack').innerHTML = html;
-})();
+  var host = document.getElementById('topo');
+  if(!host) return;
+  var W=1200,H=760,MARGIN=96,STEP=60,ACCENT='#E8E2D4',SPAN=H+MARGIN*2;
+  var opts={ density:1.6, depth:3, drift:0.85, intensity:1, lineWidth:1.3, seed:7,
+    interactive:true, pauseWhenHidden:true,
+    focal:{x:0.75,y:0.24}, safeArea:{x:0.05,y:0.34,w:0.9,h:0.5} };
 
-// ---------- FAQ accordion ----------
-document.getElementById('faqList').addEventListener('click', function(e){
-  var item = e.target.closest('.faq-item');
-  if(!item) return;
-  var wasOpen = item.classList.contains('open');
-  document.querySelectorAll('.faq-item').forEach(function(f){ f.classList.remove('open'); });
-  if(!wasOpen) item.classList.add('open');
-});
+  function makeRng(seed){var a=seed>>>0;return function(){a=(a+0x6d2b79f5)|0;var t=Math.imul(a^(a>>>15),1|a);t=(t+Math.imul(t^(t>>>7),61|t))^t;return ((t^(t>>>14))>>>0)/4294967296;};}
+  var round1=function(n){return Math.round(n*10)/10;};
+  var clamp=function(n,lo,hi){return Math.min(hi,Math.max(lo,n));};
 
-// ---------- Menu sheet ----------
-function closeSheet(){ document.getElementById('menuSheet').classList.remove('open'); }
-document.getElementById('menuBtn').addEventListener('click', function(){
-  document.getElementById('menuSheet').classList.add('open');
-});
-document.getElementById('sheetClose').addEventListener('click', closeSheet);
-document.getElementById('menuScrim').addEventListener('click', closeSheet);
-
-// ---------- Routing ----------
-var pages = ['home','work','services','pricing','about','contact'];
-function navigate(page){
-  if(pages.indexOf(page) === -1) page = 'home';
-  pages.forEach(function(p){
-    document.getElementById('page-'+p).classList.toggle('active', p === page);
-  });
-  document.querySelectorAll('[data-nav]').forEach(function(el){
-    el.classList.toggle('active', el.getAttribute('data-nav') === page);
-  });
-  closeSheet();
-  window.scrollTo({top:0, behavior:'instant'});
-  setupReveal();
-}
-function routeFromHash(){
-  var page = (location.hash || '#home').replace('#','');
-  navigate(page);
-}
-window.addEventListener('hashchange', routeFromHash);
-
-document.querySelectorAll('[data-nav]').forEach(function(el){
-  el.addEventListener('click', function(e){
-    var target = this.getAttribute('data-nav');
-    location.hash = '#'+target;
-  });
-});
-
-// ---------- Reveal on scroll ----------
-var revealObserver = new IntersectionObserver(function(entries){
-  entries.forEach(function(entry){
-    if(entry.isIntersecting){
-      entry.target.classList.add('in');
-      revealObserver.unobserve(entry.target);
+  function toPath(pts){
+    if(pts.length<2) return '';
+    var d='M '+round1(pts[0][0])+' '+round1(pts[0][1]);
+    for(var i=0;i<pts.length-1;i++){
+      var p0=pts[i-1]||pts[i],p1=pts[i],p2=pts[i+1],p3=pts[i+2]||p2;
+      var c1x=p1[0]+(p2[0]-p0[0])/6, c1y=p1[1]+(p2[1]-p0[1])/6;
+      var c2x=p2[0]-(p3[0]-p1[0])/6, c2y=p2[1]-(p3[1]-p1[1])/6;
+      d+=' C '+round1(c1x)+' '+round1(c1y)+', '+round1(c2x)+' '+round1(c2y)+', '+round1(p2[0])+' '+round1(p2[1]);
     }
-  });
-}, { threshold: 0.12 });
-
-function setupReveal(){
-  document.querySelectorAll('.page.active [data-reveal]:not(.in)').forEach(function(el){
-    revealObserver.observe(el);
-  });
-}
-
-// ---------- Contact form ----------
-document.getElementById('contactForm').addEventListener('submit', async function(e){
-  e.preventDefault();
-  var name = document.getElementById('f-name');
-  var email = document.getElementById('f-email');
-  var does = document.getElementById('f-does');
-  var message = document.getElementById('f-message');
-  var valid = true;
-  [name,email,does,message].forEach(function(f){
-    f.classList.remove('err');
-    if(!f.value.trim()){ f.classList.add('err'); valid = false; }
-  });
-  if(email.value.trim() && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value.trim())){
-    email.classList.add('err'); valid = false;
+    return d;
   }
-  if(!valid) return;
+  function normalizeFocals(f){ return [{x:f.x*W,y:f.y*H,amp:74,sx:210,sy:150}]; }
 
-  var btn = this.querySelector('.submit-btn');
-  btn.disabled = true;
-  btn.textContent = 'Sending…';
+  function buildGeometry(seed,depth,density,drift,focals){
+    var layers=[], nLayers=clamp(Math.round(depth),1,4);
+    for(var li=0; li<nLayers; li++){
+      var rng=makeRng((seed>>>0)*2654435761+li*40503+17), harmonics=[];
+      for(var hh=0; hh<3; hh++){harmonics.push({f:0.0032+rng()*0.0052,a:(5+rng()*9)*(1-li*0.12),p:rng()*Math.PI*2,g:(rng()-0.5)*0.012});}
+      var count=Math.max(5,Math.round((8+density*6)*(1-li*0.07))), span=H+MARGIN*2, spacing=span/count, contours=[];
+      for(var k=0;k<count;k++){
+        var baseY=-MARGIN+spacing*(k+0.5)+(rng()-0.5)*7, pts=[];
+        for(var x=-MARGIN;x<=W+MARGIN;x+=STEP){
+          var dsp=0;
+          for(var fi=0;fi<focals.length;fi++){
+            var f=focals[fi], dx=x-f.x, ex=Math.exp(-(dx*dx)/(2*f.sx*f.sx));
+            var dy=baseY-f.y, vy=Math.exp(-(dy*dy)/(2*f.sy*f.sy)), dir=dy>=0?1:-1;
+            dsp+=f.amp*ex*(0.52+0.48*vy*dir)*(1-li*0.14);
+          }
+          for(var hi=0;hi<harmonics.length;hi++){var h=harmonics[hi];dsp+=h.a*Math.sin(x*h.f+h.p+baseY*h.g);}
+          pts.push([x,baseY-dsp]);
+        }
+        contours.push({d:toPath(pts),o:round1(clamp(0.46-li*0.12,0.12,0.5))});
+      }
+      var dir2=li%2===0?-1:1;
+      layers.push({contours:contours,dx:round1(dir2*(18-li*4)*drift),dy:round1(-(7-li*1.5)*drift),dur:round1(16+li*6+(li===0?0:2))});
+    }
+    return {layers:layers};
+  }
 
-  try {
-    var res = await fetch('https://api.web3forms.com/submit', {
-      method: 'POST',
-      headers: {'Content-Type':'application/json','Accept':'application/json'},
-      body: JSON.stringify({
-        access_key: '2fac6cbf-8123-421e-8b5c-772702296900',
-        subject: 'New project inquiry — Luminate Web Design',
-        name: name.value.trim(),
-        email: email.value.trim(),
-        business: document.getElementById('f-business').value.trim(),
-        phone: document.getElementById('f-phone').value.trim(),
-        what_business_does: does.value.trim(),
-        has_website: document.getElementById('f-hasSite').value,
-        biggest_challenge: document.getElementById('f-challenge').value.trim(),
-        target_launch: document.getElementById('f-launch').value.trim(),
-        budget: document.getElementById('f-budget').value,
-        message: message.value.trim()
-      })
+  var focals=normalizeFocals(opts.focal);
+  var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var geom=buildGeometry(opts.seed,opts.depth,opts.density, reduced?0:opts.drift, focals);
+  var primary=focals[0];
+  var sa={cx:(opts.safeArea.x+opts.safeArea.w/2)*W, cy:(opts.safeArea.y+opts.safeArea.h/2)*H, rx:(opts.safeArea.w/2)*W*1.18, ry:(opts.safeArea.h/2)*H*1.18};
+  var dimStroke='rgba(196,209,226,'+round1(clamp(0.16*opts.intensity,0.05,0.3))+')';
+  var uid='hero';
+
+  function grad(id,cx,cy,r,stops){return '<radialGradient id="'+id+'" cx="'+cx+'" cy="'+cy+'" r="'+r+'">'+stops+'</radialGradient>';}
+  var washStops='<stop offset="0%" stop-color="'+ACCENT+'" stop-opacity="'+round1(0.16*opts.intensity)+'"/><stop offset="55%" stop-color="'+ACCENT+'" stop-opacity="'+round1(0.05*opts.intensity)+'"/><stop offset="100%" stop-color="'+ACCENT+'" stop-opacity="0"/>';
+  var lightStops='<stop offset="0%" stop-color="#fff" stop-opacity="1"/><stop offset="55%" stop-color="#fff" stop-opacity="0.55"/><stop offset="100%" stop-color="#fff" stop-opacity="0"/>';
+  var safeStops='<stop offset="0%" stop-color="rgb(26,26,26)"/><stop offset="62%" stop-color="rgb(120,120,120)"/><stop offset="100%" stop-color="#fff"/>';
+
+  var defs='<defs>'
+    +grad('wash-'+uid,((primary.x/W)*100)+'%',((primary.y/H)*100)+'%','72%',washStops)
+    +grad('lightgrad-'+uid,'50%','50%','50%',lightStops)
+    +grad('safegrad-'+uid,'50%','50%','50%',safeStops)
+    +'<mask id="safe-'+uid+'" maskUnits="userSpaceOnUse" x="0" y="0" width="'+W+'" height="'+H+'">'
+      +'<rect x="0" y="0" width="'+W+'" height="'+H+'" fill="#fff"/>'
+      +'<ellipse cx="'+round1(sa.cx)+'" cy="'+round1(sa.cy)+'" rx="'+round1(sa.rx)+'" ry="'+round1(sa.ry)+'" fill="url(#safegrad-'+uid+')"/>'
+    +'</mask>'
+    +'<mask id="light-'+uid+'" maskUnits="userSpaceOnUse" x="'+(-W)+'" y="'+(-H)+'" width="'+(W*3)+'" height="'+(H*3)+'">'
+      +'<g class="mk-lt-sweep"><ellipse cx="'+(W/2)+'" cy="'+(H*0.5)+'" rx="'+(W*0.42)+'" ry="'+(H*0.72)+'" fill="url(#lightgrad-'+uid+')"/></g>'
+      +(opts.interactive?'<ellipse class="mk-lt-cursor" cx="0" cy="0" rx="'+(W*0.2)+'" ry="'+(W*0.2)+'" fill="url(#lightgrad-'+uid+')" style="opacity:calc(var(--lt-cursor,0) * 0.9);transform:translate(calc(var(--lt-cx,600) * 1px), calc(var(--lt-cy,380) * 1px))"/>':'')
+    +'</mask>'
+  +'</defs>';
+
+  var body='<rect class="mk-lt-wash" x="0" y="0" width="'+W+'" height="'+H+'" fill="url(#wash-'+uid+')"/><g mask="url(#safe-'+uid+')">';
+  for(var li=0; li<geom.layers.length; li++){
+    var layer=geom.layers[li], dur=round1(34+li*14), delay=round1(-li*5), flowStyle='--fdur:'+dur+'s;animation-delay:'+delay+'s';
+    var dimPaths='';
+    for(var i=0;i<layer.contours.length;i++){var c=layer.contours[i];
+      dimPaths+='<path d="'+c.d+'" stroke="'+dimStroke+'" stroke-opacity="'+c.o+'" stroke-width="'+round1(opts.lineWidth*(1-li*0.12))+'" stroke-linecap="round"/>';}
+    var brightPaths='';
+    for(var j=0;j<layer.contours.length;j++){var c2=layer.contours[j];
+      brightPaths+='<path d="'+c2.d+'" stroke="'+ACCENT+'" stroke-opacity="'+round1(clamp(0.9*opts.intensity,0.3,1))+'" stroke-width="'+round1(opts.lineWidth*(1-li*0.08))+'" stroke-linecap="round"/>';}
+    // dim lines flow continuously; bright reveal sits under a fixed traveling-light mask above the flow
+    body+='<g class="mk-lt-layer" data-i="'+li+'">'
+      +'<g class="mk-lt-flow" style="'+flowStyle+'"><g class="mk-lt-dim">'+dimPaths+'</g><g class="mk-lt-dim" transform="translate(0,'+SPAN+')">'+dimPaths+'</g></g>'
+      +'<g mask="url(#light-'+uid+')"><g class="mk-lt-flow" style="'+flowStyle+'"><g class="mk-lt-bright">'+brightPaths+'</g><g class="mk-lt-bright" transform="translate(0,'+SPAN+')">'+brightPaths+'</g></g></g>'
+      +'</g>';
+  }
+  body+='</g>';
+
+  host.innerHTML='<svg viewBox="0 0 '+W+' '+H+'" preserveAspectRatio="xMidYMid slice" role="presentation">'+defs+body+'</svg>';
+
+  if(opts.interactive && !reduced){
+    var raf=0, nx=W/2, ny=H/2, section=host.parentElement||host;
+    function apply(){raf=0;host.style.setProperty('--lt-cx',String(round1(nx)));host.style.setProperty('--lt-cy',String(round1(ny)));host.style.setProperty('--lt-cursor','1');}
+    section.addEventListener('pointermove',function(e){
+      var r=host.getBoundingClientRect(); if(!r.width||!r.height) return;
+      nx=((e.clientX-r.left)/r.width)*W; ny=((e.clientY-r.top)/r.height)*H;
+      if(!raf) raf=requestAnimationFrame(apply);
     });
-    var data = await res.json();
-    if(data.success){
-      document.getElementById('contactForm').style.display = 'none';
-      document.getElementById('thankYou').style.display = 'block';
-    } else {
-      btn.disabled = false;
-      btn.textContent = 'Send project details';
-      alert('Something went wrong. Please try again or email us directly.');
-    }
-  } catch(err) {
-    btn.disabled = false;
-    btn.textContent = 'Send project details';
-    alert('Something went wrong. Please try again or email us directly.');
+    section.addEventListener('pointerleave',function(){host.style.setProperty('--lt-cursor','0');});
   }
-});
 
-// ---------- Init ----------
-routeFromHash();
+  if(opts.pauseWhenHidden){
+    var onScreen=true, tabVisible=true;
+    function sync(){host.setAttribute('data-paused',(onScreen&&tabVisible)?'false':'true');}
+    if('IntersectionObserver' in window){
+      var io=new IntersectionObserver(function(es){onScreen=es.some(function(e){return e.isIntersecting;});sync();},{threshold:0.01});
+      io.observe(host);
+    }
+    document.addEventListener('visibilitychange',function(){tabVisible=document.visibilityState!=='hidden';sync();});
+  }
+})();
 </script>
 
+<script>
+// Selected work cards
+(function(){
+  var work = [
+    {n:'Abib Auto Sales', t:'Used Car Dealership'},
+    {n:'Dingle Tennis Academy', t:'Sports Coaching'},
+    {n:'Rich Eatz', t:'Restaurant'},
+    {n:'Creations by Melanie', t:'Custom Bakery'},
+    {n:'MACH Academy', t:'Nonprofit'},
+    {n:'Busy B Construction', t:'Construction'},
+    {n:'Elite Shaken Lemonade', t:'Food &amp; Beverage'},
+    {n:'There Is H.O.P.E. Ministries', t:'Ministry'},
+  ];
+  var g = document.getElementById('projects');
+  g.innerHTML = work.map(function(w){
+    return '<article class="card-hover rounded-2xl overflow-hidden surface">'
+      + '<div class="aspect-[16/10] w-full relative overflow-hidden">'
+      +   '<div class="absolute inset-0" style="background:linear-gradient(155deg,#173052,#101F35)"></div>'
+      +   '<div class="absolute inset-0 flex items-center justify-center serif text-accent/25 text-[86px] font-700">'+w.n.charAt(0)+'</div>'
+      +   '<div class="absolute inset-0" style="background:linear-gradient(to top,rgba(10,21,36,.7),transparent 55%)"></div>'
+      + '</div>'
+      + '<div class="flex justify-between items-center px-5 py-4 text-[12px]">'
+      +   '<span class="text-ink border-l-2 border-accent pl-2">'+w.n+'</span>'
+      +   '<span class="text-dim2">'+w.t+'</span>'
+      + '</div></article>';
+  }).join('');
+})();
+
+// FAQ accordion
+(function(){
+  var faqs = [
+    {q:'What does Luminate do?', a:'We design and build premium websites and custom business software — from a first professional site to client portals, dashboards, and internal tools — and stay on to manage them.'},
+    {q:'Who do you work best with?', a:'Local businesses, ministries, nonprofits, and growing companies who value quality. We are not the right fit for DIY, cheapest-option shoppers, or one-off Fiverr projects.'},
+    {q:'What is your process like?', a:'It starts with a conversation about your business. Then we design, build, and launch — with one point of contact the whole way through.'},
+    {q:'How long does it take to launch?', a:'Most marketing sites launch in about 1–2 weeks. Custom software timelines depend on scope and are scoped up front.'},
+    {q:'What do you need from me to get started?', a:'A short note on what your business does and your goals. We handle design, copy, hosting, and SEO from there.'},
+  ];
+  var el = document.getElementById('faq');
+  el.innerHTML = faqs.map(function(f,i){
+    var open = i===0;
+    return '<div class="faq-item rounded-xl mb-3 overflow-hidden border '+(open?'floating border-transparent':'surface')+'">'
+      + '<button class="faq-q w-full flex items-center gap-4 text-left px-6 py-5">'
+      +   '<span class="serif text-[16px] font-700 '+(open?'text-accent':'text-dim2')+'">'+String(i+1).padStart(2,'0')+'</span>'
+      +   '<span class="flex-1 text-[15px] font-600 text-ink">'+f.q+'</span>'
+      +   '<span class="w-7 h-7 rounded-full flex items-center justify-center flex-none '+(open?'bg-[rgba(232,226,212,.16)] text-accent':'bg-white/5 text-accent')+'">'+(open?'▴':'▾')+'</span>'
+      + '</button>'
+      + '<div class="faq-a px-6 '+(open?'pb-6':'hidden')+'"><p class="text-[13.5px] text-dim leading-relaxed pl-9">'+f.a+'</p></div>'
+      + '</div>';
+  }).join('');
+  el.querySelectorAll('.faq-q').forEach(function(btn){
+    btn.addEventListener('click', function(){ btn.parentElement.querySelector('.faq-a').classList.toggle('hidden'); });
+  });
+})();
+
+// Reveal
+(function(){
+  var io = new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.1,rootMargin:'0px 0px -6% 0px'});
+  document.querySelectorAll('[data-reveal]').forEach(function(el){io.observe(el);});
+})();
+</script>
 </body>
 </html>
