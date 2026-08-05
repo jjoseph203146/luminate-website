@@ -139,7 +139,11 @@ tailwind.config = {
         <a class="navlink" href="#pricing">Pricing</a>
         <a class="navlink" href="#about">About</a>
       </div>
-      <a href="#connect" class="btn btn-primary !py-2 !px-6">Start your project</a>
+      <div class="flex items-center gap-3">
+        <a href="https://billing.stripe.com/p/login/4gM00lbnqbFr9pbfkXgbm00" target="_blank" rel="noopener" class="btn btn-ghost !py-2 !px-5 !text-[13px] hidden sm:inline-flex">Manage Subscription</a>
+        <a href="/portal.html" class="btn btn-ghost !py-2 !px-5 !text-[13px] hidden sm:inline-flex">Client Portal</a>
+        <a href="#connect" class="btn btn-primary !py-2 !px-6">Start your project</a>
+      </div>
     </nav>
 
     <!-- hero content -->
@@ -340,16 +344,32 @@ tailwind.config = {
       <div class="aspect-square rounded-full glass shadow-[0_40px_80px_-40px_rgba(0,0,0,.55)] flex items-center justify-center max-w-[420px]" data-reveal>
         <span class="serif text-[120px] font-700 text-navy/60">L</span>
       </div>
-      <form class="surface rounded-2xl p-8 grid sm:grid-cols-2 gap-4" data-reveal onsubmit="return false">
-        <input class="fld" placeholder="Your name">
-        <input class="fld" placeholder="Business name">
-        <input class="fld" placeholder="Your email">
-        <input class="fld" placeholder="Phone">
-        <input class="fld sm:col-span-2" placeholder="What does your business do?">
-        <select class="fld sm:col-span-2 text-dim2"><option>Service you're interested in</option><option>Website Design &amp; Build</option><option>Custom Business Software</option><option>Ongoing Management</option></select>
-        <textarea class="fld sm:col-span-2 min-h-[110px] resize-y" placeholder="Anything else we should know?"></textarea>
-        <button type="submit" class="btn btn-primary sm:col-span-2 w-full">Send project details</button>
-      </form>
+      <div data-reveal>
+        <form id="contactForm" class="surface rounded-2xl p-8 grid sm:grid-cols-2 gap-4">
+          <input type="hidden" name="access_key" value="2fac6cbf-8123-421e-8b5c-772702296900">
+          <input type="hidden" name="subject" value="New project inquiry — Luminate Web Design">
+          <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off">
+          <input class="fld" id="f-name" name="name" placeholder="Your name" required>
+          <input class="fld" id="f-business" name="business" placeholder="Business name">
+          <input class="fld" id="f-email" name="email" type="email" placeholder="Your email" required>
+          <input class="fld" id="f-phone" name="phone" type="tel" placeholder="Phone">
+          <input class="fld sm:col-span-2" id="f-about" name="about" placeholder="What does your business do?">
+          <select class="fld sm:col-span-2 text-dim2" id="f-type" name="projectType">
+            <option value="">Service you're interested in</option>
+            <option>Website Design &amp; Build</option>
+            <option>Custom Business Software</option>
+            <option>Ongoing Management</option>
+          </select>
+          <textarea class="fld sm:col-span-2 min-h-[110px] resize-y" id="f-message" name="message" placeholder="Anything else we should know?" required></textarea>
+          <div id="form-error" class="sm:col-span-2 text-[13px] text-brred hidden"></div>
+          <button type="submit" class="btn btn-primary sm:col-span-2 w-full" id="contactSubmitBtn">Send project details</button>
+        </form>
+        <div class="surface rounded-2xl p-8 text-center hidden" id="contactThanks">
+          <div class="w-16 h-16 rounded-full border border-brgreen text-brgreen flex items-center justify-center text-[26px] mx-auto mb-5">✓</div>
+          <h3 class="serif text-[22px] font-600 mb-2">Thank you — message sent.</h3>
+          <p class="text-dim2 text-[14px]">We'll be in touch within one business day.</p>
+        </div>
+      </div>
     </div>
 
     <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-5 mt-16 border-t hairline pt-10" data-reveal>
@@ -379,7 +399,7 @@ tailwind.config = {
       <div><h5 class="text-[13px] font-700 mb-4 text-ink">Services</h5><ul class="space-y-3 text-[13px] text-dim2">
         <li><a href="#services" class="hover:text-ink transition-colors">Website Design</a></li><li><a href="#services" class="hover:text-ink transition-colors">Custom Software</a></li><li><a href="#services" class="hover:text-ink transition-colors">Ongoing Management</a></li><li><a href="#work" class="hover:text-ink transition-colors">Our Work</a></li><li><a href="#pricing" class="hover:text-ink transition-colors">Pricing</a></li></ul></div>
       <div><h5 class="text-[13px] font-700 mb-4 text-ink">Company</h5><ul class="space-y-3 text-[13px] text-dim2">
-        <li><a href="#about" class="hover:text-ink transition-colors">About</a></li><li><a href="#connect" class="hover:text-ink transition-colors">Contact</a></li><li><a href="/portal.html" class="hover:text-ink transition-colors">Client Portal</a></li></ul></div>
+        <li><a href="#about" class="hover:text-ink transition-colors">About</a></li><li><a href="#connect" class="hover:text-ink transition-colors">Contact</a></li><li><a href="/portal.html" class="hover:text-ink transition-colors">Client Portal</a></li><li><a href="https://billing.stripe.com/p/login/4gM00lbnqbFr9pbfkXgbm00" target="_blank" rel="noopener" class="hover:text-ink transition-colors">Manage Subscription</a></li></ul></div>
       <div><h5 class="text-[13px] font-700 mb-4 text-ink">Get in touch</h5><ul class="space-y-3 text-[13px] text-dim2">
         <li><a href="tel:7622279287" class="hover:text-ink transition-colors">(762) 227-9287</a></li><li><a href="mailto:luminatewebco@gmail.com" class="hover:text-ink transition-colors">luminatewebco@gmail.com</a></li><li>Augusta &amp; the CSRA</li></ul></div>
     </div>
@@ -399,6 +419,7 @@ tailwind.config = {
   .fld{background:#0C1729;border:1px solid rgba(196,209,226,.10);border-radius:12px;padding:13px 15px;color:#F4F7FB;font-size:14px;outline:none;transition:border-color .25s}
   .fld::placeholder{color:rgba(196,209,226,.4)}
   .fld:focus{border-color:#E8E2D4}
+  .fld.err{border-color:#E0796B}
 </style>
 
 <script>
@@ -581,6 +602,67 @@ tailwind.config = {
 (function(){
   var io = new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.1,rootMargin:'0px 0px -6% 0px'});
   document.querySelectorAll('[data-reveal]').forEach(function(el){io.observe(el);});
+})();
+
+// Contact form
+(function(){
+  var form = document.getElementById('contactForm');
+  if(!form) return;
+  form.addEventListener('submit', async function(e){
+    e.preventDefault();
+    var name = document.getElementById('f-name');
+    var email = document.getElementById('f-email');
+    var message = document.getElementById('f-message');
+    var errorBox = document.getElementById('form-error');
+    errorBox.classList.add('hidden');
+
+    var valid = true;
+    [name, email, message].forEach(function(f){
+      f.classList.remove('err');
+      if(!f.value.trim()){ f.classList.add('err'); valid = false; }
+    });
+    if(email.value.trim() && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value.trim())){
+      email.classList.add('err'); valid = false;
+    }
+    if(!valid) return;
+
+    var btn = document.getElementById('contactSubmitBtn');
+    btn.disabled = true;
+    btn.textContent = 'Sending…';
+
+    try {
+      var res = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: {'Content-Type':'application/json','Accept':'application/json'},
+        body: JSON.stringify({
+          access_key: '2fac6cbf-8123-421e-8b5c-772702296900',
+          subject: 'New project inquiry — Luminate Web Design',
+          name: name.value.trim(),
+          email: email.value.trim(),
+          business: document.getElementById('f-business').value.trim(),
+          phone: document.getElementById('f-phone').value.trim(),
+          about: document.getElementById('f-about').value.trim(),
+          project_type: document.getElementById('f-type').value,
+          message: message.value.trim()
+        })
+      });
+      var data = await res.json();
+      if(data.success){
+        form.classList.add('hidden');
+        document.getElementById('contactThanks').classList.remove('hidden');
+      } else {
+        btn.disabled = false;
+        btn.textContent = 'Send project details';
+        errorBox.textContent = 'Something went wrong. Please try again or email us directly.';
+        errorBox.classList.remove('hidden');
+      }
+    } catch(err) {
+      btn.disabled = false;
+      btn.textContent = 'Send project details';
+      errorBox.textContent = 'Something went wrong. Please try again or email us directly.';
+      errorBox.classList.remove('hidden');
+    }
+  });
 })();
 </script>
 </body>
