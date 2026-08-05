@@ -172,8 +172,11 @@ tailwind.config = {
   <div class="max-w-[1180px] mx-auto px-6">
     <h3 class="serif text-[22px] font-600 track-tight mb-8" data-reveal>Trusted by local businesses,<br>ministries &amp; nonprofits</h3>
     <div class="grid md:grid-cols-[300px_1fr] gap-8 items-center" data-reveal>
-      <div class="aspect-square rounded-2xl glass shadow-[0_30px_60px_-30px_rgba(0,0,0,.6)] flex items-center justify-center">
-        <span class="serif text-[96px] font-700 text-navy/70">L</span>
+      <div class="aspect-square rounded-2xl overflow-hidden shadow-[0_30px_60px_-30px_rgba(0,0,0,.6)] grid grid-cols-2 grid-rows-2 gap-[3px] bg-navy2">
+        <img src="images/work/abib-auto-sales.jpg" alt="Abib Auto Sales" loading="lazy" class="w-full h-full object-cover">
+        <img src="images/work/rich-eatz.jpg" alt="Rich Eatz" loading="lazy" class="w-full h-full object-cover">
+        <img src="images/work/hope-ministries.jpg" alt="There Is H.O.P.E. Ministries" loading="lazy" class="w-full h-full object-cover">
+        <img src="images/work/dingle-tennis-academy.jpg" alt="Dingle Tennis Academy" loading="lazy" class="w-full h-full object-cover">
       </div>
       <div class="surface p-10">
         <div class="grid grid-cols-2 sm:grid-cols-3 gap-x-6 gap-y-6 items-center">
@@ -185,6 +188,7 @@ tailwind.config = {
           <span class="serif text-[15px] text-dim text-center">Busy B Construction</span>
           <span class="serif text-[15px] text-dim text-center">MACH Academy</span>
           <span class="serif text-[15px] text-dim text-center">Realistic Impressions</span>
+          <span class="serif text-[15px] text-dim text-center">Extra Credit Creations</span>
           <span class="serif text-[15px] text-dim text-center">There Is H.O.P.E. Ministries</span>
         </div>
       </div>
@@ -204,7 +208,7 @@ tailwind.config = {
         <div class="surface p-7"><div class="serif text-[44px] font-700 text-ink">24h</div><div class="text-[13px] text-dim2 mt-2">Typical response time</div></div>
       </div>
       <div class="rounded-2xl glass min-h-[220px] flex items-center justify-center">
-        <span class="serif text-[80px] font-700 text-navy/70">L</span>
+        <img src="brand_assets/luminatelogo1.png" alt="Luminate" class="w-24 h-24 rounded-2xl object-cover shadow-[0_20px_40px_-20px_rgba(0,0,0,.5)]">
       </div>
     </div>
   </div>
@@ -267,8 +271,8 @@ tailwind.config = {
           <div><h4 class="text-accent font-700 text-[17px]">Ongoing Management</h4><p class="text-[13.5px] text-dim mt-1.5 leading-relaxed">Hosting, security, updates, and SEO handled for you — so your site keeps working long after launch and never goes stale.</p></div>
         </div>
       </div>
-      <div class="aspect-square rounded-full glass shadow-[0_40px_80px_-40px_rgba(0,0,0,.6)] flex items-center justify-center" data-reveal>
-        <span class="serif text-[110px] font-700 text-navy/60">L</span>
+      <div class="aspect-square rounded-full glass shadow-[0_40px_80px_-40px_rgba(0,0,0,.6)] flex items-center justify-center overflow-hidden" data-reveal>
+        <img src="brand_assets/luminatelogo1.png" alt="Luminate" class="w-28 h-28 rounded-2xl object-cover shadow-[0_20px_40px_-20px_rgba(0,0,0,.5)]">
       </div>
     </div>
   </div>
@@ -284,7 +288,7 @@ tailwind.config = {
       </div>
       <h2 class="serif text-[36px] sm:text-[52px] font-600 leading-[1.06] track-tight">Real businesses. Real problems solved.</h2>
     </div>
-    <div class="grid sm:grid-cols-2 gap-5" id="projects" data-reveal></div>
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5" id="projects" data-reveal></div>
   </div>
 </section>
 
@@ -341,8 +345,8 @@ tailwind.config = {
       <p class="text-[14px] text-dim2 mt-3 max-w-[460px]">Tell us a bit about your business so we come to the conversation prepared. We'll get back to you within one business day.</p>
     </div>
     <div class="grid lg:grid-cols-[.9fr_1.1fr] gap-12 items-center">
-      <div class="aspect-square rounded-full glass shadow-[0_40px_80px_-40px_rgba(0,0,0,.55)] flex items-center justify-center max-w-[420px]" data-reveal>
-        <span class="serif text-[120px] font-700 text-navy/60">L</span>
+      <div class="aspect-square rounded-full glass shadow-[0_40px_80px_-40px_rgba(0,0,0,.55)] flex items-center justify-center max-w-[420px] overflow-hidden" data-reveal>
+        <img src="brand_assets/luminatelogo1.png" alt="Luminate" class="w-32 h-32 rounded-2xl object-cover shadow-[0_20px_40px_-20px_rgba(0,0,0,.5)]">
       </div>
       <div data-reveal>
         <form id="contactForm" class="surface rounded-2xl p-8 grid sm:grid-cols-2 gap-4">
@@ -548,22 +552,29 @@ tailwind.config = {
 // Selected work cards
 (function(){
   var work = [
-    {n:'Abib Auto Sales', t:'Used Car Dealership'},
-    {n:'Dingle Tennis Academy', t:'Sports Coaching'},
-    {n:'Rich Eatz', t:'Restaurant'},
-    {n:'Creations by Melanie', t:'Custom Bakery'},
-    {n:'MACH Academy', t:'Nonprofit'},
-    {n:'Busy B Construction', t:'Construction'},
-    {n:'Elite Shaken Lemonade', t:'Food &amp; Beverage'},
-    {n:'There Is H.O.P.E. Ministries', t:'Ministry'},
+    { n:'Abib Auto Sales', t:'Used Car Dealership', img:'images/work/abib-auto-sales.jpg', desc:"A clean, trustworthy storefront for a local used car dealership — full inventory showcase, financing info, and click-to-call throughout." },
+    { n:'Dingle Tennis Academy', t:'Sports Coaching', img:'images/work/dingle-tennis-academy.jpg', desc:"A high-energy site for a tennis coaching academy, built to drive lesson sign-ups and showcase programs for all skill levels." },
+    { n:'There Is H.O.P.E. Ministries', t:'Faith · Nonprofit', img:'images/work/hope-ministries.jpg', desc:"A warm, welcoming site for a local ministry — service times, outreach programs, and a simple way for the community to get involved." },
+    { n:'Elite Shaken Lemonade', t:'Food & Beverage', img:'images/work/elite-shaken-lemonade.jpg', desc:"A bright, appetite-driving site for a specialty beverage brand, built to highlight flavors, locations, and booking for events." },
+    { n:'Rich Eatz', t:'Luxury Catering', img:'images/work/rich-eatz.jpg', desc:"An elevated, image-forward site for a luxury catering brand — built to showcase menus and make inquiries effortless." },
+    { n:'Extra Credit Creations', t:'E-Commerce', img:'images/work/extra-credit-creations.jpg', desc:"A custom storefront for a creative e-commerce brand, designed to make browsing and checkout feel as good as the products." },
+    { n:'Busy B Construction', t:'Contractor', img:'images/work/busy-b-construction.jpg', desc:"A straightforward, credibility-first site for a local contractor — services, past projects, and an easy way to request a quote." },
+    { n:'Creations by Melanie', t:'Custom Bakery', img:'images/work/creations-by-melanie.jpg', desc:"A delicious-looking site for a custom bakery, with a gallery of past work and a simple ordering inquiry flow." },
+    { n:'Realistic Impressions', t:'T-Shirt Printing', img:'images/work/realistic-impressions.jpg', desc:"A bold, modern site for a local print shop — built to make ordering custom apparel feel quick and easy." },
+    { n:'MACH Academy', t:'Nonprofit · Tennis', img:'images/work/mach-academy.jpg', desc:"A community-focused site for a youth tennis nonprofit, designed to highlight programs, impact, and ways to support the mission." },
+    { n:'Florida Tennis Family', t:'Tennis Organization', img:'images/work/florida-tennis-family.png', desc:"The official Florida Section of the American Tennis Association — connecting clubs, players, and communities statewide." },
+    { n:'Alicia Fitts Show', t:'Talk Show · Podcast', img:'images/work/alicia-fitts-show.png', desc:"Alicia Fitts Show brings positive stories, financial insights, and community spotlights that the CSRA deserves to hear." },
+    { n:'Odell Cleveland', t:'Faith · Leadership Consulting', img:'images/work/odellcleveland.jpg', desc:"A strategic growth site for a faith leadership consultant — built to book strategy sessions and showcase his stewardship-driven approach." },
   ];
   var g = document.getElementById('projects');
   g.innerHTML = work.map(function(w){
-    return '<article class="card-hover rounded-2xl overflow-hidden surface">'
+    return '<article class="card-hover rounded-2xl overflow-hidden surface group">'
       + '<div class="aspect-[16/10] w-full relative overflow-hidden">'
-      +   '<div class="absolute inset-0" style="background:linear-gradient(155deg,#173052,#101F35)"></div>'
-      +   '<div class="absolute inset-0 flex items-center justify-center serif text-accent/25 text-[86px] font-700">'+w.n.charAt(0)+'</div>'
-      +   '<div class="absolute inset-0" style="background:linear-gradient(to top,rgba(10,21,36,.7),transparent 55%)"></div>'
+      +   '<img src="'+w.img+'" alt="'+w.n+' website mockup" loading="lazy" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">'
+      +   '<div class="absolute inset-0 flex flex-col justify-end p-5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" style="background:linear-gradient(to top,rgba(10,21,36,.94) 15%,rgba(10,21,36,.2) 65%,transparent 100%)">'
+      +     '<span class="text-accent text-[11px] track-wide font-700">'+w.t+'</span>'
+      +     '<p class="text-dim text-[12.5px] leading-relaxed mt-1.5">'+w.desc+'</p>'
+      +   '</div>'
       + '</div>'
       + '<div class="flex justify-between items-center px-5 py-4 text-[12px]">'
       +   '<span class="text-ink border-l-2 border-accent pl-2">'+w.n+'</span>'
