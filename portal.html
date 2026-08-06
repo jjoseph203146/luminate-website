@@ -1385,6 +1385,12 @@
     renderNav();
     $('pageRoot').innerHTML = PAGES[state.page] ? PAGES[state.page]() : pageDashboard();
     $('drawerOverlay').style.display = (state.isMobile && state.drawerOpen) ? 'flex' : 'none';
+    // The poll decides whether to repaint by comparing against what is on
+    // screen, so the baseline has to be refreshed by every render — not just
+    // by polls. A lazily-loaded section or a locally submitted comment also
+    // changes what's displayed, and without this the next poll would see a
+    // stale baseline and repaint for no reason.
+    lastSignature = dataSignature();
   }
 
   function goto(page){
@@ -1580,15 +1586,45 @@
   var pollDelay = POLL_INTERVAL_MS;
   var lastSignature = '';
 
+  // Document and report links are signed URLs, minted fresh by the server on
+  // every request. They differ on each poll even when nothing has changed, so
+  // including them in the comparison would repaint the page every 60 seconds
+  // forever. The link the client clicks is always the newest one regardless —
+  // this only governs whether a repaint is warranted.
+  var VOLATILE_KEYS = { downloadUrl: true, pdfUrl: true };
+
+  function stable(value){
+    if (Array.isArray(value)) return value.map(stable);
+    if (value && typeof value === 'object') {
+      var out = {};
+      Object.keys(value).sort().forEach(function(k){
+        if (!VOLATILE_KEYS[k]) out[k] = stable(value[k]);
+      });
+      return out;
+    }
+    return value;
+  }
+
+  // Sections load lazily and only the loaded ones are polled — fetching a tab
+  // the client has never opened would defeat the point of loading it lazily.
+  function loadedSectionKeys(){
+    return Object.keys(SECTION_PATHS).filter(function(k){
+      return state[k] && state[k].status === 'ready';
+    });
+  }
+
   // Only the data the client can actually see. Anything outside this can
   // change without forcing a repaint.
   function dataSignature(){
+    var sections = {};
+    loadedSectionKeys().forEach(function(k){ sections[k] = stable(state[k].data); });
     return JSON.stringify({
       client: state.client,
       website: state.website,
       uptime: state.uptime,
       performance: state.performance,
-      requests: state.requests
+      requests: state.requests,
+      sections: sections
     });
   }
 
@@ -1633,17 +1669,30 @@
   function pollOnce(){
     if (!pollActive || pollInFlight || document.hidden) return Promise.resolve();
     pollInFlight = true;
-    return Promise.all([ api('/api/portal/me'), api('/api/portal/requests') ])
+    // Sections are best-effort: one of them failing must not fail the whole
+    // poll and drag the core data into backoff with it. me/requests stay
+    // un-caught so they still drive error handling and session expiry.
+    var sectionKeys = loadedSectionKeys();
+    var calls = [ api('/api/portal/me'), api('/api/portal/requests') ].concat(
+      sectionKeys.map(function(k){
+        return api(SECTION_PATHS[k]).then(null, function(){ return null; });
+      })
+    );
+    return Promise.all(calls)
       .then(function(r){
         pollDelay = POLL_INTERVAL_MS;
         syncDraftsFromDom();
         applyMe(r[0]);
         state.requests = ((r[1] && r[1].requests) || []).map(normalizeRequest);
-        var next = dataSignature();
-        if (next !== lastSignature) {
-          lastSignature = next;
-          renderPreservingFocus();
-        }
+        sectionKeys.forEach(function(k, i){
+          var d = r[2 + i];
+          // null means that one section errored; keep the data already shown
+          // rather than blanking a tab the client may be looking at.
+          if (d !== null && state[k]) state[k].data = d;
+        });
+        // render() refreshes lastSignature itself, so there is nothing to set
+        // here — if the data matches what's on screen, nothing happens at all.
+        if (dataSignature() !== lastSignature) renderPreservingFocus();
       })
       .catch(function(err){
         // An expired session must end the loop, not retry against a 401 forever.
