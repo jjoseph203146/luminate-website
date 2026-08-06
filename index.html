@@ -80,7 +80,16 @@ tailwind.config = {
   @keyframes lt-sweep{from{transform:translateX(-330px)}to{transform:translateX(330px)}}
   #topo[data-paused="true"] .mk-lt-flow,#topo[data-paused="true"] .mk-lt-sweep{animation-play-state:paused!important}
   @media (max-width:640px){#topo .mk-lt-layer[data-i="2"]{display:none}#topo .mk-lt-bright{opacity:.82}}
-  @media (prefers-reduced-motion:reduce){*{animation:none!important}[data-reveal]{opacity:1;transform:none}html{scroll-behavior:auto}#topo .mk-lt-cursor{display:none}}
+  @media (prefers-reduced-motion:reduce){
+    *{animation:none!important}
+    [data-reveal]{opacity:1;transform:none}
+    html{scroll-behavior:auto}
+    #topo .mk-lt-cursor{display:none}
+    /* Ambient background motion (marquee, hero topology) always plays — not user-controlled content, purely decorative background texture */
+    .marquee-track{animation:lum-marquee 38s linear infinite!important}
+    #topo.mk-lt-animated .mk-lt-flow{animation:lt-flow var(--fdur,48s) linear infinite!important}
+    #topo.mk-lt-animated .mk-lt-sweep{animation:lt-sweep 16s ease-in-out infinite alternate!important}
+  }
 </style>
 </head>
 <body class="grain">
@@ -365,7 +374,6 @@ tailwind.config = {
   .marquee-track span{font-family:'Playfair Display',serif;font-size:clamp(15px,1.8vw,20px);color:rgba(196,209,226,.55);padding:0 26px;letter-spacing:.02em}
   .marquee-track span.dia{color:#E8E2D4;opacity:.6;font-size:13px}
   @keyframes lum-marquee{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
-  @media (prefers-reduced-motion:reduce){.marquee-track{animation:none}}
 </style>
 
 <script>
