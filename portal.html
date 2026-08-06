@@ -1561,6 +1561,136 @@
     ['sidebarUserOrg','drawerUserOrg'].forEach(function(id){ var el = $(id); if (el) el.textContent = org; });
   }
 
+  /* ── Live updates ───────────────────────────────────────────────────────
+     render() replaces pageRoot's innerHTML wholesale, and drafts are copied
+     into state only on submit — there is not one input listener in this file.
+     So a poll that re-renders blindly would delete whatever the client was
+     halfway through typing. Three guards, ordered by how often each earns its
+     keep:
+       1. Most polls change nothing. Compare first; render only on a real diff.
+       2. Before any re-render, copy the live inputs back into state.
+       3. Restore focus and caret afterwards, so a render that lands
+          mid-sentence is invisible rather than merely non-destructive.
+  */
+  var POLL_INTERVAL_MS = 60000;
+  var POLL_BACKOFF_MAX_MS = 300000;
+  var pollActive = false;
+  var pollTimer = null;
+  var pollInFlight = false;
+  var pollDelay = POLL_INTERVAL_MS;
+  var lastSignature = '';
+
+  // Only the data the client can actually see. Anything outside this can
+  // change without forcing a repaint.
+  function dataSignature(){
+    return JSON.stringify({
+      client: state.client,
+      website: state.website,
+      uptime: state.uptime,
+      performance: state.performance,
+      requests: state.requests
+    });
+  }
+
+  function syncDraftsFromDom(){
+    var comment = $('commentInput');
+    if (comment) state.commentDraft = comment.value;
+    var title = $('reqTitle'), desc = $('reqDesc'), cat = $('reqCategory');
+    if (title || desc || cat) {
+      state.formDraft = {
+        category: cat ? cat.value : state.formDraft.category,
+        title: title ? title.value : state.formDraft.title,
+        desc: desc ? desc.value : state.formDraft.desc
+      };
+    }
+  }
+
+  function renderPreservingFocus(){
+    var active = document.activeElement;
+    var activeId = active && active.id ? active.id : null;
+    var selStart = null, selEnd = null;
+    if (active && typeof active.selectionStart === 'number') {
+      selStart = active.selectionStart;
+      selEnd = active.selectionEnd;
+    }
+    var scroller = document.querySelector('.main-content');
+    var scrollTop = scroller ? scroller.scrollTop : 0;
+
+    render();
+
+    if (scroller) scroller.scrollTop = scrollTop;
+    if (!activeId) return;
+    var restored = $(activeId);
+    if (!restored) return;
+    try {
+      restored.focus({ preventScroll: true });
+      if (selStart !== null && typeof restored.selectionStart === 'number') {
+        restored.setSelectionRange(selStart, selEnd);
+      }
+    } catch (e) { /* element no longer focusable — nothing worth surfacing */ }
+  }
+
+  function pollOnce(){
+    if (!pollActive || pollInFlight || document.hidden) return Promise.resolve();
+    pollInFlight = true;
+    return Promise.all([ api('/api/portal/me'), api('/api/portal/requests') ])
+      .then(function(r){
+        pollDelay = POLL_INTERVAL_MS;
+        syncDraftsFromDom();
+        applyMe(r[0]);
+        state.requests = ((r[1] && r[1].requests) || []).map(normalizeRequest);
+        var next = dataSignature();
+        if (next !== lastSignature) {
+          lastSignature = next;
+          renderPreservingFocus();
+        }
+      })
+      .catch(function(err){
+        // An expired session must end the loop, not retry against a 401 forever.
+        if (handleFatal(err)) { stopPolling(); return; }
+        // Everything else — offline, a 500, a deploy in progress — backs off so
+        // a struggling server isn't hit every minute by every open portal.
+        pollDelay = Math.min(pollDelay * 2, POLL_BACKOFF_MAX_MS);
+      })
+      .then(function(){
+        pollInFlight = false;
+        schedulePoll();
+      });
+  }
+
+  function schedulePoll(){
+    if (!pollActive) return;
+    if (pollTimer !== null) clearTimeout(pollTimer);
+    pollTimer = setTimeout(function(){ pollOnce(); }, pollDelay);
+  }
+
+  function startPolling(){
+    pollActive = true;
+    pollInFlight = false;
+    pollDelay = POLL_INTERVAL_MS;
+    lastSignature = dataSignature();
+    schedulePoll();
+  }
+
+  function stopPolling(){
+    pollActive = false;
+    pollInFlight = false;
+    if (pollTimer !== null) clearTimeout(pollTimer);
+    pollTimer = null;
+  }
+
+  // A backgrounded tab shouldn't burn battery or rate limit, and the moment
+  // someone returns to the tab is exactly when stale data is most visible.
+  document.addEventListener('visibilitychange', function(){
+    if (!pollActive) return;
+    if (document.hidden) {
+      if (pollTimer !== null) { clearTimeout(pollTimer); pollTimer = null; }
+      return;
+    }
+    pollDelay = POLL_INTERVAL_MS;
+    pollOnce();
+  });
+
   /* ── Entry points used by the auth layer below ── */
   window.portalStart = function(email){
     state.email = email || '';
@@ -1570,10 +1700,12 @@
       applyIdentity();
       render();
       $('portalShell').hidden = false;
+      startPolling();
     });
   };
 
   window.exitPortal = function(){
+    stopPolling();
     $('portalShell').hidden = true;
     state.page = 'dashboard'; state.selectedId = null; state.drawerOpen = false;
     state.email = ''; state.client = null; state.website = null; state.performance = null; state.uptime = null;
