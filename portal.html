@@ -185,6 +185,19 @@
   </div>
 </div>
 
+<div class="auth-view" id="authError" hidden>
+  <div class="auth-card floating" style="text-align:center;">
+    <div class="auth-logo" style="justify-content:center;">
+      <img src="brand_assets/luminatelogo1.png" alt="Luminate">
+      <span class="eyebrow">Luminate Client Portal</span>
+    </div>
+    <div class="auth-icon" style="background:rgba(224,121,107,.08); border-color:rgba(224,121,107,.25); color:var(--error);">&#9888;</div>
+    <h2>Couldn't connect</h2>
+    <p class="auth-sub">This is taking longer than it should — your connection may be slow, or something on our end is briefly unavailable.</p>
+    <button type="button" class="btn btn-primary" id="authRetryBtn" style="width:100%;">Try again</button>
+  </div>
+</div>
+
 <div class="portal-shell" id="portalShell" hidden>
   <aside class="sidebar" id="sidebar">
     <div class="sidebar-brand">
@@ -939,17 +952,15 @@
 </script>
 
 <script type="module">
-import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm'
-
 // Luminate OS Supabase project — anon/public key only, never the service role key.
 const SUPABASE_URL      = 'https://tbzvdgfqjtsaxltnxsjo.supabase.co'
 const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRienZkZ2ZxanRzYXhsdG54c2pvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODE2NTU2ODYsImV4cCI6MjA5NzIzMTY4Nn0.4z5wqLKxUCDd5cRNx_Mt4TZlXM9K69B1dd3PhsaZibM'
 
-const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY)
 const $ = id => document.getElementById(id)
+let supabase = null
 
 function showAuthView(name) {
-  ['authLoading', 'authLogin', 'authSent'].forEach(v => { $(v).hidden = (v !== name) })
+  ['authLoading', 'authLogin', 'authSent', 'authError'].forEach(v => { $(v).hidden = (v !== name) })
 }
 
 function setLoginBusy(busy) {
@@ -963,26 +974,62 @@ function showError(id, msg) {
   el.hidden = false
 }
 
-async function boot() {
-  const params = new URLSearchParams(window.location.search)
-  const code = params.get('code')
+function withTimeout(promise, ms) {
+  return Promise.race([
+    promise,
+    new Promise((_, reject) => setTimeout(() => reject(new Error('timeout')), ms)),
+  ])
+}
 
-  if (code) {
-    const { error } = await supabase.auth.exchangeCodeForSession(code)
-    window.history.replaceState({}, '', window.location.pathname)
-    if (error) {
-      showAuthView('authLogin')
-      showError('authLoginError', 'The sign-in link has expired or already been used. Request a new one.')
-      return
-    }
+// Dynamic import (not a static top-level import) so a slow/unreachable CDN
+// can be caught and times out instead of silently hanging the whole page
+// with no console error and no fallback.
+async function getSupabaseClient() {
+  if (supabase) return supabase
+  const mod = await withTimeout(
+    import('https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm'),
+    10000
+  )
+  supabase = mod.createClient(SUPABASE_URL, SUPABASE_ANON_KEY)
+  return supabase
+}
+
+async function boot() {
+  showAuthView('authLoading')
+
+  let client
+  try {
+    client = await getSupabaseClient()
+  } catch (err) {
+    console.error('Luminate portal: failed to load auth client', err)
+    showAuthView('authError')
+    return
   }
 
-  const { data: { session } } = await supabase.auth.getSession()
-  if (session) {
-    showAuthView('authLoading')
-    window.enterPortal(session.user.email)
-  } else {
-    showAuthView('authLogin')
+  try {
+    const params = new URLSearchParams(window.location.search)
+    const code = params.get('code')
+
+    if (code) {
+      const { error } = await withTimeout(client.auth.exchangeCodeForSession(code), 10000)
+      window.history.replaceState({}, '', window.location.pathname)
+      if (error) {
+        showAuthView('authLogin')
+        showError('authLoginError', 'The sign-in link has expired or already been used. Request a new one.')
+        return
+      }
+    }
+
+    const { data: { session } } = await withTimeout(client.auth.getSession(), 10000)
+    if (session) {
+      window.enterPortal(session.user.email)
+      showAuthView('authLoading')
+    } else {
+      showAuthView('authLogin')
+    }
+  } catch (err) {
+    console.error('Luminate portal: failed to check session', err)
+    showAuthView('authError')
   }
 }
 
@@ -991,20 +1038,26 @@ $('authLoginForm').addEventListener('submit', async e => {
   $('authLoginError').hidden = true
   setLoginBusy(true)
 
-  const email = $('authEmail').value.trim()
-  const { error } = await supabase.auth.signInWithOtp({
-    email,
-    options: { emailRedirectTo: window.location.origin + window.location.pathname },
-  })
+  try {
+    const client = await getSupabaseClient()
+    const email = $('authEmail').value.trim()
+    const { error } = await withTimeout(client.auth.signInWithOtp({
+      email,
+      options: { emailRedirectTo: window.location.origin + window.location.pathname },
+    }), 10000)
 
-  setLoginBusy(false)
-  if (error) {
-    showError('authLoginError', error.message || 'Something went wrong. Please try again.')
-    return
+    setLoginBusy(false)
+    if (error) {
+      showError('authLoginError', error.message || 'Something went wrong. Please try again.')
+      return
+    }
+
+    $('authSentEmail').textContent = email
+    showAuthView('authSent')
+  } catch (err) {
+    setLoginBusy(false)
+    showError('authLoginError', 'Could not reach the server. Check your connection and try again.')
   }
-
-  $('authSentEmail').textContent = email
-  showAuthView('authSent')
 })
 
 $('authDiffEmailBtn').addEventListener('click', () => {
@@ -1013,8 +1066,15 @@ $('authDiffEmailBtn').addEventListener('click', () => {
   showAuthView('authLogin')
 })
 
+$('authRetryBtn').addEventListener('click', () => { boot() })
+
 window.portalSignOut = async function(){
-  await supabase.auth.signOut()
+  try {
+    const client = await getSupabaseClient()
+    await client.auth.signOut()
+  } catch (err) {
+    console.error('Luminate portal: sign out failed', err)
+  }
   window.exitPortal()
   showAuthView('authLogin')
 }
