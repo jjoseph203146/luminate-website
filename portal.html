@@ -64,7 +64,7 @@
   .sidebar-user{border-top:1px solid var(--line-09); padding:16px 10px 0; display:flex; align-items:center; gap:11px;}
   .avatar-circle{width:34px; height:34px; flex:none; border-radius:50%; background:var(--card-2); border:1px solid var(--line-14); display:flex; align-items:center; justify-content:center; font-size:12px; font-weight:600; color:var(--accent);}
   .sidebar-user-text{display:flex; flex-direction:column; gap:1px; min-width:0; flex:1;}
-  .signout-btn{background:none; border:1px solid var(--line-22); color:var(--dim-2); border-radius:8px; width:30px; height:30px; font-size:13px; cursor:pointer; flex:none; transition:color .2s, border-color .2s;}
+  .signout-btn{background:none; border:1px solid var(--line-22); color:var(--dim-2); border-radius:8px; height:30px; padding:0 10px; font-size:12.5px; font-weight:600; display:flex; align-items:center; gap:6px; cursor:pointer; flex:none; transition:color .2s, border-color .2s;}
   .signout-btn:hover{color:var(--ink); border-color:var(--line-28);}
 
   /* ── Auth views ── */
@@ -231,7 +231,7 @@
         <span class="sidebar-user-name" id="sidebarUserName"></span>
         <span class="sidebar-user-org" id="sidebarUserOrg"></span>
       </div>
-      <button type="button" class="signout-btn" data-action="sign-out" title="Sign out" aria-label="Sign out">&#8674;</button>
+      <button type="button" class="signout-btn" data-action="sign-out" aria-label="Sign out">&#8674;<span>Sign out</span></button>
     </div>
   </aside>
 
@@ -242,7 +242,7 @@
       <span class="brand-name">LUMINATE</span>
       <div class="mobile-header-spacer"></div>
       <div class="avatar-circle" id="mobileAvatar"></div>
-      <button type="button" class="signout-btn" data-action="sign-out" title="Sign out" aria-label="Sign out">&#8674;</button>
+      <button type="button" class="signout-btn" data-action="sign-out" aria-label="Sign out">&#8674;<span>Sign out</span></button>
     </header>
 
     <div class="drawer-overlay" id="drawerOverlay">
@@ -259,7 +259,7 @@
             <span class="sidebar-user-name" id="drawerUserName"></span>
             <span class="sidebar-user-org" id="drawerUserOrg"></span>
           </div>
-          <button type="button" class="signout-btn" data-action="sign-out" title="Sign out" aria-label="Sign out">&#8674;</button>
+          <button type="button" class="signout-btn" data-action="sign-out" aria-label="Sign out">&#8674;<span>Sign out</span></button>
         </div>
       </div>
     </div>
@@ -1346,7 +1346,7 @@
         border:'rgba(224,121,107,.35)', iconBg:'rgba(224,121,107,.1)', iconColor:'#E0796B', titleColor:'#E0796B', actionColor:'#E0796B'},
       {glyph:'✦', title:'Change or fix on your website', desc:'Submit a request — we usually start within a day.', action:'Submit a request', navAction:'go-requests',
         border:'rgba(196,209,226,.09)', iconBg:'rgba(232,226,212,.07)', iconColor:'#E8E2D4', titleColor:'#F4F7FB', actionColor:'#E8E2D4'},
-      {glyph:'✉︎', title:'Question or something non-urgent', desc:'Email us — replies within one business day.', action:'Email us', href:'mailto:luminatewebco@gmail.com',
+      {glyph:'✉︎', title:'Question or something non-urgent', desc:'Email us — replies within one business day.', action:'Email us', href:'mailto:luminatewebco@gmail.com', email:'luminatewebco@gmail.com',
         border:'rgba(196,209,226,.09)', iconBg:'rgba(232,226,212,.07)', iconColor:'#E8E2D4', titleColor:'#F4F7FB', actionColor:'#E8E2D4'},
       {glyph:'◈', title:'Big idea or larger project', desc:'Book a 20-minute call to talk it through.', action:'Schedule a meeting', href:'mailto:luminatewebco@gmail.com',
         border:'rgba(196,209,226,.09)', iconBg:'rgba(232,226,212,.07)', iconColor:'#E8E2D4', titleColor:'#F4F7FB', actionColor:'#E8E2D4'},
@@ -1355,7 +1355,9 @@
       var attr = sp.href ? ' data-href="' + sp.href + '"' : (sp.navAction ? ' data-action="' + sp.navAction + '"' : '');
       return '<div class="support-path" ' + attr + ' style="display:flex; align-items:center; gap:18px; background:var(--gradient-surface); border:1px solid ' + sp.border + '; border-radius:16px; padding:18px 22px; cursor:pointer; transition:transform var(--duration-base) var(--ease-spring), border-color .25s;">'
         + '<span style="width:40px; height:40px; flex:none; border-radius:10px; display:flex; align-items:center; justify-content:center; font-size:15px; background:' + sp.iconBg + '; border:1px solid var(--line-10); color:' + sp.iconColor + ';">' + sp.glyph + '</span>'
-        + '<div style="display:flex; flex-direction:column; gap:2px; min-width:0; flex:1;"><span style="font-size:15px; font-weight:600; color:' + sp.titleColor + ';">' + esc(sp.title) + '</span><span style="font-size:13px; color:var(--dim-2);">' + esc(sp.desc) + '</span></div>'
+        + '<div style="display:flex; flex-direction:column; gap:2px; min-width:0; flex:1;"><span style="font-size:15px; font-weight:600; color:' + sp.titleColor + ';">' + esc(sp.title) + '</span><span style="font-size:13px; color:var(--dim-2);">' + esc(sp.desc) + '</span>'
+        +   (sp.email ? '<span style="font-size:13px; font-family:var(--font-mono, monospace); color:var(--dim); -webkit-user-select:text; user-select:text;">' + esc(sp.email) + '</span>' : '')
+        + '</div>'
         + '<span style="font-size:13.5px; font-weight:600; flex:none; color:' + sp.actionColor + ';">' + esc(sp.action) + ' &#8250;</span>'
         + '</div>';
     }).join('');
