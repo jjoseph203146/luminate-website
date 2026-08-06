@@ -960,8 +960,10 @@
         + '<div class="field"><label class="lbl" for="reqCategory">Category</label><select id="reqCategory"><option value="">Choose a category</option>' + optionsHtml + '</select></div>'
         + '<div class="field"><label class="lbl" for="reqTitle">Title</label><input type="text" id="reqTitle" value="' + esc(state.formDraft.title) + '" placeholder="A short summary — e.g. Update the staff page"></div>'
         + '<div class="field"><label class="lbl" for="reqDesc">Description</label><textarea id="reqDesc" rows="5" placeholder="Describe what you\'d like changed, fixed, or added. Links and page names help.">' + esc(state.formDraft.desc) + '</textarea></div>'
-        + '<div style="border:1px dashed var(--line-22); border-radius:10px; padding:18px; display:flex; align-items:center; justify-content:center; gap:10px; color:var(--dim-2); font-size:13.5px;">'
-        +   '<span style="font-size:15px;">✉︎</span>Have files to send? Email them to us and we\'ll attach them to this request.</div>'
+        + '<div style="border:1px dashed var(--line-22); border-radius:10px; padding:18px; display:flex; align-items:center; justify-content:center; gap:10px; color:var(--dim-2); font-size:13.5px; text-align:center;">'
+        +   '<span style="font-size:15px;">✉︎</span>Have files to send? <a href="mailto:luminatewebco@gmail.com?subject='
+        +     encodeURIComponent('Files for request' + (state.formDraft.title ? ': ' + state.formDraft.title : ''))
+        +     '" style="color:var(--ink); text-decoration:underline;">Email them to us</a> and we\'ll attach them to this request.</div>'
         + (state.formError ? '<p style="margin:0; color:var(--error); font-size:13px;">' + esc(state.formError) + '</p>' : '')
         + '<div style="display:flex; justify-content:flex-end;">' + button(state.submitting ? 'Submitting…' : 'Submit request', {action:'submit-request', disabled: state.submitting}) + '</div>'
         + '</section>';
