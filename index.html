@@ -676,6 +676,25 @@ tailwind.config = {
     btn.disabled = true;
     btn.textContent = 'Sending…';
 
+    // Puts the inquiry into the LuminateOS Leads pipeline and pushes a
+    // notification to the owner's phone. Fire-and-forget on purpose: this is
+    // a redundant channel alongside web3forms below, so a slow response or a
+    // failure here must never delay or break the visitor's actual submission.
+    fetch('https://luminate-os.vercel.app/api/leads/create', {
+      method: 'POST',
+      headers: {'Content-Type':'application/json'},
+      body: JSON.stringify({
+        name: name.value.trim(),
+        businessName: document.getElementById('f-business').value.trim(),
+        email: email.value.trim(),
+        phone: document.getElementById('f-phone').value.trim(),
+        projectType: document.getElementById('f-type').value,
+        message: (document.getElementById('f-about').value.trim()
+          ? 'About their business: ' + document.getElementById('f-about').value.trim() + '\n\n'
+          : '') + message.value.trim()
+      })
+    }).catch(function(){});
+
     try {
       var res = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
