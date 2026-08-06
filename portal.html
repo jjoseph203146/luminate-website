@@ -1,619 +1,1025 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Client Portal — Luminate Web Design</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --navy:  #0D1B2E;
-      --navy2: #0A1524;
-      --card:  #101F35;
-      --card2: #152A45;
-      --ink:   #FFFFFF;
-      --dim:   #B8C4D4;
-      --dim2:  #7E8DA0;
-      --accent:#F0EBE1;
-      --green: #5FB88E;
-      --red:   #E0796B;
-      --b12: rgba(184,196,212,.12);
-      --b14: rgba(184,196,212,.14);
-      --b24: rgba(184,196,212,.24);
-      --b28: rgba(184,196,212,.28);
-    }
-    *, *::before, *::after { box-sizing: border-box; }
-    html, body { margin: 0; padding: 0; }
-    body {
-      background: var(--navy);
-      color: var(--ink);
-      font-family: 'DM Sans', sans-serif;
-      -webkit-font-smoothing: antialiased;
-      min-height: 100vh;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Client Portal — Luminate Web Design</title>
+<link rel="icon" type="image/png" href="brand_assets/luminatelogo1.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#0D1B2E; --navy-2:#0A1524; --card:#101F35; --card-2:#152A45;
+    --ink:#F4F7FB; --dim:#C4D1E2; --dim-2:#7E8DA0;
+    --accent:#E8E2D4; --accent-hi:#F3EEE3;
+    --success:#3DAE7A; --error:#E0796B;
+    --line-09:rgba(196,209,226,.09); --line-10:rgba(196,209,226,.10); --line-12:rgba(196,209,226,.12);
+    --line-14:rgba(196,209,226,.14); --line-22:rgba(196,209,226,.22); --line-24:rgba(196,209,226,.24); --line-28:rgba(196,209,226,.28);
+    --focus-ring:rgba(232,226,212,.45);
+    --ease-spring:cubic-bezier(.2,.7,.2,1);
+    --duration-base:.3s;
+    --shadow-btn-primary:0 12px 30px -16px rgba(232,226,212,.5);
+    --shadow-btn-primary-hover:0 18px 40px -16px rgba(232,226,212,.6);
+    --shadow-floating:0 34px 80px -34px rgba(0,0,0,.75);
+    --gradient-surface:linear-gradient(160deg,#132743 0%,#101F35 100%);
+    --gradient-floating:linear-gradient(160deg,#173052 0%,#152A45 100%);
+    --font-display:'Playfair Display',serif;
+    --font-portal:'DM Sans',system-ui,sans-serif;
+    --radius-input:10px; --radius-card:20px; --radius-card-sm:16px; --radius-pill:999px;
+  }
+  *,*::before,*::after{box-sizing:border-box;}
+  html,body{margin:0;padding:0;background:var(--navy);}
+  body{color:var(--ink); font-family:var(--font-portal); -webkit-font-smoothing:antialiased;}
+  a{color:var(--accent); text-decoration:none;}
+  a:hover{color:var(--accent-hi);}
+  input,textarea,select,button{font-family:var(--font-portal);}
+  button{font-family:inherit;}
+  @keyframes lumping{0%{transform:scale(1);opacity:.45;}70%{transform:scale(2.6);opacity:0;}100%{transform:scale(2.6);opacity:0;}}
+  ::-webkit-scrollbar{width:10px;}
+  ::-webkit-scrollbar-thumb{background:rgba(196,209,226,.14); border-radius:8px;}
+  ::-webkit-scrollbar-track{background:transparent;}
+  [hidden]{display:none !important;}
 
-    body { background: var(--navy2); }
+  .grain-overlay{position:fixed; inset:0; pointer-events:none; z-index:60; opacity:.04; mix-blend-mode:soft-light;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)'/%3E%3C/svg%3E");}
 
-    /* ── Top bar ── */
-    .portal-topbar {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 24px clamp(20px, 5vw, 56px);
-    }
-    .portal-topbar a { text-decoration: none; }
-    .logo-mark {
-      width: 34px; height: 34px;
-      border: 1px solid var(--b28); border-radius: 8px;
-      display: flex; align-items: center; justify-content: center;
-      font-family: 'Playfair Display', serif; font-size: 17px; color: var(--accent);
-      background: var(--card);
-    }
-    .back-link {
-      font-size: 13px; color: var(--dim); display: inline-flex; align-items: center; gap: 4px;
-      transition: color .2s;
-    }
-    .back-link:hover { color: var(--ink); }
-    .nav-user {
-      display: flex; align-items: center; gap: 12px;
-    }
-    #nav-email { font-size: 13px; color: var(--dim2); }
-    #btn-signout {
-      background: none; border: 1px solid var(--b24); border-radius: 8px;
-      color: var(--dim2); font-size: 13px; padding: 7px 14px; cursor: pointer;
-      font-family: inherit; transition: color .2s, border-color .2s;
-    }
-    #btn-signout:hover { color: var(--ink); border-color: var(--b28); }
+  .portal-shell{display:flex; height:100vh; overflow:hidden; background:var(--navy); color:var(--ink); font-family:var(--font-portal); position:relative;}
 
-    /* ── Main layout ── */
-    .portal-main {
-      min-height: calc(100vh - 82px);
-      display: flex; align-items: center; justify-content: center;
-      padding: 20px 20px 60px;
-    }
-    .portal-card {
-      width: 100%; max-width: 440px;
-    }
+  /* ── Sidebar (desktop) ── */
+  .sidebar{width:236px; flex:none; background:var(--navy-2); border-right:1px solid var(--line-09); display:flex; flex-direction:column; padding:22px 14px 18px;}
+  .sidebar-brand{display:flex; align-items:center; gap:11px; padding:0 10px 24px;}
+  .sidebar-brand img{width:30px; height:30px; border-radius:8px; object-fit:cover;}
+  .sidebar-brand-text{display:flex; flex-direction:column; gap:1px;}
+  .sidebar-brand-name{font-family:var(--font-display); font-size:14.5px; letter-spacing:.18em; font-weight:600;}
+  .sidebar-brand-sub{font-size:10.5px; letter-spacing:.14em; color:var(--dim-2); text-transform:uppercase;}
+  .sidebar-nav{display:flex; flex-direction:column; gap:2px;}
+  .nav-item{display:flex; align-items:center; gap:12px; padding:9px 12px; border-radius:10px; cursor:pointer; font-size:14px; transition:background .25s, color .25s; border:none; background:transparent; width:100%; text-align:left; color:var(--dim);}
+  .nav-item:hover{color:#F4F7FB; background:rgba(196,209,226,.06);}
+  .nav-item.active{color:#F4F7FB; background:rgba(232,226,212,.09); font-weight:600;}
+  .nav-item .glyph{width:20px; text-align:center; font-size:12.5px;}
+  .sidebar-spacer{flex:1;}
+  .sidebar-user{border-top:1px solid var(--line-09); padding:16px 10px 0; display:flex; align-items:center; gap:11px;}
+  .avatar-circle{width:34px; height:34px; flex:none; border-radius:50%; background:var(--card-2); border:1px solid var(--line-14); display:flex; align-items:center; justify-content:center; font-size:12px; font-weight:600; color:var(--accent);}
+  .sidebar-user-text{display:flex; flex-direction:column; gap:1px; min-width:0; flex:1;}
+  .signout-btn{background:none; border:1px solid var(--line-22); color:var(--dim-2); border-radius:8px; width:30px; height:30px; font-size:13px; cursor:pointer; flex:none; transition:color .2s, border-color .2s;}
+  .signout-btn:hover{color:var(--ink); border-color:var(--line-28);}
 
-    /* ── Split shell (login / sent) ── */
-    .split-shell {
-      width: 100%; max-width: 900px;
-      background: var(--card);
-      border: 1px solid var(--b14);
-      border-radius: 20px;
-      overflow: hidden;
-      box-shadow: 0 40px 90px -40px rgba(0,0,0,.6);
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      align-items: stretch;
-    }
-    .split-left {
-      padding: clamp(32px, 5vw, 48px);
-      display: flex; flex-direction: column; justify-content: center;
-    }
-    .split-right {
-      padding: clamp(32px, 5vw, 48px);
-      background: var(--card2);
-      border-left: 1px solid var(--b14);
-      display: flex; flex-direction: column; justify-content: center;
-    }
-    @media (max-width: 760px) {
-      .split-shell { grid-template-columns: 1fr; }
-      .split-right { border-left: none; border-top: 1px solid var(--b14); }
-    }
+  /* ── Auth views ── */
+  .auth-view{min-height:100vh; display:flex; align-items:center; justify-content:center; padding:40px 20px; background:var(--navy);}
+  .auth-card{width:100%; max-width:440px;}
+  .auth-logo{display:flex; align-items:center; gap:10px; margin-bottom:24px;}
+  .auth-logo img{width:32px; height:32px; border-radius:8px; object-fit:cover;}
+  .auth-card h2{margin:14px 0 8px; font-family:var(--font-display); font-size:22px; font-weight:600;}
+  .auth-sub{margin:0 0 22px; color:var(--dim); font-size:14px; line-height:1.65;}
+  .auth-banner-error{background:rgba(224,121,107,.08); border:1px solid rgba(224,121,107,.25); color:var(--error); border-radius:10px; padding:12px 14px; margin-bottom:16px; font-size:13px; line-height:1.55;}
+  .auth-footer{margin:22px 0 0; text-align:center; font-size:13px; color:var(--dim-2);}
+  .auth-footer a{border-bottom:1px solid var(--line-28);}
+  .auth-icon{width:52px; height:52px; border-radius:50%; display:flex; align-items:center; justify-content:center; margin:0 auto 18px; font-size:22px; background:rgba(232,226,212,.06); border:1px solid var(--line-24);}
+  .sidebar-user-name{font-size:13px; font-weight:600; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
+  .sidebar-user-org{font-size:11.5px; color:var(--dim-2); white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
 
-    /* ── Logo block (login view only) ── */
-    .logo-block {
-      margin-bottom: 28px;
-    }
-    .logo-block .logo-mark {
-      margin: 0 0 14px; width: 44px; height: 44px;
-      border-radius: 12px; font-size: 20px;
-    }
-    .logo-block .eyebrow {
-      font-size: 12px; letter-spacing: .28em; text-transform: uppercase;
-      color: var(--dim2); font-weight: 600; margin: 0;
-    }
+  /* ── Main column ── */
+  .main-col{flex:1; min-width:0; display:flex; flex-direction:column; overflow:hidden;}
 
-    /* ── Card ── */
-    .card {
-      background: var(--card);
-      border: 1px solid var(--b14);
-      border-radius: 16px;
-      padding: 32px;
-    }
-    .card h2 { margin: 0 0 8px; font-size: 20px; font-weight: 600; }
-    .card .sub { margin: 0 0 24px; color: var(--dim); font-size: 14px; line-height: 1.65; }
+  /* ── Mobile header ── */
+  .mobile-header{display:none; flex:none; align-items:center; gap:12px; padding:12px 16px; background:var(--navy-2); border-bottom:1px solid var(--line-09);}
+  .hamburger-btn{background:rgba(244,247,251,.02); border:1px solid var(--line-22); color:var(--ink); border-radius:10px; width:38px; height:38px; font-size:16px; cursor:pointer;}
+  .mobile-header img{width:26px; height:26px; border-radius:7px; object-fit:cover;}
+  .mobile-header .brand-name{font-family:var(--font-display); font-size:13.5px; letter-spacing:.18em; font-weight:600;}
+  .mobile-header-spacer{flex:1;}
+  .mobile-header .avatar-circle{width:32px; height:32px; font-size:11px;}
 
-    .split-left h2, .split-right h3 {
-      font-family: 'Playfair Display', serif; font-weight: 700;
-      margin: 0 0 10px; font-size: 26px;
-    }
-    .split-left .sub, .split-right .sub {
-      margin: 0 0 26px; color: var(--dim); font-size: 14px; line-height: 1.65;
-    }
-    .info-eyebrow {
-      font-size: 12px; letter-spacing: .24em; text-transform: uppercase;
-      color: var(--dim2); font-weight: 600; margin: 0 0 12px;
-    }
-    .info-contact { display: flex; flex-direction: column; gap: 14px; margin-bottom: 24px; }
-    .info-contact a {
-      display: flex; align-items: center; gap: 10px;
-      color: var(--ink); font-size: 14px; text-decoration: none;
-    }
-    .info-contact a:hover { color: var(--accent); }
-    .info-contact .ic {
-      width: 30px; height: 30px; border-radius: 8px; border: 1px solid var(--b24);
-      display: flex; align-items: center; justify-content: center; color: var(--accent); flex: none; font-size: 13px;
-    }
-    .stat-card {
-      border-radius: 14px; padding: 20px;
-      background: linear-gradient(160deg, var(--card2), var(--navy2));
-      border: 1px solid var(--b14);
-    }
-    .stat-card .num {
-      font-family: 'Playfair Display', serif; font-weight: 700; font-size: 32px; color: var(--accent);
-      line-height: 1;
-    }
-    .stat-card .lbl { font-size: 12.5px; color: var(--dim2); margin-top: 6px; }
+  /* ── Drawer ── */
+  .drawer-overlay{position:fixed; inset:0; z-index:50; background:rgba(10,21,36,.65); backdrop-filter:blur(3px); display:none;}
+  .drawer{width:264px; height:100%; background:var(--navy-2); border-right:1px solid var(--line-12); padding:22px 14px; display:flex; flex-direction:column; gap:2px; overflow-y:auto;}
+  .drawer-brand{display:flex; align-items:center; gap:11px; padding:0 10px 20px;}
+  .drawer-brand img{width:28px; height:28px; border-radius:8px; object-fit:cover;}
+  .drawer-brand-name{font-family:var(--font-display); font-size:14px; letter-spacing:.18em; font-weight:600;}
+  .drawer .nav-item{padding:11px 12px; font-size:15px;}
+  .drawer .nav-item .glyph{font-size:13px;}
 
-    /* ── Form elements ── */
-    .field { margin-bottom: 20px; }
-    .field:last-of-type { margin-bottom: 0; }
-    label.lbl {
-      display: block; font-size: 12px; color: var(--dim2);
-      margin-bottom: 8px; letter-spacing: .06em;
-      text-transform: uppercase; font-weight: 600;
-    }
-    label.lbl .opt { font-weight: 400; text-transform: none; letter-spacing: 0; }
-    input[type="email"], input[type="text"], textarea {
-      display: block; width: 100%;
-      padding: 12px 14px;
-      background: var(--navy2); border: 1px solid var(--b24);
-      border-radius: 10px; color: var(--ink); font-size: 15px;
-      font-family: inherit; transition: border-color .2s, box-shadow .2s;
-    }
-    input[type="email"]:focus, input[type="text"]:focus, textarea:focus {
-      outline: none; border-color: var(--b28);
-      box-shadow: 0 0 0 3px rgba(240,235,225,.07);
-    }
-    textarea { resize: vertical; line-height: 1.6; }
+  /* ── Main content ── */
+  .main-content{flex:1; overflow-y:auto; overflow-x:hidden;}
+  .main-inner{max-width:1020px; margin:0 auto; padding:clamp(24px,4.5vw,52px) clamp(18px,4vw,44px) 72px; display:flex; flex-direction:column; gap:24px;}
 
-    .btn-primary {
-      display: block; width: 100%; margin-top: 20px;
-      padding: 13px; background: var(--accent); color: var(--navy);
-      border: none; border-radius: 10px; font-size: 15px;
-      font-weight: 600; font-family: inherit; cursor: pointer;
-      transition: opacity .2s;
-    }
-    .btn-primary:disabled { opacity: .6; cursor: not-allowed; }
-    .btn-ghost {
-      background: none; border: none; color: var(--dim2); font-size: 13px;
-      cursor: pointer; text-decoration: underline; padding: 0; font-family: inherit;
-    }
-    .split-left .btn-ghost { text-align: left; align-self: flex-start; }
-    .btn-outline {
-      background: none; border: 1px solid var(--b28); border-radius: 10px;
-      color: var(--ink); font-size: 14px; padding: 11px 24px;
-      cursor: pointer; font-family: inherit; transition: border-color .2s;
-    }
-    .btn-outline:hover { border-color: var(--dim); }
+  /* ── Shared bits ── */
+  .eyebrow{font-size:12px; letter-spacing:.22em; text-transform:uppercase; color:var(--dim-2); font-weight:600; font-family:var(--font-portal);}
+  .page-head{display:flex; flex-direction:column; gap:8px;}
+  .page-head h1{margin:0; font-size:clamp(24px,3vw,31px); font-weight:600; letter-spacing:-.01em;}
+  .page-head p{margin:0; color:var(--dim); font-size:15px;}
+  .surface{background:var(--gradient-surface); border:1px solid var(--line-09); border-radius:var(--radius-card); padding:26px;}
+  .floating{background:var(--gradient-floating); border:1px solid var(--line-12); border-radius:var(--radius-card); box-shadow:var(--shadow-floating); padding:clamp(24px,3.5vw,38px);}
+  .grid-2{display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:20px;}
+  h2.section-title{margin:0 0 20px; font-size:16px; font-weight:600;}
 
-    /* ── Status / error banners ── */
-    .banner {
-      border-radius: 10px; padding: 12px 14px; margin-bottom: 16px;
-      font-size: 13px; line-height: 1.55;
-    }
-    .banner-error {
-      background: rgba(224,121,107,.08);
-      border: 1px solid rgba(224,121,107,.25);
-      color: var(--red);
-    }
+  /* ── Buttons (Button.jsx) ── */
+  .btn{display:inline-flex; align-items:center; justify-content:center; gap:8px; border-radius:var(--radius-pill); font-weight:600; font-size:14px; padding:12px 26px; font-family:var(--font-portal); cursor:pointer; border:1px solid transparent;
+    transition:transform var(--duration-base) var(--ease-spring), box-shadow var(--duration-base) var(--ease-spring), background-color .25s, border-color .25s; text-decoration:none;}
+  .btn:focus-visible{outline:none; box-shadow:0 0 0 3px var(--focus-ring);}
+  .btn-primary{background:var(--accent); color:var(--navy); box-shadow:var(--shadow-btn-primary);}
+  .btn-primary:hover{background:var(--accent-hi); transform:translateY(-2px); box-shadow:var(--shadow-btn-primary-hover);}
+  .btn-primary:active{transform:translateY(0);}
+  .btn-ghost{background:rgba(244,247,251,.02); color:var(--ink); border-color:var(--line-22);}
+  .btn-ghost:hover{border-color:rgba(232,226,212,.5); background:rgba(232,226,212,.05); transform:translateY(-2px);}
+  .btn-ghost:active{transform:translateY(0);}
+  .btn-sm{font-size:13px; padding:9px 20px;}
 
-    /* ── Sent / Success / Unlinked states ── */
-    .state-center { text-align: center; }
-    .state-icon {
-      width: 52px; height: 52px; border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      margin: 0 auto 20px; font-size: 24px;
-    }
-    .state-icon.green {
-      background: rgba(95,184,142,.1);
-      border: 1px solid rgba(95,184,142,.3);
-    }
-    .state-icon.neutral {
-      background: rgba(240,235,225,.06);
-      border: 1px solid var(--b24);
-    }
-    .state-center h2 { margin: 0 0 10px; font-size: 20px; font-weight: 600; }
-    .state-center p { margin: 0 0 20px; color: var(--dim); font-size: 14px; line-height: 1.65; }
+  /* ── Form fields (Input/Select/Textarea.jsx) ── */
+  .field label.lbl{display:block; font-size:12px; color:var(--dim-2); margin-bottom:8px; letter-spacing:.06em; text-transform:uppercase; font-weight:600;}
+  .field input, .field select, .field textarea{display:block; width:100%; padding:13px 15px; background:var(--navy-2); border:1px solid var(--line-10); border-radius:var(--radius-input); color:var(--ink); font-size:14px; font-family:var(--font-portal); outline:none; transition:border-color .25s; box-sizing:border-box;}
+  .field select{color:var(--dim-2);}
+  .field textarea{line-height:1.6; resize:vertical;}
+  .field input:focus, .field select:focus, .field textarea:focus{border-color:var(--line-28); box-shadow:0 0 0 3px rgba(240,235,225,.06);}
+  .field .field-error{font-size:12px; color:var(--error); margin-top:6px; display:block;}
 
-    .request-receipt {
-      background: var(--navy2); border: 1px solid var(--b14);
-      border-radius: 10px; padding: 16px; margin-bottom: 24px; text-align: left;
-    }
-    .request-receipt .rid {
-      font-size: 12px; color: var(--dim2); letter-spacing: .06em;
-      text-transform: uppercase; font-weight: 600; margin: 0 0 4px;
-    }
-    .request-receipt .rtitle { margin: 0; font-size: 15px; font-weight: 500; }
-    .request-receipt .rstatus {
-      margin: 6px 0 0; font-size: 12px; color: var(--dim2);
-    }
-    .request-receipt .rstatus span { color: var(--accent); text-transform: capitalize; }
+  /* ── Utility rows ── */
+  .status-pill{font-size:12px; font-weight:600; padding:4px 12px; border-radius:999px;}
+  .status-badge-online{display:inline-flex; align-items:center; gap:8px; font-size:13px; font-weight:600; padding:7px 15px; border-radius:999px;}
+  .dot{width:7px; height:7px; border-radius:50%; flex:none;}
 
-    /* ── Dashboard header ── */
-    .dash-header { margin-bottom: 32px; }
-    .dash-header .eyebrow {
-      font-size: 12px; letter-spacing: .32em; text-transform: uppercase;
-      color: var(--dim2); font-weight: 600; margin: 0 0 4px;
-    }
-    .dash-header h1 {
-      margin: 0 0 8px; font-size: clamp(22px, 3vw, 30px); font-weight: 600;
-    }
-    .dash-header p { margin: 0; color: var(--dim); font-size: 15px; line-height: 1.65; }
-
-    /* ── Footer ── */
-    .portal-footer {
-      text-align: center; margin-top: 24px;
-      font-size: 13px; color: var(--dim2);
-    }
-    .portal-footer a {
-      color: var(--accent); text-decoration: none;
-      border-bottom: 1px solid var(--b28);
-    }
-
-    /* ── Utility ── */
-    [hidden] { display: none !important; }
-  </style>
+  @media (max-width:879px){
+    .sidebar{display:none;}
+    .mobile-header{display:flex;}
+  }
+</style>
 </head>
 <body>
 
-<!-- ════════════════════════════════════
-     TOP BAR (user info only visible when logged in)
-════════════════════════════════════ -->
-<nav class="portal-topbar">
-  <a href="/" class="logo-mark">L</a>
-  <div style="display:flex;align-items:center;gap:20px">
-    <div class="nav-user" id="nav-user" hidden>
-      <span id="nav-email"></span>
-      <button id="btn-signout">Sign out</button>
-    </div>
-    <a href="/" class="back-link">Back to site ›</a>
-  </div>
-</nav>
+<div class="grain-overlay" aria-hidden="true"></div>
 
-<!-- ════════════════════════════════════
-     LOADING SCREEN (while we check session)
-════════════════════════════════════ -->
-<div class="portal-main" id="view-loading">
-  <p style="color:var(--dim2);font-size:14px;">Loading…</p>
+<div class="auth-view" id="authLoading">
+  <p style="color:var(--dim-2); font-size:14px;">Loading…</p>
 </div>
 
-<!-- ════════════════════════════════════
-     LOGIN VIEW
-════════════════════════════════════ -->
-<div class="portal-main" id="view-login" hidden>
-  <div class="split-shell">
-    <div class="split-left">
-      <div class="logo-block">
-        <div class="logo-mark">L</div>
-        <p class="eyebrow">Luminate Client Portal</p>
+<div class="auth-view" id="authLogin" hidden>
+  <div class="auth-card floating">
+    <div class="auth-logo">
+      <img src="brand_assets/luminatelogo1.png" alt="Luminate">
+      <span class="eyebrow">Luminate Client Portal</span>
+    </div>
+    <h2>Sign in</h2>
+    <p class="auth-sub">Enter your email and we'll send you a magic link — no password needed.</p>
+    <form id="authLoginForm">
+      <div class="field">
+        <label class="lbl" for="authEmail">Email address</label>
+        <input type="email" id="authEmail" placeholder="you@example.com" required autocomplete="email">
       </div>
-      <h2>Sign in</h2>
-      <p class="sub">Enter your email and we'll send you a magic link — no password needed.</p>
-      <form id="form-login">
-        <div class="field">
-          <label class="lbl" for="input-email">Email address</label>
-          <input type="email" id="input-email" placeholder="you@example.com" required autocomplete="email">
+      <div id="authLoginError" class="auth-banner-error" hidden></div>
+      <button type="submit" class="btn btn-primary" id="authLoginBtn" style="width:100%; margin-top:6px;">Send magic link</button>
+    </form>
+    <p class="auth-footer">Don't have access yet? <a href="/#contact">Contact us</a></p>
+  </div>
+</div>
+
+<div class="auth-view" id="authSent" hidden>
+  <div class="auth-card floating" style="text-align:center;">
+    <div class="auth-logo" style="justify-content:center;">
+      <img src="brand_assets/luminatelogo1.png" alt="Luminate">
+      <span class="eyebrow">Luminate Client Portal</span>
+    </div>
+    <div class="auth-icon">&#9993;</div>
+    <h2>Check your email</h2>
+    <p class="auth-sub">We sent a magic link to <strong id="authSentEmail" style="color:var(--ink)"></strong>. Click it to sign in.</p>
+    <button type="button" class="btn btn-ghost" id="authDiffEmailBtn">Use a different email</button>
+  </div>
+</div>
+
+<div class="portal-shell" id="portalShell" hidden>
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-brand">
+      <img src="brand_assets/luminatelogo1.png" alt="Luminate">
+      <div class="sidebar-brand-text">
+        <span class="sidebar-brand-name">LUMINATE</span>
+        <span class="sidebar-brand-sub">Client portal</span>
+      </div>
+    </div>
+    <nav class="sidebar-nav" id="sidebarNav"></nav>
+    <div class="sidebar-spacer"></div>
+    <div class="sidebar-user">
+      <div class="avatar-circle" id="sidebarAvatar">MC</div>
+      <div class="sidebar-user-text">
+        <span class="sidebar-user-name" id="sidebarUserName">Michelle Carter</span>
+        <span class="sidebar-user-org">Hope Community Ministries</span>
+      </div>
+      <button type="button" class="signout-btn" data-action="sign-out" title="Sign out" aria-label="Sign out">&#8674;</button>
+    </div>
+  </aside>
+
+  <div class="main-col">
+    <header class="mobile-header" id="mobileHeader">
+      <button class="hamburger-btn" id="btnOpenDrawer" aria-label="Menu">&#8801;</button>
+      <img src="brand_assets/luminatelogo1.png" alt="Luminate">
+      <span class="brand-name">LUMINATE</span>
+      <div class="mobile-header-spacer"></div>
+      <div class="avatar-circle" id="mobileAvatar">MC</div>
+      <button type="button" class="signout-btn" data-action="sign-out" title="Sign out" aria-label="Sign out">&#8674;</button>
+    </header>
+
+    <div class="drawer-overlay" id="drawerOverlay">
+      <div class="drawer" id="drawerPanel">
+        <div class="drawer-brand">
+          <img src="brand_assets/luminatelogo1.png" alt="Luminate">
+          <span class="drawer-brand-name">LUMINATE</span>
         </div>
-        <div id="login-error" class="banner banner-error" hidden></div>
-        <button type="submit" class="btn-primary" id="btn-login">Send magic link</button>
-      </form>
-      <p class="portal-footer" style="margin-top:24px">
-        Don't have access yet? <a href="/#contact">Contact us</a>
-      </p>
-    </div>
-    <div class="split-right">
-      <p class="info-eyebrow">Need something else?</p>
-      <h3>We usually reply within one business day.</h3>
-      <p class="sub">Have a question before you sign in, or need to reach us directly? We're one message away.</p>
-      <div class="info-contact">
-        <a href="tel:7622279287"><span class="ic">☎</span> (762) 227-9287</a>
-        <a href="mailto:luminatewebco@gmail.com"><span class="ic">✉</span> luminatewebco@gmail.com</a>
-      </div>
-      <div class="stat-card">
-        <div class="num">24h</div>
-        <div class="lbl">Typical response time</div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- ════════════════════════════════════
-     EMAIL SENT VIEW
-════════════════════════════════════ -->
-<div class="portal-main" id="view-sent" hidden>
-  <div class="split-shell">
-    <div class="split-left">
-      <div class="logo-block">
-        <div class="logo-mark">L</div>
-        <p class="eyebrow">Luminate Client Portal</p>
-      </div>
-      <div class="state-icon neutral" style="margin:0 0 20px">✉️</div>
-      <h2>Check your email</h2>
-      <p class="sub">
-        We sent a magic link to <strong id="sent-email" style="color:var(--ink)"></strong>.
-        Click it to sign in.
-      </p>
-      <button class="btn-ghost" id="btn-diff-email">Use a different email</button>
-    </div>
-    <div class="split-right">
-      <p class="info-eyebrow">Need something else?</p>
-      <h3>We usually reply within one business day.</h3>
-      <p class="sub">Have a question before you sign in, or need to reach us directly? We're one message away.</p>
-      <div class="info-contact">
-        <a href="tel:7622279287"><span class="ic">☎</span> (762) 227-9287</a>
-        <a href="mailto:luminatewebco@gmail.com"><span class="ic">✉</span> luminatewebco@gmail.com</a>
-      </div>
-      <div class="stat-card">
-        <div class="num">24h</div>
-        <div class="lbl">Typical response time</div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- ════════════════════════════════════
-     DASHBOARD VIEW
-════════════════════════════════════ -->
-<div class="portal-main" id="view-dashboard" hidden>
-  <div class="portal-card">
-    <div class="dash-header">
-      <p class="eyebrow">New request</p>
-      <h1>Submit a request</h1>
-      <p>Describe what you need and we'll get back to you.</p>
-    </div>
-
-    <!-- ── Request form ── -->
-    <div class="card" id="panel-form">
-      <form id="form-request">
-        <div class="field">
-          <label class="lbl" for="input-title">
-            Title <span style="color:var(--red)">*</span>
-          </label>
-          <input type="text" id="input-title" placeholder="Brief summary of your request" required maxlength="160">
+        <nav id="drawerNav"></nav>
+        <div style="flex:1;"></div>
+        <div class="sidebar-user">
+          <div class="avatar-circle" id="drawerAvatar">MC</div>
+          <div class="sidebar-user-text">
+            <span class="sidebar-user-name" id="drawerUserName">Michelle Carter</span>
+            <span class="sidebar-user-org">Hope Community Ministries</span>
+          </div>
+          <button type="button" class="signout-btn" data-action="sign-out" title="Sign out" aria-label="Sign out">&#8674;</button>
         </div>
-        <div class="field">
-          <label class="lbl" for="input-desc">
-            Details <span class="opt">(optional)</span>
-          </label>
-          <textarea id="input-desc" rows="5" placeholder="Any additional context, links, or specifics…"></textarea>
-        </div>
-        <div id="request-error" class="banner banner-error" hidden></div>
-        <button type="submit" class="btn-primary" id="btn-submit">Submit request</button>
-      </form>
-    </div>
-
-    <!-- ── Unlinked account state ── -->
-    <div class="card state-center" id="panel-unlinked" hidden>
-      <div class="state-icon neutral">🔗</div>
-      <h2>Account not linked</h2>
-      <p>
-        Your account isn't linked to a client record yet.
-        Contact us and we'll get you set up.
-      </p>
-      <a href="/#contact" class="btn-primary" style="text-align:center;text-decoration:none;display:block">Contact us</a>
-      <button class="btn-ghost" id="btn-try-again" style="margin-top:14px">Try again</button>
-    </div>
-
-    <!-- ── Success state ── -->
-    <div class="card state-center" id="panel-success" hidden>
-      <div class="state-icon green">✓</div>
-      <h2>Request submitted</h2>
-      <p>We've received your request and will be in touch shortly.</p>
-      <div class="request-receipt">
-        <p class="rid" id="receipt-id"></p>
-        <p class="rtitle" id="receipt-title"></p>
-        <p class="rstatus">Status: <span id="receipt-status"></span></p>
       </div>
-      <button class="btn-outline" id="btn-another">Submit another request</button>
     </div>
+
+    <main class="main-content">
+      <div class="main-inner" id="pageRoot"></div>
+    </main>
   </div>
 </div>
 
+<script>
+(function(){
+  'use strict';
+  var $ = function(id){ return document.getElementById(id); };
+  var esc = function(s){ return String(s == null ? '' : s).replace(/[&<>"']/g, function(c){
+    return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];
+  }); };
 
-<!-- ════════════════════════════════════
-     SUPABASE + PORTAL LOGIC
-════════════════════════════════════ -->
+  /* ── State ── */
+  var state = {
+    page: 'dashboard',
+    drawerOpen: false,
+    isMobile: window.innerWidth < 880,
+    selectedId: null,
+    formError: '',
+    submittedNum: null,
+    commentDraft: '',
+    nextNum: 1048,
+    siteStatus: 'online',      // online | attention | maintenance
+    clientStage: 'live',       // live | onboarding
+    onboardingStep: 4,
+    plan: 'Standard',          // Essential | Standard | Premium
+    revisionsUsed: 2,
+    requests: [
+      { num:'LUM-1047', title:'Update staff page with new youth director', category:'Content Update', status:'In progress', submitted:'Aug 1', updated:'Today',
+        timeline:[
+          {label:'Submitted', date:'August 1'},
+          {label:'In review', date:'August 1', note:'We confirmed the details and scheduled the work.'},
+          {label:'In progress', date:'August 3', note:"Scheduled for this week's update window."}],
+        comments:[
+          {who:'client', name:'Michelle Carter', date:'Aug 1', text:"His name is spelled DeShawn — one capital S. Thank you!"},
+          {who:'lum', name:'Jacob · Luminate', date:'Aug 3', text:"Got the new bio and photo — this will go live with Thursday's update. I'll confirm here once it's published."}] },
+      { num:'LUM-1046', title:'Swap homepage banner for fall sermon series', category:'Design Change', status:'Waiting on you', submitted:'Aug 3', updated:'Yesterday',
+        timeline:[
+          {label:'Submitted', date:'August 3'},
+          {label:'In review', date:'August 4', note:"We're sizing the artwork you sent for the homepage banner."},
+          {label:'Waiting on you', date:'August 4', note:'We need the final headline text for the banner — reply in the comments when ready.'}],
+        comments:[
+          {who:'lum', name:'Jacob · Luminate', date:'Aug 4', text:'The artwork looks great. Could you confirm the exact headline you want over the banner?'}] },
+      { num:'LUM-1042', title:'Fix broken link on the Giving page', category:'Bug Report', status:'Completed', submitted:'Jul 23', updated:'Jul 24',
+        timeline:[
+          {label:'Submitted', date:'July 23'},
+          {label:'In progress', date:'July 23'},
+          {label:'Completed', date:'July 24', note:'The Giving link now points to the correct donation page.'}],
+        comments:[
+          {who:'lum', name:'Jacob · Luminate', date:'Jul 24', text:'Fixed and verified on desktop and mobile. Thanks for catching it!'}] },
+      { num:'LUM-1038', title:'Update service times for summer schedule', category:'Content Update', status:'Completed', submitted:'Jul 14', updated:'Jul 15',
+        timeline:[{label:'Submitted', date:'July 14'},{label:'Completed', date:'July 15'}], comments:[] },
+      { num:'LUM-1031', title:'Photo gallery for VBS week', category:'Content Update', status:'Completed', submitted:'Jun 28', updated:'Jun 30',
+        timeline:[
+          {label:'Submitted', date:'June 28'},
+          {label:'In progress', date:'June 29'},
+          {label:'Completed', date:'June 30', note:'42 photos added to a new gallery under Events.'}],
+        comments:[] },
+    ],
+  };
+
+  var CATEGORIES = ['Content Update','Design Change','Bug Report','Question','Feature Request','Other'];
+
+  var NAV_DEFS = [
+    ['dashboard','Dashboard','◉'], ['requests','Requests','✦'], ['website','Website','◈'],
+    ['care','Website Care','✧'], ['reports','Reports','▤'], ['documents','Documents','▦'],
+    ['billing','Billing','★'], ['support','Support','☎︎'],
+  ];
+
+  function statusMeta(s){
+    return {
+      'Submitted':      {color:'#C4D1E2', bg:'rgba(196,209,226,.10)'},
+      'In review':      {color:'#E8E2D4', bg:'rgba(232,226,212,.10)'},
+      'In progress':    {color:'#E8E2D4', bg:'rgba(232,226,212,.13)'},
+      'Waiting on you': {color:'#D9A25F', bg:'rgba(217,162,95,.12)'},
+      'Completed':      {color:'#3DAE7A', bg:'rgba(61,174,122,.12)'},
+    }[s] || {color:'#C4D1E2', bg:'rgba(196,209,226,.10)'};
+  }
+
+  function statusInfo(siteStatus){
+    return {
+      online:      {headline:'Your website is healthy.', copy1:"We've been monitoring it continuously for 146 days.", copy2:'Everything is operating normally.', color:'#3DAE7A', badge:'Live', confidence:'100%', summary:'8 of 8 checks passing', badgeBg:'rgba(61,174,122,.1)'},
+      attention:   {headline:'We spotted a minor issue.', copy1:"We're already on it — no action needed from you.", copy2:'Your website remains online.', color:'#D9A25F', badge:'Live — monitoring', confidence:'96%', summary:'7 of 8 checks passing', badgeBg:'rgba(217,162,95,.12)'},
+      maintenance: {headline:'Maintenance in progress.', copy1:'A scheduled update is running right now.', copy2:'Your website remains online.', color:'#E8E2D4', badge:'Updating', confidence:'100%', summary:'8 of 8 checks passing', badgeBg:'rgba(232,226,212,.1)'},
+    }[siteStatus] || {};
+  }
+
+  var PLAN_META = { Essential:{price:'$99', total:3}, Standard:{price:'$149', total:5}, Premium:{price:'$249', total:10} };
+
+  /* ── UI atoms ── */
+  function button(label, opts){
+    opts = opts || {};
+    var variant = opts.variant || 'primary';
+    var size = opts.size === 'sm' ? ' btn-sm' : '';
+    var attrs = 'class="btn btn-' + variant + size + '"' + (opts.action ? ' data-action="' + opts.action + '"' : '') + (opts.value != null ? ' data-value="' + esc(opts.value) + '"' : '');
+    return '<button type="button" ' + attrs + '>' + esc(label) + '</button>';
+  }
+
+  function eyebrow(text){ return '<div class="eyebrow">' + esc(text) + '</div>'; }
+
+  /* ── Nav rendering ── */
+  function renderNav(){
+    var html = NAV_DEFS.map(function(d){
+      var key = d[0], label = d[1], glyph = d[2];
+      var active = state.page === key ? ' active' : '';
+      return '<button type="button" class="nav-item' + active + '" data-nav="' + key + '"><span class="glyph">' + glyph + '</span><span>' + label + '</span></button>';
+    }).join('');
+    $('sidebarNav').innerHTML = html;
+    $('drawerNav').innerHTML = html;
+  }
+
+  /* ── Page: Dashboard ── */
+  function pageDashboard(){
+    var st = statusInfo(state.siteStatus);
+    var isLive = state.clientStage === 'live';
+    var isOnboarding = state.clientStage === 'onboarding';
+
+    var liveSection = '';
+    if (isLive) {
+      var healthChecks = [
+        {label:'Online', detail:'99.99% uptime · 146 days'},
+        {label:'Security protected', detail: state.siteStatus === 'attention' ? 'Reviewing a flagged plugin' : 'Scanned daily · no threats', warn: state.siteStatus === 'attention'},
+        {label:'SSL certificate valid', detail:'Renews automatically'},
+        {label:'Daily backups', detail:'Last backup 4:00 AM today'},
+        {label:'Forms working', detail:'Contact + prayer forms tested'},
+        {label:'Domain active', detail:'Renews January 2027'},
+        {label:'Monitoring active', detail:'Checked every 60 seconds'},
+        {label:'Last audit passed', detail:'July 29 monthly audit'},
+      ];
+      liveSection =
+        '<section class="floating" style="display:flex; gap:clamp(20px,4vw,44px); align-items:center; flex-wrap:wrap;">'
+        + '<div style="flex:1; min-width:260px; display:flex; flex-direction:column; gap:12px;">'
+        +   '<div style="display:flex; align-items:center; gap:12px;">'
+        +     '<div style="position:relative; width:12px; height:12px; flex:none;">'
+        +       '<span style="position:absolute; inset:0; border-radius:50%; background:' + st.color + '; animation:lumping 2.6s var(--ease-spring) infinite;"></span>'
+        +       '<span style="position:absolute; inset:0; border-radius:50%; background:' + st.color + ';"></span>'
+        +     '</div>'
+        +     '<span style="font-size:12px; letter-spacing:.22em; text-transform:uppercase; color:var(--dim-2); font-weight:600;">Website status</span>'
+        +   '</div>'
+        +   '<h2 style="margin:0; font-family:var(--font-display); font-size:clamp(23px,3vw,30px); font-weight:600; letter-spacing:-.01em; color:' + st.color + ';">' + esc(st.headline) + '</h2>'
+        +   '<p style="margin:0; color:var(--dim); font-size:15px; line-height:1.65; max-width:480px;">' + esc(st.copy1) + ' ' + esc(st.copy2) + " We'll notify you if anything requires attention.</p>"
+        + '</div>'
+        + '<div style="flex:none; display:flex; flex-direction:column; align-items:center; gap:6px; padding:22px 34px; border:1px solid var(--line-10); border-radius:16px;">'
+        +   '<span style="font-size:11px; letter-spacing:.22em; text-transform:uppercase; color:var(--dim-2); font-weight:600;">Luminate Confidence</span>'
+        +   '<span style="font-family:var(--font-display); font-size:clamp(36px,4.5vw,48px); font-weight:600; line-height:1; color:' + st.color + ';">' + esc(st.confidence) + '</span>'
+        +   '<span style="font-size:12px; color:var(--dim-2);">Last verified 2 minutes ago</span>'
+        + '</div>'
+        + '</section>'
+        + '<section class="surface">'
+        +   '<div style="display:flex; align-items:center; justify-content:space-between; gap:12px; margin-bottom:20px;">'
+        +     '<h2 class="section-title" style="margin:0;">Website health</h2>'
+        +     '<span class="status-pill" style="color:' + st.color + '; background:' + st.badgeBg + ';">' + esc(st.summary) + '</span>'
+        +   '</div>'
+        +   '<div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(190px,1fr)); gap:12px;">'
+        +     healthChecks.map(function(hc){
+              var color = hc.warn ? '#D9A25F' : '#3DAE7A';
+              var glyph = hc.warn ? '●' : '✓';
+              return '<div style="display:flex; align-items:center; gap:11px; border:1px solid var(--line-09); border-radius:12px; padding:12px 14px;">'
+                + '<span style="font-size:12px; flex:none; color:' + color + ';">' + glyph + '</span>'
+                + '<div style="display:flex; flex-direction:column; gap:1px; min-width:0;">'
+                +   '<span style="font-size:13.5px; font-weight:500;">' + esc(hc.label) + '</span>'
+                +   '<span style="font-size:11.5px; color:var(--dim-2); white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">' + esc(hc.detail) + '</span>'
+                + '</div></div>';
+            }).join('')
+        +   '</div>'
+        + '</section>';
+    }
+
+    var onboardingSection = '';
+    if (isOnboarding) {
+      var stepDefs = [
+        ['Contract signed','March 2'], ['Content received','March 18'], ['Design approved','April 1'],
+        ['Development','In progress'], ['Quality assurance','Up next'], ['Launch scheduled',''], ['Live',''],
+      ];
+      var stepIdx = Math.min(Math.max(state.onboardingStep, 1), 7);
+      onboardingSection =
+        '<section class="floating" style="display:flex; flex-direction:column; gap:24px;">'
+        + '<div style="display:flex; flex-direction:column; gap:6px;">'
+        +   '<span style="font-size:12px; letter-spacing:.22em; text-transform:uppercase; color:var(--dim-2); font-weight:600;">Website progress</span>'
+        +   '<h2 style="margin:0; font-family:var(--font-display); font-size:clamp(23px,3vw,30px); font-weight:600; letter-spacing:-.01em;">Your website is on the way</h2>'
+        +   '<p style="margin:0; color:var(--dim); font-size:15px;">We\'re building it right now — here\'s exactly where things stand.</p>'
+        + '</div>'
+        + '<div style="display:flex; flex-direction:column;">'
+        + stepDefs.map(function(d, i){
+            var label = d[0], note = d[1];
+            var done = i < stepIdx - 1, current = i === stepIdx - 1, last = i === stepDefs.length - 1;
+            var glyph = done ? '✓' : (current ? '●' : '');
+            var dotBg = done ? 'rgba(61,174,122,.14)' : (current ? 'rgba(232,226,212,.14)' : 'transparent');
+            var dotColor = done ? '#3DAE7A' : (current ? '#E8E2D4' : '#7E8DA0');
+            var dotBorder = done ? 'rgba(61,174,122,.3)' : (current ? 'rgba(232,226,212,.35)' : 'rgba(196,209,226,.14)');
+            var lineColor = last ? 'transparent' : (done ? 'rgba(61,174,122,.25)' : 'rgba(196,209,226,.12)');
+            var textColor = (done || current) ? '#F4F7FB' : '#7E8DA0';
+            var weight = current ? 600 : 500;
+            var displayNote = done ? note : (current ? (note || 'In progress') : '');
+            return '<div style="display:flex; gap:16px;">'
+              + '<div style="display:flex; flex-direction:column; align-items:center; width:22px; flex:none;">'
+              +   '<span style="width:22px; height:22px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:10px; flex:none; background:' + dotBg + '; color:' + dotColor + '; border:1px solid ' + dotBorder + ';">' + glyph + '</span>'
+              +   '<span style="width:1px; flex:1; background:' + lineColor + '; min-height:12px;"></span>'
+              + '</div>'
+              + '<div style="display:flex; align-items:baseline; gap:12px; padding-bottom:18px; flex-wrap:wrap;">'
+              +   '<span style="font-size:14.5px; font-weight:' + weight + '; color:' + textColor + ';">' + esc(label) + '</span>'
+              +   '<span style="font-size:12px; color:var(--dim-2);">' + esc(displayNote) + '</span>'
+              + '</div></div>';
+          }).join('')
+        + '</div></section>';
+    }
+
+    var activityGroups = [
+      {day:'Today', items:[{glyph:'✓', color:'#3DAE7A', text:'Security scan completed — no issues found'}]},
+      {day:'Yesterday', items:[{glyph:'◈', color:'#E8E2D4', text:'Website updated during routine maintenance'}]},
+      {day:'2 days ago', items:[{glyph:'✦', color:'#E8E2D4', text:'Request LUM-1047 moved to In progress'}]},
+      {day:'1 week ago', items:[{glyph:'✓', color:'#3DAE7A', text:'Monthly maintenance completed'}]},
+      {day:'2 weeks ago', items:[{glyph:'★', color:'#3DAE7A', text:'Invoice for July paid — thank you'}]},
+    ];
+    var monthDone = ['Security audit completed','Website monitored 24/7','Monthly maintenance completed','Backups verified daily','SSL certificate checked','Performance monitored'];
+
+    var plan = PLAN_META[state.plan] || PLAN_META.Standard;
+    var used = Math.min(Math.max(state.revisionsUsed, 0), plan.total);
+    var pct = Math.round((used / plan.total) * 100) + '%';
+    var open = state.requests.filter(function(r){ return r.status !== 'Completed'; });
+    var openPreview = open.slice(0, 2);
+
+    var activityHtml = activityGroups.map(function(ag){
+      return '<div style="display:flex; flex-direction:column; gap:9px;">'
+        + '<span style="font-size:11.5px; letter-spacing:.14em; text-transform:uppercase; color:var(--dim-2); font-weight:600;">' + esc(ag.day) + '</span>'
+        + ag.items.map(function(ev){
+            return '<div style="display:flex; gap:11px; align-items:center;">'
+              + '<span style="font-size:11px; flex:none; width:16px; text-align:center; color:' + ev.color + ';">' + ev.glyph + '</span>'
+              + '<span style="font-size:13.5px; line-height:1.45; color:var(--dim);">' + esc(ev.text) + '</span></div>';
+          }).join('')
+        + '</div>';
+    }).join('');
+
+    var monthHtml = monthDone.map(function(md){
+      return '<div style="display:flex; align-items:center; gap:11px; font-size:13.5px; color:var(--dim);"><span style="color:var(--success); font-size:12px; width:16px; text-align:center; flex:none;">✓</span>' + esc(md) + '</div>';
+    }).join('');
+
+    var openPreviewHtml = openPreview.map(function(rq){
+      var m = statusMeta(rq.status);
+      return '<div class="req-open-row" data-open-request="' + rq.num + '" style="display:flex; align-items:center; gap:12px; padding:11px 13px; border:1px solid var(--line-10); border-radius:12px; cursor:pointer; transition:border-color .25s;">'
+        + '<div style="display:flex; flex-direction:column; gap:2px; min-width:0; flex:1;">'
+        +   '<span style="font-size:13.5px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">' + esc(rq.title) + '</span>'
+        +   '<span style="font-size:11.5px; color:var(--dim-2);">' + rq.num + ' · Updated ' + esc(rq.updated) + '</span>'
+        + '</div>'
+        + '<span style="font-size:11.5px; font-weight:600; padding:4px 10px; border-radius:999px; flex:none; color:' + m.color + '; background:' + m.bg + ';">' + esc(rq.status) + '</span>'
+        + '</div>';
+    }).join('');
+
+    return '<div class="page-head">'
+      + eyebrow('Hope Community Ministries')
+      + '<h1>' + 'Good afternoon, Michelle' + '</h1>'
+      + '</div>'
+      + liveSection + onboardingSection
+      + '<div class="grid-2">'
+      +   '<section class="surface"><h2 class="section-title">Activity</h2><div style="display:flex; flex-direction:column; gap:18px;">' + activityHtml + '</div></section>'
+      +   '<div style="display:flex; flex-direction:column; gap:20px;">'
+      +     '<section class="surface" style="display:flex; flex-direction:column; gap:14px;">'
+      +       '<div style="display:flex; align-items:center; justify-content:space-between; gap:12px;"><h2 class="section-title" style="margin:0;">This month</h2><span style="font-size:12px; color:var(--dim-2);">Included in your plan</span></div>'
+      +       '<div style="display:flex; flex-direction:column; gap:11px;">' + monthHtml + '</div>'
+      +     '</section>'
+      +     '<section class="surface" style="display:flex; flex-direction:column; gap:16px;">'
+      +       '<div style="display:flex; align-items:center; justify-content:space-between; gap:12px;">'
+      +         '<h2 class="section-title" style="margin:0;">Requests</h2>'
+      +         '<span style="font-size:12.5px;"><span style="font-weight:600; color:var(--accent);">' + used + '</span><span style="color:var(--dim-2);"> / ' + plan.total + ' · resets September 3</span></span>'
+      +       '</div>'
+      +       '<div style="height:6px; border-radius:999px; background:var(--line-10); overflow:hidden;"><div style="height:100%; border-radius:999px; background:var(--accent); width:' + pct + ';"></div></div>'
+      +       '<div style="display:flex; flex-direction:column; gap:9px;">' + openPreviewHtml + '</div>'
+      +       button('Submit a request', {action:'go-requests'})
+      +     '</section>'
+      +   '</div>'
+      + '</div>'
+      + '<section class="surface" style="padding:22px 26px; display:flex; align-items:center; gap:16px; flex-wrap:wrap;">'
+      +   '<div style="width:44px; height:44px; flex:none; border-radius:50%; background:var(--accent); color:#0D1B2E; display:flex; align-items:center; justify-content:center; font-size:14px; font-weight:700;">JJ</div>'
+      +   '<div style="display:flex; flex-direction:column; gap:2px; min-width:0; flex:1;">'
+      +     '<span style="font-size:14.5px; font-weight:600;">Jacob Joseph · Your developer</span>'
+      +     '<span style="font-size:12.5px; color:var(--dim-2);">Luminate · Managing your website since March 2025</span>'
+      +   '</div>'
+      +   '<div style="display:flex; gap:10px; flex-wrap:wrap;">' + button('Contact Jacob', {variant:'ghost', size:'sm', action:'go-support'}) + '</div>'
+      + '</section>';
+  }
+
+  /* ── Page: Requests ── */
+  function pageRequests(){
+    var sel = state.selectedId ? state.requests.find(function(r){ return r.num === state.selectedId; }) : null;
+
+    if (sel) {
+      var m = statusMeta(sel.status);
+      var timelineHtml = sel.timeline.map(function(tl, i){
+        var last = i === sel.timeline.length - 1;
+        var dot = tl.label === 'Completed' ? '#3DAE7A' : (tl.label === 'Submitted' ? '#7E8DA0' : (tl.label === 'Waiting on you' ? '#D9A25F' : '#E8E2D4'));
+        var lineColor = last ? 'transparent' : 'rgba(196,209,226,.14)';
+        return '<div style="display:flex; gap:14px;">'
+          + '<div style="display:flex; flex-direction:column; align-items:center; width:12px; flex:none;">'
+          +   '<span style="width:10px; height:10px; border-radius:50%; margin-top:4px; background:' + dot + '; flex:none;"></span>'
+          +   '<span style="width:1px; flex:1; background:' + lineColor + '; min-height:14px;"></span>'
+          + '</div>'
+          + '<div style="display:flex; flex-direction:column; gap:2px; padding-bottom:20px;">'
+          +   '<span style="font-size:14px; font-weight:600;">' + esc(tl.label) + '</span>'
+          +   '<span style="font-size:12px; color:var(--dim-2);">' + esc(tl.date) + '</span>'
+          +   (tl.note ? '<span style="font-size:13px; color:var(--dim); margin-top:3px; line-height:1.5;">' + esc(tl.note) + '</span>' : '')
+          + '</div></div>';
+      }).join('');
+
+      var commentsHtml = sel.comments.map(function(cm){
+        var initials = cm.who === 'lum' ? 'JJ' : 'MC';
+        var avatarBg = cm.who === 'lum' ? '#E8E2D4' : '#152A45';
+        var avatarColor = cm.who === 'lum' ? '#0D1B2E' : '#E8E2D4';
+        return '<div style="display:flex; gap:12px; align-items:flex-start;">'
+          + '<div style="width:30px; height:30px; flex:none; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:11px; font-weight:600; background:' + avatarBg + '; color:' + avatarColor + '; border:1px solid var(--line-12);">' + initials + '</div>'
+          + '<div style="display:flex; flex-direction:column; gap:3px; min-width:0;">'
+          +   '<div style="display:flex; align-items:baseline; gap:9px;"><span style="font-size:13px; font-weight:600;">' + esc(cm.name) + '</span><span style="font-size:11.5px; color:var(--dim-2);">' + esc(cm.date) + '</span></div>'
+          +   '<p style="margin:0; font-size:13.5px; color:var(--dim); line-height:1.55;">' + esc(cm.text) + '</p>'
+          + '</div></div>';
+      }).join('') || '<p style="margin:0; font-size:13.5px; color:var(--dim-2);">No comments yet. We\'ll post updates here as we work on this.</p>';
+
+      return '<div>'
+        + '<span data-back-to-list style="display:inline-flex; align-items:center; gap:8px; font-size:13.5px; color:var(--dim); cursor:pointer;">&#8249; All requests</span>'
+        + '</div>'
+        + '<div style="display:flex; align-items:flex-start; justify-content:space-between; gap:16px; flex-wrap:wrap;">'
+        +   '<div style="display:flex; flex-direction:column; gap:6px;">'
+        +     '<span style="font-size:12.5px; color:var(--dim-2); font-weight:600; letter-spacing:.05em;">' + sel.num + ' · ' + esc(sel.category) + '</span>'
+        +     '<h1 style="margin:0; font-size:clamp(21px,2.6vw,27px); font-weight:600; letter-spacing:-.01em;">' + esc(sel.title) + '</h1>'
+        +     '<span style="font-size:13px; color:var(--dim-2);">Submitted ' + esc(sel.submitted) + ' · Updated ' + esc(sel.updated) + '</span>'
+        +   '</div>'
+        +   '<span class="status-pill" style="padding:6px 14px; color:' + m.color + '; background:' + m.bg + ';">' + esc(sel.status) + '</span>'
+        + '</div>'
+        + '<div class="grid-2" style="align-items:start;">'
+        +   '<section class="surface"><h2 class="section-title" style="font-size:15px;">Timeline</h2><div style="display:flex; flex-direction:column;">' + timelineHtml + '</div></section>'
+        +   '<section class="surface" style="display:flex; flex-direction:column; gap:18px;">'
+        +     '<h2 class="section-title" style="margin:0; font-size:15px;">Comments</h2>'
+        +     '<div style="display:flex; flex-direction:column; gap:16px;">' + commentsHtml + '</div>'
+        +     '<div style="display:flex; gap:10px; margin-top:auto;">'
+        +       '<input id="commentInput" placeholder="Add a comment…" style="flex:1; min-width:0; background:rgba(244,247,251,.03); border:1px solid var(--line-14); border-radius:10px; padding:11px 14px; font-size:13.5px; color:var(--ink); outline:none;">'
+        +       button('Send', {variant:'ghost', size:'sm', action:'send-comment'})
+        +     '</div>'
+        +   '</section>'
+        + '</div>';
+    }
+
+    var plan = PLAN_META[state.plan] || PLAN_META.Standard;
+    var used = Math.min(Math.max(state.revisionsUsed, 0), plan.total);
+    var pct = Math.round((used / plan.total) * 100) + '%';
+
+    var formSubmittedHtml = '';
+    if (state.submittedNum) {
+      formSubmittedHtml = '<section class="surface" style="padding:36px; text-align:center; display:flex; flex-direction:column; align-items:center; gap:14px;">'
+        + '<div style="width:52px; height:52px; border-radius:50%; background:rgba(61,174,122,.1); border:1px solid rgba(61,174,122,.3); display:flex; align-items:center; justify-content:center; font-size:22px; color:var(--success);">✓</div>'
+        + '<h2 style="margin:0; font-size:20px; font-weight:600;">Request submitted</h2>'
+        + '<p style="margin:0; color:var(--dim); font-size:14.5px; max-width:400px;">We\'ve received request <span style="color:var(--accent); font-weight:600;">' + state.submittedNum + '</span> and will be in touch shortly. You\'ll get an email when it moves forward.</p>'
+        + '<div style="margin-top:6px;">' + button('Submit another request', {variant:'ghost', action:'reset-form'}) + '</div>'
+        + '</section>';
+    }
+
+    var formHtml = '';
+    if (!state.submittedNum) {
+      var optionsHtml = CATEGORIES.map(function(c){ return '<option>' + esc(c) + '</option>'; }).join('');
+      formHtml = '<section class="surface" style="padding:clamp(22px,3vw,30px); display:flex; flex-direction:column; gap:20px;">'
+        + '<div class="field"><label class="lbl" for="reqCategory">Category</label><select id="reqCategory"><option value="">Choose a category</option>' + optionsHtml + '</select></div>'
+        + '<div class="field"><label class="lbl" for="reqTitle">Title</label><input type="text" id="reqTitle" placeholder="A short summary — e.g. Update the staff page"></div>'
+        + '<div class="field"><label class="lbl" for="reqDesc">Description</label><textarea id="reqDesc" rows="5" placeholder="Describe what you\'d like changed, fixed, or added. Links and page names help."></textarea></div>'
+        + '<div style="border:1px dashed var(--line-22); border-radius:10px; padding:18px; display:flex; align-items:center; justify-content:center; gap:10px; color:var(--dim-2); font-size:13.5px; cursor:pointer;">'
+        +   '<span style="font-size:15px;">✉︎</span>Attach files — drag &amp; drop or click to browse</div>'
+        + (state.formError ? '<p style="margin:0; color:var(--error); font-size:13px;">' + esc(state.formError) + '</p>' : '')
+        + '<div style="display:flex; justify-content:flex-end;">' + button('Submit request', {action:'submit-request'}) + '</div>'
+        + '</section>';
+    }
+
+    var open = state.requests.filter(function(r){ return r.status !== 'Completed'; });
+    var done = state.requests.filter(function(r){ return r.status === 'Completed'; });
+
+    function reqRow(rq, completed){
+      var m = statusMeta(rq.status);
+      if (completed) {
+        return '<div class="req-open-row" data-open-request="' + rq.num + '" style="display:flex; align-items:center; gap:16px; border:1px solid var(--line-09); border-radius:14px; padding:13px 20px; cursor:pointer; transition:border-color .25s;">'
+          + '<span style="font-size:12px; color:var(--dim-2); font-weight:600; flex:none;">' + rq.num + '</span>'
+          + '<span style="font-size:14px; color:var(--dim); min-width:0; flex:1; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">' + esc(rq.title) + '</span>'
+          + '<span style="font-size:12px; color:var(--dim-2); flex:none;">' + esc(rq.updated) + '</span>'
+          + '<span class="status-pill" style="padding:4px 11px; color:' + m.color + '; background:' + m.bg + ';">' + esc(rq.status) + '</span>'
+          + '</div>';
+      }
+      return '<div class="req-open-row" data-open-request="' + rq.num + '" style="display:flex; align-items:center; gap:16px; background:var(--gradient-surface); border:1px solid var(--line-09); border-radius:16px; padding:16px 20px; cursor:pointer; transition:transform var(--duration-base) var(--ease-spring), border-color .25s;">'
+        + '<div style="display:flex; flex-direction:column; gap:4px; min-width:0; flex:1;">'
+        +   '<div style="display:flex; align-items:center; gap:10px; flex-wrap:wrap;"><span style="font-size:12px; color:var(--dim-2); font-weight:600; letter-spacing:.04em;">' + rq.num + '</span><span style="font-size:12px; color:var(--dim-2);">' + esc(rq.category) + '</span></div>'
+        +   '<span style="font-size:15px; font-weight:500;">' + esc(rq.title) + '</span>'
+        +   '<span style="font-size:12px; color:var(--dim-2);">Submitted ' + esc(rq.submitted) + ' · Updated ' + esc(rq.updated) + '</span>'
+        + '</div>'
+        + '<span class="status-pill" style="padding:5px 12px; color:' + m.color + '; background:' + m.bg + ';">' + esc(rq.status) + '</span>'
+        + '<span style="color:var(--dim-2); font-size:15px; flex:none;">&#8250;</span>'
+        + '</div>';
+    }
+
+    return '<div style="display:flex; align-items:flex-end; justify-content:space-between; gap:18px; flex-wrap:wrap;">'
+      +   '<div class="page-head">' + eyebrow('Requests') + '<h1>How can we help?</h1><p>Tell us what you need — we usually respond within one business day.</p></div>'
+      +   '<div style="display:flex; flex-direction:column; gap:7px; min-width:200px;">'
+      +     '<div style="display:flex; align-items:baseline; justify-content:space-between; gap:14px;"><span style="font-size:12.5px; color:var(--dim-2);">Monthly requests</span><span style="font-size:12.5px;"><span style="font-weight:600; color:var(--accent);">' + used + '</span><span style="color:var(--dim-2);"> / ' + plan.total + ' · resets September 3</span></span></div>'
+      +     '<div style="height:5px; border-radius:999px; background:var(--line-10); overflow:hidden;"><div style="height:100%; border-radius:999px; background:var(--accent); width:' + pct + ';"></div></div>'
+      +   '</div>'
+      + '</div>'
+      + formSubmittedHtml + formHtml
+      + '<section style="display:flex; flex-direction:column; gap:12px;">'
+      +   '<h2 class="section-title" style="margin:8px 0 0;">Open requests</h2>'
+      +   '<div style="display:flex; flex-direction:column; gap:10px;">' + open.map(function(r){ return reqRow(r, false); }).join('') + '</div>'
+      +   '<h2 class="section-title" style="margin:16px 0 0;">Completed</h2>'
+      +   '<div style="display:flex; flex-direction:column; gap:8px;">' + done.map(function(r){ return reqRow(r, true); }).join('') + '</div>'
+      + '</section>';
+  }
+
+  /* ── Page: Website ── */
+  function pageWebsite(){
+    var st = statusInfo(state.siteStatus);
+    var siteFacts = [
+      {label:'Hosting', value:'Managed by Luminate'}, {label:'Framework', value:'Next.js'}, {label:'CMS', value:'Custom'},
+      {label:'Last deployment', value:'Yesterday'}, {label:'Current version', value:'v2.4'}, {label:'Domain', value:'Active · renews Jan 2027'},
+      {label:'Last maintenance', value:'July 29, 2026'}, {label:'SSL', value:'Valid · auto-renews'},
+    ];
+    var factsHtml = siteFacts.map(function(f){
+      return '<div style="display:flex; flex-direction:column; gap:3px;"><span style="font-size:11.5px; letter-spacing:.14em; text-transform:uppercase; color:var(--dim-2); font-weight:600;">' + esc(f.label) + '</span><span style="font-size:15px; font-weight:500;">' + esc(f.value) + '</span></div>';
+    }).join('');
+
+    return '<div class="page-head">' + eyebrow('Website') + '<h1>Your website</h1><p>A summary of what we manage for you — no technical upkeep required on your end.</p></div>'
+      + '<section class="floating" style="display:flex; flex-direction:column; gap:26px;">'
+      +   '<div style="display:flex; align-items:center; justify-content:space-between; gap:16px; flex-wrap:wrap;">'
+      +     '<div style="display:flex; flex-direction:column; gap:4px;"><a href="#" style="font-size:clamp(18px,2.4vw,23px); font-weight:600; letter-spacing:-.01em;">hopecommunityministries.org &#8599;</a><span style="font-size:13px; color:var(--dim-2);">Live since March 14, 2025</span></div>'
+      +     '<span class="status-badge-online" style="color:' + st.color + '; background:' + st.badgeBg + ';"><span class="dot" style="background:' + st.color + ';"></span>' + esc(st.badge) + '</span>'
+      +   '</div>'
+      +   '<div style="display:flex; flex-direction:column; gap:16px; padding-top:24px; border-top:1px solid var(--line-10);">'
+      +     '<span style="font-size:11.5px; letter-spacing:.22em; text-transform:uppercase; color:var(--dim-2); font-weight:600;">Technology</span>'
+      +     '<div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:20px 28px;">' + factsHtml + '</div>'
+      +   '</div>'
+      + '</section>'
+      + '<div class="grid-2">'
+      +   '<section class="surface" style="display:flex; flex-direction:column; gap:14px;">'
+      +     '<div style="display:flex; align-items:center; justify-content:space-between;"><h2 class="section-title" style="margin:0; font-size:15px;">Performance</h2><span class="status-pill" style="color:var(--success); background:rgba(61,174,122,.1);">Fast</span></div>'
+      +     '<p style="margin:0; font-size:13.5px; color:var(--dim); line-height:1.55;">Pages load in under a second for most visitors. We tune this with every update.</p>'
+      +     '<svg width="100%" height="54" viewBox="0 0 300 54" preserveAspectRatio="none" style="display:block; margin-top:4px;"><polyline fill="none" stroke="#3DAE7A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" points="0,34 22,32 44,35 66,30 88,31 110,27 132,29 154,25 176,27 198,22 220,24 242,20 264,22 286,17 300,18"></polyline></svg>'
+      +     '<div style="display:flex; justify-content:space-between; font-size:11.5px; color:var(--dim-2);"><span>30 days ago</span><span>Today</span></div>'
+      +   '</section>'
+      +   '<section class="surface" style="display:flex; flex-direction:column; gap:14px;">'
+      +     '<h2 class="section-title" style="margin:0; font-size:15px;">Care &amp; maintenance</h2>'
+      +     '<div style="display:flex; flex-direction:column; gap:12px;">'
+      +       '<div style="display:flex; align-items:center; gap:11px; font-size:13.5px; color:var(--dim);"><span style="color:var(--success); font-size:12px;">✓</span>Software kept up to date — last update Aug 2</div>'
+      +       '<div style="display:flex; align-items:center; gap:11px; font-size:13.5px; color:var(--dim);"><span style="color:var(--success); font-size:12px;">✓</span>Monthly maintenance completed July 29</div>'
+      +       '<div style="display:flex; align-items:center; gap:11px; font-size:13.5px; color:var(--dim);"><span style="color:var(--success); font-size:12px;">✓</span>Security monitored around the clock</div>'
+      +       '<div style="display:flex; align-items:center; gap:11px; font-size:13.5px; color:var(--dim);"><span style="color:var(--success); font-size:12px;">✓</span>Daily backups stored safely off-site</div>'
+      +     '</div>'
+      +     '<p style="margin:auto 0 0; font-size:12.5px; color:var(--dim-2); line-height:1.5; border-top:1px solid var(--line-09); padding-top:14px;">Something you\'d like changed on the site? <span data-action="go-requests" style="color:var(--accent); cursor:pointer;">Submit a request</span> and we\'ll take care of it. Curious what your plan covers? See <span data-action="go-care" style="color:var(--accent); cursor:pointer;">Website Care</span>.</p>'
+      +   '</section>'
+      + '</div>';
+  }
+
+  /* ── Page: Website Care ── */
+  function pageCare(){
+    var plan = PLAN_META[state.plan] || PLAN_META.Standard;
+    var careIncluded = [
+      {label:'Hosting management', desc:'Fast, secure servers — capacity, updates, and configuration handled for you.'},
+      {label:'Security monitoring', desc:'Scanned daily and watched around the clock for threats and intrusions.'},
+      {label:'Monthly maintenance', desc:'Software updates, plugin patches, and a full health audit every month.'},
+      {label:'SSL monitoring', desc:'Your padlock stays valid — certificates renew automatically, verified by us.'},
+      {label:'Daily backups', desc:'A complete copy of your site saved off-site every night, kept for 30 days.'},
+      {label:'Request support', desc: plan.total + ' content and design requests each month, handled within days.'},
+      {label:'Performance optimization', desc:'Speed checked continuously and tuned with every update.'},
+      {label:'Deployment management', desc:'Every change tested and released safely — no downtime, no surprises.'},
+    ];
+    var itemsHtml = careIncluded.map(function(ci){
+      return '<div style="display:flex; gap:13px; align-items:flex-start; border:1px solid var(--line-10); border-radius:14px; padding:16px 18px;">'
+        + '<span style="color:var(--success); font-size:12px; flex:none; margin-top:2px;">✓</span>'
+        + '<div style="display:flex; flex-direction:column; gap:3px;"><span style="font-size:14px; font-weight:600;">' + esc(ci.label) + '</span><span style="font-size:12.5px; color:var(--dim-2); line-height:1.5;">' + esc(ci.desc) + '</span></div>'
+        + '</div>';
+    }).join('');
+
+    return '<div class="page-head">' + eyebrow('Website Care') + '<h1>What your plan includes</h1><p>Everything below happens automatically, every month — no action needed from you.</p></div>'
+      + '<section class="floating" style="display:flex; flex-direction:column; gap:24px;">'
+      +   '<div style="display:flex; align-items:center; justify-content:space-between; gap:16px; flex-wrap:wrap;">'
+      +     '<span style="font-family:var(--font-display); font-size:clamp(20px,2.6vw,26px); font-weight:600;">Website Care Plan — ' + esc(state.plan) + '</span>'
+      +     '<span style="font-size:14px; color:var(--dim);">' + plan.price + ' / month · ' + plan.total + ' requests included</span>'
+      +   '</div>'
+      +   '<div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:14px;">' + itemsHtml + '</div>'
+      + '</section>'
+      + '<p style="margin:0; font-size:13px; color:var(--dim-2);">Want more monthly requests or extra services? <span data-action="go-support" style="color:var(--accent); cursor:pointer;">Talk to us</span> about moving up a plan.</p>';
+  }
+
+  /* ── Page: Reports ── */
+  function pageReports(){
+    var currentReport = ['4 uptime checks daily — all passing','Security scans clean so far this month','1 request completed, 2 in progress','Website updated August 2','Backups verified every morning'];
+    var pastReports = [
+      {month:'July 2026', summary:'31 uptime checks · security audit passed · 2 requests completed · backups verified'},
+      {month:'June 2026', summary:'30 uptime checks · security audit passed · 3 requests completed · backups verified'},
+      {month:'May 2026', summary:'31 uptime checks · security audit passed · 1 request completed · backups verified'},
+    ];
+    var currentHtml = currentReport.map(function(cr){
+      return '<div style="display:flex; align-items:center; gap:11px; font-size:14px; color:var(--dim);"><span style="color:var(--success); font-size:12px; width:16px; text-align:center; flex:none;">✓</span>' + esc(cr) + '</div>';
+    }).join('');
+    var pastHtml = pastReports.map(function(pr){
+      return '<div style="display:flex; align-items:center; gap:16px; background:var(--gradient-surface); border:1px solid var(--line-09); border-radius:14px; padding:14px 20px;">'
+        + '<span style="width:36px; height:36px; flex:none; border-radius:10px; background:rgba(232,226,212,.07); border:1px solid var(--line-10); display:flex; align-items:center; justify-content:center; font-size:13px; color:var(--accent);">▤</span>'
+        + '<div style="display:flex; flex-direction:column; gap:2px; min-width:0; flex:1;"><span style="font-size:14.5px; font-weight:500;">' + esc(pr.month) + ' Care Report</span><span style="font-size:12px; color:var(--dim-2);">' + esc(pr.summary) + '</span></div>'
+        + button('Download PDF', {variant:'ghost', size:'sm'})
+        + '</div>';
+    }).join('');
+
+    return '<div class="page-head">' + eyebrow('Reports') + '<h1>Monthly care reports</h1><p>A record of the care your website received each month.</p></div>'
+      + '<section class="floating" style="display:flex; flex-direction:column; gap:22px;">'
+      +   '<div style="display:flex; align-items:flex-start; justify-content:space-between; gap:16px; flex-wrap:wrap;">'
+      +     '<div style="display:flex; flex-direction:column; gap:4px;"><span style="font-size:12px; letter-spacing:.22em; text-transform:uppercase; color:var(--dim-2); font-weight:600;">Current month</span><span style="font-family:var(--font-display); font-size:clamp(20px,2.6vw,26px); font-weight:600;">August 2026 — in progress</span></div>'
+      +     '<span style="font-size:12.5px; color:var(--dim-2); padding:6px 12px; border:1px solid var(--line-12); border-radius:999px;">Finalized on the 1st of each month</span>'
+      +   '</div>'
+      +   '<div style="display:flex; flex-direction:column; gap:12px; padding-top:20px; border-top:1px solid var(--line-10);">' + currentHtml + '</div>'
+      + '</section>'
+      + '<section style="display:flex; flex-direction:column; gap:12px;"><h2 class="section-title">Past reports</h2><div style="display:flex; flex-direction:column; gap:8px;">' + pastHtml + '</div></section>';
+  }
+
+  /* ── Page: Documents ── */
+  function pageDocuments(){
+    var documents = [
+      {name:'Website Agreement', category:'Agreements', date:'Mar 2, 2025', kind:'PDF', glyph:'✧'},
+      {name:'Brand Guide', category:'Brand Assets', date:'Mar 10, 2025', kind:'PDF', glyph:'◈'},
+      {name:'Logo Files', category:'Brand Assets', date:'Mar 10, 2025', kind:'ZIP', glyph:'◈'},
+      {name:'Launch Checklist', category:'Onboarding', date:'Mar 12, 2025', kind:'PDF', glyph:'✓'},
+      {name:'Website Guide', category:'Training', date:'Apr 2, 2025', kind:'PDF', glyph:'✦'},
+      {name:'Content Worksheet', category:'Content', date:'Feb 20, 2025', kind:'DOCX', glyph:'▤'},
+    ];
+    var rows = documents.map(function(doc){
+      return '<div style="display:flex; align-items:center; gap:16px; padding:16px 22px; border-bottom:1px solid var(--line-09);">'
+        + '<span style="width:36px; height:36px; flex:none; border-radius:10px; background:rgba(232,226,212,.07); border:1px solid var(--line-10); display:flex; align-items:center; justify-content:center; font-size:13px; color:var(--accent);">' + doc.glyph + '</span>'
+        + '<div style="display:flex; flex-direction:column; gap:2px; min-width:0; flex:1;"><span style="font-size:14.5px; font-weight:500;">' + esc(doc.name) + '</span><span style="font-size:12px; color:var(--dim-2);">' + esc(doc.category) + ' · Uploaded ' + esc(doc.date) + ' · ' + esc(doc.kind) + '</span></div>'
+        + button('Download', {variant:'ghost', size:'sm'})
+        + '</div>';
+    }).join('');
+
+    return '<div class="page-head">' + eyebrow('Documents') + '<h1>Documents</h1><p>Agreements, brand assets, and guides — all in one place.</p></div>'
+      + '<section class="surface" style="padding:0; overflow:hidden;">' + rows + '</section>'
+      + '<p style="margin:0; font-size:13px; color:var(--dim-2);">Need something added here — an updated logo, new photography, a contract copy? <span data-action="go-requests" style="color:var(--accent); cursor:pointer;">Send it over as a request.</span></p>';
+  }
+
+  /* ── Page: Billing ── */
+  function pageBilling(){
+    var plan = PLAN_META[state.plan] || PLAN_META.Standard;
+    return '<div class="page-head">' + eyebrow('Billing') + '<h1>Billing</h1><p>Your plan, invoices, and payment details.</p></div>'
+      + '<section class="floating" style="display:flex; flex-direction:column; gap:24px;">'
+      +   '<div style="display:flex; align-items:flex-start; justify-content:space-between; gap:16px; flex-wrap:wrap;">'
+      +     '<div style="display:flex; flex-direction:column; gap:5px;">'
+      +       '<span style="font-size:12px; letter-spacing:.22em; text-transform:uppercase; color:var(--dim-2); font-weight:600;">Current plan</span>'
+      +       '<span style="font-family:var(--font-display); font-size:clamp(22px,2.8vw,28px); font-weight:600;">Website Care Plan — ' + esc(state.plan) + '</span>'
+      +       '<span style="font-size:14px; color:var(--dim);">' + plan.price + ' / month · ' + plan.total + ' requests included · <span data-action="go-care" style="color:var(--accent); cursor:pointer;">see everything included</span></span>'
+      +     '</div>'
+      +     '<span class="status-badge-online" style="color:var(--success); background:rgba(61,174,122,.1);"><span class="dot" style="background:var(--success);"></span>Active</span>'
+      +   '</div>'
+      +   '<div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:20px 28px; padding-top:22px; border-top:1px solid var(--line-10);">'
+      +     '<div style="display:flex; flex-direction:column; gap:3px;"><span style="font-size:11.5px; letter-spacing:.14em; text-transform:uppercase; color:var(--dim-2); font-weight:600;">Renews</span><span style="font-size:15px; font-weight:500;">September 3, 2026</span></div>'
+      +     '<div style="display:flex; flex-direction:column; gap:3px;"><span style="font-size:11.5px; letter-spacing:.14em; text-transform:uppercase; color:var(--dim-2); font-weight:600;">Payment method</span><span style="font-size:15px; font-weight:500;">Visa ending 4242</span></div>'
+      +     '<div style="display:flex; flex-direction:column; gap:3px;"><span style="font-size:11.5px; letter-spacing:.14em; text-transform:uppercase; color:var(--dim-2); font-weight:600;">Last payment</span><span style="font-size:15px; font-weight:500;">August 3 · <span style="color:var(--success);">Paid</span></span></div>'
+      +   '</div>'
+      +   '<div style="display:flex; gap:12px; flex-wrap:wrap;">' + button('Manage billing') + button('View invoices', {variant:'ghost'}) + button('Update payment method', {variant:'ghost'}) + '</div>'
+      + '</section>'
+      + '<p style="margin:0; font-size:13px; color:var(--dim-2);">Billing is handled securely by Stripe. These buttons take you to your private billing portal — we never see your card details.</p>';
+  }
+
+  /* ── Page: Support ── */
+  function pageSupport(){
+    var supportPaths = [
+      {glyph:'☎︎', title:'Website down or emergency', desc:'Call immediately — any time, day or night.', action:'Call now', href:'tel:+17622279287',
+        border:'rgba(224,121,107,.35)', iconBg:'rgba(224,121,107,.1)', iconColor:'#E0796B', titleColor:'#E0796B', actionColor:'#E0796B'},
+      {glyph:'✦', title:'Change or fix on your website', desc:'Submit a request — we usually start within a day.', action:'Submit a request', navAction:'go-requests',
+        border:'rgba(196,209,226,.09)', iconBg:'rgba(232,226,212,.07)', iconColor:'#E8E2D4', titleColor:'#F4F7FB', actionColor:'#E8E2D4'},
+      {glyph:'✉︎', title:'Question or something non-urgent', desc:'Email us — replies within one business day.', action:'Email us', href:'mailto:luminatewebco@gmail.com',
+        border:'rgba(196,209,226,.09)', iconBg:'rgba(232,226,212,.07)', iconColor:'#E8E2D4', titleColor:'#F4F7FB', actionColor:'#E8E2D4'},
+      {glyph:'◈', title:'Big idea or larger project', desc:'Book a 20-minute call to talk it through.', action:'Schedule a meeting', href:'mailto:luminatewebco@gmail.com',
+        border:'rgba(196,209,226,.09)', iconBg:'rgba(232,226,212,.07)', iconColor:'#E8E2D4', titleColor:'#F4F7FB', actionColor:'#E8E2D4'},
+    ];
+    var pathsHtml = supportPaths.map(function(sp){
+      var attr = sp.href ? ' data-href="' + sp.href + '"' : (sp.navAction ? ' data-action="' + sp.navAction + '"' : '');
+      return '<div class="support-path" ' + attr + ' style="display:flex; align-items:center; gap:18px; background:var(--gradient-surface); border:1px solid ' + sp.border + '; border-radius:16px; padding:18px 22px; cursor:pointer; transition:transform var(--duration-base) var(--ease-spring), border-color .25s;">'
+        + '<span style="width:40px; height:40px; flex:none; border-radius:10px; display:flex; align-items:center; justify-content:center; font-size:15px; background:' + sp.iconBg + '; border:1px solid var(--line-10); color:' + sp.iconColor + ';">' + sp.glyph + '</span>'
+        + '<div style="display:flex; flex-direction:column; gap:2px; min-width:0; flex:1;"><span style="font-size:15px; font-weight:600; color:' + sp.titleColor + ';">' + esc(sp.title) + '</span><span style="font-size:13px; color:var(--dim-2);">' + esc(sp.desc) + '</span></div>'
+        + '<span style="font-size:13.5px; font-weight:600; flex:none; color:' + sp.actionColor + ';">' + esc(sp.action) + ' &#8250;</span>'
+        + '</div>';
+    }).join('');
+
+    return '<div class="page-head">' + eyebrow('Support') + "<h1>We're here to help</h1><p>Pick the path that fits — it gets you the fastest answer.</p></div>"
+      + '<div style="display:flex; flex-direction:column; gap:10px;">' + pathsHtml + '</div>'
+      + '<div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:20px;">'
+      +   '<section class="surface" style="display:flex; flex-direction:column; gap:8px;"><span style="font-size:11.5px; letter-spacing:.14em; text-transform:uppercase; color:var(--dim-2); font-weight:600;">Phone</span><a href="tel:+17622279287" style="font-size:16px; font-weight:600;">(762) 227-9287</a><span style="font-size:12.5px; color:var(--dim-2);">Any time for emergencies · Mon–Fri 9–5 ET otherwise</span></section>'
+      +   '<section class="surface" style="display:flex; flex-direction:column; gap:8px;"><span style="font-size:11.5px; letter-spacing:.14em; text-transform:uppercase; color:var(--dim-2); font-weight:600;">Email</span><a href="mailto:luminatewebco@gmail.com" style="font-size:16px; font-weight:600;">luminatewebco@gmail.com</a><span style="font-size:12.5px; color:var(--dim-2);">Replies within 1 business day</span></section>'
+      +   '<section class="surface" style="display:flex; align-items:center; gap:13px;"><div style="width:40px; height:40px; flex:none; border-radius:50%; background:var(--accent); color:#0D1B2E; display:flex; align-items:center; justify-content:center; font-size:13px; font-weight:700;">JJ</div><div style="display:flex; flex-direction:column; gap:2px; min-width:0;"><span style="font-size:14px; font-weight:600;">Jacob Joseph</span><span style="font-size:12px; color:var(--dim-2);">Your developer · since March 2025</span></div></section>'
+      + '</div>'
+      + '<p style="margin:0; font-size:13px; color:var(--dim-2);">If your site ever goes down, our monitoring alerts us instantly — we\'re usually on it before you notice.</p>';
+  }
+
+  var PAGES = {
+    dashboard: pageDashboard, requests: pageRequests, website: pageWebsite,
+    care: pageCare, reports: pageReports, documents: pageDocuments,
+    billing: pageBilling, support: pageSupport,
+  };
+
+  /* ── Render orchestration ── */
+  function render(){
+    renderNav();
+    $('pageRoot').innerHTML = PAGES[state.page] ? PAGES[state.page]() : pageDashboard();
+
+    // Mobile / drawer visibility
+    $('drawerOverlay').style.display = (state.isMobile && state.drawerOpen) ? 'flex' : 'none';
+  }
+
+  function goto(page){
+    state.page = page;
+    state.drawerOpen = false;
+    state.selectedId = null;
+    render();
+    $('pageRoot').scrollTop = 0;
+    document.querySelector('.main-content').scrollTop = 0;
+  }
+
+  /* ── Event delegation ── */
+  document.addEventListener('click', function(e){
+    var navBtn = e.target.closest('[data-nav]');
+    if (navBtn) { goto(navBtn.getAttribute('data-nav')); return; }
+
+    var action = e.target.closest('[data-action]');
+    if (action) {
+      var act = action.getAttribute('data-action');
+      if (act === 'go-requests') goto('requests');
+      else if (act === 'go-support') goto('support');
+      else if (act === 'go-care') goto('care');
+      else if (act === 'submit-request') submitRequest();
+      else if (act === 'reset-form') { state.submittedNum = null; render(); }
+      else if (act === 'send-comment') sendComment();
+      else if (act === 'sign-out') { if (window.portalSignOut) window.portalSignOut(); }
+      return;
+    }
+
+    var hrefEl = e.target.closest('[data-href]');
+    if (hrefEl) { window.location.href = hrefEl.getAttribute('data-href'); return; }
+
+    var openReq = e.target.closest('[data-open-request]');
+    if (openReq) {
+      state.selectedId = openReq.getAttribute('data-open-request');
+      state.commentDraft = '';
+      render();
+      document.querySelector('.main-content').scrollTop = 0;
+      return;
+    }
+
+    if (e.target.closest('[data-back-to-list]')) {
+      state.selectedId = null;
+      render();
+      return;
+    }
+
+    if (e.target.id === 'btnOpenDrawer') { state.drawerOpen = true; render(); return; }
+    if (e.target.id === 'drawerOverlay') { state.drawerOpen = false; render(); return; }
+  });
+
+  function submitRequest(){
+    var titleEl = $('reqTitle'), descEl = $('reqDesc'), catEl = $('reqCategory');
+    var title = titleEl ? titleEl.value.trim() : '';
+    if (!title) { state.formError = 'Please add a short title so we know what to call this.'; render(); return; }
+    var num = 'LUM-' + state.nextNum;
+    var req = {
+      num: num, title: title, category: (catEl && catEl.value) || 'Other', status: 'Submitted', submitted: 'Today', updated: 'Today',
+      timeline: [{label:'Submitted', date:'Today', note: descEl ? descEl.value.trim() : ''}], comments: []
+    };
+    state.requests = [req].concat(state.requests);
+    state.nextNum += 1;
+    state.submittedNum = num;
+    state.formError = '';
+    render();
+  }
+
+  function sendComment(){
+    var input = $('commentInput');
+    var text = input ? input.value.trim() : '';
+    if (!text || !state.selectedId) return;
+    var sel = state.requests.find(function(r){ return r.num === state.selectedId; });
+    if (!sel) return;
+    sel.comments.push({who:'client', name:'Michelle Carter', date:'Today', text: text});
+    render();
+  }
+
+  /* ── Responsive ── */
+  function checkMobile(){
+    var m = window.innerWidth < 880;
+    if (m !== state.isMobile) { state.isMobile = m; state.drawerOpen = false; render(); }
+  }
+  window.addEventListener('resize', checkMobile);
+
+  window.enterPortal = function(email){
+    var initials = (email || '').replace(/@.*/, '').slice(0, 2).toUpperCase() || 'MC';
+    ['sidebarAvatar','mobileAvatar','drawerAvatar'].forEach(function(id){ var el = $(id); if (el) el.textContent = initials; });
+    ['sidebarUserName','drawerUserName'].forEach(function(id){ var el = $(id); if (el) el.textContent = email || 'Client'; });
+    $('portalShell').hidden = false;
+  };
+  window.exitPortal = function(){
+    $('portalShell').hidden = true;
+    state.page = 'dashboard'; state.selectedId = null; state.drawerOpen = false;
+  };
+
+  /* ── Go ── */
+  render();
+})();
+</script>
+
 <script type="module">
 import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm'
 
-// ── Config ──────────────────────────────────────────────────
-// Replace these with the values from the Luminate OS Supabase project.
-// Use the anon/public key — never the service role key.
+// Luminate OS Supabase project — anon/public key only, never the service role key.
 const SUPABASE_URL      = 'https://tbzvdgfqjtsaxltnxsjo.supabase.co'
 const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRienZkZ2ZxanRzYXhsdG54c2pvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODE2NTU2ODYsImV4cCI6MjA5NzIzMTY4Nn0.4z5wqLKxUCDd5cRNx_Mt4TZlXM9K69B1dd3PhsaZibM'
-const OS_URL           = 'https://luminate-os.vercel.app'
-// ────────────────────────────────────────────────────────────
 
 const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY)
-
-// ── View helpers ─────────────────────────────────────────────
 const $ = id => document.getElementById(id)
 
-function showView(name) {
-  ['loading','login','sent','dashboard'].forEach(v => {
-    $('view-' + v).hidden = (v !== name)
-  })
-}
-
-function showPanel(name) {
-  ['form','unlinked','success'].forEach(p => {
-    $('panel-' + p).hidden = (p !== name)
-  })
-}
-
-function setNavUser(email) {
-  if (email) {
-    $('nav-email').textContent = email
-    $('nav-user').hidden = false
-  } else {
-    $('nav-user').hidden = true
-  }
+function showAuthView(name) {
+  ['authLoading', 'authLogin', 'authSent'].forEach(v => { $(v).hidden = (v !== name) })
 }
 
 function setLoginBusy(busy) {
-  $('btn-login').disabled = busy
-  $('btn-login').textContent = busy ? 'Sending…' : 'Send magic link'
+  $('authLoginBtn').disabled = busy
+  $('authLoginBtn').textContent = busy ? 'Sending…' : 'Send magic link'
 }
 
-function setSubmitBusy(busy) {
-  $('btn-submit').disabled = busy
-  $('btn-submit').textContent = busy ? 'Submitting…' : 'Submit request'
-}
-
-// ── Boot: handle magic-link callback or existing session ─────
-async function boot() {
-  // Supabase puts a code in the URL when returning from a magic link
-  const params = new URLSearchParams(window.location.search)
-  const code = params.get('code')
-
-  if (code) {
-    const { error } = await supabase.auth.exchangeCodeForSession(code)
-    // Clean the code out of the URL so refresh doesn't re-run it
-    const clean = window.location.pathname
-    window.history.replaceState({}, '', clean)
-    if (error) {
-      showView('login')
-      showError('login-error', 'The sign-in link has expired or already been used. Request a new one.')
-      return
-    }
-  }
-
-  const { data: { session } } = await supabase.auth.getSession()
-  if (session) {
-    enterDashboard(session.user.email)
-  } else {
-    showView('login')
-  }
-}
-
-function enterDashboard(email) {
-  setNavUser(email)
-  showPanel('form')
-  showView('dashboard')
-}
-
-// ── Login form ───────────────────────────────────────────────
-$('form-login').addEventListener('submit', async e => {
-  e.preventDefault()
-  $('login-error').hidden = true
-  setLoginBusy(true)
-
-  const email = $('input-email').value.trim()
-  const { error } = await supabase.auth.signInWithOtp({
-    email,
-    options: { emailRedirectTo: window.location.origin + '/portal.html' },
-  })
-
-  if (error) {
-    showError('login-error', error.message || 'Something went wrong. Please try again.')
-    setLoginBusy(false)
-    return
-  }
-
-  $('sent-email').textContent = email
-  showView('sent')
-})
-
-$('btn-diff-email').addEventListener('click', () => {
-  $('input-email').value = ''
-  $('login-error').hidden = true
-  showView('login')
-})
-
-// ── Sign out ─────────────────────────────────────────────────
-$('btn-signout').addEventListener('click', async () => {
-  await supabase.auth.signOut()
-  setNavUser(null)
-  $('input-title').value = ''
-  $('input-desc').value = ''
-  showView('login')
-})
-
-// ── Request form ─────────────────────────────────────────────
-$('form-request').addEventListener('submit', async e => {
-  e.preventDefault()
-  $('request-error').hidden = true
-  setSubmitBusy(true)
-
-  const { data: { session } } = await supabase.auth.getSession()
-  if (!session) {
-    showError('request-error', 'Your session has expired. Please sign out and sign in again.')
-    setSubmitBusy(false)
-    return
-  }
-
-  const title       = $('input-title').value.trim()
-  const description = $('input-desc').value.trim()
-
-  let res, body
-  try {
-    res  = await fetch(OS_URL + '/api/requests/create', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': 'Bearer ' + session.access_token,
-      },
-      body: JSON.stringify({ title, description: description || undefined }),
-    })
-    body = await res.json()
-  } catch {
-    showError('request-error', 'Could not reach the server. Check your connection and try again.')
-    setSubmitBusy(false)
-    return
-  }
-
-  setSubmitBusy(false)
-
-  if (res.ok) {
-    const r = body.request
-    $('receipt-id').textContent    = 'Request #' + r.display_id
-    $('receipt-title').textContent = r.title
-    $('receipt-status').textContent = r.status
-    $('input-title').value = ''
-    $('input-desc').value  = ''
-    showPanel('success')
-    return
-  }
-
-  if (res.status === 404) {
-    showPanel('unlinked')
-    return
-  }
-
-  const msg = res.status === 401 ? 'Your session has expired — please sign out and sign in again.'
-            : res.status === 400 ? (body?.error ?? 'Please fill in the request title.')
-            : 'Something went wrong on our end. Please try again in a moment.'
-  showError('request-error', msg)
-})
-
-$('btn-another').addEventListener('click', () => showPanel('form'))
-$('btn-try-again').addEventListener('click', () => showPanel('form'))
-
-// ── Util ─────────────────────────────────────────────────────
 function showError(id, msg) {
   const el = $(id)
   el.textContent = msg
   el.hidden = false
 }
 
-// ── Go ───────────────────────────────────────────────────────
+async function boot() {
+  const params = new URLSearchParams(window.location.search)
+  const code = params.get('code')
+
+  if (code) {
+    const { error } = await supabase.auth.exchangeCodeForSession(code)
+    window.history.replaceState({}, '', window.location.pathname)
+    if (error) {
+      showAuthView('authLogin')
+      showError('authLoginError', 'The sign-in link has expired or already been used. Request a new one.')
+      return
+    }
+  }
+
+  const { data: { session } } = await supabase.auth.getSession()
+  if (session) {
+    showAuthView('authLoading')
+    window.enterPortal(session.user.email)
+  } else {
+    showAuthView('authLogin')
+  }
+}
+
+$('authLoginForm').addEventListener('submit', async e => {
+  e.preventDefault()
+  $('authLoginError').hidden = true
+  setLoginBusy(true)
+
+  const email = $('authEmail').value.trim()
+  const { error } = await supabase.auth.signInWithOtp({
+    email,
+    options: { emailRedirectTo: window.location.origin + window.location.pathname },
+  })
+
+  setLoginBusy(false)
+  if (error) {
+    showError('authLoginError', error.message || 'Something went wrong. Please try again.')
+    return
+  }
+
+  $('authSentEmail').textContent = email
+  showAuthView('authSent')
+})
+
+$('authDiffEmailBtn').addEventListener('click', () => {
+  $('authEmail').value = ''
+  $('authLoginError').hidden = true
+  showAuthView('authLogin')
+})
+
+window.portalSignOut = async function(){
+  await supabase.auth.signOut()
+  window.exitPortal()
+  showAuthView('authLogin')
+}
+
 boot()
 </script>
-
 </body>
 </html>
