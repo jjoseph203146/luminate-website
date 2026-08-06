@@ -963,6 +963,10 @@ function showAuthView(name) {
   ['authLoading', 'authLogin', 'authSent', 'authError'].forEach(v => { $(v).hidden = (v !== name) })
 }
 
+function hideAllAuthViews() {
+  ['authLoading', 'authLogin', 'authSent', 'authError'].forEach(v => { $(v).hidden = true })
+}
+
 function setLoginBusy(busy) {
   $('authLoginBtn').disabled = busy
   $('authLoginBtn').textContent = busy ? 'Sending…' : 'Send magic link'
@@ -1023,7 +1027,7 @@ async function boot() {
     const { data: { session } } = await withTimeout(client.auth.getSession(), 10000)
     if (session) {
       window.enterPortal(session.user.email)
-      showAuthView('authLoading')
+      hideAllAuthViews()
     } else {
       showAuthView('authLogin')
     }
