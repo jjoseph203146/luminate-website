@@ -891,17 +891,35 @@
           + '</div></div>';
       }).join('') : inlineNote('No timeline entries yet.');
 
+      var isClosed = sel.status === 'Completed';
+
+      // Chat bubbles: the client's own messages align right in the accent
+      // color, ours align left — the standard messaging-app convention, so
+      // "where do I reply" and "whose message is this" are both obvious at a
+      // glance instead of reading a name label on every line.
       var commentsHtml = sel.comments.map(function(cm){
         var isLum = cm.who === 'lum';
-        var avatarBg = isLum ? '#E8E2D4' : '#152A45';
-        var avatarColor = isLum ? '#0D1B2E' : '#E8E2D4';
-        return '<div style="display:flex; gap:12px; align-items:flex-start;' + (cm.pending ? ' opacity:.55;' : '') + '">'
-          + '<div style="width:30px; height:30px; flex:none; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:11px; font-weight:600; background:' + avatarBg + '; color:' + avatarColor + '; border:1px solid var(--line-12);">' + esc(initials(cm.name, isLum ? 'LU' : 'YU')) + '</div>'
-          + '<div style="display:flex; flex-direction:column; gap:3px; min-width:0;">'
-          +   '<div style="display:flex; align-items:baseline; gap:9px;"><span style="font-size:13px; font-weight:600;">' + esc(cm.name) + '</span><span style="font-size:11.5px; color:var(--dim-2);">' + esc(cm.pending ? 'Sending…' : cm.date) + '</span></div>'
-          +   '<p style="margin:0; font-size:13.5px; color:var(--dim); line-height:1.55;">' + esc(cm.text) + '</p>'
-          + '</div></div>';
-      }).join('') || '<p style="margin:0; font-size:13.5px; color:var(--dim-2);">No comments yet. We\'ll post updates here as we work on this.</p>';
+        var bubbleBg = isLum ? 'var(--card-2)' : 'var(--accent)';
+        var bubbleColor = isLum ? 'var(--ink)' : 'var(--navy)';
+        var align = isLum ? 'flex-start' : 'flex-end';
+        return '<div style="display:flex; flex-direction:column; gap:4px; align-items:' + align + ';' + (cm.pending ? ' opacity:.55;' : '') + '">'
+          + '<div style="display:flex; align-items:baseline; gap:8px;' + (isLum ? '' : ' flex-direction:row-reverse;') + '">'
+          +   '<span style="font-size:12px; font-weight:600; color:var(--dim-2);">' + esc(cm.name) + '</span>'
+          +   '<span style="font-size:11px; color:var(--dim-2);">' + esc(cm.pending ? 'Sending…' : cm.date) + '</span>'
+          + '</div>'
+          + '<p style="margin:0; max-width:80%; padding:10px 14px; border-radius:14px; background:' + bubbleBg + '; color:' + bubbleColor + '; font-size:13.5px; line-height:1.55;">' + esc(cm.text) + '</p>'
+          + '</div>';
+      }).join('') || '<p style="margin:0; font-size:13.5px; color:var(--dim-2);">No messages yet. We\'ll post updates here as we work on this.</p>';
+
+      var replyAreaHtml = isClosed
+        ? '<div style="display:flex; align-items:center; justify-content:space-between; gap:14px; flex-wrap:wrap; padding:16px 22px; border-top:1px solid var(--line-10); background:rgba(244,247,251,.02);">'
+          +   '<span style="font-size:13px; color:var(--dim-2);">This request is closed. Have something new? Start a fresh request and we\'ll pick it up.</span>'
+          +   button('New request', {variant:'ghost', size:'sm', action:'go-requests'})
+          + '</div>'
+        : '<div style="display:flex; gap:10px; padding:16px 22px; border-top:1px solid var(--line-10);">'
+          +   '<input id="commentInput" value="' + esc(state.commentDraft) + '" placeholder="Reply…" style="flex:1; min-width:0; background:rgba(244,247,251,.03); border:1px solid var(--line-14); border-radius:10px; padding:12px 14px; font-size:14px; color:var(--ink); outline:none;">'
+          +   button(state.commentSending ? 'Sending…' : 'Send', {variant:'primary', size:'sm', action:'send-comment', disabled: state.commentSending})
+          + '</div>';
 
       return '<div>'
         + '<span data-back-to-list style="display:inline-flex; align-items:center; gap:8px; font-size:13.5px; color:var(--dim); cursor:pointer;">&#8249; All requests</span>'
@@ -914,18 +932,19 @@
         +   '</div>'
         +   '<span class="status-pill" style="padding:6px 14px; color:' + m.color + '; background:' + m.bg + ';">' + esc(sel.status) + '</span>'
         + '</div>'
-        + '<div class="grid-2" style="align-items:start;">'
-        +   '<section class="surface"><h2 class="section-title" style="font-size:15px;">Timeline</h2><div style="display:flex; flex-direction:column;">' + timelineHtml + '</div></section>'
-        +   '<section class="surface" style="display:flex; flex-direction:column; gap:18px;">'
-        +     '<h2 class="section-title" style="margin:0; font-size:15px;">Comments</h2>'
-        +     '<div style="display:flex; flex-direction:column; gap:16px;">' + commentsHtml + '</div>'
-        +     (state.commentError ? errorBanner(state.commentError) : '')
-        +     '<div style="display:flex; gap:10px; margin-top:auto;">'
-        +       '<input id="commentInput" value="' + esc(state.commentDraft) + '" placeholder="Add a comment…" style="flex:1; min-width:0; background:rgba(244,247,251,.03); border:1px solid var(--line-14); border-radius:10px; padding:11px 14px; font-size:13.5px; color:var(--ink); outline:none;">'
-        +       button(state.commentSending ? 'Sending…' : 'Send', {variant:'ghost', size:'sm', action:'send-comment', disabled: state.commentSending})
-        +     '</div>'
-        +   '</section>'
-        + '</div>';
+        // The chat is the primary, full-width focus of this view now — it
+        // used to sit squeezed into half a grid row next to Timeline, which
+        // is exactly why the reply box was hard to find.
+        + '<section class="surface" style="display:flex; flex-direction:column; gap:0; padding:0; overflow:hidden;">'
+        +   '<div style="padding:16px 22px; border-bottom:1px solid var(--line-10); display:flex; align-items:center; justify-content:space-between;">'
+        +     '<h2 class="section-title" style="margin:0; font-size:15px;">Conversation</h2>'
+        +     (isClosed ? '<span style="font-size:11.5px; color:var(--dim-2); font-weight:600; text-transform:uppercase; letter-spacing:.06em;">Closed</span>' : '')
+        +   '</div>'
+        +   '<div style="display:flex; flex-direction:column; gap:16px; padding:20px 22px; max-height:440px; overflow-y:auto;">' + commentsHtml + '</div>'
+        +   (state.commentError ? '<div style="padding:0 22px 14px;">' + errorBanner(state.commentError) + '</div>' : '')
+        +   replyAreaHtml
+        + '</section>'
+        + '<section class="surface"><h2 class="section-title" style="font-size:15px;">Timeline</h2><div style="display:flex; flex-direction:column;">' + timelineHtml + '</div></section>';
     }
 
     var included = num(c.revisionsIncluded);
@@ -1395,6 +1414,7 @@
     // changes what's displayed, and without this the next poll would see a
     // stale baseline and repaint for no reason.
     lastSignature = dataSignature();
+    syncCommentChannel();
   }
 
   function goto(page){
@@ -1590,6 +1610,57 @@
   var pollDelay = POLL_INTERVAL_MS;
   var lastSignature = '';
 
+  /* ── Live chat on an open request ─────────────────────────────────────────
+     A Realtime subscription on top of the 60s poll, scoped to whichever
+     request is currently open, so a reply shows up instantly instead of
+     waiting for the next poll. Kept in sync from render() itself (same
+     pattern as ensureForPage) rather than from every individual navigation
+     call site — fewer places to forget to add cleanup.
+  */
+  var activeCommentChannel = null;
+  var activeCommentChannelReqId = null;
+  var commentChannelEpoch = 0;
+
+  function desiredCommentRequestId(){
+    if (state.page !== 'requests' || !state.selectedId) return null;
+    var sel = state.requests.filter(function(r){ return r.key === state.selectedId; })[0];
+    return (sel && sel.id) || null;
+  }
+
+  function onRealtimeComment(requestId, row){
+    var sel = state.requests.filter(function(r){ return r.id === requestId; })[0];
+    if (!sel) return;
+    // De-dupes the sender's own message: it already lands via the optimistic
+    // send-then-replace in sendComment(), and Realtime echoes every insert
+    // this client is allowed to see, including its own.
+    if (sel.comments.some(function(c){ return c.id === row.id; })) return;
+    var authorName = row.author_type === 'admin' ? 'Jacob · Luminate' : ((state.client && state.client.contactName) || 'You');
+    sel.comments.push(normalizeComment({
+      id: row.id, authorType: row.author_type, authorName: authorName,
+      body: row.body, createdAt: row.created_at,
+    }));
+    render();
+  }
+
+  function syncCommentChannel(){
+    var desired = desiredCommentRequestId();
+    if (desired === activeCommentChannelReqId) return;
+    var myEpoch = ++commentChannelEpoch;
+    var oldChannel = activeCommentChannel;
+    activeCommentChannel = null;
+    activeCommentChannelReqId = desired;
+    if (oldChannel && window.portalRealtime) window.portalRealtime.unsubscribe(oldChannel);
+    if (!desired || !window.portalRealtime) return;
+    window.portalRealtime.subscribeToRequestComments(desired, function(row){ onRealtimeComment(desired, row); })
+      .then(function(channel){
+        // Desired state moved on again before this connected — drop it
+        // rather than leave a subscription open for a request no longer in view.
+        if (myEpoch !== commentChannelEpoch) { if (window.portalRealtime) window.portalRealtime.unsubscribe(channel); return; }
+        activeCommentChannel = channel;
+      })
+      .catch(function(){ /* Realtime is an enhancement — the 60s poll is the real fallback */ });
+  }
+
   // Document and report links are signed URLs, minted fresh by the server on
   // every request. They differ on each poll even when nothing has changed, so
   // including them in the comparison would repaint the page every 60 seconds
@@ -1759,6 +1830,10 @@
 
   window.exitPortal = function(){
     stopPolling();
+    if (activeCommentChannel && window.portalRealtime) window.portalRealtime.unsubscribe(activeCommentChannel);
+    activeCommentChannel = null;
+    activeCommentChannelReqId = null;
+    commentChannelEpoch++;
     $('portalShell').hidden = true;
     state.page = 'dashboard'; state.selectedId = null; state.drawerOpen = false;
     state.email = ''; state.client = null; state.website = null; state.performance = null; state.uptime = null;
@@ -1817,6 +1892,32 @@ async function getSupabaseClient() {
   )
   supabase = mod.createClient(SUPABASE_URL, SUPABASE_ANON_KEY)
   return supabase
+}
+
+// Live updates for an open request's comment thread. RLS-scoped automatically
+// — this client carries the signed-in client's own session, so a
+// postgres_changes subscription can only ever see rows client_select already
+// permits. Purely additive: if the CDN import fails or the subscription never
+// connects, the classic script's 60s poll still catches new comments — this
+// only makes the common case feel instant instead of waiting for the poll.
+window.portalRealtime = {
+  async subscribeToRequestComments(requestId, onInsert) {
+    const client = await getSupabaseClient()
+    const channel = client
+      .channel('request-comments-' + requestId)
+      .on(
+        'postgres_changes',
+        { event: 'INSERT', schema: 'public', table: 'request_comments', filter: 'request_id=eq.' + requestId },
+        (payload) => onInsert(payload.new),
+      )
+      .subscribe()
+    return channel
+  },
+  async unsubscribe(channel) {
+    if (!channel) return
+    const client = await getSupabaseClient()
+    await client.removeChannel(channel)
+  },
 }
 
 // The portal's data layer asks for a bearer token here. getSession() refreshes
