@@ -1460,6 +1460,11 @@
 
     var openReq = e.target.closest('[data-open-request]');
     if (openReq) {
+      // The dashboard's own request preview uses this same attribute, but
+      // pageDashboard() has no concept of a "selected" request — only
+      // pageRequests() does. Without switching pages here, clicking a
+      // request from the dashboard silently did nothing at all.
+      state.page = 'requests';
       state.selectedId = openReq.getAttribute('data-open-request');
       state.commentDraft = '';
       state.commentError = '';
