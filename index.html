@@ -288,7 +288,6 @@
       </div>
       <div data-reveal>
         <form id="contactForm" class="surface rounded-2xl p-8 grid sm:grid-cols-2 gap-4">
-          <input type="hidden" name="access_key" value="2fac6cbf-8123-421e-8b5c-772702296900">
           <input type="hidden" name="subject" value="New project inquiry — Luminate Web Design">
           <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off">
           <input class="fld" id="f-name" name="name" placeholder="Your name" required>
@@ -693,12 +692,11 @@
     }).catch(function(){});
 
     try {
-      var res = await fetch('https://api.web3forms.com/submit', {
+      var res = await fetch('https://formspree.io/f/xrpgdreq', {
         method: 'POST',
         headers: {'Content-Type':'application/json','Accept':'application/json'},
         body: JSON.stringify({
-          access_key: '2fac6cbf-8123-421e-8b5c-772702296900',
-          subject: 'New project inquiry — Luminate Web Design',
+          _subject: 'New project inquiry — Luminate Web Design',
           name: name.value.trim(),
           email: email.value.trim(),
           business: document.getElementById('f-business').value.trim(),
@@ -708,8 +706,7 @@
           message: message.value.trim()
         })
       });
-      var data = await res.json();
-      if(data.success){
+      if(res.ok){
         form.classList.add('hidden');
         document.getElementById('contactThanks').classList.remove('hidden');
       } else {
