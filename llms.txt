@@ -1,0 +1,24 @@
+# Luminate
+
+> Luminate is a web design and custom software company based in Augusta, Georgia, serving businesses, ministries, and nonprofits across the CSRA (Central Savannah River Area). One founder handles each project start to finish — design, build, hosting, and ongoing management.
+
+## Services
+
+- Website Design & Build — custom, mobile-first sites for businesses that have outgrown DIY builders and templates
+- Custom Business Software — client portals, dashboards, booking systems, and internal tools built around how a business actually works
+- Ongoing Management — hosting, security, updates, and SEO handled after launch
+
+## Pricing
+
+- Launch — $500 one-time setup, $35/mo Essential Management — a professional 1–3 page site
+- Growth — $850+ one-time setup, $45/mo Standard Management — up to 8 pages, lead capture, booking tools
+- Business System — $2,500+ starting, $75/mo Pro Management — custom web applications, client portals, e-commerce, integrations
+
+## Pages
+
+- [Home](https://luminatewebdesign.com/): services, pricing, selected work, and contact form
+- [Client Portal](https://luminatewebdesign.com/portal.html): login-only client dashboard for existing clients — not a content page
+
+## Contact
+
+Phone: (762) 227-9287 · Email: luminatewebco@gmail.com · Service area: Augusta, GA and the CSRA

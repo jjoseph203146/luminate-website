@@ -5,27 +5,42 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Luminate — Premium Websites &amp; Custom Software · Augusta, GA</title>
 <meta name="description" content="Luminate builds premium websites and custom software that help businesses earn trust, work smarter, and grow faster. Augusta &amp; the CSRA.">
+<!-- Site is also reachable at the www subdomain; this is the one version search
+     engines should index until a host-level redirect is set up in Vercel's
+     domain settings (Settings → Domains → mark luminatewebdesign.com primary). -->
+<link rel="canonical" href="https://luminatewebdesign.com/">
 <link rel="icon" type="image/png" href="brand_assets/luminatelogo1.png">
-<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="styles.css">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Luminate">
+<meta property="og:title" content="Luminate — Premium Websites &amp; Custom Software · Augusta, GA">
+<meta property="og:description" content="Luminate builds premium websites and custom software that help businesses earn trust, work smarter, and grow faster. Augusta &amp; the CSRA.">
+<meta property="og:url" content="https://luminatewebdesign.com/">
+<meta property="og:image" content="https://luminatewebdesign.com/brand_assets/luminatelogo1.png">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Luminate — Premium Websites &amp; Custom Software · Augusta, GA">
+<meta name="twitter:description" content="Luminate builds premium websites and custom software that help businesses earn trust, work smarter, and grow faster. Augusta &amp; the CSRA.">
+<meta name="twitter:image" content="https://luminatewebdesign.com/brand_assets/luminatelogo1.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "Luminate Web Design & Development",
+  "description": "Premium websites and custom business software for Augusta & CSRA organizations — website design, client portals and dashboards, and ongoing site management.",
+  "url": "https://luminatewebdesign.com/",
+  "telephone": "+1-762-227-9287",
+  "email": "luminatewebco@gmail.com",
+  "image": "https://luminatewebdesign.com/brand_assets/luminatelogo1.png",
+  "areaServed": {
+    "@type": "Place",
+    "name": "Augusta, GA and the Central Savannah River Area (CSRA)"
+  },
+  "priceRange": "$500-$2500+"
+}
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-<script>
-tailwind.config = {
-  theme: {
-    extend: {
-      colors: {
-        navy:'#0D1B2E', navy2:'#0A1524', card:'#101F35', card2:'#152A45',
-        ink:'#F4F7FB', dim:'#C4D1E2', dim2:'#7E8DA0',
-        accent:'#E8E2D4', accenthi:'#F3EEE3',
-        brgreen:'#3DAE7A', brred:'#E0796B',
-        line:'rgba(196,209,226,.10)',
-      },
-      fontFamily:{ serif:['"Playfair Display"','serif'], sans:['Inter','system-ui','sans-serif'] },
-    },
-  },
-};
-</script>
 <style>
   html{scroll-behavior:smooth}
   body{font-family:Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased;background:#0D1B2E;color:#F4F7FB;overflow-x:hidden}
@@ -75,13 +90,23 @@ tailwind.config = {
   #topo svg{width:100%;height:100%;display:block}
   #topo .mk-lt-flow{transform-box:fill-box}
   #topo .mk-lt-dim path,#topo .mk-lt-bright path{fill:none;vector-effect:non-scaling-stroke}
-  #topo .mk-lt-bright{filter:drop-shadow(0 0 3px rgba(232,226,212,.55))}
+  /* No drop-shadow filter here on purpose: it sits on a continuously-translating
+     element (.mk-lt-flow), which forces the browser to re-rasterize the filtered
+     result every frame instead of compositing a cached layer. The stroke width/
+     opacity bump in the JS below approximates the same glow at compositor cost. */
   #topo.mk-lt-animated .mk-lt-flow{animation:lt-flow var(--fdur,48s) linear infinite;will-change:transform}
   #topo.mk-lt-animated .mk-lt-sweep{animation:lt-sweep 16s ease-in-out infinite alternate;will-change:transform}
   @keyframes lt-flow{from{transform:translateY(0)}to{transform:translateY(-952px)}}
   @keyframes lt-sweep{from{transform:translateX(-330px)}to{transform:translateX(330px)}}
   #topo[data-paused="true"] .mk-lt-flow,#topo[data-paused="true"] .mk-lt-sweep{animation-play-state:paused!important}
-  @media (max-width:640px){#topo .mk-lt-layer[data-i="2"]{display:none}#topo .mk-lt-bright{opacity:.82}}
+  @media (max-width:640px){
+    #topo .mk-lt-layer[data-i="2"]{display:none}
+    #topo .mk-lt-bright{opacity:.82}
+    /* Keep the topography art, drop the motion — full flow/sweep animation
+       read as too much movement on phones. Freezes on the geometry's first
+       frame rather than an empty background. */
+    #topo.mk-lt-animated .mk-lt-flow,#topo.mk-lt-animated .mk-lt-sweep{animation:none}
+  }
   @media (prefers-reduced-motion:reduce){
     *{animation:none!important}
     [data-reveal]{opacity:1;transform:none}
@@ -159,7 +184,7 @@ tailwind.config = {
 
 <!-- ============ CLIENT MARQUEE ============ -->
 <div class="marquee bg-navy border-y hairline overflow-hidden whitespace-nowrap py-5">
-  <div class="marquee-track inline-flex items-center" id="marqueeTrack"></div>
+  <div class="marquee-track inline-flex items-center" id="marqueeTrack"><span>Abib Auto Sales</span><span class="dia">◆</span><span>J15 Tennis Academy</span><span class="dia">◆</span><span>Rich Eatz</span><span class="dia">◆</span><span>Elite Shaken Lemonade</span><span class="dia">◆</span><span>Creations by Melanie</span><span class="dia">◆</span><span>Busy B Construction</span><span class="dia">◆</span><span>MACH Academy</span><span class="dia">◆</span><span>Extra Credit Creations</span><span class="dia">◆</span><span>Realistic Impressions</span><span class="dia">◆</span><span>There Is H.O.P.E. Ministries</span><span class="dia">◆</span><span>The Reel Queen Academy</span><span class="dia">◆</span><span>Alicia Fitts Show</span><span class="dia">◆</span><span>Odell Cleveland</span><span class="dia">◆</span><span>Diaspora Dolls</span><span class="dia">◆</span><span>Abib Auto Sales</span><span class="dia">◆</span><span>J15 Tennis Academy</span><span class="dia">◆</span><span>Rich Eatz</span><span class="dia">◆</span><span>Elite Shaken Lemonade</span><span class="dia">◆</span><span>Creations by Melanie</span><span class="dia">◆</span><span>Busy B Construction</span><span class="dia">◆</span><span>MACH Academy</span><span class="dia">◆</span><span>Extra Credit Creations</span><span class="dia">◆</span><span>Realistic Impressions</span><span class="dia">◆</span><span>There Is H.O.P.E. Ministries</span><span class="dia">◆</span><span>The Reel Queen Academy</span><span class="dia">◆</span><span>Alicia Fitts Show</span><span class="dia">◆</span><span>Odell Cleveland</span><span class="dia">◆</span><span>Diaspora Dolls</span><span class="dia">◆</span></div>
 </div>
 
 <!-- ============ TRUSTED PARTNERS ============ -->
@@ -215,7 +240,33 @@ tailwind.config = {
       </div>
       <h2 class="serif text-[36px] sm:text-[52px] font-600 leading-[1.06] track-tight">Real businesses. Real problems solved.</h2>
     </div>
-    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5" id="projects" data-reveal></div>
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5" id="projects" data-reveal>
+      <article class="card-hover rounded-2xl overflow-hidden surface group h-full"><div class="aspect-[16/10] w-full relative overflow-hidden"><img src="images/work/abib-auto-sales.jpg" alt="Abib Auto Sales website mockup" loading="lazy" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"><div class="absolute inset-0 flex flex-col justify-end p-5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" style="background:linear-gradient(to top,rgba(10,21,36,.94) 15%,rgba(10,21,36,.2) 65%,transparent 100%)"><span class="text-accent text-[11px] track-wide font-700">Used Car Dealership</span><p class="text-dim text-[12.5px] leading-relaxed mt-1.5">A used car lot that used to lose trust online before customers even walked in. We rebuilt it around full inventory, financing details, and one-tap calling — now the site sells the dealership before the salesperson has to.</p></div></div><div class="flex justify-between items-center px-5 py-4 text-[12px]"><span class="text-ink border-l-2 border-accent pl-2">Abib Auto Sales</span><span class="text-dim2">Used Car Dealership</span></div></article>
+
+      <a href="https://www.j15tennisacademy.com/" target="_blank" rel="noopener" class="block h-full"><article class="card-hover rounded-2xl overflow-hidden surface group h-full"><div class="aspect-[16/10] w-full relative overflow-hidden"><img src="images/work/dingle-tennis-academy.jpg" alt="J15 Tennis Academy website mockup" loading="lazy" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"><div class="absolute inset-0 flex flex-col justify-end p-5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" style="background:linear-gradient(to top,rgba(10,21,36,.94) 15%,rgba(10,21,36,.2) 65%,transparent 100%)"><span class="text-accent text-[11px] track-wide font-700">Sports Coaching</span><p class="text-dim text-[12.5px] leading-relaxed mt-1.5">Parents couldn't tell what programs were offered or how to sign up. We built a clear, high-energy site organized around programs and skill levels — lesson sign-ups now take one click, not a phone tag.</p></div></div><div class="flex justify-between items-center px-5 py-4 text-[12px]"><span class="text-ink border-l-2 border-accent pl-2">J15 Tennis Academy</span><span class="text-dim2">Sports Coaching</span></div></article></a>
+
+      <a href="https://www.thereishopeministries.org/" target="_blank" rel="noopener" class="block h-full"><article class="card-hover rounded-2xl overflow-hidden surface group h-full"><div class="aspect-[16/10] w-full relative overflow-hidden"><img src="images/work/hope-ministries.jpg" alt="There Is H.O.P.E. Ministries website mockup" loading="lazy" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"><div class="absolute inset-0 flex flex-col justify-end p-5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" style="background:linear-gradient(to top,rgba(10,21,36,.94) 15%,rgba(10,21,36,.2) 65%,transparent 100%)"><span class="text-accent text-[11px] track-wide font-700">Faith · Nonprofit</span><p class="text-dim text-[12.5px] leading-relaxed mt-1.5">A ministry with no easy way for new visitors to find service times or get involved. We built a warm, welcoming site around outreach programs and a simple way in — first-time visitors now know exactly where to start.</p></div></div><div class="flex justify-between items-center px-5 py-4 text-[12px]"><span class="text-ink border-l-2 border-accent pl-2">There Is H.O.P.E. Ministries</span><span class="text-dim2">Faith · Nonprofit</span></div></article></a>
+
+      <article class="card-hover rounded-2xl overflow-hidden surface group h-full"><div class="aspect-[16/10] w-full relative overflow-hidden"><img src="images/work/elite-shaken-lemonade.jpg" alt="Elite Shaken Lemonade website mockup" loading="lazy" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"><div class="absolute inset-0 flex flex-col justify-end p-5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" style="background:linear-gradient(to top,rgba(10,21,36,.94) 15%,rgba(10,21,36,.2) 65%,transparent 100%)"><span class="text-accent text-[11px] track-wide font-700">Food & Beverage</span><p class="text-dim text-[12.5px] leading-relaxed mt-1.5">A growing beverage brand with no central place to showcase flavors or book events. We built a bright, appetite-driving site around locations and event booking — inquiries now come through the site instead of DMs.</p></div></div><div class="flex justify-between items-center px-5 py-4 text-[12px]"><span class="text-ink border-l-2 border-accent pl-2">Elite Shaken Lemonade</span><span class="text-dim2">Food & Beverage</span></div></article>
+
+      <a href="https://lonzaricheatz.com" target="_blank" rel="noopener" class="block h-full"><article class="card-hover rounded-2xl overflow-hidden surface group h-full"><div class="aspect-[16/10] w-full relative overflow-hidden"><img src="images/work/rich-eatz.jpg" alt="Rich Eatz website mockup" loading="lazy" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"><div class="absolute inset-0 flex flex-col justify-end p-5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" style="background:linear-gradient(to top,rgba(10,21,36,.94) 15%,rgba(10,21,36,.2) 65%,transparent 100%)"><span class="text-accent text-[11px] track-wide font-700">Luxury Catering</span><p class="text-dim text-[12.5px] leading-relaxed mt-1.5">A luxury catering brand whose old presence undersold the quality of the food. We built an elevated, image-forward site to match — inquiries picked up almost immediately after launch.</p></div></div><div class="flex justify-between items-center px-5 py-4 text-[12px]"><span class="text-ink border-l-2 border-accent pl-2">Rich Eatz</span><span class="text-dim2">Luxury Catering</span></div></article></a>
+
+      <a href="https://extracreditcreations.lovable.app/" target="_blank" rel="noopener" class="block h-full"><article class="card-hover rounded-2xl overflow-hidden surface group h-full"><div class="aspect-[16/10] w-full relative overflow-hidden"><img src="images/work/extra-credit-creations.jpg" alt="Extra Credit Creations website mockup" loading="lazy" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"><div class="absolute inset-0 flex flex-col justify-end p-5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" style="background:linear-gradient(to top,rgba(10,21,36,.94) 15%,rgba(10,21,36,.2) 65%,transparent 100%)"><span class="text-accent text-[11px] track-wide font-700">E-Commerce</span><p class="text-dim text-[12.5px] leading-relaxed mt-1.5">A creative e-commerce brand held back by a clunky storefront. We rebuilt browsing and checkout to feel as good as the products themselves — fewer drop-offs between browsing and buying.</p></div></div><div class="flex justify-between items-center px-5 py-4 text-[12px]"><span class="text-ink border-l-2 border-accent pl-2">Extra Credit Creations</span><span class="text-dim2">E-Commerce</span></div></article></a>
+
+      <a href="https://busybconstructionservices.com/" target="_blank" rel="noopener" class="block h-full"><article class="card-hover rounded-2xl overflow-hidden surface group h-full"><div class="aspect-[16/10] w-full relative overflow-hidden"><img src="images/work/busy-b-construction.jpg" alt="Busy B Construction website mockup" loading="lazy" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"><div class="absolute inset-0 flex flex-col justify-end p-5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" style="background:linear-gradient(to top,rgba(10,21,36,.94) 15%,rgba(10,21,36,.2) 65%,transparent 100%)"><span class="text-accent text-[11px] track-wide font-700">Contractor</span><p class="text-dim text-[12.5px] leading-relaxed mt-1.5">A contractor with no way to show proof of past work to new leads. We built a credibility-first site around services and past projects — quote requests now come in pre-qualified instead of cold.</p></div></div><div class="flex justify-between items-center px-5 py-4 text-[12px]"><span class="text-ink border-l-2 border-accent pl-2">Busy B Construction</span><span class="text-dim2">Contractor</span></div></article></a>
+
+      <article class="card-hover rounded-2xl overflow-hidden surface group h-full"><div class="aspect-[16/10] w-full relative overflow-hidden"><img src="images/work/creations-by-melanie.jpg" alt="Creations by Melanie website mockup" loading="lazy" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"><div class="absolute inset-0 flex flex-col justify-end p-5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" style="background:linear-gradient(to top,rgba(10,21,36,.94) 15%,rgba(10,21,36,.2) 65%,transparent 100%)"><span class="text-accent text-[11px] track-wide font-700">Custom Bakery</span><p class="text-dim text-[12.5px] leading-relaxed mt-1.5">A custom bakery relying on word-of-mouth with no visual portfolio online. We built a gallery-driven site with a simple ordering inquiry flow — past work now does the selling before the first message.</p></div></div><div class="flex justify-between items-center px-5 py-4 text-[12px]"><span class="text-ink border-l-2 border-accent pl-2">Creations by Melanie</span><span class="text-dim2">Custom Bakery</span></div></article>
+
+      <a href="https://realisticimpressions.com" target="_blank" rel="noopener" class="block h-full"><article class="card-hover rounded-2xl overflow-hidden surface group h-full"><div class="aspect-[16/10] w-full relative overflow-hidden"><img src="images/work/realistic-impressions.jpg" alt="Realistic Impressions website mockup" loading="lazy" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"><div class="absolute inset-0 flex flex-col justify-end p-5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" style="background:linear-gradient(to top,rgba(10,21,36,.94) 15%,rgba(10,21,36,.2) 65%,transparent 100%)"><span class="text-accent text-[11px] track-wide font-700">T-Shirt Printing</span><p class="text-dim text-[12.5px] leading-relaxed mt-1.5">A print shop where ordering custom apparel meant a phone call and a lot of back-and-forth. We built a bold, modern site that makes ordering feel as quick as the turnaround.</p></div></div><div class="flex justify-between items-center px-5 py-4 text-[12px]"><span class="text-ink border-l-2 border-accent pl-2">Realistic Impressions</span><span class="text-dim2">T-Shirt Printing</span></div></article></a>
+
+      <a href="https://mach-youth-spark.lovable.app" target="_blank" rel="noopener" class="block h-full"><article class="card-hover rounded-2xl overflow-hidden surface group h-full"><div class="aspect-[16/10] w-full relative overflow-hidden"><img src="images/work/mach-academy.jpg" alt="MACH Academy website mockup" loading="lazy" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"><div class="absolute inset-0 flex flex-col justify-end p-5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" style="background:linear-gradient(to top,rgba(10,21,36,.94) 15%,rgba(10,21,36,.2) 65%,transparent 100%)"><span class="text-accent text-[11px] track-wide font-700">Nonprofit · Tennis</span><p class="text-dim text-[12.5px] leading-relaxed mt-1.5">A youth tennis nonprofit with impact that wasn't visible to potential donors or families. We built a community-focused site around programs and impact — support and sign-ups now have a clear path in.</p></div></div><div class="flex justify-between items-center px-5 py-4 text-[12px]"><span class="text-ink border-l-2 border-accent pl-2">MACH Academy</span><span class="text-dim2">Nonprofit · Tennis</span></div></article></a>
+
+      <a href="https://floridatennisfamily.org" target="_blank" rel="noopener" class="block h-full"><article class="card-hover rounded-2xl overflow-hidden surface group h-full"><div class="aspect-[16/10] w-full relative overflow-hidden"><img src="images/work/florida-tennis-family.jpg" alt="Florida Tennis Family website mockup" loading="lazy" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"><div class="absolute inset-0 flex flex-col justify-end p-5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" style="background:linear-gradient(to top,rgba(10,21,36,.94) 15%,rgba(10,21,36,.2) 65%,transparent 100%)"><span class="text-accent text-[11px] track-wide font-700">Tennis Organization</span><p class="text-dim text-[12.5px] leading-relaxed mt-1.5">A statewide tennis organization needing one place to connect clubs, players, and communities. We built the official hub for the Florida Section of the American Tennis Association around exactly that.</p></div></div><div class="flex justify-between items-center px-5 py-4 text-[12px]"><span class="text-ink border-l-2 border-accent pl-2">Florida Tennis Family</span><span class="text-dim2">Tennis Organization</span></div></article></a>
+
+      <a href="https://aliciafittsshow.com" target="_blank" rel="noopener" class="block h-full"><article class="card-hover rounded-2xl overflow-hidden surface group h-full"><div class="aspect-[16/10] w-full relative overflow-hidden"><img src="images/work/alicia-fitts-show.jpg" alt="Alicia Fitts Show website mockup" loading="lazy" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"><div class="absolute inset-0 flex flex-col justify-end p-5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" style="background:linear-gradient(to top,rgba(10,21,36,.94) 15%,rgba(10,21,36,.2) 65%,transparent 100%)"><span class="text-accent text-[11px] track-wide font-700">Talk Show · Podcast</span><p class="text-dim text-[12.5px] leading-relaxed mt-1.5">A talk show with a growing audience but no home base off social media. We built a site that gives the show's stories, financial insights, and community spotlights a permanent, professional home.</p></div></div><div class="flex justify-between items-center px-5 py-4 text-[12px]"><span class="text-ink border-l-2 border-accent pl-2">Alicia Fitts Show</span><span class="text-dim2">Talk Show · Podcast</span></div></article></a>
+
+      <a href="https://odellcleveland.com" target="_blank" rel="noopener" class="block h-full"><article class="card-hover rounded-2xl overflow-hidden surface group h-full"><div class="aspect-[16/10] w-full relative overflow-hidden"><img src="images/work/odellcleveland.jpg" alt="Odell Cleveland website mockup" loading="lazy" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"><div class="absolute inset-0 flex flex-col justify-end p-5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" style="background:linear-gradient(to top,rgba(10,21,36,.94) 15%,rgba(10,21,36,.2) 65%,transparent 100%)"><span class="text-accent text-[11px] track-wide font-700">Faith · Leadership Consulting</span><p class="text-dim text-[12.5px] leading-relaxed mt-1.5">A faith leadership consultant whose expertise wasn't translating into booked strategy sessions. We built a growth-focused site around his stewardship approach — built to convert visitors into booked calls.</p></div></div><div class="flex justify-between items-center px-5 py-4 text-[12px]"><span class="text-ink border-l-2 border-accent pl-2">Odell Cleveland</span><span class="text-dim2">Faith · Leadership Consulting</span></div></article></a>
+    </div>
   </div>
 </section>
 
@@ -239,7 +290,10 @@ tailwind.config = {
     </div>
 
     <div class="relative">
-      <div id="testiTrack" class="flex gap-5 overflow-x-auto snap-x snap-mandatory pb-2 -mx-6 px-6 scroll-smooth" style="scrollbar-width:none" data-reveal></div>
+      <div id="testiTrack" class="flex gap-5 overflow-x-auto snap-x snap-mandatory pb-2 -mx-6 px-6 scroll-smooth" style="scrollbar-width:none" data-reveal>
+        <div class="floating rounded-2xl p-8 flex-none w-[85vw] sm:w-[440px] snap-start" data-testi="0"><div class="text-accent text-[15px] mb-4">★★★★★</div><p class="serif italic text-[17px] leading-relaxed text-ink testi-excerpt">"Jacob is incredibly talented, efficient, and consistently delivers high-quality work. His work is exceptional, and his customer service is outstanding — professional, responsive, and truly committed to bringing his clients' visions to life."</p><p class="text-[14px] text-dim leading-relaxed mt-3 hidden testi-full">Jacob is incredibly talented, efficient, and consistently delivers high-quality work. As a creative professional and graphic designer with over 20 years of experience, I can be very selective about who I trust with my projects. Jacob exceeded my expectations from start to finish.</p><p class="text-[14px] text-dim leading-relaxed mt-3 testi-full">Not only is his work exceptional, but his customer service is outstanding. He is professional, responsive, and truly committed to bringing his clients' visions to life. His company represents the future of the design industry through its innovation, creativity, and attention to detail.</p><p class="text-[14px] text-dim leading-relaxed mt-3 testi-full">I am a very happy client and will absolutely be returning for future projects. Highly recommended!</p><button class="text-[12px] text-accent underline decoration-[rgba(232,226,212,.4)] underline-offset-4 mt-4 testi-toggle">Read full review</button><div class="flex items-center gap-3 mt-6 pt-6 border-t hairline"><span class="w-10 h-10 rounded-full bg-[rgba(232,226,212,.18)] flex items-center justify-center serif text-accent text-[15px] font-700">A</span><div><div class="font-700 text-[14px] text-ink">Alicia Fitts</div><div class="text-[12px] text-dim2">Creative Professional · The Alicia Fitts Show</div></div></div></div>
+        <div class="floating rounded-2xl p-8 flex-none w-[85vw] sm:w-[440px] snap-start" data-testi="1"><div class="text-accent text-[15px] mb-4">★★★★★</div><p class="serif italic text-[17px] leading-relaxed text-ink testi-excerpt">"My husband is not an easy person to impress, but he was absolutely blown away by the website Jacob designed. The quality, professionalism, and attention to detail exceeded our expectations."</p><p class="text-[14px] text-dim leading-relaxed mt-3 hidden testi-full">Jacob Joseph of Luminate Web Design created a business website for my husband, Willie Baker III of Busy B Construction Services LLC, and we couldn't be happier with the results. My husband is not an easy person to impress, but he was absolutely blown away by the website Jacob designed.</p><p class="text-[14px] text-dim leading-relaxed mt-3 testi-full">The quality, professionalism, and attention to detail exceeded our expectations. Jacob did an outstanding job, creating a top-notch website that truly represents our business. We are confident it will help attract new customers and provide the exposure Busy B Construction Services needs to take the business to the next level.</p><p class="text-[14px] text-dim leading-relaxed mt-3 testi-full">We highly recommend Jacob and Luminate Web Design to anyone looking for exceptional web design services.</p><button class="text-[12px] text-accent underline decoration-[rgba(232,226,212,.4)] underline-offset-4 mt-4 testi-toggle">Read full review</button><div class="flex items-center gap-3 mt-6 pt-6 border-t hairline"><span class="w-10 h-10 rounded-full bg-[rgba(232,226,212,.18)] flex items-center justify-center serif text-accent text-[15px] font-700">W</span><div><div class="font-700 text-[14px] text-ink">Wendy Baker</div><div class="text-[12px] text-dim2">Busy B Construction Services LLC</div></div></div></div>
+      </div>
 
       <div class="flex justify-between items-center mt-8 pt-6 border-t hairline">
         <div class="flex items-center gap-2 text-[12px] text-dim2">
@@ -281,7 +335,57 @@ tailwind.config = {
       <h3 class="serif text-[32px] sm:text-[40px] font-600 track-tight leading-[1.1]">Simple packages, honest pricing.</h3>
       <p class="text-[14px] text-dim mt-3">One-time setup to get you live, plus an optional management plan to keep things running smoothly. Every project starts with a conversation — final scope is always quoted up front.</p>
     </div>
-    <div class="grid lg:grid-cols-3 gap-5" id="pricingGrid" data-reveal></div>
+    <div class="grid lg:grid-cols-3 gap-5" id="pricingGrid" data-reveal>
+      <div class="surface rounded-2xl p-8 flex flex-col h-full">
+        <div class="text-[13px] track-wide font-700 text-ink uppercase">Launch</div>
+        <div class="serif text-[34px] font-700 text-ink mt-3">$500<span class="text-[18px] text-dim2"></span></div>
+        <div class="text-[12px] text-dim2 mb-4">one-time setup</div>
+        <p class="text-[13.5px] text-dim leading-relaxed mb-5">Perfect for businesses needing a professional online presence.</p>
+        <ul class="flex-1">
+          <li class="flex gap-2 items-start text-[13px] text-dim py-2 border-b hairline"><span class="text-accent flex-none">✓</span>Custom 1–3 page design</li>
+          <li class="flex gap-2 items-start text-[13px] text-dim py-2 border-b hairline"><span class="text-accent flex-none">✓</span>Mobile-first responsive build</li>
+          <li class="flex gap-2 items-start text-[13px] text-dim py-2 border-b hairline"><span class="text-accent flex-none">✓</span>Contact form + click-to-call</li>
+          <li class="flex gap-2 items-start text-[13px] text-dim py-2 border-b hairline"><span class="text-accent flex-none">✓</span>Google Business setup</li>
+          <li class="flex gap-2 items-start text-[13px] text-dim py-2 border-b hairline"><span class="text-accent flex-none">✓</span>Basic on-page SEO</li>
+          <li class="flex gap-2 items-start text-[13px] text-dim py-2 border-b hairline"><span class="text-accent flex-none">✓</span>Launch in ~1–2 weeks</li>
+        </ul>
+        <div class="text-[12px] text-dim2 mt-5 mb-5">Essential Management: <span class="text-accent">$35/mo</span></div>
+        <a href="#connect" class="btn btn-ghost w-full">Get started</a>
+      </div>
+      <div class="floating ring-1 ring-accent/40 rounded-2xl p-8 flex flex-col h-full">
+        <div class="text-[11px] track-wide text-accent font-700 mb-3">MOST POPULAR</div>
+        <div class="text-[13px] track-wide font-700 text-ink uppercase">Growth</div>
+        <div class="serif text-[34px] font-700 text-ink mt-3">$850<span class="text-[18px] text-dim2">+</span></div>
+        <div class="text-[12px] text-dim2 mb-4">one-time setup</div>
+        <p class="text-[13.5px] text-dim leading-relaxed mb-5">Built to generate leads and grow your business.</p>
+        <ul class="flex-1">
+          <li class="flex gap-2 items-start text-[13px] text-dim py-2 border-b hairline"><span class="text-accent flex-none">✓</span>Up to 8 custom pages</li>
+          <li class="flex gap-2 items-start text-[13px] text-dim py-2 border-b hairline"><span class="text-accent flex-none">✓</span>Everything in Launch</li>
+          <li class="flex gap-2 items-start text-[13px] text-dim py-2 border-b hairline"><span class="text-accent flex-none">✓</span>Lead capture + automations</li>
+          <li class="flex gap-2 items-start text-[13px] text-dim py-2 border-b hairline"><span class="text-accent flex-none">✓</span>Blog or resource center</li>
+          <li class="flex gap-2 items-start text-[13px] text-dim py-2 border-b hairline"><span class="text-accent flex-none">✓</span>Booking / scheduling tools</li>
+          <li class="flex gap-2 items-start text-[13px] text-dim py-2 border-b hairline"><span class="text-accent flex-none">✓</span>Priority launch support</li>
+        </ul>
+        <div class="text-[12px] text-dim2 mt-5 mb-5">Standard Management: <span class="text-accent">$45/mo</span></div>
+        <a href="#connect" class="btn btn-primary w-full">Get started</a>
+      </div>
+      <div class="surface rounded-2xl p-8 flex flex-col h-full">
+        <div class="text-[13px] track-wide font-700 text-ink uppercase">Business System</div>
+        <div class="serif text-[34px] font-700 text-ink mt-3">$2,500<span class="text-[18px] text-dim2">+</span></div>
+        <div class="text-[12px] text-dim2 mb-4">starting at</div>
+        <p class="text-[13.5px] text-dim leading-relaxed mb-5">Client portals, dashboards, member areas, custom workflows, e-commerce, and integrations.</p>
+        <ul class="flex-1">
+          <li class="flex gap-2 items-start text-[13px] text-dim py-2 border-b hairline"><span class="text-accent flex-none">✓</span>Custom web application build</li>
+          <li class="flex gap-2 items-start text-[13px] text-dim py-2 border-b hairline"><span class="text-accent flex-none">✓</span>Client portals & dashboards</li>
+          <li class="flex gap-2 items-start text-[13px] text-dim py-2 border-b hairline"><span class="text-accent flex-none">✓</span>Membership / booking systems</li>
+          <li class="flex gap-2 items-start text-[13px] text-dim py-2 border-b hairline"><span class="text-accent flex-none">✓</span>E-commerce & payments</li>
+          <li class="flex gap-2 items-start text-[13px] text-dim py-2 border-b hairline"><span class="text-accent flex-none">✓</span>Custom integrations & APIs</li>
+          <li class="flex gap-2 items-start text-[13px] text-dim py-2 border-b hairline"><span class="text-accent flex-none">✓</span>Dedicated ongoing partnership</li>
+        </ul>
+        <div class="text-[12px] text-dim2 mt-5 mb-5">Pro Management: <span class="text-accent">$75/mo</span></div>
+        <a href="#connect" class="btn btn-ghost w-full">Get started</a>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -293,7 +397,13 @@ tailwind.config = {
       <p class="text-[14px] text-dim2 mt-4 max-w-[300px]">Learn more about our services, process, and how we help businesses grow online.</p>
       <a href="#connect" class="btn btn-primary mt-6">Start your project</a>
     </div>
-    <div id="faq" data-reveal></div>
+    <div id="faq" data-reveal>
+      <div class="faq-item rounded-xl mb-3 overflow-hidden border floating border-transparent"><button class="faq-q w-full flex items-center gap-4 text-left px-6 py-5"><span class="serif text-[16px] font-700 text-accent">01</span><span class="flex-1 text-[15px] font-600 text-ink">What does Luminate do?</span><span class="w-7 h-7 rounded-full flex items-center justify-center flex-none bg-[rgba(232,226,212,.16)] text-accent">▴</span></button><div class="faq-a px-6 pb-6"><p class="text-[13.5px] text-dim leading-relaxed pl-9">We design and build premium websites and custom business software — from a first professional site to client portals, dashboards, and internal tools — and stay on to manage them.</p></div></div>
+      <div class="faq-item rounded-xl mb-3 overflow-hidden border surface"><button class="faq-q w-full flex items-center gap-4 text-left px-6 py-5"><span class="serif text-[16px] font-700 text-dim2">02</span><span class="flex-1 text-[15px] font-600 text-ink">Who do you work best with?</span><span class="w-7 h-7 rounded-full flex items-center justify-center flex-none bg-white/5 text-accent">▾</span></button><div class="faq-a px-6 hidden"><p class="text-[13.5px] text-dim leading-relaxed pl-9">Local businesses, ministries, nonprofits, and growing companies who value quality. We are not the right fit for DIY, cheapest-option shoppers, or one-off Fiverr projects.</p></div></div>
+      <div class="faq-item rounded-xl mb-3 overflow-hidden border surface"><button class="faq-q w-full flex items-center gap-4 text-left px-6 py-5"><span class="serif text-[16px] font-700 text-dim2">03</span><span class="flex-1 text-[15px] font-600 text-ink">What is your process like?</span><span class="w-7 h-7 rounded-full flex items-center justify-center flex-none bg-white/5 text-accent">▾</span></button><div class="faq-a px-6 hidden"><p class="text-[13.5px] text-dim leading-relaxed pl-9">It starts with a conversation about your business. Then we design, build, and launch — with one point of contact the whole way through.</p></div></div>
+      <div class="faq-item rounded-xl mb-3 overflow-hidden border surface"><button class="faq-q w-full flex items-center gap-4 text-left px-6 py-5"><span class="serif text-[16px] font-700 text-dim2">04</span><span class="flex-1 text-[15px] font-600 text-ink">How long does it take to launch?</span><span class="w-7 h-7 rounded-full flex items-center justify-center flex-none bg-white/5 text-accent">▾</span></button><div class="faq-a px-6 hidden"><p class="text-[13.5px] text-dim leading-relaxed pl-9">Most marketing sites launch in about 1–2 weeks. Custom software timelines depend on scope and are scoped up front.</p></div></div>
+      <div class="faq-item rounded-xl mb-3 overflow-hidden border surface"><button class="faq-q w-full flex items-center gap-4 text-left px-6 py-5"><span class="serif text-[16px] font-700 text-dim2">05</span><span class="flex-1 text-[15px] font-600 text-ink">What do you need from me to get started?</span><span class="w-7 h-7 rounded-full flex items-center justify-center flex-none bg-white/5 text-accent">▾</span></button><div class="faq-a px-6 hidden"><p class="text-[13.5px] text-dim leading-relaxed pl-9">A short note on what your business does and your goals. We handle design, copy, hosting, and SEO from there.</p></div></div>
+    </div>
   </div>
 </section>
 
@@ -310,7 +420,6 @@ tailwind.config = {
       </div>
       <div data-reveal>
         <form id="contactForm" class="surface rounded-2xl p-8 grid sm:grid-cols-2 gap-4">
-          <input type="hidden" name="access_key" value="2fac6cbf-8123-421e-8b5c-772702296900">
           <input type="hidden" name="subject" value="New project inquiry — Luminate Web Design">
           <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off">
           <input class="fld" id="f-name" name="name" placeholder="Your name" required>
@@ -480,7 +589,7 @@ tailwind.config = {
       dimPaths+='<path d="'+c.d+'" stroke="'+dimStroke+'" stroke-opacity="'+c.o+'" stroke-width="'+round1(opts.lineWidth*(1-li*0.12))+'" stroke-linecap="round"/>';}
     var brightPaths='';
     for(var j=0;j<layer.contours.length;j++){var c2=layer.contours[j];
-      brightPaths+='<path d="'+c2.d+'" stroke="'+ACCENT+'" stroke-opacity="'+round1(clamp(0.9*opts.intensity,0.3,1))+'" stroke-width="'+round1(opts.lineWidth*(1-li*0.08))+'" stroke-linecap="round"/>';}
+      brightPaths+='<path d="'+c2.d+'" stroke="'+ACCENT+'" stroke-opacity="'+round1(clamp(0.9*opts.intensity,0.3,1))+'" stroke-width="'+round1(opts.lineWidth*1.6*(1-li*0.08))+'" stroke-linecap="round"/>';}
     // dim lines flow continuously; bright reveal sits under a fixed traveling-light mask above the flow
     body+='<g class="mk-lt-layer" data-i="'+li+'">'
       +'<g class="mk-lt-flow" style="'+flowStyle+'"><g class="mk-lt-dim">'+dimPaths+'</g><g class="mk-lt-dim" transform="translate(0,'+SPAN+')">'+dimPaths+'</g></g>'
@@ -515,40 +624,6 @@ tailwind.config = {
 </script>
 
 <script>
-// Selected work cards
-(function(){
-  var work = [
-    { n:'Abib Auto Sales', t:'Used Car Dealership', img:'images/work/abib-auto-sales.jpg', desc:"A used car lot that used to lose trust online before customers even walked in. We rebuilt it around full inventory, financing details, and one-tap calling — now the site sells the dealership before the salesperson has to." },
-    { n:'Dingle Tennis Academy', t:'Sports Coaching', img:'images/work/dingle-tennis-academy.jpg', desc:"Parents couldn't tell what programs were offered or how to sign up. We built a clear, high-energy site organized around programs and skill levels — lesson sign-ups now take one click, not a phone tag." },
-    { n:'There Is H.O.P.E. Ministries', t:'Faith · Nonprofit', img:'images/work/hope-ministries.jpg', desc:"A ministry with no easy way for new visitors to find service times or get involved. We built a warm, welcoming site around outreach programs and a simple way in — first-time visitors now know exactly where to start." },
-    { n:'Elite Shaken Lemonade', t:'Food & Beverage', img:'images/work/elite-shaken-lemonade.jpg', desc:"A growing beverage brand with no central place to showcase flavors or book events. We built a bright, appetite-driving site around locations and event booking — inquiries now come through the site instead of DMs." },
-    { n:'Rich Eatz', t:'Luxury Catering', img:'images/work/rich-eatz.jpg', desc:"A luxury catering brand whose old presence undersold the quality of the food. We built an elevated, image-forward site to match — inquiries picked up almost immediately after launch." },
-    { n:'Extra Credit Creations', t:'E-Commerce', img:'images/work/extra-credit-creations.jpg', desc:"A creative e-commerce brand held back by a clunky storefront. We rebuilt browsing and checkout to feel as good as the products themselves — fewer drop-offs between browsing and buying." },
-    { n:'Busy B Construction', t:'Contractor', img:'images/work/busy-b-construction.jpg', desc:"A contractor with no way to show proof of past work to new leads. We built a credibility-first site around services and past projects — quote requests now come in pre-qualified instead of cold." },
-    { n:'Creations by Melanie', t:'Custom Bakery', img:'images/work/creations-by-melanie.jpg', desc:"A custom bakery relying on word-of-mouth with no visual portfolio online. We built a gallery-driven site with a simple ordering inquiry flow — past work now does the selling before the first message." },
-    { n:'Realistic Impressions', t:'T-Shirt Printing', img:'images/work/realistic-impressions.jpg', desc:"A print shop where ordering custom apparel meant a phone call and a lot of back-and-forth. We built a bold, modern site that makes ordering feel as quick as the turnaround." },
-    { n:'MACH Academy', t:'Nonprofit · Tennis', img:'images/work/mach-academy.jpg', desc:"A youth tennis nonprofit with impact that wasn't visible to potential donors or families. We built a community-focused site around programs and impact — support and sign-ups now have a clear path in." },
-    { n:'Florida Tennis Family', t:'Tennis Organization', img:'images/work/florida-tennis-family.png', desc:"A statewide tennis organization needing one place to connect clubs, players, and communities. We built the official hub for the Florida Section of the American Tennis Association around exactly that." },
-    { n:'Alicia Fitts Show', t:'Talk Show · Podcast', img:'images/work/alicia-fitts-show.png', desc:"A talk show with a growing audience but no home base off social media. We built a site that gives the show's stories, financial insights, and community spotlights a permanent, professional home." },
-    { n:'Odell Cleveland', t:'Faith · Leadership Consulting', img:'images/work/odellcleveland.jpg', desc:"A faith leadership consultant whose expertise wasn't translating into booked strategy sessions. We built a growth-focused site around his stewardship approach — built to convert visitors into booked calls." },
-  ];
-  var g = document.getElementById('projects');
-  g.innerHTML = work.map(function(w){
-    return '<article class="card-hover rounded-2xl overflow-hidden surface group">'
-      + '<div class="aspect-[16/10] w-full relative overflow-hidden">'
-      +   '<img src="'+w.img+'" alt="'+w.n+' website mockup" loading="lazy" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">'
-      +   '<div class="absolute inset-0 flex flex-col justify-end p-5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" style="background:linear-gradient(to top,rgba(10,21,36,.94) 15%,rgba(10,21,36,.2) 65%,transparent 100%)">'
-      +     '<span class="text-accent text-[11px] track-wide font-700">'+w.t+'</span>'
-      +     '<p class="text-dim text-[12.5px] leading-relaxed mt-1.5">'+w.desc+'</p>'
-      +   '</div>'
-      + '</div>'
-      + '<div class="flex justify-between items-center px-5 py-4 text-[12px]">'
-      +   '<span class="text-ink border-l-2 border-accent pl-2">'+w.n+'</span>'
-      +   '<span class="text-dim2">'+w.t+'</span>'
-      + '</div></article>';
-  }).join('');
-})();
-
 // Mobile menu
 (function(){
   var btn = document.getElementById('mobileMenuBtn');
@@ -567,69 +642,9 @@ tailwind.config = {
   });
 })();
 
-// Client marquee
-(function(){
-  var clients = ['Abib Auto Sales','Dingle Tennis Academy','Rich Eatz','Elite Shaken Lemonade','Creations by Melanie','Busy B Construction','MACH Academy','Extra Credit Creations','Realistic Impressions','There Is H.O.P.E. Ministries','The Reel Queen Academy','Alicia Fitts Show','Odell Cleveland','Diaspora Dolls'];
-  var track = document.getElementById('marqueeTrack');
-  var html = '';
-  for (var r = 0; r < 2; r++) {
-    clients.forEach(function(c){ html += '<span>'+c+'</span><span class="dia">◆</span>'; });
-  }
-  track.innerHTML = html;
-})();
-
-// Pricing
-(function(){
-  var tiers = [
-    { name:'Launch', price:'$500', priceSuffix:'', priceNote:'one-time setup', mgmt:'$35/mo', mgmtName:'Essential Management', featured:false, desc:"Perfect for businesses needing a professional online presence.", features:['Custom 1–3 page design','Mobile-first responsive build','Contact form + click-to-call','Google Business setup','Basic on-page SEO','Launch in ~1–2 weeks'] },
-    { name:'Growth', price:'$850', priceSuffix:'+', priceNote:'one-time setup', mgmt:'$45/mo', mgmtName:'Standard Management', featured:true, desc:"Built to generate leads and grow your business.", features:['Up to 8 custom pages','Everything in Launch','Lead capture + automations','Blog or resource center','Booking / scheduling tools','Priority launch support'] },
-    { name:'Business System', price:'$2,500', priceSuffix:'+', priceNote:'starting at', mgmt:'$75/mo', mgmtName:'Pro Management', featured:false, desc:"Client portals, dashboards, member areas, custom workflows, e-commerce, and integrations.", features:['Custom web application build','Client portals & dashboards','Membership / booking systems','E-commerce & payments','Custom integrations & APIs','Dedicated ongoing partnership'] }
-  ];
-  var g = document.getElementById('pricingGrid');
-  g.innerHTML = tiers.map(function(t){
-    var featClass = t.featured ? 'floating ring-1 ring-accent/40' : 'surface';
-    var feats = t.features.map(function(f){ return '<li class="flex gap-2 items-start text-[13px] text-dim py-2 border-b hairline"><span class="text-accent flex-none">✓</span>'+f+'</li>'; }).join('');
-    return '<div class="'+featClass+' rounded-2xl p-8 flex flex-col h-full">'
-      + (t.featured ? '<div class="text-[11px] track-wide text-accent font-700 mb-3">MOST POPULAR</div>' : '')
-      + '<div class="text-[13px] track-wide font-700 text-ink uppercase">'+t.name+'</div>'
-      + '<div class="serif text-[34px] font-700 text-ink mt-3">'+t.price+'<span class="text-[18px] text-dim2">'+t.priceSuffix+'</span></div>'
-      + '<div class="text-[12px] text-dim2 mb-4">'+t.priceNote+'</div>'
-      + '<p class="text-[13.5px] text-dim leading-relaxed mb-5">'+t.desc+'</p>'
-      + '<ul class="flex-1">'+feats+'</ul>'
-      + '<div class="text-[12px] text-dim2 mt-5 mb-5">'+t.mgmtName+': <span class="text-accent">'+t.mgmt+'</span></div>'
-      + '<a href="#connect" class="btn '+(t.featured?'btn-primary':'btn-ghost')+' w-full">Get started</a>'
-      + '</div>';
-  }).join('');
-})();
-
 // Testimonials
 (function(){
-  var testimonials = [
-    {
-      name: 'Alicia Fitts',
-      context: 'Creative Professional · The Alicia Fitts Show',
-      excerpt: "Jacob is incredibly talented, efficient, and consistently delivers high-quality work. His work is exceptional, and his customer service is outstanding — professional, responsive, and truly committed to bringing his clients' visions to life.",
-      full: "Jacob is incredibly talented, efficient, and consistently delivers high-quality work. As a creative professional and graphic designer with over 20 years of experience, I can be very selective about who I trust with my projects. Jacob exceeded my expectations from start to finish.\n\nNot only is his work exceptional, but his customer service is outstanding. He is professional, responsive, and truly committed to bringing his clients' visions to life. His company represents the future of the design industry through its innovation, creativity, and attention to detail.\n\nI am a very happy client and will absolutely be returning for future projects. Highly recommended!"
-    },
-    {
-      name: 'Wendy Baker',
-      context: 'Busy B Construction Services LLC',
-      excerpt: "My husband is not an easy person to impress, but he was absolutely blown away by the website Jacob designed. The quality, professionalism, and attention to detail exceeded our expectations.",
-      full: "Jacob Joseph of Luminate Web Design created a business website for my husband, Willie Baker III of Busy B Construction Services LLC, and we couldn't be happier with the results. My husband is not an easy person to impress, but he was absolutely blown away by the website Jacob designed.\n\nThe quality, professionalism, and attention to detail exceeded our expectations. Jacob did an outstanding job, creating a top-notch website that truly represents our business. We are confident it will help attract new customers and provide the exposure Busy B Construction Services needs to take the business to the next level.\n\nWe highly recommend Jacob and Luminate Web Design to anyone looking for exceptional web design services."
-    }
-  ];
   var track = document.getElementById('testiTrack');
-  track.innerHTML = testimonials.map(function(t, i){
-    return '<div class="floating rounded-2xl p-8 flex-none w-[85vw] sm:w-[440px] snap-start" data-testi="'+i+'">'
-      + '<div class="text-accent text-[15px] mb-4">★★★★★</div>'
-      + '<p class="serif italic text-[17px] leading-relaxed text-ink testi-excerpt">"'+t.excerpt+'"</p>'
-      + '<p class="text-[14px] text-dim leading-relaxed mt-3 hidden testi-full">'+t.full.split('\n\n').join('</p><p class="text-[14px] text-dim leading-relaxed mt-3 testi-full">')+'</p>'
-      + '<button class="text-[12px] text-accent underline decoration-[rgba(232,226,212,.4)] underline-offset-4 mt-4 testi-toggle">Read full review</button>'
-      + '<div class="flex items-center gap-3 mt-6 pt-6 border-t hairline">'
-      +   '<span class="w-10 h-10 rounded-full bg-[rgba(232,226,212,.18)] flex items-center justify-center serif text-accent text-[15px] font-700">'+t.name.charAt(0)+'</span>'
-      +   '<div><div class="font-700 text-[14px] text-ink">'+t.name+'</div><div class="text-[12px] text-dim2">'+t.context+'</div></div>'
-      + '</div></div>';
-  }).join('');
 
   track.querySelectorAll('.testi-toggle').forEach(function(btn){
     btn.addEventListener('click', function(){
@@ -654,25 +669,7 @@ tailwind.config = {
 
 // FAQ accordion
 (function(){
-  var faqs = [
-    {q:'What does Luminate do?', a:'We design and build premium websites and custom business software — from a first professional site to client portals, dashboards, and internal tools — and stay on to manage them.'},
-    {q:'Who do you work best with?', a:'Local businesses, ministries, nonprofits, and growing companies who value quality. We are not the right fit for DIY, cheapest-option shoppers, or one-off Fiverr projects.'},
-    {q:'What is your process like?', a:'It starts with a conversation about your business. Then we design, build, and launch — with one point of contact the whole way through.'},
-    {q:'How long does it take to launch?', a:'Most marketing sites launch in about 1–2 weeks. Custom software timelines depend on scope and are scoped up front.'},
-    {q:'What do you need from me to get started?', a:'A short note on what your business does and your goals. We handle design, copy, hosting, and SEO from there.'},
-  ];
   var el = document.getElementById('faq');
-  el.innerHTML = faqs.map(function(f,i){
-    var open = i===0;
-    return '<div class="faq-item rounded-xl mb-3 overflow-hidden border '+(open?'floating border-transparent':'surface')+'">'
-      + '<button class="faq-q w-full flex items-center gap-4 text-left px-6 py-5">'
-      +   '<span class="serif text-[16px] font-700 '+(open?'text-accent':'text-dim2')+'">'+String(i+1).padStart(2,'0')+'</span>'
-      +   '<span class="flex-1 text-[15px] font-600 text-ink">'+f.q+'</span>'
-      +   '<span class="w-7 h-7 rounded-full flex items-center justify-center flex-none '+(open?'bg-[rgba(232,226,212,.16)] text-accent':'bg-white/5 text-accent')+'">'+(open?'▴':'▾')+'</span>'
-      + '</button>'
-      + '<div class="faq-a px-6 '+(open?'pb-6':'hidden')+'"><p class="text-[13.5px] text-dim leading-relaxed pl-9">'+f.a+'</p></div>'
-      + '</div>';
-  }).join('');
   el.querySelectorAll('.faq-q').forEach(function(btn){
     btn.addEventListener('click', function(){ btn.parentElement.querySelector('.faq-a').classList.toggle('hidden'); });
   });
@@ -730,12 +727,11 @@ tailwind.config = {
     }).catch(function(){});
 
     try {
-      var res = await fetch('https://api.web3forms.com/submit', {
+      var res = await fetch('https://formspree.io/f/xrpgdreq', {
         method: 'POST',
         headers: {'Content-Type':'application/json','Accept':'application/json'},
         body: JSON.stringify({
-          access_key: '2fac6cbf-8123-421e-8b5c-772702296900',
-          subject: 'New project inquiry — Luminate Web Design',
+          _subject: 'New project inquiry — Luminate Web Design',
           name: name.value.trim(),
           email: email.value.trim(),
           business: document.getElementById('f-business').value.trim(),
@@ -745,8 +741,7 @@ tailwind.config = {
           message: message.value.trim()
         })
       });
-      var data = await res.json();
-      if(data.success){
+      if(res.ok){
         form.classList.add('hidden');
         document.getElementById('contactThanks').classList.remove('hidden');
       } else {

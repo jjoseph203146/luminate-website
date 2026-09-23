@@ -1,0 +1,12 @@
+{
+  "name": "luminate-website",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Marketing site prototype for Luminate Web Design & Development — Augusta, GA.",
+  "scripts": {
+    "build:css": "tailwindcss -i tailwind-input.css -o styles.css --minify"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.4.19"
+  }
+}
