@@ -66,7 +66,9 @@
   .hero-slabs{background:
       linear-gradient(105deg, rgba(232,226,212,.08), transparent 40%),
       repeating-linear-gradient(100deg, rgba(196,209,226,.06) 0 2px, transparent 2px 26px)}
-  .btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;border-radius:999px;font-weight:600;font-size:14px;
+  /* display via :where() so Tailwind utilities (hidden, lg:inline-flex, …) can override it */
+  :where(.btn){display:inline-flex}
+  .btn{align-items:center;justify-content:center;gap:.5rem;border-radius:999px;font-weight:600;font-size:14px;
     padding:12px 26px;transition:transform .3s cubic-bezier(.2,.7,.2,1),box-shadow .3s cubic-bezier(.2,.7,.2,1),background-color .25s,color .25s,border-color .25s;cursor:pointer;border:1px solid transparent}
   .btn:focus-visible{outline:none;box-shadow:0 0 0 3px rgba(232,226,212,.45)}
   .btn-primary{background:#E8E2D4;color:#0D1B2E;box-shadow:0 12px 30px -16px rgba(232,226,212,.5)}
@@ -139,28 +141,42 @@
         <a class="navlink" href="#about">About</a>
       </div>
       <div class="flex items-center gap-3">
-        <a href="https://billing.stripe.com/p/login/4gM00lbnqbFr9pbfkXgbm00" target="_blank" rel="noopener" class="btn btn-ghost !py-2 !px-5 !text-[13px] hidden sm:inline-flex">Manage Subscription</a>
-        <a href="/portal.html" class="btn btn-ghost !py-2 !px-5 !text-[13px] hidden sm:inline-flex">Client Portal</a>
-        <a href="#connect" class="btn btn-primary !py-2 !px-6">Start your project</a>
+        <a href="https://billing.stripe.com/p/login/4gM00lbnqbFr9pbfkXgbm00" target="_blank" rel="noopener" class="btn btn-ghost !py-2 !px-5 !text-[13px] hidden lg:inline-flex">Manage Subscription</a>
+        <a href="/portal.html" class="btn btn-ghost !py-2 !px-5 !text-[13px] hidden lg:inline-flex">Client Portal</a>
+        <a href="#connect" class="btn btn-primary !py-2 !px-6 hidden sm:inline-flex">Start your project</a>
+        <button id="mobileMenuBtn" class="lg:hidden w-[42px] h-[42px] rounded-xl border hairline bg-white/5 text-ink text-[17px] flex items-center justify-center" aria-label="Menu" aria-expanded="false">&#9776;</button>
       </div>
     </nav>
 
-    <!-- hero content -->
-    <div id="top" class="relative pt-10 pb-10 sm:pb-28 sm:min-h-[560px]">
-      <div class="flex gap-10 sm:absolute sm:right-0 sm:top-6 sm:text-right">
-        <div><div class="serif text-[40px] font-700 leading-none text-accent">15+</div><div class="text-[12px] text-dim2 mt-1 max-w-[120px]">Websites launched</div></div>
-        <div><div class="serif text-[40px] font-700 leading-none text-accent">100%</div><div class="text-[12px] text-dim2 mt-1">Augusta &amp; CSRA</div></div>
+    <!-- mobile menu -->
+    <div id="mobileMenu" class="hidden lg:!hidden rounded-2xl border hairline bg-navy2/95 backdrop-blur mb-6 overflow-hidden">
+      <a class="block px-6 py-4 text-[15px] text-dim border-b hairline" href="#top" data-mnav>Home</a>
+      <a class="block px-6 py-4 text-[15px] text-dim border-b hairline" href="#services" data-mnav>Services</a>
+      <a class="block px-6 py-4 text-[15px] text-dim border-b hairline" href="#work" data-mnav>Work</a>
+      <a class="block px-6 py-4 text-[15px] text-dim border-b hairline" href="#pricing" data-mnav>Pricing</a>
+      <a class="block px-6 py-4 text-[15px] text-dim border-b hairline" href="#about" data-mnav>About</a>
+      <a class="block px-6 py-4 text-[15px] text-dim border-b hairline" href="/portal.html">Client Portal</a>
+      <a class="block px-6 py-4 text-[15px] text-dim border-b hairline" href="https://billing.stripe.com/p/login/4gM00lbnqbFr9pbfkXgbm00" target="_blank" rel="noopener">Manage Subscription</a>
+      <div class="p-4"><a href="#connect" class="btn btn-primary w-full" data-mnav>Start your project</a></div>
+    </div>
+
+    <!-- hero content: stacked flow on mobile, absolute collage from lg up -->
+    <div id="top" class="relative pt-6 lg:pt-10 pb-16 lg:pb-28 lg:min-h-[560px] flex flex-col gap-8 lg:block">
+      <div class="order-3 flex gap-10 lg:absolute lg:right-0 lg:top-6 lg:text-right">
+        <div><div class="serif text-[34px] lg:text-[40px] font-700 leading-none text-accent">15+</div><div class="text-[12px] text-dim2 mt-1 max-w-[120px]">Websites launched</div></div>
+        <div><div class="serif text-[34px] lg:text-[40px] font-700 leading-none text-accent">100%</div><div class="text-[12px] text-dim2 mt-1">Augusta &amp; CSRA</div></div>
       </div>
 
-      <div class="mt-10 sm:mt-0 sm:absolute sm:left-0 sm:bottom-24 sm:max-w-[320px] lg:max-w-none">
-        <h1 class="serif text-[40px] sm:text-[42px] lg:text-[60px] font-700 leading-[1.04] track-tight">YOUR BUSINESS IS CREDIBLE<br>IN PERSON. YOUR WEBSITE<br>SHOULD BE TOO.</h1>
-        <a href="#connect" class="btn btn-primary mt-7">Start your project</a>
+      <div class="order-1 lg:absolute lg:left-0 lg:bottom-24">
+        <h1 class="serif text-[32px] sm:text-[44px] lg:text-[60px] font-700 leading-[1.08] lg:leading-[1.04] track-tight">YOUR BUSINESS IS CREDIBLE<br class="hidden lg:block"> IN PERSON. YOUR WEBSITE<br class="hidden lg:block"> SHOULD BE TOO.</h1>
+        <a href="#connect" class="btn btn-primary mt-7 hidden lg:inline-flex">Start your project</a>
       </div>
 
-      <div class="mt-8 sm:mt-0 max-w-[460px] sm:max-w-[220px] lg:max-w-[460px] sm:absolute sm:right-0 sm:bottom-24 sm:text-right">
-        <p class="text-[17px] text-dim leading-relaxed">
+      <div class="order-2 max-w-[540px] lg:absolute lg:right-0 lg:bottom-24 lg:max-w-[460px] lg:text-right">
+        <p class="text-[16px] lg:text-[17px] text-dim leading-relaxed">
           We build premium websites and custom software for Augusta businesses who've outgrown DIY — with one founder handling your project start to finish.
         </p>
+        <a href="#connect" class="btn btn-primary mt-6 lg:hidden">Start your project</a>
       </div>
     </div>
   </div>
@@ -172,7 +188,7 @@
 </div>
 
 <!-- ============ TRUSTED PARTNERS ============ -->
-<section id="about" class="bg-navy py-20">
+<section id="about" class="bg-navy py-14 sm:py-20">
   <div class="max-w-[1180px] mx-auto px-6">
     <h3 class="serif text-[26px] sm:text-[32px] font-600 track-tight leading-tight mb-3 max-w-[560px]" data-reveal>Selected work from organizations across the CSRA</h3>
     <p class="text-[14px] text-dim2 max-w-[460px]" data-reveal>From local businesses, ministries, and nonprofits to growing organizations, Luminate builds digital experiences that help teams earn trust and operate better.</p>
@@ -180,7 +196,7 @@
 </section>
 
 <!-- ============ SERVICES (merged) ============ -->
-<section id="services" class="bg-navy2 py-24">
+<section id="services" class="bg-navy2 py-16 sm:py-24">
   <div class="max-w-[1180px] mx-auto px-6">
     <div class="track-wide text-[12px] text-dim2 font-600 mb-6" data-reveal>WHAT WE DO</div>
     <div class="grid lg:grid-cols-[1.3fr_1fr] gap-10 items-end" data-reveal>
@@ -215,7 +231,7 @@
 </section>
 
 <!-- ============ SELECTED WORK (darker) ============ -->
-<section id="work" class="bg-navy py-24">
+<section id="work" class="bg-navy py-16 sm:py-24">
   <div class="max-w-[1180px] mx-auto px-6">
     <div class="grid lg:grid-cols-[1fr_1.4fr] gap-10 items-start mb-14" data-reveal>
       <div>
@@ -255,7 +271,7 @@
 </section>
 
 <!-- ============ TRUSTED BY CLIENTS ============ -->
-<section id="clients" class="bg-navy2 py-24 relative overflow-hidden">
+<section id="clients" class="bg-navy2 py-16 sm:py-24 relative overflow-hidden">
   <div class="absolute inset-0 opacity-40 pointer-events-none" style="background:repeating-linear-gradient(120deg,transparent 0 60px,rgba(232,226,212,.03) 60px 61px)"></div>
   <div class="max-w-[1180px] mx-auto px-6 relative">
     <div class="flex flex-col lg:flex-row justify-between items-start lg:items-end gap-8 mb-10" data-reveal>
@@ -294,7 +310,7 @@
 </section>
 
 <!-- ============ WHAT SETS US APART ============ -->
-<section class="bg-navy pb-24 pt-24">
+<section class="bg-navy pb-16 pt-16 sm:pb-24 sm:pt-24">
   <div class="max-w-[1180px] mx-auto px-6">
     <h3 class="serif text-[26px] font-600 track-tight mb-8 max-w-[520px]" data-reveal>Why local organizations choose Luminate over a freelancer or template.</h3>
     <div class="grid md:grid-cols-3 gap-4" data-reveal>
@@ -312,7 +328,7 @@
 </section>
 
 <!-- ============ PRICING ============ -->
-<section id="pricing" class="bg-navy2 py-24">
+<section id="pricing" class="bg-navy2 py-16 sm:py-24">
   <div class="max-w-[1180px] mx-auto px-6">
     <div class="mb-12 max-w-[560px]" data-reveal>
       <div class="track-wide text-[12px] text-dim2 font-600 mb-4">INVESTMENT</div>
@@ -374,7 +390,7 @@
 </section>
 
 <!-- ============ FAQ ============ -->
-<section id="faq-section" class="bg-navy py-24">
+<section id="faq-section" class="bg-navy py-16 sm:py-24">
   <div class="max-w-[1180px] mx-auto px-6 grid lg:grid-cols-[1fr_1.3fr] gap-12">
     <div data-reveal>
       <h3 class="serif text-[30px] font-600 track-tight leading-tight">Still deciding?<br>Here's what most owners ask first.</h3>
@@ -392,14 +408,14 @@
 </section>
 
 <!-- ============ LET'S CONNECT ============ -->
-<section id="connect" class="bg-navy2 py-24">
+<section id="connect" class="bg-navy2 py-16 sm:py-24">
   <div class="max-w-[1180px] mx-auto px-6">
     <div class="mb-12" data-reveal>
       <h3 class="serif text-[30px] font-600 track-tight">Let's talk about your project</h3>
       <p class="text-[14px] text-dim2 mt-3 max-w-[460px]">Tell us a bit about your business so we come to the conversation prepared. We'll get back to you within one business day.</p>
     </div>
     <div class="grid lg:grid-cols-[.9fr_1.1fr] gap-12 items-center">
-      <div class="aspect-square rounded-full glass shadow-[0_40px_80px_-40px_rgba(0,0,0,.55)] flex items-center justify-center max-w-[420px] overflow-hidden" data-reveal>
+      <div class="aspect-square rounded-full glass shadow-[0_40px_80px_-40px_rgba(0,0,0,.55)] hidden lg:flex items-center justify-center max-w-[420px] overflow-hidden" data-reveal>
         <img src="brand_assets/luminatelogo1.png" alt="Luminate" class="w-32 h-32 rounded-2xl object-cover shadow-[0_20px_40px_-20px_rgba(0,0,0,.5)]">
       </div>
       <div data-reveal>
@@ -608,6 +624,24 @@
 </script>
 
 <script>
+// Mobile menu
+(function(){
+  var btn = document.getElementById('mobileMenuBtn');
+  var menu = document.getElementById('mobileMenu');
+  btn.addEventListener('click', function(){
+    var open = menu.classList.toggle('hidden') === false;
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    btn.innerHTML = open ? '&#10005;' : '&#9776;';
+  });
+  menu.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click', function(){
+      menu.classList.add('hidden');
+      btn.setAttribute('aria-expanded', 'false');
+      btn.innerHTML = '&#9776;';
+    });
+  });
+})();
+
 // Testimonials
 (function(){
   var track = document.getElementById('testiTrack');
