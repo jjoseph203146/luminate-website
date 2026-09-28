@@ -1,0 +1,5 @@
+{
+  "rewrites": [
+    { "source": "/web-design-augusta-ga", "destination": "/web-design-augusta-ga/index.html" }
+  ]
+}

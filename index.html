@@ -219,7 +219,7 @@
       <div class="divide-y hairline">
         <div class="py-7 flex gap-5">
           <div class="w-11 h-11 rounded-xl bg-[rgba(232,226,212,.10)] flex items-center justify-center text-accent flex-none">✦</div>
-          <div><h4 class="text-accent font-700 text-[17px]">Website Design &amp; Build</h4><p class="text-[13.5px] text-dim mt-1.5 leading-relaxed">Custom, mobile-first sites designed around your brand and your customers — built to earn trust and turn visitors into customers.</p></div>
+          <div><h4 class="text-accent font-700 text-[17px]">Website Design &amp; Build</h4><p class="text-[13.5px] text-dim mt-1.5 leading-relaxed">Custom, mobile-first sites designed around your brand and your customers — built to earn trust and turn visitors into customers.</p><a href="/web-design-augusta-ga" class="inline-block text-[13px] text-accent underline decoration-[rgba(232,226,212,.35)] underline-offset-4 hover:decoration-accent mt-2">Web design for Augusta businesses →</a></div>
         </div>
         <div class="py-7 flex gap-5">
           <div class="w-11 h-11 rounded-xl bg-accent flex items-center justify-center text-navy flex-none">◈</div>
@@ -524,7 +524,7 @@
         <p class="text-[13px] text-dim2 mt-4 max-w-[240px]">Premium websites and custom software that help businesses earn trust, work smarter, and grow faster.</p>
       </div>
       <div><h5 class="text-[13px] font-700 mb-4 text-ink">Services</h5><ul class="space-y-3 text-[13px] text-dim2">
-        <li><a href="#services" class="hover:text-ink transition-colors">Website Design</a></li><li><a href="#services" class="hover:text-ink transition-colors">Custom Software</a></li><li><a href="#services" class="hover:text-ink transition-colors">Ongoing Management</a></li><li><a href="#work" class="hover:text-ink transition-colors">Our Work</a></li><li><a href="#pricing" class="hover:text-ink transition-colors">Pricing</a></li></ul></div>
+        <li><a href="#services" class="hover:text-ink transition-colors">Website Design</a></li><li><a href="/web-design-augusta-ga" class="hover:text-ink transition-colors">Web Design in Augusta, GA</a></li><li><a href="#services" class="hover:text-ink transition-colors">Custom Software</a></li><li><a href="#services" class="hover:text-ink transition-colors">Ongoing Management</a></li><li><a href="#work" class="hover:text-ink transition-colors">Our Work</a></li><li><a href="#pricing" class="hover:text-ink transition-colors">Pricing</a></li></ul></div>
       <div><h5 class="text-[13px] font-700 mb-4 text-ink">Company</h5><ul class="space-y-3 text-[13px] text-dim2">
         <li><a href="#about" class="hover:text-ink transition-colors">About</a></li><li><a href="#connect" class="hover:text-ink transition-colors">Contact</a></li><li><a href="/portal.html" class="hover:text-ink transition-colors">Client Portal</a></li><li><a href="https://billing.stripe.com/p/login/4gM00lbnqbFr9pbfkXgbm00" target="_blank" rel="noopener" class="hover:text-ink transition-colors">Manage Subscription</a></li></ul></div>
       <div><h5 class="text-[13px] font-700 mb-4 text-ink">Get in touch</h5><ul class="space-y-3 text-[13px] text-dim2">
@@ -704,6 +704,14 @@
   cta.addEventListener('click', function(){
     select.value = 'Personal Website';
   });
+})();
+
+// Preselect the service when arriving from another page (e.g. /?service=website#connect)
+(function(){
+  var select = document.getElementById('f-type');
+  var service = new URLSearchParams(window.location.search).get('service');
+  var map = { website: 'Website Design & Build' };
+  if (select && map[service]) select.value = map[service];
 })();
 
 // Testimonials
