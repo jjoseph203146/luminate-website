@@ -395,6 +395,50 @@
         <a href="#connect" class="btn btn-ghost w-full">Get started</a>
       </div>
     </div>
+
+    <div class="mt-6 rounded-2xl border hairline bg-navy/40 p-6 sm:p-7 flex flex-col sm:flex-row sm:items-center gap-5" data-reveal>
+      <div class="flex-1">
+        <div class="text-[11px] track-wide text-dim2 font-700 mb-2">NEED SOMETHING SMALLER?</div>
+        <div class="flex items-baseline gap-2 flex-wrap">
+          <span class="text-[15px] font-700 text-ink">Personal Website</span>
+          <span class="text-dim2">—</span>
+          <span class="serif text-[20px] font-700 text-ink">$350</span>
+        </div>
+        <p class="text-[13px] text-dim2 mt-2 max-w-[520px]">For individuals who need a clean, professional presence online — portfolios, résumé or student sites, speaker/musician pages, personal brands, and simple informational pages.</p>
+        <p class="text-[12px] text-dim2 mt-2 max-w-[520px]">Personal pricing is intended for individual portfolios, résumé sites, and personal brands. Business websites start with Launch.</p>
+        <details class="mt-3 text-[12.5px]">
+          <summary class="text-dim2 cursor-pointer select-none hover:text-dim">See what's included</summary>
+          <div class="mt-3 grid sm:grid-cols-2 gap-x-6 gap-y-4 max-w-[560px]">
+            <div>
+              <div class="text-dim2 font-700 mb-1.5">Included</div>
+              <ul class="text-dim space-y-1">
+                <li>1-page custom website (up to 2 simple pages when needed)</li>
+                <li>Mobile-responsive build</li>
+                <li>Contact &amp; social links</li>
+                <li>Basic analytics</li>
+                <li>Domain connection</li>
+                <li>Basic metadata / on-page SEO setup</li>
+                <li>One revision round</li>
+                <li>Client provides copy and images</li>
+              </ul>
+            </div>
+            <div>
+              <div class="text-dim2 font-700 mb-1.5">Not included</div>
+              <ul class="text-dim space-y-1">
+                <li>E-commerce</li>
+                <li>Booking systems</li>
+                <li>CRM or lead automation</li>
+                <li>Custom databases</li>
+                <li>Business lead-generation funnels</li>
+                <li>Advanced SEO</li>
+                <li>Custom integrations</li>
+              </ul>
+            </div>
+          </div>
+        </details>
+      </div>
+      <a href="#connect" id="personalCta" class="btn btn-ghost !py-2.5 !px-6 !text-[13px] flex-none">Start a personal site</a>
+    </div>
   </div>
 </section>
 
@@ -441,6 +485,7 @@
             <option>Website Design &amp; Build</option>
             <option>Custom Business Software</option>
             <option>Ongoing Management</option>
+            <option>Personal Website</option>
           </select>
           <textarea class="fld sm:col-span-2 min-h-[110px] resize-y" id="f-message" name="message" placeholder="Anything else we should know?" required></textarea>
           <div id="form-error" class="sm:col-span-2 text-[13px] text-brred hidden"></div>
@@ -648,6 +693,16 @@
       btn.setAttribute('aria-expanded', 'false');
       btn.innerHTML = '&#9776;';
     });
+  });
+})();
+
+// Personal Website CTA — preselect the dropdown, anchor scroll already handles the rest
+(function(){
+  var cta = document.getElementById('personalCta');
+  var select = document.getElementById('f-type');
+  if (!cta || !select) return;
+  cta.addEventListener('click', function(){
+    select.value = 'Personal Website';
   });
 })();
 
