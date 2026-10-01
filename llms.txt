@@ -19,6 +19,7 @@
 
 - [Home](https://luminatewebdesign.com/): services, pricing, selected work, and contact form
 - [Web Design Augusta GA](https://luminatewebdesign.com/web-design-augusta-ga): local web design landing page for Augusta and CSRA businesses
+- [Contractor Website Design Augusta GA](https://luminatewebdesign.com/contractor-website-design-augusta-ga): websites for contractors and home service businesses in the Augusta area
 - [Client Portal](https://luminatewebdesign.com/portal.html): login-only client dashboard for existing clients — not a content page
 
 ## Contact

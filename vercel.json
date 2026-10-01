@@ -1,5 +1,12 @@
 {
   "rewrites": [
-    { "source": "/web-design-augusta-ga", "destination": "/web-design-augusta-ga/index.html" }
+    {
+      "source": "/web-design-augusta-ga",
+      "destination": "/web-design-augusta-ga/index.html"
+    },
+    {
+      "source": "/contractor-website-design-augusta-ga",
+      "destination": "/contractor-website-design-augusta-ga/index.html"
+    }
   ]
 }
