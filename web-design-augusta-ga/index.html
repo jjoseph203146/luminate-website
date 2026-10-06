@@ -69,6 +69,8 @@
   .hairline{border-color:rgba(196,209,226,.10)}
   .grain::before{content:"";position:fixed;inset:0;z-index:1;pointer-events:none;opacity:.04;mix-blend-mode:soft-light;
     background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+  /* A fixed full-screen mix-blend layer forces phones to re-blend the whole screen every scroll frame; at 4% opacity it's imperceptible, so desktop only */
+  @media (max-width:1023px){.grain::before{display:none}}
   .hero-bg{background:
       radial-gradient(120% 90% at 82% -12%, rgba(232,226,212,.16) 0%, transparent 46%),
       radial-gradient(90% 80% at 8% 120%, rgba(61,174,122,.10) 0%, transparent 52%),
@@ -97,6 +99,7 @@
   .card-hover:hover{transform:translateY(-4px);border-color:rgba(232,226,212,.28);box-shadow:0 34px 70px -34px rgba(0,0,0,.7)}
   [data-reveal]{opacity:0;transform:translateY(24px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1)}
   [data-reveal].in{opacity:1;transform:none}
+  @media (max-width:1023px){[data-reveal]{transform:translateY(12px);transition-duration:.45s}}
   /* FAQ uses native <details>, styled to match the homepage accordion */
   .faq-item summary{list-style:none;cursor:pointer}
   .faq-item summary::-webkit-details-marker{display:none}
@@ -110,6 +113,7 @@
     html{scroll-behavior:auto}
   }
 </style>
+<noscript><style>[data-reveal]{opacity:1!important;transform:none!important}</style></noscript>
 </head>
 <body class="grain">
 
@@ -120,7 +124,7 @@
   <div class="relative max-w-[1180px] mx-auto px-6">
     <nav class="flex items-center justify-between py-6" aria-label="Main">
       <a href="/" class="flex items-center gap-3">
-        <span class="w-9 h-9 rounded-[10px] overflow-hidden ring-1 ring-[rgba(232,226,212,.2)] flex-none"><img src="/brand_assets/luminatelogo1.png" alt="Luminate" class="w-full h-full object-cover"></span>
+        <span class="w-9 h-9 rounded-[10px] overflow-hidden ring-1 ring-[rgba(232,226,212,.2)] flex-none"><img src="/brand_assets/luminatelogo1.webp" alt="Luminate" class="w-full h-full object-cover"></span>
         <span class="serif text-[20px] font-700 tracking-[.14em]">LUMINATE</span>
       </a>
       <div class="hidden lg:flex items-center gap-8 bg-white/5 backdrop-blur px-7 py-2.5 rounded-full border hairline">
@@ -230,7 +234,7 @@
         <h2 id="why-heading" class="serif text-[30px] sm:text-[40px] font-600 track-tight leading-[1.1]">One local partner, one point of contact, built for your business.</h2>
         <div class="floating rounded-2xl p-5 mt-8 flex items-center gap-4 max-w-[380px]">
           <div class="relative w-16 h-16 rounded-full overflow-hidden flex-none ring-1 ring-[rgba(232,226,212,.25)]">
-            <img src="/images/founder-jacob.jpg" alt="Jacob Joseph, founder of Luminate" class="w-full h-full object-cover" loading="lazy">
+            <img src="/images/founder-jacob-192.webp" alt="Jacob Joseph, founder of Luminate" class="w-full h-full object-cover" loading="lazy" decoding="async">
             <div class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
           </div>
           <div>
@@ -264,7 +268,7 @@
     </div>
     <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5" data-reveal>
       <article class="card-hover surface rounded-2xl overflow-hidden h-full flex flex-col">
-        <div class="aspect-[16/10] relative overflow-hidden"><img src="/images/work/abib-auto-sales.jpg" alt="Abib Auto Sales website" loading="lazy" class="absolute inset-0 w-full h-full object-cover"><div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div></div>
+        <div class="aspect-[16/10] relative overflow-hidden"><img src="/images/work/abib-auto-sales.webp" alt="Abib Auto Sales website" loading="lazy" decoding="async" class="absolute inset-0 w-full h-full object-cover"><div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div></div>
         <div class="p-6 flex flex-col flex-1">
           <div class="text-[11px] track-wide text-accent font-700">USED CAR DEALERSHIP</div>
           <h3 class="text-[16px] font-700 text-ink mt-2">Abib Auto Sales</h3>
@@ -272,7 +276,7 @@
         </div>
       </article>
       <article class="card-hover surface rounded-2xl overflow-hidden h-full flex flex-col">
-        <div class="aspect-[16/10] relative overflow-hidden"><img src="/images/work/busy-b-construction.jpg" alt="Busy B Construction website" loading="lazy" class="absolute inset-0 w-full h-full object-cover"><div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div></div>
+        <div class="aspect-[16/10] relative overflow-hidden"><img src="/images/work/busy-b-construction.webp" alt="Busy B Construction website" loading="lazy" decoding="async" class="absolute inset-0 w-full h-full object-cover"><div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div></div>
         <div class="p-6 flex flex-col flex-1">
           <div class="text-[11px] track-wide text-accent font-700">CONTRACTOR</div>
           <h3 class="text-[16px] font-700 text-ink mt-2">Busy B Construction</h3>
@@ -281,7 +285,7 @@
         </div>
       </article>
       <article class="card-hover surface rounded-2xl overflow-hidden h-full flex flex-col">
-        <div class="aspect-[16/10] relative overflow-hidden"><img src="/images/work/rich-eatz.jpg" alt="Rich Eatz website" loading="lazy" class="absolute inset-0 w-full h-full object-cover"><div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div></div>
+        <div class="aspect-[16/10] relative overflow-hidden"><img src="/images/work/rich-eatz.webp" alt="Rich Eatz website" loading="lazy" decoding="async" class="absolute inset-0 w-full h-full object-cover"><div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div></div>
         <div class="p-6 flex flex-col flex-1">
           <div class="text-[11px] track-wide text-accent font-700">CATERING</div>
           <h3 class="text-[16px] font-700 text-ink mt-2">Rich Eatz</h3>
@@ -290,7 +294,7 @@
         </div>
       </article>
       <article class="card-hover surface rounded-2xl overflow-hidden h-full flex flex-col">
-        <div class="aspect-[16/10] relative overflow-hidden"><img src="/images/work/realistic-impressions.jpg" alt="Realistic Impressions website" loading="lazy" class="absolute inset-0 w-full h-full object-cover"><div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div></div>
+        <div class="aspect-[16/10] relative overflow-hidden"><img src="/images/work/realistic-impressions.webp" alt="Realistic Impressions website" loading="lazy" decoding="async" class="absolute inset-0 w-full h-full object-cover"><div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div></div>
         <div class="p-6 flex flex-col flex-1">
           <div class="text-[11px] track-wide text-accent font-700">PRINT SHOP</div>
           <h3 class="text-[16px] font-700 text-ink mt-2">Realistic Impressions</h3>
@@ -299,7 +303,7 @@
         </div>
       </article>
       <article class="card-hover surface rounded-2xl overflow-hidden h-full flex flex-col">
-        <div class="aspect-[16/10] relative overflow-hidden"><img src="/images/work/creations-by-melanie.jpg" alt="Creations by Melanie website" loading="lazy" class="absolute inset-0 w-full h-full object-cover"><div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div></div>
+        <div class="aspect-[16/10] relative overflow-hidden"><img src="/images/work/creations-by-melanie.webp" alt="Creations by Melanie website" loading="lazy" decoding="async" class="absolute inset-0 w-full h-full object-cover"><div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div></div>
         <div class="p-6 flex flex-col flex-1">
           <div class="text-[11px] track-wide text-accent font-700">CUSTOM BAKERY</div>
           <h3 class="text-[16px] font-700 text-ink mt-2">Creations by Melanie</h3>
@@ -307,7 +311,7 @@
         </div>
       </article>
       <article class="card-hover surface rounded-2xl overflow-hidden h-full flex flex-col">
-        <div class="aspect-[16/10] relative overflow-hidden"><img src="/images/work/extra-credit-creations.jpg" alt="Extra Credit Creations online store" loading="lazy" class="absolute inset-0 w-full h-full object-cover"><div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div></div>
+        <div class="aspect-[16/10] relative overflow-hidden"><img src="/images/work/extra-credit-creations.webp" alt="Extra Credit Creations online store" loading="lazy" decoding="async" class="absolute inset-0 w-full h-full object-cover"><div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div></div>
         <div class="p-6 flex flex-col flex-1">
           <div class="text-[11px] track-wide text-accent font-700">E-COMMERCE</div>
           <h3 class="text-[16px] font-700 text-ink mt-2">Extra Credit Creations</h3>
@@ -410,7 +414,7 @@
     <div class="grid md:grid-cols-[1.6fr_1fr_1fr_1fr] gap-10">
       <div>
         <div class="flex items-center gap-3">
-          <span class="w-8 h-8 rounded-[9px] overflow-hidden ring-1 ring-[rgba(232,226,212,.2)] flex-none"><img src="/brand_assets/luminatelogo1.png" alt="Luminate" class="w-full h-full object-cover"></span>
+          <span class="w-8 h-8 rounded-[9px] overflow-hidden ring-1 ring-[rgba(232,226,212,.2)] flex-none"><img src="/brand_assets/luminatelogo1.webp" alt="Luminate" class="w-full h-full object-cover"></span>
           <span class="serif text-[18px] font-700 tracking-[.14em]">LUMINATE</span>
         </div>
         <p class="text-[13px] text-dim2 mt-4 max-w-[240px]">Premium websites and custom software that help businesses earn trust, work smarter, and grow faster.</p>
@@ -448,8 +452,12 @@
 
 // Reveal
 (function(){
-  var io = new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.1,rootMargin:'0px 0px -6% 0px'});
-  document.querySelectorAll('[data-reveal]').forEach(function(el){io.observe(el);});
+  // Reveal as soon as any part is within 18% of the viewport (not when 10% of a tall block is visible),
+  // and always reveal anything already scrolled past, so fast scrolling never shows blank gaps.
+  var els = document.querySelectorAll('[data-reveal]');
+  if(!('IntersectionObserver' in window)){ els.forEach(function(el){el.classList.add('in');}); return; }
+  var io = new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting||e.boundingClientRect.top<0){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:0,rootMargin:'0px 0px 18% 0px'});
+  els.forEach(function(el){io.observe(el);});
 })();
 </script>
 </body>

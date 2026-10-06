@@ -79,6 +79,8 @@
   .hairline{border-color:rgba(196,209,226,.10)}
   .grain::before{content:"";position:fixed;inset:0;z-index:1;pointer-events:none;opacity:.04;mix-blend-mode:soft-light;
     background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+  /* A fixed full-screen mix-blend layer forces phones to re-blend the whole screen every scroll frame; at 4% opacity it's imperceptible, so desktop only */
+  @media (max-width:1023px){.grain::before{display:none}}
   .hero-bg{background:
       radial-gradient(120% 90% at 82% -12%, rgba(232,226,212,.16) 0%, transparent 46%),
       radial-gradient(90% 80% at 8% 120%, rgba(61,174,122,.10) 0%, transparent 52%),
@@ -107,6 +109,7 @@
   .card-hover:hover{transform:translateY(-4px);border-color:rgba(232,226,212,.28);box-shadow:0 34px 70px -34px rgba(0,0,0,.7)}
   [data-reveal]{opacity:0;transform:translateY(24px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1)}
   [data-reveal].in{opacity:1;transform:none}
+  @media (max-width:1023px){[data-reveal]{transform:translateY(12px);transition-duration:.45s}}
   .faq-item summary{list-style:none;cursor:pointer}
   .faq-item summary::-webkit-details-marker{display:none}
   .faq-item summary:focus-visible{outline:none;box-shadow:inset 0 0 0 2px rgba(232,226,212,.45);border-radius:12px}
@@ -119,6 +122,7 @@
     html{scroll-behavior:auto}
   }
 </style>
+<noscript><style>[data-reveal]{opacity:1!important;transform:none!important}</style></noscript>
 </head>
 <body class="grain">
 
@@ -129,7 +133,7 @@
   <div class="relative max-w-[1180px] mx-auto px-6">
     <nav class="flex items-center justify-between py-6" aria-label="Main">
       <a href="/" class="flex items-center gap-3">
-        <span class="w-9 h-9 rounded-[10px] overflow-hidden ring-1 ring-[rgba(232,226,212,.2)] flex-none"><img src="/brand_assets/luminatelogo1.png" alt="Luminate" class="w-full h-full object-cover"></span>
+        <span class="w-9 h-9 rounded-[10px] overflow-hidden ring-1 ring-[rgba(232,226,212,.2)] flex-none"><img src="/brand_assets/luminatelogo1.webp" alt="Luminate" class="w-full h-full object-cover"></span>
         <span class="serif text-[20px] font-700 tracking-[.14em]">LUMINATE</span>
       </a>
       <div class="hidden lg:flex items-center gap-8 bg-white/5 backdrop-blur px-7 py-2.5 rounded-full border hairline">
@@ -229,7 +233,7 @@
     <div class="grid lg:grid-cols-[1.15fr_1fr] gap-8 lg:gap-12 items-start" data-reveal>
       <a href="https://busybconstructionservices.com/" target="_blank" rel="noopener" class="block card-hover surface rounded-2xl overflow-hidden" aria-label="Visit busybconstructionservices.com (opens in a new tab)">
         <div class="aspect-[16/10] relative overflow-hidden">
-          <img src="/images/work/busy-b-construction.jpg" alt="Busy B Construction Services website shown on laptop and phone" loading="lazy" class="absolute inset-0 w-full h-full object-cover">
+          <img src="/images/work/busy-b-construction.webp" alt="Busy B Construction Services website shown on laptop and phone" loading="lazy" decoding="async" class="absolute inset-0 w-full h-full object-cover">
           <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
         </div>
       </a>
@@ -352,7 +356,7 @@
     <div class="grid md:grid-cols-[1.6fr_1fr_1fr_1fr] gap-10">
       <div>
         <div class="flex items-center gap-3">
-          <span class="w-8 h-8 rounded-[9px] overflow-hidden ring-1 ring-[rgba(232,226,212,.2)] flex-none"><img src="/brand_assets/luminatelogo1.png" alt="Luminate" class="w-full h-full object-cover"></span>
+          <span class="w-8 h-8 rounded-[9px] overflow-hidden ring-1 ring-[rgba(232,226,212,.2)] flex-none"><img src="/brand_assets/luminatelogo1.webp" alt="Luminate" class="w-full h-full object-cover"></span>
           <span class="serif text-[18px] font-700 tracking-[.14em]">LUMINATE</span>
         </div>
         <p class="text-[13px] text-dim2 mt-4 max-w-[240px]">Premium websites and custom software that help businesses earn trust, work smarter, and grow faster.</p>
@@ -390,8 +394,12 @@
 
 // Reveal
 (function(){
-  var io = new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.1,rootMargin:'0px 0px -6% 0px'});
-  document.querySelectorAll('[data-reveal]').forEach(function(el){io.observe(el);});
+  // Reveal as soon as any part is within 18% of the viewport (not when 10% of a tall block is visible),
+  // and always reveal anything already scrolled past, so fast scrolling never shows blank gaps.
+  var els = document.querySelectorAll('[data-reveal]');
+  if(!('IntersectionObserver' in window)){ els.forEach(function(el){el.classList.add('in');}); return; }
+  var io = new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting||e.boundingClientRect.top<0){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:0,rootMargin:'0px 0px 18% 0px'});
+  els.forEach(function(el){io.observe(el);});
 })();
 </script>
 </body>
