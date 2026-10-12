@@ -1,4 +1,9 @@
 {
+  "redirects": [
+    { "source": "/index.html", "destination": "/", "permanent": true },
+    { "source": "/web-design-augusta-ga/index.html", "destination": "/web-design-augusta-ga", "permanent": true },
+    { "source": "/contractor-website-design-augusta-ga/index.html", "destination": "/contractor-website-design-augusta-ga", "permanent": true }
+  ],
   "rewrites": [
     {
       "source": "/web-design-augusta-ga",
