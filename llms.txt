@@ -4,9 +4,9 @@
 
 ## Services
 
-- Website Design & Build — custom, mobile-first sites for businesses that have outgrown DIY builders and templates
-- Custom Business Software — client portals, dashboards, booking systems, and internal tools built around how a business actually works
-- Ongoing Management — hosting, security, updates, and SEO handled after launch
+- Website Design & Development — professional, custom-built websites designed to establish credibility, attract the right customers, and turn online interest into real business opportunities
+- Custom Web Applications — client portals, dashboards, booking systems, and internal tools that simplify workflows and reduce manual work
+- Website Care & Optimization — ongoing hosting, maintenance, security monitoring, and performance improvements
 
 ## Pricing
 
