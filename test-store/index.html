@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Test Store | Luminate</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{--navy:#0D1B2E;--navy2:#0A1524;--card:#132743;--ink:#F4F7FB;--dim:#C4D1E2;--dim2:#7E8DA0;--accent:#E8E2D4;--ok:#6FCF97;--err:#F2A0A0}
+  *{box-sizing:border-box}
+  body{margin:0;background:radial-gradient(90% 60% at 80% -10%,rgba(232,226,212,.10),transparent 60%),var(--navy);color:var(--ink);font:16px/1.7 Inter,system-ui,sans-serif;min-height:100vh}
+  .wrap{max-width:880px;margin:0 auto;padding:0 20px 64px}
+  .banner{background:rgba(232,226,212,.10);border-bottom:1px solid rgba(232,226,212,.25);color:var(--accent);font-size:13px;text-align:center;padding:10px 16px}
+  .banner code{background:rgba(255,255,255,.08);padding:1px 6px;border-radius:5px}
+  h1{font:600 clamp(30px,6vw,46px)/1.1 'Playfair Display',serif;letter-spacing:-.03em;margin:48px 0 8px}
+  .sub{color:var(--dim);margin:0 0 32px;max-width:560px}
+  .product{display:grid;gap:0;background:linear-gradient(160deg,#173052,#152A45);border:1px solid rgba(196,209,226,.12);border-radius:20px;overflow:hidden;box-shadow:0 34px 80px -34px rgba(0,0,0,.75),0 10px 30px -18px rgba(232,226,212,.18)}
+  @media(min-width:700px){.product{grid-template-columns:1fr 1fr}}
+  .art{min-height:240px;background:radial-gradient(70% 70% at 30% 25%,rgba(232,226,212,.28),transparent 60%),linear-gradient(135deg,#1d3a63,#0f2039);display:flex;align-items:center;justify-content:center;font:600 72px 'Playfair Display',serif;color:rgba(244,247,251,.85)}
+  .info{padding:32px}
+  .info h2{font:600 24px/1.2 'Playfair Display',serif;margin:0 0 8px}
+  .info p{color:var(--dim);margin:0 0 20px;font-size:14.5px}
+  .price{font-size:28px;font-weight:600;margin-bottom:20px}
+  .row{display:flex;align-items:center;gap:12px;margin-bottom:20px;color:var(--dim);font-size:14px}
+  select{background:var(--navy2);color:var(--ink);border:1px solid rgba(196,209,226,.25);border-radius:10px;padding:8px 12px;font:inherit}
+  select:focus-visible,.btn:focus-visible{outline:none;box-shadow:0 0 0 3px rgba(232,226,212,.45)}
+  .btn{width:100%;border:0;border-radius:999px;background:var(--accent);color:var(--navy);font:600 15px Inter,sans-serif;padding:14px 26px;cursor:pointer;box-shadow:0 12px 30px -16px rgba(232,226,212,.5);transition:transform .3s cubic-bezier(.2,.7,.2,1),background-color .25s}
+  .btn:hover{background:#F3EEE3;transform:translateY(-2px)}
+  .btn:active{transform:translateY(0)}
+  .btn[disabled]{opacity:.6;cursor:wait;transform:none}
+  .note{font-size:12.5px;color:var(--dim2);margin-top:14px}
+  .msg{border-radius:12px;padding:14px 18px;margin:0 0 24px;font-size:14.5px}
+  .msg.ok{background:rgba(111,207,151,.10);border:1px solid rgba(111,207,151,.35);color:var(--ok)}
+  .msg.warn{background:rgba(232,226,212,.08);border:1px solid rgba(232,226,212,.25);color:var(--accent)}
+  .err{color:var(--err);font-size:13.5px;margin-top:12px;min-height:1.2em}
+  a{color:var(--accent)}
+</style>
+</head>
+<body>
+<div class="banner"><strong>TEST MODE</strong> — Stripe sandbox only. Pay with card <code>4242 4242 4242 4242</code>, any future expiry, any CVC. No real charge is made.</div>
+<main class="wrap">
+  <h1>Test Store</h1>
+  <p class="sub">An isolated sandbox storefront for testing the order → webhook → email workflow. It is not connected to Luminate's real billing.</p>
+
+  <div id="status"></div>
+
+  <section class="product" aria-label="Sample product">
+    <div class="art" aria-hidden="true">L</div>
+    <div class="info">
+      <h2>Luminate Studio Tote <span style="font:500 12px Inter;color:var(--dim2)">(test product)</span></h2>
+      <p>A sample product used to exercise checkout, order storage, and the new-order notification.</p>
+      <div class="price">$25.00</div>
+      <div class="row"><label for="qty">Quantity</label>
+        <select id="qty"><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select>
+      </div>
+      <button class="btn" id="buy" type="button">Buy with test card</button>
+      <div class="err" id="err" role="alert"></div>
+      <p class="note">You'll be taken to Stripe's secure sandbox checkout. Card details never touch this page.</p>
+    </div>
+  </section>
+</main>
+<script>
+(function () {
+  var params = new URLSearchParams(location.search);
+  var box = document.getElementById('status');
+  if (params.get('status') === 'success') {
+    box.innerHTML = '<div class="msg ok">Payment received in the Stripe sandbox. The order is saved by the webhook and a notification email is sent to the test inbox. Check the <a href="/test-store/admin">admin page</a>.</div>';
+  } else if (params.get('status') === 'cancelled') {
+    box.innerHTML = '<div class="msg warn">Checkout cancelled. No payment was made.</div>';
+  }
+
+  var btn = document.getElementById('buy');
+  var err = document.getElementById('err');
+  btn.addEventListener('click', async function () {
+    err.textContent = '';
+    btn.disabled = true;
+    btn.textContent = 'Opening checkout…';
+    try {
+      var res = await fetch('/api/test-store/checkout', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ productId: 'studio-tote', quantity: Number(document.getElementById('qty').value) })
+      });
+      var data = await res.json();
+      if (!res.ok || !data.url) throw new Error(data.error === 'checkout_unavailable' ? 'Checkout is not configured yet. See the setup guide.' : 'Could not start checkout.');
+      window.location.assign(data.url);
+    } catch (e) {
+      err.textContent = e.message;
+      btn.disabled = false;
+      btn.textContent = 'Buy with test card';
+    }
+  });
+})();
+</script>
+</body>
+</html>

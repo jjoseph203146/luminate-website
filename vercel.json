@@ -1,8 +1,20 @@
 {
   "redirects": [
-    { "source": "/index.html", "destination": "/", "permanent": true },
-    { "source": "/web-design-augusta-ga/index.html", "destination": "/web-design-augusta-ga", "permanent": true },
-    { "source": "/contractor-website-design-augusta-ga/index.html", "destination": "/contractor-website-design-augusta-ga", "permanent": true }
+    {
+      "source": "/index.html",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/web-design-augusta-ga/index.html",
+      "destination": "/web-design-augusta-ga",
+      "permanent": true
+    },
+    {
+      "source": "/contractor-website-design-augusta-ga/index.html",
+      "destination": "/contractor-website-design-augusta-ga",
+      "permanent": true
+    }
   ],
   "rewrites": [
     {
@@ -12,6 +24,14 @@
     {
       "source": "/contractor-website-design-augusta-ga",
       "destination": "/contractor-website-design-augusta-ga/index.html"
+    },
+    {
+      "source": "/test-store",
+      "destination": "/test-store/index.html"
+    },
+    {
+      "source": "/test-store/admin",
+      "destination": "/test-store/admin/index.html"
     }
   ]
 }
