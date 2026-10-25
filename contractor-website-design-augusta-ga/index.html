@@ -105,6 +105,12 @@
   .textlink:hover{text-decoration-color:#E8E2D4}
   .surface{background:linear-gradient(160deg,#132743 0%,#101F35 100%);border:1px solid rgba(196,209,226,.09);border-radius:20px}
   .floating{background:linear-gradient(160deg,#173052 0%,#152A45 100%);border:1px solid rgba(196,209,226,.12);box-shadow:0 34px 80px -34px rgba(0,0,0,.75)}
+  .care-summary{list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:8px;padding:2px 0;border-radius:6px}
+  .care-summary::-webkit-details-marker{display:none}
+  .care-summary:hover{color:#C4D1E2}
+  .care-summary:focus-visible{outline:none;box-shadow:0 0 0 3px rgba(232,226,212,.45)}
+  .care .chev{transition:transform .3s cubic-bezier(.2,.7,.2,1)}
+  .care[open] .chev{transform:rotate(180deg)}
   .card-hover{transition:transform .4s cubic-bezier(.2,.7,.2,1),box-shadow .4s cubic-bezier(.2,.7,.2,1),border-color .4s cubic-bezier(.2,.7,.2,1)}
   .card-hover:hover{transform:translateY(-4px);border-color:rgba(232,226,212,.28);box-shadow:0 34px 70px -34px rgba(0,0,0,.7)}
   [data-reveal]{opacity:0;transform:translateY(24px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1)}
@@ -278,19 +284,85 @@
         <h3 class="text-[13px] track-wide font-700 text-ink uppercase">Launch</h3>
         <div class="serif text-[30px] font-700 text-ink mt-3">$750<span class="text-[16px] text-dim2">+</span> <span class="text-[12px] font-normal text-dim2 font-sans tracking-normal">starting at</span></div>
         <p class="text-[13.5px] text-dim leading-relaxed mt-3">Good for a one-trade business getting a real website for the first time: 1–3 custom pages, click-to-call, and a contact form.</p>
-        <p class="text-[12px] text-dim2 mt-auto pt-5">Monthly management: <span class="text-accent">starts at $50/mo</span></p>
+        <details class="care mt-auto pt-5 text-[12px] text-dim2">
+          <summary class="care-summary"><span>Monthly management: <span class="text-accent">starts at $50/mo</span></span><svg class="chev text-accent flex-none" width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2.5 4.5 6 8l3.5-3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></summary>
+          <div class="care-panel mt-3 rounded-xl border hairline bg-navy p-4 text-[12.5px] leading-relaxed text-dim">
+            <div class="font-700 text-ink text-[13px]">Website Care — Starting at $50/month</div>
+            <p class="text-dim2 mt-1">Optional, and billed monthly, separate from your one-time project price.</p>
+            <div class="text-ink font-600 mt-3 mb-1.5">Includes:</div>
+            <ul class="space-y-1.5">
+            <li class="flex gap-2 items-start"><span class="text-accent flex-none" aria-hidden="true">✓</span><span>Hosting and deployment management</span></li>
+            <li class="flex gap-2 items-start"><span class="text-accent flex-none" aria-hidden="true">✓</span><span>Website uptime monitoring</span></li>
+            <li class="flex gap-2 items-start"><span class="text-accent flex-none" aria-hidden="true">✓</span><span>Routine website maintenance</span></li>
+            <li class="flex gap-2 items-start"><span class="text-accent flex-none" aria-hidden="true">✓</span><span>Minor content updates (up to 2 hours per month)</span></li>
+            <li class="flex gap-2 items-start"><span class="text-accent flex-none" aria-hidden="true">✓</span><span>Basic technical support</span></li>
+            </ul>
+            <div class="text-ink font-600 mt-3 mb-1.5">Not included:</div>
+            <ul class="space-y-1.5">
+            <li class="flex gap-2 items-start"><span class="text-dim2 flex-none" aria-hidden="true">–</span><span>Ongoing SEO improvements or SEO campaigns</span></li>
+            <li class="flex gap-2 items-start"><span class="text-dim2 flex-none" aria-hidden="true">–</span><span>Major design changes or redesigns</span></li>
+            <li class="flex gap-2 items-start"><span class="text-dim2 flex-none" aria-hidden="true">–</span><span>New pages or custom functionality</span></li>
+            <li class="flex gap-2 items-start"><span class="text-dim2 flex-none" aria-hidden="true">–</span><span>Third-party subscriptions, licenses, and service fees</span></li>
+            </ul>
+            <p class="text-dim2 mt-3">These services can be quoted separately.</p>
+          </div>
+        </details>
       </div>
       <div class="floating ring-1 ring-accent/40 rounded-2xl p-7 flex flex-col h-full">
         <h3 class="text-[13px] track-wide font-700 text-ink uppercase">Growth</h3>
         <div class="serif text-[30px] font-700 text-ink mt-3">$1,500<span class="text-[16px] text-dim2">+</span> <span class="text-[12px] font-normal text-dim2 font-sans tracking-normal">starting at</span></div>
         <p class="text-[13.5px] text-dim leading-relaxed mt-3">A better fit if you offer several services or want a project gallery: up to 8 pages, a page per service, lead capture, and booking tools.</p>
-        <p class="text-[12px] text-dim2 mt-auto pt-5">Monthly management: <span class="text-accent">starts at $50/mo</span></p>
+        <details class="care mt-auto pt-5 text-[12px] text-dim2">
+          <summary class="care-summary"><span>Monthly management: <span class="text-accent">starts at $50/mo</span></span><svg class="chev text-accent flex-none" width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2.5 4.5 6 8l3.5-3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></summary>
+          <div class="care-panel mt-3 rounded-xl border hairline bg-navy p-4 text-[12.5px] leading-relaxed text-dim">
+            <div class="font-700 text-ink text-[13px]">Website Care — Starting at $50/month</div>
+            <p class="text-dim2 mt-1">Optional, and billed monthly, separate from your one-time project price.</p>
+            <div class="text-ink font-600 mt-3 mb-1.5">Includes:</div>
+            <ul class="space-y-1.5">
+            <li class="flex gap-2 items-start"><span class="text-accent flex-none" aria-hidden="true">✓</span><span>Hosting and deployment management</span></li>
+            <li class="flex gap-2 items-start"><span class="text-accent flex-none" aria-hidden="true">✓</span><span>Website uptime monitoring</span></li>
+            <li class="flex gap-2 items-start"><span class="text-accent flex-none" aria-hidden="true">✓</span><span>Routine website maintenance</span></li>
+            <li class="flex gap-2 items-start"><span class="text-accent flex-none" aria-hidden="true">✓</span><span>Minor content updates (up to 2 hours per month)</span></li>
+            <li class="flex gap-2 items-start"><span class="text-accent flex-none" aria-hidden="true">✓</span><span>Basic technical support</span></li>
+            </ul>
+            <div class="text-ink font-600 mt-3 mb-1.5">Not included:</div>
+            <ul class="space-y-1.5">
+            <li class="flex gap-2 items-start"><span class="text-dim2 flex-none" aria-hidden="true">–</span><span>Ongoing SEO improvements or SEO campaigns</span></li>
+            <li class="flex gap-2 items-start"><span class="text-dim2 flex-none" aria-hidden="true">–</span><span>Major design changes or redesigns</span></li>
+            <li class="flex gap-2 items-start"><span class="text-dim2 flex-none" aria-hidden="true">–</span><span>New pages or custom functionality</span></li>
+            <li class="flex gap-2 items-start"><span class="text-dim2 flex-none" aria-hidden="true">–</span><span>Third-party subscriptions, licenses, and service fees</span></li>
+            </ul>
+            <p class="text-dim2 mt-3">These services can be quoted separately.</p>
+          </div>
+        </details>
       </div>
       <div class="surface rounded-2xl p-7 flex flex-col h-full">
         <h3 class="text-[13px] track-wide font-700 text-ink uppercase">Custom Systems</h3>
         <div class="serif text-[30px] font-700 text-ink mt-3">$3,500<span class="text-[16px] text-dim2">+</span> <span class="text-[12px] font-normal text-dim2 font-sans tracking-normal">starting at</span></div>
         <p class="text-[13.5px] text-dim leading-relaxed mt-3">For operations that need more than a website: customer portals, online scheduling and payments, or connections to the tools you already use.</p>
-        <p class="text-[12px] text-dim2 mt-auto pt-5">Monthly management: <span class="text-accent">starts at $50/mo</span></p>
+        <details class="care mt-auto pt-5 text-[12px] text-dim2">
+          <summary class="care-summary"><span>Monthly management: <span class="text-accent">starts at $50/mo</span></span><svg class="chev text-accent flex-none" width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2.5 4.5 6 8l3.5-3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></summary>
+          <div class="care-panel mt-3 rounded-xl border hairline bg-navy p-4 text-[12.5px] leading-relaxed text-dim">
+            <div class="font-700 text-ink text-[13px]">Website Care — Starting at $50/month</div>
+            <p class="text-dim2 mt-1">Optional, and billed monthly, separate from your one-time project price.</p>
+            <div class="text-ink font-600 mt-3 mb-1.5">Includes:</div>
+            <ul class="space-y-1.5">
+            <li class="flex gap-2 items-start"><span class="text-accent flex-none" aria-hidden="true">✓</span><span>Hosting and deployment management</span></li>
+            <li class="flex gap-2 items-start"><span class="text-accent flex-none" aria-hidden="true">✓</span><span>Website uptime monitoring</span></li>
+            <li class="flex gap-2 items-start"><span class="text-accent flex-none" aria-hidden="true">✓</span><span>Routine website maintenance</span></li>
+            <li class="flex gap-2 items-start"><span class="text-accent flex-none" aria-hidden="true">✓</span><span>Minor content updates (up to 2 hours per month)</span></li>
+            <li class="flex gap-2 items-start"><span class="text-accent flex-none" aria-hidden="true">✓</span><span>Basic technical support</span></li>
+            </ul>
+            <div class="text-ink font-600 mt-3 mb-1.5">Not included:</div>
+            <ul class="space-y-1.5">
+            <li class="flex gap-2 items-start"><span class="text-dim2 flex-none" aria-hidden="true">–</span><span>Ongoing SEO improvements or SEO campaigns</span></li>
+            <li class="flex gap-2 items-start"><span class="text-dim2 flex-none" aria-hidden="true">–</span><span>Major design changes or redesigns</span></li>
+            <li class="flex gap-2 items-start"><span class="text-dim2 flex-none" aria-hidden="true">–</span><span>New pages or custom functionality</span></li>
+            <li class="flex gap-2 items-start"><span class="text-dim2 flex-none" aria-hidden="true">–</span><span>Third-party subscriptions, licenses, and service fees</span></li>
+            </ul>
+            <p class="text-dim2 mt-3">These services can be quoted separately.</p>
+          </div>
+        </details>
       </div>
     </div>
     <p class="text-[13.5px] text-dim2 mt-8" data-reveal>See everything each package includes in <a href="/#pricing" class="textlink">our full pricing breakdown</a>.</p>
