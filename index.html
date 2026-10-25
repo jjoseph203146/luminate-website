@@ -167,24 +167,26 @@
       <div class="p-4"><a href="#connect" class="btn btn-primary w-full" data-mnav>Start your project</a></div>
     </div>
 
-    <!-- hero content: stacked flow on mobile, absolute collage from lg up -->
-    <div id="top" class="relative pt-6 lg:pt-10 pb-16 lg:pb-28 lg:min-h-[560px] flex flex-col gap-8 lg:block">
-      <div class="order-3 flex gap-10 lg:absolute lg:right-0 lg:top-6 lg:text-right">
-        <div><div class="serif text-[34px] lg:text-[40px] font-700 leading-none text-accent">20+</div><div class="text-[12px] text-dim2 mt-1 max-w-[120px]">Websites launched</div></div>
-        <div><div class="serif text-[26px] sm:text-[34px] lg:text-[40px] font-700 leading-none text-accent whitespace-nowrap h-[34px] lg:h-[40px] flex items-end">Augusta-rooted</div><div class="text-[12px] text-dim2 mt-1 max-w-[170px] lg:max-w-none">Serving businesses across Georgia</div></div>
-      </div>
-
-      <div class="order-1 lg:absolute lg:left-0 lg:bottom-24">
+    <!-- hero content: two columns (45 / 55) from lg up, stacked (text first, image second) below -->
+    <div id="top" class="relative pt-6 lg:pt-10 pb-14 lg:pb-24 grid gap-12 lg:gap-14 lg:grid-cols-[45fr_55fr] lg:items-center">
+      <div class="min-w-0">
         <p class="track-wide text-[12px] text-dim2 font-600 mb-5">WEB DESIGN &amp; DEVELOPMENT<span class="hidden sm:inline"> · </span><br class="sm:hidden">AUGUSTA,&nbsp;GA</p>
-        <h1 class="serif text-[32px] sm:text-[44px] lg:text-[60px] font-700 leading-[1.08] lg:leading-[1.04] track-tight">YOUR BUSINESS IS CREDIBLE<br class="hidden lg:block"> IN PERSON. YOUR WEBSITE<br class="hidden lg:block"> SHOULD BE TOO.</h1>
-        <a href="#connect" class="btn btn-primary mt-7 hidden lg:inline-flex">Start your project</a>
+        <h1 class="serif text-[34px] sm:text-[44px] lg:text-[46px] xl:text-[54px] font-700 leading-[1.08] track-tight text-balance">Your Business Deserves a Website That Works as Hard as You Do.</h1>
+        <p class="text-[16px] lg:text-[17px] text-dim leading-relaxed mt-6 max-w-[540px]">We design and develop high-performing websites that help established businesses build trust, attract better leads, and turn more visitors into customers. Custom-built. Professionally managed. Designed to grow with you.</p>
+        <div class="flex flex-wrap gap-3 mt-8">
+          <a href="#connect" class="btn btn-primary">Start Your Project</a>
+          <a href="#work" class="btn btn-ghost">View Our Work</a>
+        </div>
+        <ul class="mt-9 pt-7 border-t hairline grid gap-y-3 sm:grid-cols-3 sm:gap-x-6 text-[13px] text-dim" aria-label="Why Luminate">
+          <li class="flex items-center gap-2.5"><span class="text-accent" aria-hidden="true">✓</span><span><strong class="text-ink font-semibold">20+</strong> Websites launched</span></li>
+          <li class="flex items-center gap-2.5"><span class="text-accent" aria-hidden="true">✓</span><span>Custom Design &amp; development</span></li>
+          <li class="flex items-center gap-2.5"><span class="text-accent" aria-hidden="true">✓</span><span>Local Augusta-based support</span></li>
+        </ul>
       </div>
 
-      <div class="order-2 max-w-[540px] lg:absolute lg:right-0 lg:bottom-24 lg:max-w-[460px] lg:text-right">
-        <p class="text-[16px] lg:text-[17px] text-dim leading-relaxed">
-          Luminate builds the website-to-business system: conversion-focused sites, SEO foundations, and custom software that turn visitors into customers — with one Augusta founder handling it start to finish.
-        </p>
-        <a href="#connect" class="btn btn-primary mt-6 lg:hidden">Start your project</a>
+      <!-- RESERVED: browser mockup image goes here (replace the inner div with an <img>, keep this wrapper) -->
+      <div class="min-w-0">
+        <div class="w-full aspect-[4/3] sm:aspect-[16/10] lg:aspect-[5/4] rounded-2xl bg-navy border hairline shadow-[0_30px_80px_-40px_rgba(0,0,0,.7)]" role="img" aria-label="Website mockup placeholder"></div>
       </div>
     </div>
   </div>
