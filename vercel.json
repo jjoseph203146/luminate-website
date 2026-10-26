@@ -32,6 +32,30 @@
     {
       "source": "/test-store/admin",
       "destination": "/test-store/admin/index.html"
+    },
+    {
+      "source": "/test-contact",
+      "destination": "/test-contact/index.html"
+    }
+  ],
+  "headers": [
+    {
+      "source": "/test-contact",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow, noarchive"
+        }
+      ]
+    },
+    {
+      "source": "/test-contact/(.*)",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow, noarchive"
+        }
+      ]
     }
   ]
 }

@@ -1,6 +1,7 @@
 User-agent: *
 Allow: /
 Disallow: /test-store
+Disallow: /test-contact
 Disallow: /api/
 
 Sitemap: https://luminatewebdesign.com/sitemap.xml

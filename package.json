@@ -5,16 +5,23 @@
   "description": "Marketing site prototype for Luminate Web Design & Development — Augusta, GA.",
   "scripts": {
     "build:css": "tailwindcss -i tailwind-input.css -o styles.css --minify",
-    "test:test-store": "tsc -p test-store-docs/tsconfig.test.json && node .test-build/test-store-docs/tests/run.js"
+    "test:test-store": "tsc -p test-store-docs/tsconfig.test.json && node .test-build/test-store-docs/tests/run.js",
+    "test:test-contact": "tsc -p test-contact-docs/tsconfig.test.json && node .test-build-contact/test-contact-docs/tests/run.js"
   },
   "devDependencies": {
     "@types/node": "^22.20.5",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
     "@vercel/node": "^26.0.0",
     "tailwindcss": "^3.4.19",
     "typescript": "^7.0.2"
   },
   "dependencies": {
+    "@react-email/components": "^1.0.12",
+    "@react-email/render": "^2.1.1",
     "@supabase/supabase-js": "^2.118.0",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
     "resend": "^6.34.1",
     "stripe": "^23.0.0"
   }
