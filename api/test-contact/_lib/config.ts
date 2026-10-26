@@ -44,7 +44,7 @@ export function loadConfig(env: Env = process.env): ContactConfig {
   const notifyEmail = need('TEST_CONTACT_NOTIFY_EMAIL')
   const allowedRaw = need('TEST_CONTACT_ALLOWED_EMAILS')
   const secret = need('TEST_CONTACT_SECRET')
-  if (missing.length) throw new ConfigError(`Missing environment variables: ${missing.join(', ')}`)
+  if (missing.length) throw new ConfigError(`Missing environment variables: ${missing.join(', ')}${diagnose(missing, env)}`)
   if (secret.length < 32) throw new ConfigError('TEST_CONTACT_SECRET must be at least 32 characters')
 
   const allowed = new Set(allowedRaw.split(',').map(normalizeEmail).filter(Boolean))
@@ -78,4 +78,23 @@ export function assertRecipientsAllowed(recipients: string[], cfg: ContactConfig
   for (const r of recipients) {
     if (!cfg.allowed.has(bareAddress(r))) throw new Error('Recipient is not an approved test address')
   }
+}
+
+/**
+ * Troubleshooting hint for the error log: variable NAMES only, never values. Helps spot typos, stray spaces,
+ * empty values, and variables saved for a different Vercel environment (Production vs Preview).
+ */
+function diagnose(missing: string[], env: Env): string {
+  const hints: string[] = []
+  for (const name of missing) {
+    const core = name.split('_')[0].toLowerCase()
+    if (name in env) {
+      hints.push(`${name} exists but its value is empty`)
+      continue
+    }
+    const similar = Object.keys(env).filter((k) => k !== name && (k.toLowerCase().includes(core) || k.trim().toUpperCase() === name))
+    if (similar.length) hints.push(`${name} not found; similar names present: ${similar.slice(0, 5).map((k) => JSON.stringify(k)).join(', ')}`)
+    else hints.push(`${name} not found; no similarly named variable exists in this deployment (check the Environment checkboxes and redeploy)`)
+  }
+  return ` [${hints.join('; ')}] (deployment env: ${env.VERCEL_ENV ?? 'unknown'})`
 }
