@@ -77,13 +77,13 @@ not `sk_test_…`/`rk_test_…`, the database is a separate Supabase project, an
    so set `TEST_STORE_NOTIFY_EMAIL` to that address. To send elsewhere, verify a domain and set `TEST_STORE_FROM_EMAIL`.
 
 ### 4. Vercel environment variables
-Project → Settings → Environment Variables. Add every variable in `test-store-docs/.env.example` (Production scope), then **redeploy**
+Project → Settings → Environment Variables. Add every variable in `test-store-docs/env.example` (Production scope), then **redeploy**
 (env vars only apply to new deployments). `TEST_STORE_ENABLED` must be `true` or checkout returns "unavailable".
 
 ### 5. Local testing (optional)
 ```
 npm i -g vercel stripe            # Stripe CLI: https://docs.stripe.com/stripe-cli
-cp test-store-docs/.env.example .env.local   # fill in values (git-ignored)
+cp test-store-docs/env.example .env.local   # fill in values (git-ignored)
 vercel dev                        # serves site + /api on http://localhost:3000
 stripe listen --forward-to localhost:3000/api/test-store/webhook
 ```
