@@ -721,6 +721,27 @@
 (function(){
   var form = document.getElementById('contactForm');
   if(!form) return;
+
+  // Anti-bot form token: fetched lazily the first time someone starts typing (no request on plain page views).
+  // The server only accepts it a few seconds after it was issued, which real people always satisfy.
+  var formToken = null, tokenAt = 0, tokenPromise = null;
+  function loadToken(){
+    if(!tokenPromise){
+      tokenPromise = fetch('/api/contact', {headers:{'Accept':'application/json'}})
+        .then(function(r){ return r.json(); })
+        .then(function(d){ formToken = d.token || null; tokenAt = Date.now(); })
+        .catch(function(){ formToken = null; })
+        .then(function(){ tokenPromise = null; });
+    }
+    return tokenPromise;
+  }
+  async function ensureToken(){
+    if(!formToken) await loadToken();
+    var wait = 3300 - (Date.now() - tokenAt);
+    if(wait > 0) await new Promise(function(r){ setTimeout(r, wait); });
+  }
+  form.addEventListener('focusin', function(){ if(!formToken) loadToken(); });
+
   form.addEventListener('submit', async function(e){
     e.preventDefault();
     var name = document.getElementById('f-name');
@@ -745,7 +766,7 @@
 
     // Puts the inquiry into the LuminateOS Leads pipeline and pushes a
     // notification to the owner's phone. Fire-and-forget on purpose: this is
-    // a redundant channel alongside web3forms below, so a slow response or a
+    // a redundant channel alongside the email notification below, so a slow response or a
     // failure here must never delay or break the visitor's actual submission.
     fetch('https://luminate-os.vercel.app/api/leads/create', {
       method: 'POST',
@@ -763,27 +784,32 @@
     }).catch(function(){});
 
     try {
-      var res = await fetch('https://formspree.io/f/xrpgdreq', {
+      // Email notification (to the owner, plus a confirmation to the visitor) is sent server-side through Resend.
+      await ensureToken();
+      var res = await fetch('/api/contact', {
         method: 'POST',
         headers: {'Content-Type':'application/json','Accept':'application/json'},
         body: JSON.stringify({
-          _subject: 'New project inquiry — Luminate Web Design',
+          token: formToken,
+          botcheck: !!form.querySelector('[name=botcheck]').checked,
           name: name.value.trim(),
           email: email.value.trim(),
           business: document.getElementById('f-business').value.trim(),
           phone: document.getElementById('f-phone').value.trim(),
           about: document.getElementById('f-about').value.trim(),
-          project_type: document.getElementById('f-type').value,
+          projectType: document.getElementById('f-type').value,
           message: message.value.trim()
         })
       });
-      if(res.ok){
+      var data = await res.json().catch(function(){ return {}; });
+      if(res.ok && data.ok){
         form.classList.add('hidden');
         document.getElementById('contactThanks').classList.remove('hidden');
       } else {
+        if(String(data.error || '').indexOf('token_') === 0){ formToken = null; }
         btn.disabled = false;
         btn.textContent = 'Send project details';
-        errorBox.textContent = 'Something went wrong. Please try again or email us directly.';
+        errorBox.textContent = data.message || 'Something went wrong. Please try again or email us directly.';
         errorBox.classList.remove('hidden');
       }
     } catch(err) {
