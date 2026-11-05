@@ -6,8 +6,10 @@ The homepage "Start your project" form (`#connect`) no longer posts to Formspree
 1. an **internal notification** to your business email (reply-to is the visitor, so you can just hit Reply), and
 2. a branded **confirmation** to the visitor with a copy of what they sent (can be switched off).
 
-The existing LuminateOS lead push (`/api/leads/create`, fire-and-forget) is unchanged and still runs on every submission,
-so a lead is never lost even if email delivery has a problem.
+The lead submission is the primary call: the form posts JSON to the LuminateOS app (`LEADS_ENDPOINT` in `index.html`, now
+`https://luminateos.app/api/leads/create`; it used to be `https://luminate-os.vercel.app/api/leads/create`) and shows the visitor
+the thank-you message or the endpoint's error text. The Resend emails from `/api/contact` run alongside it as a secondary
+notification channel and never affect what the visitor sees.
 
 ## What changed
 | File | Change |
@@ -40,7 +42,7 @@ If a variable is missing, Vercel Logs show `"msg":"misconfigured"` with the exac
 - **Validation:** done on the server; control characters are stripped so email headers cannot be injected; all values are HTML-escaped in emails.
 - **Logging:** PII-free (reference id, short hashes, lengths). Name, email, phone and message are never logged.
 - **Secrets:** `RESEND_API_KEY` is only read on the server.
-- **Failure behavior:** if the owner notification can't be sent the visitor sees an error and can retry or email directly (and LuminateOS still has the lead).
+- **Failure behavior:** if the owner notification can't be sent the visitor sees an error and can retry or email directly (the visitor's success/error now comes from the lead endpoint; this email route is secondary).
   If only the visitor confirmation fails, the submission still counts as sent and a warning is logged.
 
 ## Testing

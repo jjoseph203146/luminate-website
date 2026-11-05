@@ -90,6 +90,7 @@
   .navlink:hover{color:#F4F7FB}
   .surface{background:linear-gradient(160deg,#132743 0%,#101F35 100%);border:1px solid rgba(196,209,226,.09);border-radius:20px}
   .floating{background:linear-gradient(160deg,#173052 0%,#152A45 100%);border:1px solid rgba(196,209,226,.12);box-shadow:0 34px 80px -34px rgba(0,0,0,.75)}
+  .gotcha{position:absolute!important;left:-10000px;top:auto;width:1px;height:1px;opacity:0;overflow:hidden;pointer-events:none}
   .care-summary{list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:8px;padding:2px 0;border-radius:6px}
   .care-summary::-webkit-details-marker{display:none}
   .care-summary:hover{color:#C4D1E2}
@@ -556,6 +557,7 @@
         <form id="contactForm" class="surface rounded-2xl p-8 grid sm:grid-cols-2 gap-4">
           <input type="hidden" name="subject" value="New project inquiry — Luminate Web Design">
           <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off">
+          <input type="text" name="_gotcha" class="gotcha" tabindex="-1" autocomplete="off" aria-hidden="true">
           <input class="fld" id="f-name" name="name" placeholder="Your name" required>
           <input class="fld" id="f-business" name="business" placeholder="Business name">
           <input class="fld" id="f-email" name="email" type="email" placeholder="Your email" required>
@@ -722,6 +724,11 @@
   var form = document.getElementById('contactForm');
   if(!form) return;
 
+  // Where the lead form posts. Change it here only.
+  // (Previously the old app: https://luminate-os.vercel.app/api/leads/create. The client portal stays on the old app; only this form moved.)
+  var LEADS_ENDPOINT = 'https://luminateos.app/api/leads/create';
+  var sending = false;
+
   // Anti-bot form token: fetched lazily the first time someone starts typing (no request on plain page views).
   // The server only accepts it a few seconds after it was issued, which real people always satisfy.
   var formToken = null, tokenAt = 0, tokenPromise = null;
@@ -744,6 +751,7 @@
 
   form.addEventListener('submit', async function(e){
     e.preventDefault();
+    if(sending) return; // a double click / double Enter can never send twice
     var name = document.getElementById('f-name');
     var email = document.getElementById('f-email');
     var message = document.getElementById('f-message');
@@ -761,62 +769,70 @@
     if(!valid) return;
 
     var btn = document.getElementById('contactSubmitBtn');
+    sending = true;
     btn.disabled = true;
     btn.textContent = 'Sending…';
 
-    // Puts the inquiry into the LuminateOS Leads pipeline and pushes a
-    // notification to the owner's phone. Fire-and-forget on purpose: this is
-    // a redundant channel alongside the email notification below, so a slow response or a
-    // failure here must never delay or break the visitor's actual submission.
-    fetch('https://luminate-os.vercel.app/api/leads/create', {
-      method: 'POST',
-      headers: {'Content-Type':'application/json'},
-      body: JSON.stringify({
-        name: name.value.trim(),
-        businessName: document.getElementById('f-business').value.trim(),
-        email: email.value.trim(),
-        phone: document.getElementById('f-phone').value.trim(),
-        projectType: document.getElementById('f-type').value,
-        message: (document.getElementById('f-about').value.trim()
-          ? 'About their business: ' + document.getElementById('f-about').value.trim() + '\n\n'
-          : '') + message.value.trim()
-      })
-    }).catch(function(){});
+    var business = document.getElementById('f-business').value.trim();
+    var phone = document.getElementById('f-phone').value.trim();
+    var about = document.getElementById('f-about').value.trim();
+    var projectType = document.getElementById('f-type').value;
 
+    // Secondary channel: owner notification + visitor confirmation by email (Resend, via our own /api/contact).
+    // Runs alongside the lead submission and never blocks or affects what the visitor sees.
+    (async function(){
+      try {
+        await ensureToken();
+        await fetch('/api/contact', {
+          method: 'POST',
+          headers: {'Content-Type':'application/json','Accept':'application/json'},
+          keepalive: true,
+          body: JSON.stringify({
+            token: formToken,
+            botcheck: !!form.querySelector('[name=botcheck]').checked,
+            name: name.value.trim(), email: email.value.trim(), business: business, phone: phone,
+            about: about, projectType: projectType, message: message.value.trim()
+          })
+        });
+      } catch(_) {}
+    })();
+
+    function showError(text){
+      sending = false;
+      btn.disabled = false;
+      btn.textContent = 'Send project details';
+      errorBox.textContent = text;
+      errorBox.classList.remove('hidden');
+    }
+    var EMAIL_FALLBACK = ' Or email us directly at luminatewebco@gmail.com.';
+
+    // Primary submission: the lead goes to the new app. Plain JSON, no cookies or credentials.
     try {
-      // Email notification (to the owner, plus a confirmation to the visitor) is sent server-side through Resend.
-      await ensureToken();
-      var res = await fetch('/api/contact', {
+      var res = await fetch(LEADS_ENDPOINT, {
         method: 'POST',
         headers: {'Content-Type':'application/json','Accept':'application/json'},
+        credentials: 'omit',
         body: JSON.stringify({
-          token: formToken,
-          botcheck: !!form.querySelector('[name=botcheck]').checked,
           name: name.value.trim(),
           email: email.value.trim(),
-          business: document.getElementById('f-business').value.trim(),
-          phone: document.getElementById('f-phone').value.trim(),
-          about: document.getElementById('f-about').value.trim(),
-          projectType: document.getElementById('f-type').value,
-          message: message.value.trim()
+          phone: phone,
+          businessName: business,
+          projectType: projectType,
+          message: (about ? 'About their business: ' + about + '\n\n' : '') + message.value.trim(),
+          _gotcha: form.querySelector('[name=_gotcha]').value
         })
       });
       var data = await res.json().catch(function(){ return {}; });
-      if(res.ok && data.ok){
+      if(res.ok && (data.ok || data.success)){
         form.classList.add('hidden');
         document.getElementById('contactThanks').classList.remove('hidden');
       } else {
-        if(String(data.error || '').indexOf('token_') === 0){ formToken = null; }
-        btn.disabled = false;
-        btn.textContent = 'Send project details';
-        errorBox.textContent = data.message || 'Something went wrong. Please try again or email us directly.';
-        errorBox.classList.remove('hidden');
+        var text = (typeof data.error === 'string' && data.error) ? data.error : 'Something went wrong. Please try again.';
+        if(res.status === 429 || res.status >= 500 || !data.error) text += EMAIL_FALLBACK;
+        showError(text);
       }
     } catch(err) {
-      btn.disabled = false;
-      btn.textContent = 'Send project details';
-      errorBox.textContent = 'Something went wrong. Please try again or email us directly.';
-      errorBox.classList.remove('hidden');
+      showError('Something went wrong. Please check your connection and try again.' + EMAIL_FALLBACK);
     }
   });
 })();
