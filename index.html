@@ -764,11 +764,13 @@
     btn.disabled = true;
     btn.textContent = 'Sending…';
 
-    // Puts the inquiry into the LuminateOS Leads pipeline and pushes a
+    // Puts the inquiry into the Luminate OS v2 Leads pipeline and pushes a
     // notification to the owner's phone. Fire-and-forget on purpose: this is
     // a redundant channel alongside the email notification below, so a slow response or a
     // failure here must never delay or break the visitor's actual submission.
-    fetch('https://luminate-os.vercel.app/api/leads/create', {
+    // Use the www address exactly: luminateos.app redirects to it, and a browser's cross-site
+    // check fails if the request has to follow a redirect.
+    fetch('https://www.luminateos.app/api/leads/create', {
       method: 'POST',
       headers: {'Content-Type':'application/json'},
       body: JSON.stringify({
