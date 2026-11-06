@@ -6,7 +6,7 @@ The homepage "Start your project" form (`#connect`) no longer posts to Formspree
 1. an **internal notification** to your business email (reply-to is the visitor, so you can just hit Reply), and
 2. a branded **confirmation** to the visitor with a copy of what they sent (can be switched off).
 
-The existing LuminateOS lead push (`/api/leads/create`, fire-and-forget) is unchanged and still runs on every submission,
+The Luminate OS v2 lead push (`https://www.luminateos.app/api/leads/create`, fire-and-forget) is unchanged and still runs on every submission,
 so a lead is never lost even if email delivery has a problem.
 
 ## What changed
