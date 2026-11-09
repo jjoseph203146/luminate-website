@@ -60,7 +60,7 @@ function footer(note: string) {
       { style: { margin: '4px 0 0', fontFamily: SANS, fontSize: '12px', color: C.dim, lineHeight: '1.6' } },
       h(Link, { href: 'tel:7622279287', style: { color: C.cream, textDecoration: 'none' } }, '(762) 227-9287'),
       ' · ',
-      h(Link, { href: 'mailto:luminatewebco@gmail.com', style: { color: C.cream, textDecoration: 'none' } }, 'luminatewebco@gmail.com'),
+      h(Link, { href: 'mailto:jacob@luminatewebdesign.com', style: { color: C.cream, textDecoration: 'none' } }, 'jacob@luminatewebdesign.com'),
     ),
     h(Text, { style: { margin: '12px 0 0', fontFamily: SANS, fontSize: '11px', color: C.dim, lineHeight: '1.6' } }, note),
   )
