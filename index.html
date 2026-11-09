@@ -233,11 +233,11 @@
         </div>
         <div class="py-7 flex gap-5">
           <div class="w-11 h-11 rounded-xl bg-accent flex items-center justify-center text-navy flex-none">◈</div>
-          <div><h4 class="text-accent font-700 text-[17px]">Custom Web Applications</h4><p class="text-[13.5px] text-dim mt-1.5 leading-relaxed">From client portals and dashboards to booking systems and internal tools, we develop practical solutions that simplify workflows and reduce manual work.</p></div>
+          <div><h4 class="text-accent font-700 text-[17px]">Custom Web Applications</h4><p class="text-[13.5px] text-dim mt-1.5 leading-relaxed">From client portals and dashboards to booking systems and internal tools, we develop practical solutions that simplify workflows and reduce manual work.</p><a href="#connect" data-service="Custom Business Software" class="inline-block text-[13px] text-accent underline decoration-[rgba(232,226,212,.35)] underline-offset-4 hover:decoration-accent mt-2">Discuss your project →</a></div>
         </div>
         <div class="py-7 flex gap-5">
           <div class="w-11 h-11 rounded-xl bg-[rgba(232,226,212,.10)] flex items-center justify-center text-accent flex-none">◉</div>
-          <div><h4 class="text-accent font-700 text-[17px]">Website Care &amp; Optimization</h4><p class="text-[13.5px] text-dim mt-1.5 leading-relaxed">Ongoing hosting, maintenance, security monitoring, and performance improvements to keep your website reliable, secure, and working for your business.</p></div>
+          <div><h4 class="text-accent font-700 text-[17px]">Website Care &amp; Optimization</h4><p class="text-[13.5px] text-dim mt-1.5 leading-relaxed">Ongoing hosting, maintenance, security monitoring, and performance improvements to keep your website reliable, secure, and working for your business.</p><a href="#pricing" data-open-care class="inline-block text-[13px] text-accent underline decoration-[rgba(232,226,212,.35)] underline-offset-4 hover:decoration-accent mt-2">See what’s included →</a></div>
         </div>
       </div>
       <div class="floating rounded-2xl p-8 flex flex-col justify-center">
@@ -671,8 +671,16 @@
 (function(){
   var select = document.getElementById('f-type');
   var service = new URLSearchParams(window.location.search).get('service');
-  var map = { website: 'Website Design & Build' };
+  var map = { website: 'Website Design & Build', custom: 'Custom Business Software', care: 'Ongoing Management' };
   if (select && map[service]) select.value = map[service];
+
+  // Service-card links on this page: preselect the form's service, or open the Website Care details in pricing.
+  document.querySelectorAll('[data-service]').forEach(function(a){
+    a.addEventListener('click', function(){ if (select) select.value = a.getAttribute('data-service'); });
+  });
+  document.querySelectorAll('[data-open-care]').forEach(function(a){
+    a.addEventListener('click', function(){ document.querySelectorAll('details.care').forEach(function(d){ d.open = true; }); });
+  });
 })();
 
 // Testimonials
