@@ -14,6 +14,11 @@
       "source": "/contractor-website-design-augusta-ga/index.html",
       "destination": "/contractor-website-design-augusta-ga",
       "permanent": true
+    },
+    {
+      "source": "/portfolio/index.html",
+      "destination": "/portfolio",
+      "permanent": true
     }
   ],
   "rewrites": [
@@ -24,6 +29,10 @@
     {
       "source": "/contractor-website-design-augusta-ga",
       "destination": "/contractor-website-design-augusta-ga/index.html"
+    },
+    {
+      "source": "/portfolio",
+      "destination": "/portfolio/index.html"
     },
     {
       "source": "/test-store",
