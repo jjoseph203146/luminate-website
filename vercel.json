@@ -19,6 +19,11 @@
       "source": "/portfolio/index.html",
       "destination": "/portfolio",
       "permanent": true
+    },
+    {
+      "source": "/pricing/index.html",
+      "destination": "/pricing",
+      "permanent": true
     }
   ],
   "rewrites": [
@@ -33,6 +38,10 @@
     {
       "source": "/portfolio",
       "destination": "/portfolio/index.html"
+    },
+    {
+      "source": "/pricing",
+      "destination": "/pricing/index.html"
     },
     {
       "source": "/test-store",
