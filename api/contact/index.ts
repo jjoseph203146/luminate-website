@@ -50,7 +50,10 @@ export function createHandler(deps: HandlerDeps = {}) {
       cfg = loadConfig()
     } catch (err) {
       log('error', 'misconfigured', { error: err instanceof Error ? err.message : String(err) })
-      return send(res, 503, { error: 'unavailable' })
+      return send(res, 503, {
+        error: 'unavailable',
+        message: "We couldn't send your message right now. Please email jacob@luminatewebdesign.com and we'll get back to you.",
+      })
     }
     const ip = clientIp(req)
     const now = deps.now ?? Date.now
@@ -106,7 +109,7 @@ export function createHandler(deps: HandlerDeps = {}) {
       return send(res, 200, { ok: true, reference })
     } catch (err) {
       log('error', 'email delivery failed', { reference, error: err instanceof Error ? err.message : String(err) })
-      return send(res, 502, { error: 'delivery_failed', message: "We couldn't send your message right now. Please try again, or email us directly." })
+      return send(res, 502, { error: 'delivery_failed', message: "We couldn't send your message right now. Please try again, or email jacob@luminatewebdesign.com." })
     }
   }
 }

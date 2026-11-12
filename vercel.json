@@ -24,6 +24,16 @@
       "source": "/pricing/index.html",
       "destination": "/pricing",
       "permanent": true
+    },
+    {
+      "source": "/privacy/index.html",
+      "destination": "/privacy",
+      "permanent": true
+    },
+    {
+      "source": "/terms/index.html",
+      "destination": "/terms",
+      "permanent": true
     }
   ],
   "rewrites": [
@@ -42,6 +52,14 @@
     {
       "source": "/pricing",
       "destination": "/pricing/index.html"
+    },
+    {
+      "source": "/privacy",
+      "destination": "/privacy/index.html"
+    },
+    {
+      "source": "/terms",
+      "destination": "/terms/index.html"
     },
     {
       "source": "/test-store",
