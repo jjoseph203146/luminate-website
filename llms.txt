@@ -23,8 +23,10 @@
 - [Portfolio](https://luminatewebdesign.com/portfolio): selected websites built for contractors, restaurants, ministries, nonprofits, and growing businesses
 - [Contractor Website Design Augusta GA](https://luminatewebdesign.com/contractor-website-design-augusta-ga): websites for contractors and home service businesses in the Augusta area
 - [Pricing](https://luminatewebdesign.com/pricing): one-time packages (Personal $350, Launch $750+, Growth $1,500+, Custom Systems $3,500+) and monthly Website Care (Essential $35, Professional $50, Growth $99; custom systems management from $50)
+- [Privacy Policy](https://luminatewebdesign.com/privacy): what the contact form, analytics, and Stripe billing portal collect
+- [Terms of Service](https://luminatewebdesign.com/terms): use of the marketing site, quotes, and client billing
 - [Client Portal](https://luminatewebdesign.com/portal.html): login-only client dashboard for existing clients — not a content page
 
 ## Contact
 
-Phone: (762) 227-9287 · Email: jacob@luminatewebdesign.com · Service area: Augusta, GA and the CSRA
+Email: jacob@luminatewebdesign.com · Service area: Augusta, GA and the CSRA

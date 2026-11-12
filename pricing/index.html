@@ -235,7 +235,10 @@
   .btn-ghost:active{transform:translateY(0)}
   .navlink{font-size:14px;color:rgba(196,209,226,.85);transition:color .25s}
   .navlink:hover{color:#F4F7FB}
-  .navlink:focus-visible,.textlink:focus-visible{outline:none;box-shadow:0 0 0 3px rgba(232,226,212,.45);border-radius:6px}
+  .navlink:focus-visible,.textlink:focus-visible,.legal-link:focus-visible{outline:none;box-shadow:0 0 0 3px rgba(232,226,212,.45);border-radius:6px}
+  .legal-link{transition:color .25s}
+  .legal-link:hover{color:#F4F7FB}
+  .legal-link:active{opacity:.85}
   .navlink[aria-current="page"]{color:#F4F7FB}
   .textlink{color:#E8E2D4;text-decoration:underline;text-decoration-color:rgba(232,226,212,.35);text-underline-offset:4px;transition:text-decoration-color .25s}
   .textlink:hover{text-decoration-color:#E8E2D4}
@@ -586,6 +589,7 @@
 
     <div class="flex flex-col sm:flex-row justify-between items-center gap-4 border-t hairline pt-6">
       <span class="text-[12px] text-dim2">© 2026 Luminate Web Design &amp; Development LLC</span>
+      <span class="flex items-center gap-4 text-[12px] text-dim2"><a class="legal-link" href="/privacy">Privacy</a><a class="legal-link" href="/terms">Terms</a></span>
       <span class="text-[12px] text-dim2">Built in Augusta, Georgia</span>
     </div>
   </div>

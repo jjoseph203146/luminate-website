@@ -156,8 +156,12 @@ async function main() {
     let token = await h.token(); h.advance(4000)
     let res = fakeRes(); await h.handler(fakeReq('POST', goodBody(token)), res)
     assert.equal(res.code, 502); assert.ok(!res.body.ok); assert.ok(!JSON.stringify(res.body).includes('boom'))
+    assert.match(res.body.message, /jacob@luminatewebdesign.com/)
     h = await newHandler(makeMailer().mailer, { RESEND_API_KEY: undefined })
-    res = fakeRes(); await h.handler(fakeReq('GET'), res); assert.equal(res.code, 503); assert.deepEqual(res.body, { error: 'unavailable' })
+    res = fakeRes(); await h.handler(fakeReq('GET'), res); assert.equal(res.code, 503); assert.equal(res.body.error, 'unavailable')
+    assert.match(res.body.message, /jacob@luminatewebdesign.com/)
+    assert.equal(JSON.stringify(res.body).includes('RESEND_API_KEY'), false)
+    assert.equal(JSON.stringify(res.body).includes('CONTACT_SECRET'), false)
   })
 
   const failed = results.filter(([, e]) => e)

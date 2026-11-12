@@ -31,8 +31,8 @@ so a lead is never lost even if email delivery has a problem.
 Enable each for the environment you test in: **Preview** to try it on the branch preview, **Production** before it goes live on `main`.
 Redeploy after changing variables. The old `TEST_CONTACT_*` variables are no longer used and can be deleted.
 
-If a variable is missing, Vercel Logs show `"msg":"misconfigured"` with the exact variable name, and visitors see the form's normal
-"Something went wrong… email us directly" message.
+If a variable is missing, Vercel Logs show `"msg":"misconfigured"` with the exact variable name. The public response stays
+`{"error":"unavailable"}` plus a short note asking the visitor to email jacob@luminatewebdesign.com. It does not name the missing variable.
 
 ## Protections
 - **Rate limit:** 5 submissions per 10 min per visitor, 60 per hour overall (429 + `Retry-After`).

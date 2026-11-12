@@ -38,7 +38,6 @@
   "name": "Luminate Web Design & Development",
   "description": "Premium websites and custom business software for Augusta & CSRA organizations — website design, client portals and dashboards, and ongoing site management.",
   "url": "https://luminatewebdesign.com/",
-  "telephone": "+1-762-227-9287",
   "email": "jacob@luminatewebdesign.com",
   "image": "https://luminatewebdesign.com/brand_assets/luminatelogo1.png",
   "areaServed": {
@@ -533,22 +532,44 @@
       <div data-reveal>
         <form id="contactForm" class="surface rounded-2xl p-8 grid sm:grid-cols-2 gap-4">
           <input type="hidden" name="subject" value="New project inquiry — Luminate Web Design">
-          <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off">
-          <input class="fld" id="f-name" name="name" placeholder="Your name" required>
-          <input class="fld" id="f-business" name="business" placeholder="Business name">
-          <input class="fld" id="f-email" name="email" type="email" placeholder="Your email" required>
-          <input class="fld" id="f-phone" name="phone" type="tel" placeholder="Phone">
-          <input class="fld sm:col-span-2" id="f-about" name="about" placeholder="What does your business do?">
-          <select class="fld sm:col-span-2 text-dim2" id="f-type" name="projectType">
-            <option value="">Service you're interested in</option>
-            <option>Website Design &amp; Build</option>
-            <option>Custom Business Software</option>
-            <option>Ongoing Management</option>
-            <option>Personal Website</option>
-          </select>
-          <textarea class="fld sm:col-span-2 min-h-[110px] resize-y" id="f-message" name="message" placeholder="Anything else we should know?" required></textarea>
-          <div id="form-error" class="sm:col-span-2 text-[13px] text-brred hidden"></div>
+          <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true">
+          <div>
+            <label class="flabel" for="f-name">Your name</label>
+            <input class="fld w-full" id="f-name" name="name" autocomplete="name" required>
+          </div>
+          <div>
+            <label class="flabel" for="f-business">Business name <span class="opt">(optional)</span></label>
+            <input class="fld w-full" id="f-business" name="business" autocomplete="organization">
+          </div>
+          <div>
+            <label class="flabel" for="f-email">Your email</label>
+            <input class="fld w-full" id="f-email" name="email" type="email" autocomplete="email" required>
+          </div>
+          <div>
+            <label class="flabel" for="f-phone">Phone <span class="opt">(optional)</span></label>
+            <input class="fld w-full" id="f-phone" name="phone" type="tel" autocomplete="tel">
+          </div>
+          <div class="sm:col-span-2">
+            <label class="flabel" for="f-about">What does your business do? <span class="opt">(optional)</span></label>
+            <input class="fld w-full" id="f-about" name="about" autocomplete="off">
+          </div>
+          <div class="sm:col-span-2">
+            <label class="flabel" for="f-type">Service you're interested in</label>
+            <select class="fld w-full" id="f-type" name="projectType">
+              <option value="">Select a service</option>
+              <option>Website Design &amp; Build</option>
+              <option>Custom Business Software</option>
+              <option>Ongoing Management</option>
+              <option>Personal Website</option>
+            </select>
+          </div>
+          <div class="sm:col-span-2">
+            <label class="flabel" for="f-message">Project details</label>
+            <textarea class="fld w-full min-h-[110px] resize-y" id="f-message" name="message" required></textarea>
+          </div>
+          <div id="form-error" class="sm:col-span-2 text-[13px] text-brred hidden" role="alert"></div>
           <button type="submit" class="btn btn-primary sm:col-span-2 w-full" id="contactSubmitBtn">Send project details</button>
+          <p class="form-note sm:col-span-2 text-[12.5px] text-dim2 leading-relaxed">We use your name, email, and project details to reply, and we send a copy to our project list. Phone is optional. <a href="/privacy">Privacy Policy</a>.</p>
         </form>
         <div class="surface rounded-2xl p-8 text-center hidden" id="contactThanks">
           <div class="w-16 h-16 rounded-full border border-brgreen text-brgreen flex items-center justify-center text-[26px] mx-auto mb-5">✓</div>
@@ -560,11 +581,10 @@
 
     <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-5 mt-16 border-t hairline pt-10" data-reveal>
       <div>
-        <div class="serif text-[18px] font-600">Prefer to talk it through?</div>
-        <p class="text-[13px] text-dim2 mt-1">Call (762) 227-9287 or email jacob@luminatewebdesign.com — usually answered within one business day.</p>
+        <div class="serif text-[18px] font-600">Prefer to write?</div>
+        <p class="text-[13px] text-dim2 mt-1">Email jacob@luminatewebdesign.com — usually answered within one business day.</p>
       </div>
       <div class="flex gap-3">
-        <a href="tel:7622279287" class="btn btn-ghost">Call now</a>
         <a href="mailto:jacob@luminatewebdesign.com" class="btn btn-primary">Email us</a>
       </div>
     </div>
@@ -587,7 +607,7 @@
       <div><h5 class="text-[13px] font-700 mb-4 text-ink">Company</h5><ul class="space-y-3 text-[13px] text-dim2">
         <li><a href="#about" class="hover:text-ink transition-colors">About</a></li><li><a href="/portfolio" class="hover:text-ink transition-colors">Portfolio</a></li><li><a href="#connect" class="hover:text-ink transition-colors">Contact</a></li><li><a href="https://billing.stripe.com/p/login/4gM00lbnqbFr9pbfkXgbm00" target="_blank" rel="noopener" class="hover:text-ink transition-colors">Manage Subscription</a></li></ul></div>
       <div><h5 class="text-[13px] font-700 mb-4 text-ink">Get in touch</h5><ul class="space-y-3 text-[13px] text-dim2">
-        <li><a href="tel:7622279287" class="hover:text-ink transition-colors">(762) 227-9287</a></li><li><a href="mailto:jacob@luminatewebdesign.com" class="hover:text-ink transition-colors">jacob@luminatewebdesign.com</a></li><li>Augusta &amp; the CSRA</li></ul></div>
+        <li><a href="mailto:jacob@luminatewebdesign.com" class="hover:text-ink transition-colors">jacob@luminatewebdesign.com</a></li><li>Augusta &amp; the CSRA</li></ul></div>
     </div>
 
     <div class="text-center py-10">
@@ -596,16 +616,28 @@
 
     <div class="flex flex-col sm:flex-row justify-between items-center gap-4 border-t hairline pt-6">
       <span class="text-[12px] text-dim2">© 2026 Luminate Web Design &amp; Development LLC</span>
+      <span class="flex items-center gap-4 text-[12px] text-dim2"><a class="legal-link" href="/privacy">Privacy</a><a class="legal-link" href="/terms">Terms</a></span>
       <span class="text-[12px] text-dim2">Built in Augusta, Georgia</span>
     </div>
   </div>
 </footer>
 
 <style>
-  .fld{background:#0C1729;border:1px solid rgba(196,209,226,.10);border-radius:12px;padding:13px 15px;color:#F4F7FB;font-size:14px;outline:none;transition:border-color .25s}
+  .fld{background:#0C1729;border:1px solid rgba(196,209,226,.10);border-radius:12px;padding:13px 15px;color:#F4F7FB;font-size:14px;outline:none;transition:border-color .25s,box-shadow .25s}
   .fld::placeholder{color:rgba(196,209,226,.4)}
   .fld:focus{border-color:#E8E2D4}
+  .fld:focus-visible{border-color:#E8E2D4;box-shadow:0 0 0 3px rgba(232,226,212,.35)}
   .fld.err{border-color:#E0796B}
+  .flabel{display:block;margin:0 0 6px;font-size:12px;font-weight:600;letter-spacing:.02em;color:#C4D1E2}
+  .flabel .opt{font-weight:500;color:#7E8DA0}
+  .form-note a{color:#E8E2D4;text-decoration:underline;text-underline-offset:3px;text-decoration-color:rgba(232,226,212,.4);transition:text-decoration-color .25s}
+  .form-note a:hover{text-decoration-color:#E8E2D4}
+  .form-note a:focus-visible{outline:none;box-shadow:0 0 0 3px rgba(232,226,212,.45);border-radius:4px}
+  .form-note a:active{opacity:.85}
+  .legal-link{transition:color .25s}
+  .legal-link:hover{color:#F4F7FB}
+  .legal-link:focus-visible{outline:none;box-shadow:0 0 0 3px rgba(232,226,212,.45);border-radius:6px}
+  .legal-link:active{opacity:.85}
   #testiTrack::-webkit-scrollbar{display:none}
   .marquee-track{animation:lum-marquee 38s linear infinite}
   .marquee-track:hover{animation-play-state:paused}
@@ -731,8 +763,10 @@
     }
     return tokenPromise;
   }
+  var formFallback = "We couldn't send your message right now. Please email jacob@luminatewebdesign.com and we'll get back to you.";
   async function ensureToken(){
     if(!formToken) await loadToken();
+    if(!formToken) return;
     var wait = 3300 - (Date.now() - tokenAt);
     if(wait > 0) await new Promise(function(r){ setTimeout(r, wait); });
   }
@@ -807,13 +841,13 @@
         if(String(data.error || '').indexOf('token_') === 0){ formToken = null; }
         btn.disabled = false;
         btn.textContent = 'Send project details';
-        errorBox.textContent = data.message || 'Something went wrong. Please try again or email us directly.';
+        errorBox.textContent = data.message || formFallback;
         errorBox.classList.remove('hidden');
       }
     } catch(err) {
       btn.disabled = false;
       btn.textContent = 'Send project details';
-      errorBox.textContent = 'Something went wrong. Please try again or email us directly.';
+      errorBox.textContent = formFallback;
       errorBox.classList.remove('hidden');
     }
   });

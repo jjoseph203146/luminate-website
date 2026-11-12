@@ -1,6 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ['./index.html', './web-design-augusta-ga/index.html', './contractor-website-design-augusta-ga/index.html', './portfolio/index.html', './pricing/index.html'],
+  content: ['./index.html', './404.html', './web-design-augusta-ga/index.html', './contractor-website-design-augusta-ga/index.html', './portfolio/index.html', './pricing/index.html', './privacy/index.html', './terms/index.html'],
   theme: {
     extend: {
       colors: {
