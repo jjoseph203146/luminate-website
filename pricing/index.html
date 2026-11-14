@@ -1,21 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-DM2C6EXJZD"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-DM2C6EXJZD');
-</script>
+<script src="/analytics.js" defer></script>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Pricing | Luminate Web Design &amp; Development</title>
 <meta name="description" content="One-time websites and monthly care from Luminate in Augusta, GA. Personal $350, Launch $750+, Growth $1,500+, Custom Systems $3,500+. Care from $35/month.">
 <link rel="canonical" href="https://luminatewebdesign.com/pricing">
-<link rel="icon" type="image/png" href="/brand_assets/luminatelogo1.png">
+<link rel="icon" href="/images/favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="/styles.css">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Luminate">
@@ -27,10 +19,39 @@
 <meta name="twitter:title" content="Pricing | Luminate Web Design &amp; Development">
 <meta name="twitter:description" content="One-time websites and monthly care from Luminate in Augusta, GA. Personal $350, Launch $750+, Growth $1,500+, Custom Systems $3,500+. Care from $35/month.">
 <meta name="twitter:image" content="https://luminatewebdesign.com/brand_assets/luminatelogo1.png">
+<!-- TODO: When the Google Business Profile URL is known, add it as sameAs on this ProfessionalService. Do not invent one. No LinkedIn company page is linked anywhere in this repo, so sameAs is omitted until a real profile URL exists. -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@graph": [
+    {
+      "@type": "ProfessionalService",
+      "@id": "https://luminatewebdesign.com/#business",
+      "name": "Luminate Web Design & Development",
+      "description": "Custom websites and business software for established businesses in Augusta, Evans, Martinez, Grovetown, North Augusta, Aiken, and the Central Savannah River Area.",
+      "url": "https://luminatewebdesign.com/",
+      "email": "jacob@luminatewebdesign.com",
+      "image": "https://luminatewebdesign.com/brand_assets/luminatelogo1.png",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://luminatewebdesign.com/brand_assets/luminatelogo1.png"
+      },
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Augusta",
+        "addressRegion": "GA",
+        "addressCountry": "US"
+      },
+      "areaServed": [
+        { "@type": "City", "name": "Augusta", "containedInPlace": { "@type": "State", "name": "Georgia" } },
+        { "@type": "City", "name": "Evans", "containedInPlace": { "@type": "State", "name": "Georgia" } },
+        { "@type": "City", "name": "Martinez", "containedInPlace": { "@type": "State", "name": "Georgia" } },
+        { "@type": "City", "name": "Grovetown", "containedInPlace": { "@type": "State", "name": "Georgia" } },
+        { "@type": "City", "name": "North Augusta", "containedInPlace": { "@type": "State", "name": "South Carolina" } },
+        { "@type": "City", "name": "Aiken", "containedInPlace": { "@type": "State", "name": "South Carolina" } },
+        { "@type": "Place", "name": "Central Savannah River Area (CSRA)" }
+      ]
+    },
     {
       "@type": "WebPage",
       "name": "Pricing | Luminate Web Design & Development",
@@ -557,7 +578,7 @@
       <div>
         <h2 class="text-[13px] font-700 mb-4 text-ink">Services</h2>
         <ul class="space-y-3 text-[13px] text-dim2">
-          <li><a href="/web-design-augusta-ga" class="hover:text-ink transition-colors">Web Design in Augusta, GA</a></li>
+          <li><a href="/web-design-augusta-ga" class="hover:text-ink transition-colors">Custom Web Development</a></li>
           <li><a href="/contractor-website-design-augusta-ga" class="hover:text-ink transition-colors">Contractor Websites</a></li>
           <li><a href="/#services" class="hover:text-ink transition-colors">Custom Software</a></li>
           <li><a href="/#services" class="hover:text-ink transition-colors">Ongoing Management</a></li>
