@@ -24,10 +24,13 @@
   "@context": "https://schema.org",
   "@graph": [
     {
-      "@type": "ProfessionalService",
+      "@type": [
+        "LocalBusiness",
+        "ProfessionalService"
+      ],
       "@id": "https://luminatewebdesign.com/#business",
-      "name": "Luminate Web Design & Development",
-      "description": "Custom websites and business software for established businesses in Augusta, Evans, Martinez, Grovetown, North Augusta, Aiken, and the Central Savannah River Area.",
+      "name": "Luminate Web Design & Development LLC",
+      "description": "Custom websites for Augusta and CSRA businesses that have outgrown their site. Designed, built, and managed locally, with a written quote before any work begins.",
       "url": "https://luminatewebdesign.com/",
       "email": "jacob@luminatewebdesign.com",
       "image": "https://luminatewebdesign.com/brand_assets/luminatelogo1.png",
@@ -35,6 +38,7 @@
         "@type": "ImageObject",
         "url": "https://luminatewebdesign.com/brand_assets/luminatelogo1.png"
       },
+      "priceRange": "$750-$3,500+",
       "address": {
         "@type": "PostalAddress",
         "addressLocality": "Augusta",
@@ -42,13 +46,66 @@
         "addressCountry": "US"
       },
       "areaServed": [
-        { "@type": "City", "name": "Augusta", "containedInPlace": { "@type": "State", "name": "Georgia" } },
-        { "@type": "City", "name": "Evans", "containedInPlace": { "@type": "State", "name": "Georgia" } },
-        { "@type": "City", "name": "Martinez", "containedInPlace": { "@type": "State", "name": "Georgia" } },
-        { "@type": "City", "name": "Grovetown", "containedInPlace": { "@type": "State", "name": "Georgia" } },
-        { "@type": "City", "name": "North Augusta", "containedInPlace": { "@type": "State", "name": "South Carolina" } },
-        { "@type": "City", "name": "Aiken", "containedInPlace": { "@type": "State", "name": "South Carolina" } },
-        { "@type": "Place", "name": "Central Savannah River Area (CSRA)" }
+        {
+          "@type": "City",
+          "name": "Augusta",
+          "containedInPlace": {
+            "@type": "State",
+            "name": "Georgia"
+          }
+        },
+        {
+          "@type": "City",
+          "name": "Evans",
+          "containedInPlace": {
+            "@type": "State",
+            "name": "Georgia"
+          }
+        },
+        {
+          "@type": "City",
+          "name": "Aiken",
+          "containedInPlace": {
+            "@type": "State",
+            "name": "South Carolina"
+          }
+        },
+        {
+          "@type": "City",
+          "name": "Martinez",
+          "containedInPlace": {
+            "@type": "State",
+            "name": "Georgia"
+          }
+        },
+        {
+          "@type": "City",
+          "name": "Grovetown",
+          "containedInPlace": {
+            "@type": "State",
+            "name": "Georgia"
+          }
+        },
+        {
+          "@type": "City",
+          "name": "Hephzibah",
+          "containedInPlace": {
+            "@type": "State",
+            "name": "Georgia"
+          }
+        },
+        {
+          "@type": "City",
+          "name": "North Augusta",
+          "containedInPlace": {
+            "@type": "State",
+            "name": "South Carolina"
+          }
+        },
+        {
+          "@type": "Place",
+          "name": "Central Savannah River Area (CSRA)"
+        }
       ],
       "sameAs": [
         "https://share.google/DZeKorzz7AalxaM6z",
@@ -57,103 +114,113 @@
       ]
     },
     {
-          "@type": "FAQPage",
-          "mainEntity": [
-                {
-                      "@type": "Question",
-                      "name": "How much does custom web development cost?",
-                      "acceptedAnswer": {
-                            "@type": "Answer",
-                            "text": "With Luminate, business websites start at $750 for a Launch site (1–3 custom pages) and $1,500 for a larger Growth site with lead capture and booking tools. Custom systems like portals, e-commerce, and integrations start at $3,500. Your exact price depends on scope, and you'll get a written quote before work begins. Optional Website Care starts at $35/month for Launch and Growth websites, and monthly management for Custom Systems starts at $50/month. Care is billed separately from the one-time project price."
-                      }
-                },
-                {
-                      "@type": "Question",
-                      "name": "How long does a website usually take?",
-                      "acceptedAnswer": {
-                            "@type": "Answer",
-                            "text": "Most Launch sites go live in about 1–2 weeks once we have your content. Larger Growth sites and custom systems take longer, and the timeline is set in your quote so you know what to expect up front."
-                      }
-                },
-                {
-                      "@type": "Question",
-                      "name": "Do you work only with Augusta businesses?",
-                      "acceptedAnswer": {
-                            "@type": "Answer",
-                            "text": "We're based in Augusta and focus on businesses across the CSRA, but we're not limited to it — our work also includes the official site for the Florida Section of the American Tennis Association."
-                      }
-                },
-                {
-                      "@type": "Question",
-                      "name": "What kinds of businesses do you build websites for?",
-                      "acceptedAnswer": {
-                            "@type": "Answer",
-                            "text": "Contractors and home services, restaurants and catering, ministries and nonprofits, sports and coaching, shops and e-commerce, and auto dealerships, among others. See our contractor website guide or browse the full portfolio."
-                      }
-                },
-                {
-                      "@type": "Question",
-                      "name": "Can you redesign an existing website?",
-                      "acceptedAnswer": {
-                            "@type": "Answer",
-                            "text": "Yes. Many projects start with an existing site that's outdated or hard to manage. We look at what's working, keep the content worth keeping, and rebuild the rest around how your business operates today."
-                      }
-                },
-                {
-                      "@type": "Question",
-                      "name": "Do you handle hosting and maintenance?",
-                      "acceptedAnswer": {
-                            "@type": "Answer",
-                            "text": "Yes. Optional Website Care starts at $35/month (Essential) and includes managed hosting, SSL, deployment management, routine maintenance, uptime checks, a brief monthly service summary, and up to 2 small updates per month. Professional ($50/month) and Growth ($99/month) add Search Console review, performance reporting, and SEO and conversion recommendations, with more monthly updates. Plans are month-to-month and billed separately from your project. Custom Systems management starts at $50/month. New pages, redesigns, custom features, and ongoing SEO campaigns are quoted separately."
-                      }
-                },
-                {
-                      "@type": "Question",
-                      "name": "Can you build e-commerce or custom business systems?",
-                      "acceptedAnswer": {
-                            "@type": "Answer",
-                            "text": "Yes. Our Custom Systems work includes online stores and payments, client portals, dashboards, membership and booking systems, and integrations with the tools you already use. These start at $3,500 and are scoped individually."
-                      }
-                },
-                {
-                      "@type": "Question",
-                      "name": "What do you need from me to get started?",
-                      "acceptedAnswer": {
-                            "@type": "Answer",
-                            "text": "A short note on what your business does and what you want the site to accomplish. We handle design, copy, hosting, and SEO from there."
-                      }
-                },
-                {
-                      "@type": "Question",
-                      "name": "Will a new website automatically generate leads?",
-                      "acceptedAnswer": {
-                            "@type": "Answer",
-                            "text": "No — a website by itself doesn't guarantee traffic or leads. What it does is help your business present itself professionally and convert more of the people already finding you through referrals, search, advertising, social media, and other channels."
-                      }
-                },
-                {
-                      "@type": "Question",
-                      "name": "Do I need a website if most of my customers come from referrals or social media?",
-                      "acceptedAnswer": {
-                            "@type": "Answer",
-                            "text": "Probably, yes. People who hear about you from a friend usually look you up before they call, and a website you control gives them a credible place to land that doesn't depend on a social media platform."
-                      }
-                },
-                {
-                      "@type": "Question",
-                      "name": "What does a website need to show up on Google in Augusta?",
-                      "acceptedAnswer": {
-                            "@type": "Answer",
-                            "text": "Clear text about what you do and where, a fast mobile experience, accurate contact details, and good on-page basics. Our sites include basic on-page SEO. A Google Business Profile and customer reviews also matter for local searches. Nobody can guarantee a ranking, because results depend on your competition and take time."
-                      }
-                }
-          ]
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How much does custom web development cost?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "With Luminate, business websites start at $750 for a Launch site (1–3 custom pages) and $1,500 for a larger Growth site with lead capture and booking tools. Custom systems like portals, e-commerce, and integrations start at $3,500. Your exact price depends on scope, and you'll get a written quote before work begins. Optional Website Care starts at $35/month for Launch and Growth websites, and monthly management for Custom Systems starts at $50/month. Care is billed separately from the one-time project price."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How long does a website usually take?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Most Launch sites go live in about 1–2 weeks once we have your content. Larger Growth sites and custom systems take longer, and the timeline is set in your quote so you know what to expect up front."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do you work only with Augusta businesses?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "We're based in Augusta and focus on businesses across the CSRA, but we're not limited to it — our work also includes the official site for the Florida Section of the American Tennis Association."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What kinds of businesses do you build websites for?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Contractors and home services, restaurants and catering, ministries and nonprofits, sports and coaching, shops and e-commerce, and auto dealerships, among others. See our contractor website guide or browse the full portfolio."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can you redesign an existing website?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Many projects start with an existing site that's outdated or hard to manage. We look at what's working, keep the content worth keeping, and rebuild the rest around how your business operates today."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do you handle hosting and maintenance?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Optional Website Care starts at $35/month (Essential) and includes managed hosting, SSL, deployment management, routine maintenance, uptime checks, a brief monthly service summary, and up to 2 small updates per month. Professional ($50/month) and Growth ($99/month) add Search Console review, performance reporting, and SEO and conversion recommendations, with more monthly updates. Plans are month-to-month and billed separately from your project. Custom Systems management starts at $50/month. New pages, redesigns, custom features, and ongoing SEO campaigns are quoted separately."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can you build e-commerce or custom business systems?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Our Custom Systems work includes online stores and payments, client portals, dashboards, membership and booking systems, and integrations with the tools you already use. These start at $3,500 and are scoped individually."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What do you need from me to get started?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A short note on what your business does and what you want the site to accomplish. We handle design, copy, hosting, and SEO from there."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Will a new website automatically generate leads?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No — a website by itself doesn't guarantee traffic or leads. What it does is help your business present itself professionally and convert more of the people already finding you through referrals, search, advertising, social media, and other channels."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do I need a website if most of my customers come from referrals or social media?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Probably, yes. People who hear about you from a friend usually look you up before they call, and a website you control gives them a credible place to land that doesn't depend on a social media platform."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What does a website need to show up on Google in Augusta?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Clear text about what you do and where, a fast mobile experience, accurate contact details, and good on-page basics. Our sites include basic on-page SEO. A Google Business Profile and customer reviews also matter for local searches. Nobody can guarantee a ranking, because results depend on your competition and take time."
+          }
+        }
+      ]
     },
     {
       "@type": "BreadcrumbList",
       "itemListElement": [
-        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://luminatewebdesign.com/" },
-        { "@type": "ListItem", "position": 2, "name": "Custom Web Development", "item": "https://luminatewebdesign.com/web-design-augusta-ga" }
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://luminatewebdesign.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Custom Web Development",
+          "item": "https://luminatewebdesign.com/web-design-augusta-ga"
+        }
       ]
     }
   ]
@@ -239,6 +306,7 @@
         <a class="navlink" href="/#services">Services</a>
         <a class="navlink" href="/portfolio">Work</a>
         <a class="navlink" href="/pricing">Pricing</a>
+        <a class="navlink" href="/faq">FAQ</a>
         <a class="navlink" href="/#about">About</a>
       </div>
       <div class="flex items-center gap-3">
@@ -253,6 +321,7 @@
       <a class="block px-6 py-4 text-[15px] text-dim border-b hairline" href="/#services">Services</a>
       <a class="block px-6 py-4 text-[15px] text-dim border-b hairline" href="/portfolio">Work</a>
       <a class="block px-6 py-4 text-[15px] text-dim border-b hairline" href="/pricing">Pricing</a>
+      <a class="block px-6 py-4 text-[15px] text-dim border-b hairline" href="/faq">FAQ</a>
       <a class="block px-6 py-4 text-[15px] text-dim border-b hairline" href="/#about">About</a>
       <a class="block px-6 py-4 text-[15px] text-dim border-b hairline" href="https://billing.stripe.com/p/login/4gM00lbnqbFr9pbfkXgbm00" target="_blank" rel="noopener">Manage Subscription</a>
       <div class="p-4"><a href="/?service=website#connect" class="btn btn-primary w-full">Start your project</a></div>
@@ -261,7 +330,7 @@
     <div class="pt-6 lg:pt-14 pb-12 lg:pb-16">
       <div class="track-wide text-[12px] text-dim2 font-600 mb-5">CUSTOM WEB DEVELOPMENT · AUGUSTA, GA</div>
       <h1 class="serif text-[36px] sm:text-[50px] lg:text-[62px] font-700 leading-[1.06] track-tight text-balance max-w-[820px]">Custom Web Development for Augusta Businesses</h1>
-      <p class="text-[16px] lg:text-[17px] text-dim leading-relaxed mt-6 max-w-[620px]">When the business needs more than a marketing site — an online store, a client portal, or a connection to software you already use — that is custom development. We design and build those systems in Augusta, and you get a written quote before any work begins.</p>
+      <p class="text-[16px] lg:text-[17px] text-dim leading-relaxed mt-6 max-w-[620px]">When the business needs more than a marketing site — an online store, a client portal, or a connection to software you already use — that is custom development.</p><p class="text-[16px] lg:text-[17px] text-dim leading-relaxed mt-3 max-w-[620px]">We design and build those systems in Augusta, and you get a written quote before any work begins.</p>
       <p class="text-[14px] text-dim2 leading-relaxed mt-4 max-w-[620px]">Looking for a marketing website instead? <a href="/" class="textlink">Augusta web design</a> for established businesses lives on the homepage. Trade companies are on the <a href="/contractor-website-design-augusta-ga" class="textlink">contractor website design</a> page.</p>
       <div class="flex flex-wrap gap-3 mt-8">
         <a href="/?service=website#connect" class="btn btn-primary">Start Your Project</a>
@@ -284,7 +353,7 @@
     <div class="mb-12 max-w-[720px]" data-reveal>
       <div class="track-wide text-[12px] text-dim2 font-600 mb-4">CUSTOM SYSTEMS, ALREADY SHIPPED</div>
       <h2 id="systems-heading" class="serif text-[30px] sm:text-[40px] font-600 track-tight leading-[1.1]">E-commerce, portals, and integrations.</h2>
-      <p class="text-[14px] text-dim mt-3 leading-relaxed">The Custom Systems tier is online stores, client portals, and connections to the tools a business already runs. Two of those stores are live. Portals and integrations are scoped the same way: a written quote before any work begins.</p>
+      <p class="text-[14px] text-dim mt-3 leading-relaxed">The Custom Systems tier is online stores, client portals, and connections to the tools a business already runs.</p><p class="text-[14px] text-dim mt-3 leading-relaxed">Two of those stores are live. Portals and integrations are scoped the same way: a written quote before any work begins.</p>
     </div>
     <div class="grid lg:grid-cols-3 gap-5" data-reveal>
       <article class="card-hover surface rounded-2xl overflow-hidden h-full flex flex-col">
@@ -306,7 +375,7 @@
       <article class="surface rounded-2xl p-6 flex flex-col h-full">
         <div class="text-[11px] track-wide text-accent font-700">PORTALS &amp; INTEGRATIONS</div>
         <h3 class="text-[16px] font-700 text-ink mt-2">Systems behind the storefront</h3>
-        <p class="text-[13px] text-dim mt-2 leading-relaxed">Client portals, dashboards, membership and booking, and integrations with the software you already use. These are scoped individually, the same way the stores above were, and nothing starts without a written quote.</p>
+        <p class="text-[13px] text-dim mt-2 leading-relaxed">Client portals, dashboards, membership and booking, and integrations with the software you already use.</p><p class="text-[13px] text-dim mt-2 leading-relaxed">These are scoped individually, the same way the stores above were, and nothing starts without a written quote.</p>
         <a href="/pricing" class="textlink text-[12.5px] mt-auto pt-4">Custom Systems on the pricing page →</a>
       </article>
     </div>
@@ -322,10 +391,10 @@
       <p class="text-[14px] text-dim mt-3 leading-relaxed">A marketing page can wait. This work is the store, the portal, and the connection to tools the team already opens every day.</p>
     </div>
     <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4" data-reveal>
-      <div class="surface p-6"><div class="serif text-[26px] font-700 text-accent">01</div><h3 class="text-[15px] font-700 text-ink mt-3">E-commerce</h3><p class="text-[13px] text-dim mt-1.5 leading-relaxed">Online stores and payments, organized the way the catalog actually works, with checkout that holds up on a phone.</p></div>
-      <div class="surface p-6"><div class="serif text-[26px] font-700 text-accent">02</div><h3 class="text-[15px] font-700 text-ink mt-3">Client portals</h3><p class="text-[13px] text-dim mt-1.5 leading-relaxed">Portals and dashboards for customers, members, or staff, so the work after the sale is not a shared inbox.</p></div>
-      <div class="surface p-6"><div class="serif text-[26px] font-700 text-accent">03</div><h3 class="text-[15px] font-700 text-ink mt-3">Integrations</h3><p class="text-[13px] text-dim mt-1.5 leading-relaxed">Connections to booking, payment, and the other tools the business already uses, instead of a second place to retype the same information.</p></div>
-      <div class="surface p-6"><div class="serif text-[26px] font-700 text-accent">04</div><h3 class="text-[15px] font-700 text-ink mt-3">Care after launch</h3><p class="text-[13px] text-dim mt-1.5 leading-relaxed">Optional management for the system once it is live, quoted from what the system actually needs.</p></div>
+      <div class="surface p-6"><div class="serif text-[26px] font-700 text-accent">01</div><h2 class="text-[15px] font-700 text-ink mt-3">E-commerce</h2><p class="text-[13px] text-dim mt-1.5 leading-relaxed">Online stores and payments, organized the way the catalog actually works, with checkout that holds up on a phone.</p></div>
+      <div class="surface p-6"><div class="serif text-[26px] font-700 text-accent">02</div><h2 class="text-[15px] font-700 text-ink mt-3">Client portals</h2><p class="text-[13px] text-dim mt-1.5 leading-relaxed">Portals and dashboards for customers, members, or staff, so the work after the sale is not a shared inbox.</p></div>
+      <div class="surface p-6"><div class="serif text-[26px] font-700 text-accent">03</div><h2 class="text-[15px] font-700 text-ink mt-3">Integrations</h2><p class="text-[13px] text-dim mt-1.5 leading-relaxed">Connections to booking, payment, and the other tools the business already uses, instead of a second place to retype the same information.</p></div>
+      <div class="surface p-6"><div class="serif text-[26px] font-700 text-accent">04</div><h2 class="text-[15px] font-700 text-ink mt-3">Care after launch</h2><p class="text-[13px] text-dim mt-1.5 leading-relaxed">Optional management for the system once it is live, quoted from what the system actually needs.</p></div>
     </div>
     <p class="text-[12.5px] text-dim2 mt-6" data-reveal>Rankings and results depend on your market and competition, and we don't promise specific outcomes. We build the foundation to compete.</p>
   </div>
@@ -365,19 +434,19 @@
     </div>
     <div class="grid lg:grid-cols-3 gap-5" data-reveal>
       <div class="surface rounded-2xl p-7 flex flex-col h-full">
-        <h3 class="text-[13px] track-wide font-700 text-ink uppercase">Launch Websites</h3>
+        <h2 class="text-[13px] track-wide font-700 text-ink uppercase">Launch Websites</h2>
         <div class="serif text-[30px] font-700 text-ink mt-3">$750<span class="text-[16px] text-dim2">+</span> <span class="text-[12px] font-normal text-dim2 font-sans tracking-normal">starting at</span></div>
         <p class="text-[13.5px] text-dim leading-relaxed mt-3">For businesses that need a polished, professional online presence — a custom 1–3 page site with a clear contact path.</p>
         <div class="mt-auto pt-5 text-[12px] text-dim2">Website care starts at <span class="text-accent">$35/month</span>. <a href="/pricing#website-care" class="inline-block whitespace-nowrap text-accent underline decoration-[rgba(232,226,212,.35)] underline-offset-4 hover:decoration-accent">Compare care plans</a></div>
       </div>
       <div class="floating ring-1 ring-accent/40 rounded-2xl p-7 flex flex-col h-full">
-        <h3 class="text-[13px] track-wide font-700 text-ink uppercase">Growth Websites</h3>
+        <h2 class="text-[13px] track-wide font-700 text-ink uppercase">Growth Websites</h2>
         <div class="serif text-[30px] font-700 text-ink mt-3">$1,500<span class="text-[16px] text-dim2">+</span> <span class="text-[12px] font-normal text-dim2 font-sans tracking-normal">starting at</span></div>
         <p class="text-[13.5px] text-dim leading-relaxed mt-3">For businesses that already get traffic and referrals and want a larger, conversion-focused site — more pages, lead capture, and booking tools.</p>
         <div class="mt-auto pt-5 text-[12px] text-dim2">Website care starts at <span class="text-accent">$35/month</span>. <a href="/pricing#website-care" class="inline-block whitespace-nowrap text-accent underline decoration-[rgba(232,226,212,.35)] underline-offset-4 hover:decoration-accent">Compare care plans</a></div>
       </div>
       <div class="surface rounded-2xl p-7 flex flex-col h-full">
-        <h3 class="text-[13px] track-wide font-700 text-ink uppercase">Custom Systems</h3>
+        <h2 class="text-[13px] track-wide font-700 text-ink uppercase">Custom Systems</h2>
         <div class="serif text-[30px] font-700 text-ink mt-3">$3,500<span class="text-[16px] text-dim2">+</span> <span class="text-[12px] font-normal text-dim2 font-sans tracking-normal">starting at</span></div>
         <p class="text-[13.5px] text-dim leading-relaxed mt-3">For businesses that need more than a website — client portals, dashboards, e-commerce, booking, integrations, or workflow automation.</p>
         <div class="mt-auto pt-5 text-[12px] text-dim2">Monthly management starts at <span class="text-accent">$50/month</span>. <a href="/pricing#website-care" class="inline-block whitespace-nowrap text-accent underline decoration-[rgba(232,226,212,.35)] underline-offset-4 hover:decoration-accent">Compare care plans</a></div>
@@ -456,7 +525,7 @@
         <div><h3 class="text-accent font-700 text-[16px]">Custom, not templated</h3><p class="text-[13.5px] text-dim mt-1.5 leading-relaxed">Every site is designed around your business, your customers, and the next step you want them to take.</p></div>
         <div><h3 class="text-accent font-700 text-[16px]">Mobile-first</h3><p class="text-[13.5px] text-dim mt-1.5 leading-relaxed">Many of your visitors will find you on a phone. Sites are designed for small screens first, then scaled up.</p></div>
         <div><h3 class="text-accent font-700 text-[16px]">Clear communication</h3><p class="text-[13.5px] text-dim mt-1.5 leading-relaxed">Scope and price are agreed before work starts, and messages usually get a reply within one business day.</p></div>
-        <div><h3 class="text-accent font-700 text-[16px]">Care after launch</h3><p class="text-[13.5px] text-dim mt-1.5 leading-relaxed">Optional Website Care (starting at $35/month) covers managed hosting, uptime checks, routine maintenance, and small monthly updates so the site stays current.</p></div>
+        <div><h2 class="text-accent font-700 text-[16px]">Care after launch</h2><p class="text-[13.5px] text-dim mt-1.5 leading-relaxed">Optional Website Care (starting at $35/month) covers managed hosting, uptime checks, routine maintenance, and small monthly updates so the site stays current.</p></div>
         <div class="sm:col-span-2 surface p-6"><h3 class="text-accent font-700 text-[16px]">Room to grow beyond a website</h3><p class="text-[13.5px] text-dim mt-1.5 leading-relaxed">When a website isn't enough, we also build client portals, dashboards, booking and payment systems, integrations, and automations — so you don't have to find a new developer when the business gets more complex.</p></div>
       </div>
     </div>
@@ -583,10 +652,10 @@
       <p class="text-[14px] text-dim mt-3 leading-relaxed">Whoever builds the store, portal, or integration, these questions will tell you most of what you need to know. Here's how we answer them.</p>
     </div>
     <div class="grid sm:grid-cols-2 gap-4" data-reveal>
-      <div class="surface p-6"><h3 class="text-[15px] font-700 text-ink">Can I see sites you've actually built?</h3><p class="text-[13.5px] text-dim mt-2 leading-relaxed"><span class="text-accent">How we answer:</span> Our portfolio shows a selection of recent projects for businesses, ministries, and nonprofits, and most link to the live site.</p></div>
-      <div class="surface p-6"><h3 class="text-[15px] font-700 text-ink">Who will actually do the work?</h3><p class="text-[13.5px] text-dim mt-2 leading-relaxed"><span class="text-accent">How we answer:</span> Jacob, the founder, handles your project from the first call through launch. There's no account manager and no hand-off.</p></div>
-      <div class="surface p-6"><h3 class="text-[15px] font-700 text-ink">What will it cost, in writing?</h3><p class="text-[13.5px] text-dim mt-2 leading-relaxed"><span class="text-accent">How we answer:</span> Websites start at $750, and every project gets a written scope, timeline, and price before any work begins.</p></div>
-      <div class="surface p-6"><h3 class="text-[15px] font-700 text-ink">What happens after the site launches?</h3><p class="text-[13.5px] text-dim mt-2 leading-relaxed"><span class="text-accent">How we answer:</span> Optional Website Care (starting at $35/month) covers managed hosting, uptime checks, routine maintenance, and small monthly updates, so your site doesn't go stale.</p></div>
+      <div class="surface p-6"><h2 class="text-[15px] font-700 text-ink">Can I see sites you've actually built?</h2><p class="text-[13.5px] text-dim mt-2 leading-relaxed"><span class="text-accent">How we answer:</span> Our portfolio shows a selection of recent projects for businesses, ministries, and nonprofits, and most link to the live site.</p></div>
+      <div class="surface p-6"><h2 class="text-[15px] font-700 text-ink">Who will actually do the work?</h2><p class="text-[13.5px] text-dim mt-2 leading-relaxed"><span class="text-accent">How we answer:</span> Jacob, the founder, handles your project from the first call through launch. There's no account manager and no hand-off.</p></div>
+      <div class="surface p-6"><h2 class="text-[15px] font-700 text-ink">What will it cost, in writing?</h2><p class="text-[13.5px] text-dim mt-2 leading-relaxed"><span class="text-accent">How we answer:</span> Websites start at $750, and every project gets a written scope, timeline, and price before any work begins.</p></div>
+      <div class="surface p-6"><h2 class="text-[15px] font-700 text-ink">What happens after the site launches?</h2><p class="text-[13.5px] text-dim mt-2 leading-relaxed"><span class="text-accent">How we answer:</span> Optional Website Care (starting at $35/month) covers managed hosting, uptime checks, routine maintenance, and small monthly updates, so your site doesn't go stale.</p></div>
     </div>
   </div>
 </section>
@@ -624,48 +693,48 @@
     </div>
     <div data-reveal>
       <details class="faq-item rounded-xl mb-3 overflow-hidden border surface" open>
-        <summary class="flex items-center gap-4 px-6 py-5"><span class="flex-1 text-[15px] font-600 text-ink">How much does custom web development cost?</span><span class="faq-icon w-7 h-7 rounded-full flex items-center justify-center flex-none bg-white/5 text-accent" aria-hidden="true">▾</span></summary>
-        <div class="px-6 pb-6 text-[13.5px] text-dim leading-relaxed"><p>With Luminate, business websites start at $750 for a Launch site (1–3 custom pages) and $1,500 for a larger Growth site with lead capture and booking tools. Custom systems like portals, e-commerce, and integrations start at $3,500. Your exact price depends on scope, and you'll get a written quote before work begins. Optional Website Care starts at $35/month for Launch and Growth websites, and monthly management for Custom Systems starts at $50/month. Care is billed separately from the one-time project price.</p></div>
+        <summary class="flex items-center gap-4 px-6 py-5"><h2 class="flex-1 text-[15px] font-600 text-ink">How much does custom web development cost?</h2><span class="faq-icon w-7 h-7 rounded-full flex items-center justify-center flex-none bg-white/5 text-accent" aria-hidden="true">▾</span></summary>
+        <div class="px-6 pb-6 text-[13.5px] text-dim leading-relaxed"><p>With Luminate, business websites start at $750 for a Launch site (1–3 custom pages) and $1,500 for a larger Growth site with lead capture and booking tools.</p><p class="mt-2">Custom systems like portals, e-commerce, and integrations start at $3,500.</p><p class="mt-2">Your exact price depends on scope, and you'll get a written quote before work begins.</p><p class="mt-2">Optional Website Care starts at $35/month for Launch and Growth websites, and monthly management for Custom Systems starts at $50/month.</p><p class="mt-2">Care is billed separately from the one-time project price.</p></div>
       </details>
       <details class="faq-item rounded-xl mb-3 overflow-hidden border surface">
-        <summary class="flex items-center gap-4 px-6 py-5"><span class="flex-1 text-[15px] font-600 text-ink">How long does a website usually take?</span><span class="faq-icon w-7 h-7 rounded-full flex items-center justify-center flex-none bg-white/5 text-accent" aria-hidden="true">▾</span></summary>
+        <summary class="flex items-center gap-4 px-6 py-5"><h2 class="flex-1 text-[15px] font-600 text-ink">How long does a website usually take?</h2><span class="faq-icon w-7 h-7 rounded-full flex items-center justify-center flex-none bg-white/5 text-accent" aria-hidden="true">▾</span></summary>
         <div class="px-6 pb-6 text-[13.5px] text-dim leading-relaxed"><p>Most Launch sites go live in about 1–2 weeks once we have your content. Larger Growth sites and custom systems take longer, and the timeline is set in your quote so you know what to expect up front.</p></div>
       </details>
       <details class="faq-item rounded-xl mb-3 overflow-hidden border surface">
-        <summary class="flex items-center gap-4 px-6 py-5"><span class="flex-1 text-[15px] font-600 text-ink">Do you work only with Augusta businesses?</span><span class="faq-icon w-7 h-7 rounded-full flex items-center justify-center flex-none bg-white/5 text-accent" aria-hidden="true">▾</span></summary>
+        <summary class="flex items-center gap-4 px-6 py-5"><h2 class="flex-1 text-[15px] font-600 text-ink">Do you work only with Augusta businesses?</h2><span class="faq-icon w-7 h-7 rounded-full flex items-center justify-center flex-none bg-white/5 text-accent" aria-hidden="true">▾</span></summary>
         <div class="px-6 pb-6 text-[13.5px] text-dim leading-relaxed"><p>We're based in Augusta and focus on businesses across the CSRA, but we're not limited to it — our work also includes the official site for the Florida Section of the American Tennis Association.</p></div>
       </details>
       <details class="faq-item rounded-xl mb-3 overflow-hidden border surface">
-        <summary class="flex items-center gap-4 px-6 py-5"><span class="flex-1 text-[15px] font-600 text-ink">What kinds of businesses do you build websites for?</span><span class="faq-icon w-7 h-7 rounded-full flex items-center justify-center flex-none bg-white/5 text-accent" aria-hidden="true">▾</span></summary>
-        <div class="px-6 pb-6 text-[13.5px] text-dim leading-relaxed"><p>Contractors and home services, restaurants and catering, ministries and nonprofits, sports and coaching, shops and e-commerce, and auto dealerships, among others. See our <a href="/contractor-website-design-augusta-ga" class="textlink">contractor website guide</a> or browse the <a href="/#work" class="textlink">full portfolio</a>.</p></div>
+        <summary class="flex items-center gap-4 px-6 py-5"><h2 class="flex-1 text-[15px] font-600 text-ink">What kinds of businesses do you build websites for?</h2><span class="faq-icon w-7 h-7 rounded-full flex items-center justify-center flex-none bg-white/5 text-accent" aria-hidden="true">▾</span></summary>
+        <div class="px-6 pb-6 text-[13.5px] text-dim leading-relaxed"><p>Contractors and home services, restaurants and catering, ministries and nonprofits, sports and coaching, shops and e-commerce, and auto dealerships, among others.</p><p class="mt-2">See our <a href="/contractor-website-design-augusta-ga" class="textlink">contractor website guide</a> or browse the <a href="/#work" class="textlink">full portfolio</a>.</p></div>
       </details>
       <details class="faq-item rounded-xl mb-3 overflow-hidden border surface">
-        <summary class="flex items-center gap-4 px-6 py-5"><span class="flex-1 text-[15px] font-600 text-ink">Can you redesign an existing website?</span><span class="faq-icon w-7 h-7 rounded-full flex items-center justify-center flex-none bg-white/5 text-accent" aria-hidden="true">▾</span></summary>
-        <div class="px-6 pb-6 text-[13.5px] text-dim leading-relaxed"><p>Yes. Many projects start with an existing site that's outdated or hard to manage. We look at what's working, keep the content worth keeping, and rebuild the rest around how your business operates today.</p></div>
+        <summary class="flex items-center gap-4 px-6 py-5"><h2 class="flex-1 text-[15px] font-600 text-ink">Can you redesign an existing website?</h2><span class="faq-icon w-7 h-7 rounded-full flex items-center justify-center flex-none bg-white/5 text-accent" aria-hidden="true">▾</span></summary>
+        <div class="px-6 pb-6 text-[13.5px] text-dim leading-relaxed"><p>Yes. Many projects start with an existing site that's outdated or hard to manage.</p><p class="mt-2">We look at what's working, keep the content worth keeping, and rebuild the rest around how your business operates today.</p></div>
       </details>
       <details class="faq-item rounded-xl mb-3 overflow-hidden border surface">
-        <summary class="flex items-center gap-4 px-6 py-5"><span class="flex-1 text-[15px] font-600 text-ink">Do you handle hosting and maintenance?</span><span class="faq-icon w-7 h-7 rounded-full flex items-center justify-center flex-none bg-white/5 text-accent" aria-hidden="true">▾</span></summary>
-        <div class="px-6 pb-6 text-[13.5px] text-dim leading-relaxed"><p>Yes. Optional Website Care starts at $35/month (Essential) and includes managed hosting, SSL, deployment management, routine maintenance, uptime checks, a brief monthly service summary, and up to 2 small updates per month. Professional ($50/month) and Growth ($99/month) add Search Console review, performance reporting, and SEO and conversion recommendations, with more monthly updates. Plans are month-to-month and billed separately from your project. Custom Systems management starts at $50/month. New pages, redesigns, custom features, and ongoing SEO campaigns are quoted separately.</p></div>
+        <summary class="flex items-center gap-4 px-6 py-5"><h2 class="flex-1 text-[15px] font-600 text-ink">Do you handle hosting and maintenance?</h2><span class="faq-icon w-7 h-7 rounded-full flex items-center justify-center flex-none bg-white/5 text-accent" aria-hidden="true">▾</span></summary>
+        <div class="px-6 pb-6 text-[13.5px] text-dim leading-relaxed"><p>Yes. Optional Website Care starts at $35/month (Essential) and includes managed hosting, SSL, deployment management, routine maintenance, uptime checks, a brief monthly service summary, and up to 2 small updates per month.</p><p class="mt-2">Professional ($50/month) and Growth ($99/month) add Search Console review, performance reporting, and SEO and conversion recommendations, with more monthly updates.</p><p class="mt-2">Plans are month-to-month and billed separately from your project.</p><p class="mt-2">Custom Systems management starts at $50/month.</p><p class="mt-2">New pages, redesigns, custom features, and ongoing SEO campaigns are quoted separately.</p></div>
       </details>
       <details class="faq-item rounded-xl mb-3 overflow-hidden border surface">
-        <summary class="flex items-center gap-4 px-6 py-5"><span class="flex-1 text-[15px] font-600 text-ink">Can you build e-commerce or custom business systems?</span><span class="faq-icon w-7 h-7 rounded-full flex items-center justify-center flex-none bg-white/5 text-accent" aria-hidden="true">▾</span></summary>
-        <div class="px-6 pb-6 text-[13.5px] text-dim leading-relaxed"><p>Yes. Our Custom Systems work includes online stores and payments, client portals, dashboards, membership and booking systems, and integrations with the tools you already use. These start at $3,500 and are scoped individually.</p></div>
+        <summary class="flex items-center gap-4 px-6 py-5"><h2 class="flex-1 text-[15px] font-600 text-ink">Can you build e-commerce or custom business systems?</h2><span class="faq-icon w-7 h-7 rounded-full flex items-center justify-center flex-none bg-white/5 text-accent" aria-hidden="true">▾</span></summary>
+        <div class="px-6 pb-6 text-[13.5px] text-dim leading-relaxed"><p>Yes. Our Custom Systems work includes online stores and payments, client portals, dashboards, membership and booking systems, and integrations with the tools you already use.</p><p class="mt-2">These start at $3,500 and are scoped individually.</p></div>
       </details>
       <details class="faq-item rounded-xl mb-3 overflow-hidden border surface">
-        <summary class="flex items-center gap-4 px-6 py-5"><span class="flex-1 text-[15px] font-600 text-ink">What do you need from me to get started?</span><span class="faq-icon w-7 h-7 rounded-full flex items-center justify-center flex-none bg-white/5 text-accent" aria-hidden="true">▾</span></summary>
+        <summary class="flex items-center gap-4 px-6 py-5"><h2 class="flex-1 text-[15px] font-600 text-ink">What do you need from me to get started?</h2><span class="faq-icon w-7 h-7 rounded-full flex items-center justify-center flex-none bg-white/5 text-accent" aria-hidden="true">▾</span></summary>
         <div class="px-6 pb-6 text-[13.5px] text-dim leading-relaxed"><p>A short note on what your business does and what you want the site to accomplish. We handle design, copy, hosting, and SEO from there.</p></div>
       </details>
       <details class="faq-item rounded-xl mb-3 overflow-hidden border surface">
-        <summary class="flex items-center gap-4 px-6 py-5"><span class="flex-1 text-[15px] font-600 text-ink">Will a new website automatically generate leads?</span><span class="faq-icon w-7 h-7 rounded-full flex items-center justify-center flex-none bg-white/5 text-accent" aria-hidden="true">▾</span></summary>
-        <div class="px-6 pb-6 text-[13.5px] text-dim leading-relaxed"><p>No — a website by itself doesn't guarantee traffic or leads. What it does is help your business present itself professionally and convert more of the people already finding you through referrals, search, advertising, social media, and other channels.</p></div>
+        <summary class="flex items-center gap-4 px-6 py-5"><h2 class="flex-1 text-[15px] font-600 text-ink">Will a new website automatically generate leads?</h2><span class="faq-icon w-7 h-7 rounded-full flex items-center justify-center flex-none bg-white/5 text-accent" aria-hidden="true">▾</span></summary>
+        <div class="px-6 pb-6 text-[13.5px] text-dim leading-relaxed"><p>No — a website by itself doesn't guarantee traffic or leads.</p><p class="mt-2">What it does is help your business present itself professionally and convert more of the people already finding you through referrals, search, advertising, social media, and other channels.</p></div>
       </details>
       <details class="faq-item rounded-xl mb-3 overflow-hidden border surface">
-        <summary class="flex items-center gap-4 px-6 py-5"><span class="flex-1 text-[15px] font-600 text-ink">Do I need a website if most of my customers come from referrals or social media?</span><span class="faq-icon w-7 h-7 rounded-full flex items-center justify-center flex-none bg-white/5 text-accent" aria-hidden="true">▾</span></summary>
+        <summary class="flex items-center gap-4 px-6 py-5"><h2 class="flex-1 text-[15px] font-600 text-ink">Do I need a website if most of my customers come from referrals or social media?</h2><span class="faq-icon w-7 h-7 rounded-full flex items-center justify-center flex-none bg-white/5 text-accent" aria-hidden="true">▾</span></summary>
         <div class="px-6 pb-6 text-[13.5px] text-dim leading-relaxed"><p>Probably, yes. People who hear about you from a friend usually look you up before they call, and a website you control gives them a credible place to land that doesn't depend on a social media platform.</p></div>
       </details>
       <details class="faq-item rounded-xl mb-3 overflow-hidden border surface">
-        <summary class="flex items-center gap-4 px-6 py-5"><span class="flex-1 text-[15px] font-600 text-ink">What does a website need to show up on Google in Augusta?</span><span class="faq-icon w-7 h-7 rounded-full flex items-center justify-center flex-none bg-white/5 text-accent" aria-hidden="true">▾</span></summary>
-        <div class="px-6 pb-6 text-[13.5px] text-dim leading-relaxed"><p>Clear text about what you do and where, a fast mobile experience, accurate contact details, and good on-page basics. Our sites include basic on-page SEO. A Google Business Profile and customer reviews also matter for local searches. Nobody can guarantee a ranking, because results depend on your competition and take time.</p></div>
+        <summary class="flex items-center gap-4 px-6 py-5"><h2 class="flex-1 text-[15px] font-600 text-ink">What does a website need to show up on Google in Augusta?</h2><span class="faq-icon w-7 h-7 rounded-full flex items-center justify-center flex-none bg-white/5 text-accent" aria-hidden="true">▾</span></summary>
+        <div class="px-6 pb-6 text-[13.5px] text-dim leading-relaxed"><p>Clear text about what you do and where, a fast mobile experience, accurate contact details, and good on-page basics.</p><p class="mt-2">Our sites include basic on-page SEO. A Google Business Profile and customer reviews also matter for local searches.</p><p class="mt-2">Nobody can guarantee a ranking, because results depend on your competition and take time.</p></div>
       </details>
     </div>
   </div>
@@ -701,7 +770,7 @@
       <div><h2 class="text-[13px] font-700 mb-4 text-ink">Services</h2><ul class="space-y-3 text-[13px] text-dim2">
         <li><a href="/web-design-augusta-ga" class="hover:text-ink transition-colors" aria-current="page">Custom Web Development</a></li><li><a href="/contractor-website-design-augusta-ga" class="hover:text-ink transition-colors">Contractor Websites</a></li><li><a href="/#services" class="hover:text-ink transition-colors">Custom Software</a></li><li><a href="/#services" class="hover:text-ink transition-colors">Ongoing Management</a></li><li><a href="/#work" class="hover:text-ink transition-colors">Our Work</a></li><li><a href="/pricing" class="hover:text-ink transition-colors">Pricing</a></li></ul></div>
       <div><h2 class="text-[13px] font-700 mb-4 text-ink">Company</h2><ul class="space-y-3 text-[13px] text-dim2">
-        <li><a href="/#about" class="hover:text-ink transition-colors">About</a></li><li><a href="/?service=website#connect" class="hover:text-ink transition-colors">Contact</a></li><li><a href="https://billing.stripe.com/p/login/4gM00lbnqbFr9pbfkXgbm00" target="_blank" rel="noopener" class="hover:text-ink transition-colors">Manage Subscription</a></li></ul></div>
+        <li><a href="/faq" class="hover:text-ink transition-colors">FAQ</a></li><li><a href="/#about" class="hover:text-ink transition-colors">About</a></li><li><a href="/?service=website#connect" class="hover:text-ink transition-colors">Contact</a></li><li><a href="https://billing.stripe.com/p/login/4gM00lbnqbFr9pbfkXgbm00" target="_blank" rel="noopener" class="hover:text-ink transition-colors">Manage Subscription</a></li></ul></div>
       <div><h2 class="text-[13px] font-700 mb-4 text-ink">Get in touch</h2><ul class="space-y-3 text-[13px] text-dim2">
         <li><a href="mailto:jacob@luminatewebdesign.com" class="hover:text-ink transition-colors">jacob@luminatewebdesign.com</a></li><li>Augusta &amp; the CSRA</li></ul></div>
     </div>

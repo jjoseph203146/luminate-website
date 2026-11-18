@@ -22,6 +22,7 @@
 - [Web Design Augusta GA](https://luminatewebdesign.com/web-design-augusta-ga): local web design hub for Augusta and CSRA businesses: packages, industries served, selected work, process, FAQ, and areas served
 - [Portfolio](https://luminatewebdesign.com/portfolio): selected websites built for contractors, restaurants, ministries, nonprofits, and growing businesses
 - [Contractor Website Design Augusta GA](https://luminatewebdesign.com/contractor-website-design-augusta-ga): websites for contractors and home service businesses in the Augusta area
+- [FAQ](https://luminatewebdesign.com/faq): pricing, timing, care plans, and service-area answers for home-service and local businesses
 - [Pricing](https://luminatewebdesign.com/pricing): one-time packages (Personal $350, Launch $750+, Growth $1,500+, Custom Systems $3,500+) and monthly Website Care (Essential $35, Professional $50, Growth $99; custom systems management from $50)
 - [Privacy Policy](https://luminatewebdesign.com/privacy): what the contact form, analytics, and Stripe billing portal collect
 - [Terms of Service](https://luminatewebdesign.com/terms): use of the marketing site, quotes, and client billing

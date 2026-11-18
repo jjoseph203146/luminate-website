@@ -24,10 +24,13 @@
   "@context": "https://schema.org",
   "@graph": [
     {
-      "@type": "ProfessionalService",
+      "@type": [
+        "LocalBusiness",
+        "ProfessionalService"
+      ],
       "@id": "https://luminatewebdesign.com/#business",
-      "name": "Luminate Web Design & Development",
-      "description": "Custom websites and business software for established businesses in Augusta, Evans, Martinez, Grovetown, North Augusta, Aiken, and the Central Savannah River Area.",
+      "name": "Luminate Web Design & Development LLC",
+      "description": "Custom websites for Augusta and CSRA businesses that have outgrown their site. Designed, built, and managed locally, with a written quote before any work begins.",
       "url": "https://luminatewebdesign.com/",
       "email": "jacob@luminatewebdesign.com",
       "image": "https://luminatewebdesign.com/brand_assets/luminatelogo1.png",
@@ -35,6 +38,7 @@
         "@type": "ImageObject",
         "url": "https://luminatewebdesign.com/brand_assets/luminatelogo1.png"
       },
+      "priceRange": "$750-$3,500+",
       "address": {
         "@type": "PostalAddress",
         "addressLocality": "Augusta",
@@ -42,13 +46,66 @@
         "addressCountry": "US"
       },
       "areaServed": [
-        { "@type": "City", "name": "Augusta", "containedInPlace": { "@type": "State", "name": "Georgia" } },
-        { "@type": "City", "name": "Evans", "containedInPlace": { "@type": "State", "name": "Georgia" } },
-        { "@type": "City", "name": "Martinez", "containedInPlace": { "@type": "State", "name": "Georgia" } },
-        { "@type": "City", "name": "Grovetown", "containedInPlace": { "@type": "State", "name": "Georgia" } },
-        { "@type": "City", "name": "North Augusta", "containedInPlace": { "@type": "State", "name": "South Carolina" } },
-        { "@type": "City", "name": "Aiken", "containedInPlace": { "@type": "State", "name": "South Carolina" } },
-        { "@type": "Place", "name": "Central Savannah River Area (CSRA)" }
+        {
+          "@type": "City",
+          "name": "Augusta",
+          "containedInPlace": {
+            "@type": "State",
+            "name": "Georgia"
+          }
+        },
+        {
+          "@type": "City",
+          "name": "Evans",
+          "containedInPlace": {
+            "@type": "State",
+            "name": "Georgia"
+          }
+        },
+        {
+          "@type": "City",
+          "name": "Aiken",
+          "containedInPlace": {
+            "@type": "State",
+            "name": "South Carolina"
+          }
+        },
+        {
+          "@type": "City",
+          "name": "Martinez",
+          "containedInPlace": {
+            "@type": "State",
+            "name": "Georgia"
+          }
+        },
+        {
+          "@type": "City",
+          "name": "Grovetown",
+          "containedInPlace": {
+            "@type": "State",
+            "name": "Georgia"
+          }
+        },
+        {
+          "@type": "City",
+          "name": "Hephzibah",
+          "containedInPlace": {
+            "@type": "State",
+            "name": "Georgia"
+          }
+        },
+        {
+          "@type": "City",
+          "name": "North Augusta",
+          "containedInPlace": {
+            "@type": "State",
+            "name": "South Carolina"
+          }
+        },
+        {
+          "@type": "Place",
+          "name": "Central Savannah River Area (CSRA)"
+        }
       ],
       "sameAs": [
         "https://share.google/DZeKorzz7AalxaM6z",
@@ -60,16 +117,43 @@
       "@type": "Service",
       "name": "Website design for contractors and home service businesses",
       "serviceType": "Website design",
-      "provider": { "@id": "https://luminatewebdesign.com/#business" },
-      "areaServed": { "@type": "City", "name": "Augusta", "containedInPlace": { "@type": "State", "name": "Georgia" } },
-      "audience": { "@type": "BusinessAudience", "audienceType": "Contractors and home service businesses" },
-      "offers": { "@type": "Offer", "price": "750", "priceCurrency": "USD", "description": "Launch websites start at $750; final price is quoted after scoping." }
+      "provider": {
+        "@id": "https://luminatewebdesign.com/#business"
+      },
+      "areaServed": {
+        "@type": "City",
+        "name": "Augusta",
+        "containedInPlace": {
+          "@type": "State",
+          "name": "Georgia"
+        }
+      },
+      "audience": {
+        "@type": "BusinessAudience",
+        "audienceType": "Contractors and home service businesses"
+      },
+      "offers": {
+        "@type": "Offer",
+        "price": "750",
+        "priceCurrency": "USD",
+        "description": "Launch websites start at $750; final price is quoted after scoping."
+      }
     },
     {
       "@type": "BreadcrumbList",
       "itemListElement": [
-        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://luminatewebdesign.com/" },
-        { "@type": "ListItem", "position": 2, "name": "Contractor Website Design in Augusta, GA", "item": "https://luminatewebdesign.com/contractor-website-design-augusta-ga" }
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://luminatewebdesign.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Contractor Website Design in Augusta, GA",
+          "item": "https://luminatewebdesign.com/contractor-website-design-augusta-ga"
+        }
       ]
     }
   ]
@@ -154,6 +238,7 @@
         <a class="navlink" href="/#services">Services</a>
         <a class="navlink" href="/portfolio">Work</a>
         <a class="navlink" href="/pricing">Pricing</a>
+        <a class="navlink" href="/faq">FAQ</a>
         <a class="navlink" href="/#about">About</a>
       </div>
       <div class="flex items-center gap-3">
@@ -168,6 +253,7 @@
       <a class="block px-6 py-4 text-[15px] text-dim border-b hairline" href="/#services">Services</a>
       <a class="block px-6 py-4 text-[15px] text-dim border-b hairline" href="/portfolio">Work</a>
       <a class="block px-6 py-4 text-[15px] text-dim border-b hairline" href="/pricing">Pricing</a>
+      <a class="block px-6 py-4 text-[15px] text-dim border-b hairline" href="/faq">FAQ</a>
       <a class="block px-6 py-4 text-[15px] text-dim border-b hairline" href="/#about">About</a>
       <a class="block px-6 py-4 text-[15px] text-dim border-b hairline" href="https://billing.stripe.com/p/login/4gM00lbnqbFr9pbfkXgbm00" target="_blank" rel="noopener">Manage Subscription</a>
       <div class="p-4"><a href="/?service=website#connect" class="btn btn-primary w-full">Start your project</a></div>
@@ -177,7 +263,7 @@
       <div>
         <div class="track-wide text-[12px] text-dim2 font-600 mb-5">CONTRACTOR WEBSITES<span class="hidden sm:inline"> · </span><br class="sm:hidden">AUGUSTA,&nbsp;GA</div>
         <h1 class="serif text-[34px] sm:text-[46px] lg:text-[56px] font-700 leading-[1.08] track-tight">Websites for Contractors &amp; Home Service Businesses in&nbsp;Augusta</h1>
-        <p class="text-[16px] lg:text-[17px] text-dim leading-relaxed mt-6 max-w-[580px]">When someone hears your name from a neighbor, they'll often look you up before they call. Your website should show the quality of your work, list the services and areas you cover, and make requesting a quote quick.</p>
+        <p class="text-[16px] lg:text-[17px] text-dim leading-relaxed mt-6 max-w-[580px]">When someone hears your name from a neighbor, they'll often look you up before they call.</p><p class="text-[16px] lg:text-[17px] text-dim leading-relaxed mt-3 max-w-[580px]">Your website should show the quality of your work, list the services and areas you cover, and make requesting a quote quick.</p>
         <div class="flex flex-wrap gap-3 mt-8">
           <a href="/?service=website#connect" class="btn btn-primary">Start Your Project</a>
           <a href="#proof" class="btn btn-ghost">See a Contractor Site We Built</a>
@@ -266,8 +352,8 @@
     <figure class="floating rounded-2xl p-7 sm:p-9 mt-10" data-reveal>
       <div class="text-accent text-[15px] mb-4" aria-label="5 out of 5 stars">★★★★★</div>
       <blockquote class="text-[15px] sm:text-[16px] leading-relaxed text-ink space-y-4">
-        <p class="serif italic text-[17px] sm:text-[19px]">"Jacob Joseph of Luminate Web Design created a business website for my husband, Willie Baker III of Busy B Construction Services LLC, and we couldn't be happier with the results. My husband is not an easy person to impress, but he was absolutely blown away by the website Jacob designed.</p>
-        <p class="text-dim">The quality, professionalism, and attention to detail exceeded our expectations. Jacob did an outstanding job, creating a top-notch website that truly represents our business. We are confident it will help attract new customers and provide the exposure Busy B Construction Services needs to take the business to the next level.</p>
+        <p class="serif italic text-[17px] sm:text-[19px]">"Jacob Joseph of Luminate Web Design created a business website for my husband, Willie Baker III of Busy B Construction Services LLC, and we couldn't be happier with the results.</p><p class="mt-2 serif italic text-[17px] sm:text-[19px]">My husband is not an easy person to impress, but he was absolutely blown away by the website Jacob designed.</p>
+        <p class="text-dim">The quality, professionalism, and attention to detail exceeded our expectations.</p><p class="mt-2 text-dim">Jacob did an outstanding job, creating a top-notch website that truly represents our business.</p><p class="mt-2 text-dim">We are confident it will help attract new customers and provide the exposure Busy B Construction Services needs to take the business to the next level.</p>
         <p class="text-dim">We highly recommend Jacob and Luminate Web Design to anyone looking for exceptional web design services."</p>
       </blockquote>
       <figcaption class="flex items-center gap-3 mt-6 pt-6 border-t hairline">
@@ -288,19 +374,19 @@
     </div>
     <div class="grid lg:grid-cols-3 gap-5" data-reveal>
       <div class="surface rounded-2xl p-7 flex flex-col h-full">
-        <h3 class="text-[13px] track-wide font-700 text-ink uppercase">Launch</h3>
+        <h2 class="text-[13px] track-wide font-700 text-ink uppercase">Launch</h2>
         <div class="serif text-[30px] font-700 text-ink mt-3">$750<span class="text-[16px] text-dim2">+</span> <span class="text-[12px] font-normal text-dim2 font-sans tracking-normal">starting at</span></div>
         <p class="text-[13.5px] text-dim leading-relaxed mt-3">Good for a one-trade business getting a real website for the first time: 1–3 custom pages, click-to-call, and a contact form.</p>
         <div class="mt-auto pt-5 text-[12px] text-dim2">Website care starts at <span class="text-accent">$35/month</span>. <a href="/pricing#website-care" class="inline-block whitespace-nowrap text-accent underline decoration-[rgba(232,226,212,.35)] underline-offset-4 hover:decoration-accent">Compare care plans</a></div>
       </div>
       <div class="floating ring-1 ring-accent/40 rounded-2xl p-7 flex flex-col h-full">
-        <h3 class="text-[13px] track-wide font-700 text-ink uppercase">Growth website</h3>
+        <h2 class="text-[13px] track-wide font-700 text-ink uppercase">Growth website</h2>
         <div class="serif text-[30px] font-700 text-ink mt-3">$1,500<span class="text-[16px] text-dim2">+</span> <span class="text-[12px] font-normal text-dim2 font-sans tracking-normal">starting at</span></div>
         <p class="text-[13.5px] text-dim leading-relaxed mt-3">A better fit if you offer several services or want a project gallery: up to 8 pages, a page per service, lead capture, and booking tools.</p>
         <div class="mt-auto pt-5 text-[12px] text-dim2">Website care starts at <span class="text-accent">$35/month</span>. <a href="/pricing#website-care" class="inline-block whitespace-nowrap text-accent underline decoration-[rgba(232,226,212,.35)] underline-offset-4 hover:decoration-accent">Compare care plans</a></div>
       </div>
       <div class="surface rounded-2xl p-7 flex flex-col h-full">
-        <h3 class="text-[13px] track-wide font-700 text-ink uppercase">Custom Systems</h3>
+        <h2 class="text-[13px] track-wide font-700 text-ink uppercase">Custom Systems</h2>
         <div class="serif text-[30px] font-700 text-ink mt-3">$3,500<span class="text-[16px] text-dim2">+</span> <span class="text-[12px] font-normal text-dim2 font-sans tracking-normal">starting at</span></div>
         <p class="text-[13.5px] text-dim leading-relaxed mt-3">For operations that need more than a website: customer portals, online scheduling and payments, or connections to the tools you already use.</p>
         <div class="mt-auto pt-5 text-[12px] text-dim2">Monthly management starts at <span class="text-accent">$50/month</span>. <a href="/pricing#website-care" class="inline-block whitespace-nowrap text-accent underline decoration-[rgba(232,226,212,.35)] underline-offset-4 hover:decoration-accent">Compare care plans</a></div>
@@ -320,28 +406,28 @@
     </div>
     <div data-reveal>
       <details class="faq-item rounded-xl mb-3 overflow-hidden border surface" open>
-        <summary class="flex items-center gap-4 px-6 py-5"><span class="flex-1 text-[15px] font-600 text-ink">How much does a contractor website cost?</span><span class="faq-icon w-7 h-7 rounded-full flex items-center justify-center flex-none bg-white/5 text-accent" aria-hidden="true">▾</span></summary>
-        <div class="px-6 pb-6 text-[13.5px] text-dim leading-relaxed"><p>Launch sites start at $750 and Growth sites start at $1,500. If you offer several services or want a project gallery, Growth is usually the better fit. You'll get a written quote before any work begins. Optional Website Care starts at $35/month for Launch and Growth websites, and monthly management for Custom Systems starts at $50/month. Care is billed separately from the one-time project price.</p></div>
+        <summary class="flex items-center gap-4 px-6 py-5"><h2 class="flex-1 text-[15px] font-600 text-ink">How much does a contractor website cost?</h2><span class="faq-icon w-7 h-7 rounded-full flex items-center justify-center flex-none bg-white/5 text-accent" aria-hidden="true">▾</span></summary>
+        <div class="px-6 pb-6 text-[13.5px] text-dim leading-relaxed"><p>Launch sites start at $750 and Growth sites start at $1,500.</p><p class="mt-2">If you offer several services or want a project gallery, Growth is usually the better fit.</p><p class="mt-2">You'll get a written quote before any work begins.</p><p class="mt-2">Optional Website Care starts at $35/month for Launch and Growth websites, and monthly management for Custom Systems starts at $50/month.</p><p class="mt-2">Care is billed separately from the one-time project price.</p></div>
       </details>
       <details class="faq-item rounded-xl mb-3 overflow-hidden border surface">
-        <summary class="flex items-center gap-4 px-6 py-5"><span class="flex-1 text-[15px] font-600 text-ink">I don't have professional photos. Is that a problem?</span><span class="faq-icon w-7 h-7 rounded-full flex items-center justify-center flex-none bg-white/5 text-accent" aria-hidden="true">▾</span></summary>
+        <summary class="flex items-center gap-4 px-6 py-5"><h2 class="flex-1 text-[15px] font-600 text-ink">I don't have professional photos. Is that a problem?</h2><span class="faq-icon w-7 h-7 rounded-full flex items-center justify-center flex-none bg-white/5 text-accent" aria-hidden="true">▾</span></summary>
         <div class="px-6 pb-6 text-[13.5px] text-dim leading-relaxed"><p>No. Clear phone photos of finished jobs work well — real work is more convincing than stock photos. Send what you have and we'll select and organize the best ones.</p></div>
       </details>
       <details class="faq-item rounded-xl mb-3 overflow-hidden border surface">
-        <summary class="flex items-center gap-4 px-6 py-5"><span class="flex-1 text-[15px] font-600 text-ink">Can customers request a quote or book online?</span><span class="faq-icon w-7 h-7 rounded-full flex items-center justify-center flex-none bg-white/5 text-accent" aria-hidden="true">▾</span></summary>
-        <div class="px-6 pb-6 text-[13.5px] text-dim leading-relaxed"><p>Yes. Every site includes a contact form and click-to-call. Growth sites add lead capture and booking or scheduling tools, and Custom Systems can handle things like online payments and customer portals.</p></div>
+        <summary class="flex items-center gap-4 px-6 py-5"><h2 class="flex-1 text-[15px] font-600 text-ink">Can customers request a quote or book online?</h2><span class="faq-icon w-7 h-7 rounded-full flex items-center justify-center flex-none bg-white/5 text-accent" aria-hidden="true">▾</span></summary>
+        <div class="px-6 pb-6 text-[13.5px] text-dim leading-relaxed"><p>Yes. Every site includes a contact form and click-to-call.</p><p class="mt-2">Growth sites add lead capture and booking or scheduling tools, and Custom Systems can handle things like online payments and customer portals.</p></div>
       </details>
       <details class="faq-item rounded-xl mb-3 overflow-hidden border surface">
-        <summary class="flex items-center gap-4 px-6 py-5"><span class="flex-1 text-[15px] font-600 text-ink">Who updates the site when I finish new jobs?</span><span class="faq-icon w-7 h-7 rounded-full flex items-center justify-center flex-none bg-white/5 text-accent" aria-hidden="true">▾</span></summary>
-        <div class="px-6 pb-6 text-[13.5px] text-dim leading-relaxed"><p>With Website Care (starting at $35/month), small updates are included: up to 2 per month on Essential, 3 on Professional, and 5 on Growth. Send over new project photos and we'll add them. It also covers managed hosting, uptime checks, and routine maintenance, so you don't have to touch the site yourself.</p></div>
+        <summary class="flex items-center gap-4 px-6 py-5"><h2 class="flex-1 text-[15px] font-600 text-ink">Who updates the site when I finish new jobs?</h2><span class="faq-icon w-7 h-7 rounded-full flex items-center justify-center flex-none bg-white/5 text-accent" aria-hidden="true">▾</span></summary>
+        <div class="px-6 pb-6 text-[13.5px] text-dim leading-relaxed"><p>With Website Care (starting at $35/month), small updates are included: up to 2 per month on Essential, 3 on Professional, and 5 on Growth.</p><p class="mt-2">Send over new project photos and we'll add them.</p><p class="mt-2">It also covers managed hosting, uptime checks, and routine maintenance, so you don't have to touch the site yourself.</p></div>
       </details>
       <details class="faq-item rounded-xl mb-3 overflow-hidden border surface">
-        <summary class="flex items-center gap-4 px-6 py-5"><span class="flex-1 text-[15px] font-600 text-ink">How long does it take?</span><span class="faq-icon w-7 h-7 rounded-full flex items-center justify-center flex-none bg-white/5 text-accent" aria-hidden="true">▾</span></summary>
+        <summary class="flex items-center gap-4 px-6 py-5"><h2 class="flex-1 text-[15px] font-600 text-ink">How long does it take?</h2><span class="faq-icon w-7 h-7 rounded-full flex items-center justify-center flex-none bg-white/5 text-accent" aria-hidden="true">▾</span></summary>
         <div class="px-6 pb-6 text-[13.5px] text-dim leading-relaxed"><p>Most Launch sites go live in about 1–2 weeks once we have your content and photos. Growth sites take longer, and the timeline is set in your quote.</p></div>
       </details>
       <details class="faq-item rounded-xl mb-3 overflow-hidden border surface">
-        <summary class="flex items-center gap-4 px-6 py-5"><span class="flex-1 text-[15px] font-600 text-ink">Will a website get me more jobs?</span><span class="faq-icon w-7 h-7 rounded-full flex items-center justify-center flex-none bg-white/5 text-accent" aria-hidden="true">▾</span></summary>
-        <div class="px-6 pb-6 text-[13.5px] text-dim leading-relaxed"><p>A website alone doesn't guarantee calls. What it does is help more of the people who already hear about you — through referrals, yard signs, your truck, search, or social media — trust you enough to reach out instead of calling the next name on the list.</p></div>
+        <summary class="flex items-center gap-4 px-6 py-5"><h2 class="flex-1 text-[15px] font-600 text-ink">Will a website get me more jobs?</h2><span class="faq-icon w-7 h-7 rounded-full flex items-center justify-center flex-none bg-white/5 text-accent" aria-hidden="true">▾</span></summary>
+        <div class="px-6 pb-6 text-[13.5px] text-dim leading-relaxed"><p>A website alone doesn't guarantee calls.</p><p class="mt-2">What it does is help more of the people who already hear about you — through referrals, yard signs, your truck, search, or social media — trust you enough to reach out instead of calling the next name on the list.</p></div>
       </details>
     </div>
   </div>
@@ -377,7 +463,7 @@
       <div><h2 class="text-[13px] font-700 mb-4 text-ink">Services</h2><ul class="space-y-3 text-[13px] text-dim2">
         <li><a href="/web-design-augusta-ga" class="hover:text-ink transition-colors">Custom Web Development</a></li><li><a href="/contractor-website-design-augusta-ga" class="hover:text-ink transition-colors" aria-current="page">Contractor Websites</a></li><li><a href="/#services" class="hover:text-ink transition-colors">Custom Software</a></li><li><a href="/#work" class="hover:text-ink transition-colors">Our Work</a></li><li><a href="/pricing" class="hover:text-ink transition-colors">Pricing</a></li></ul></div>
       <div><h2 class="text-[13px] font-700 mb-4 text-ink">Company</h2><ul class="space-y-3 text-[13px] text-dim2">
-        <li><a href="/#about" class="hover:text-ink transition-colors">About</a></li><li><a href="/?service=website#connect" class="hover:text-ink transition-colors">Contact</a></li><li><a href="https://billing.stripe.com/p/login/4gM00lbnqbFr9pbfkXgbm00" target="_blank" rel="noopener" class="hover:text-ink transition-colors">Manage Subscription</a></li></ul></div>
+        <li><a href="/faq" class="hover:text-ink transition-colors">FAQ</a></li><li><a href="/#about" class="hover:text-ink transition-colors">About</a></li><li><a href="/?service=website#connect" class="hover:text-ink transition-colors">Contact</a></li><li><a href="https://billing.stripe.com/p/login/4gM00lbnqbFr9pbfkXgbm00" target="_blank" rel="noopener" class="hover:text-ink transition-colors">Manage Subscription</a></li></ul></div>
       <div><h2 class="text-[13px] font-700 mb-4 text-ink">Get in touch</h2><ul class="space-y-3 text-[13px] text-dim2">
         <li><a href="mailto:jacob@luminatewebdesign.com" class="hover:text-ink transition-colors">jacob@luminatewebdesign.com</a></li><li>Augusta &amp; the CSRA</li></ul></div>
     </div>
