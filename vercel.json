@@ -2,13 +2,23 @@
   "redirects": [
     {
       "source": "/",
-      "has": [{ "type": "host", "value": "www.luminatewebdesign.com" }],
+      "has": [
+        {
+          "type": "host",
+          "value": "www.luminatewebdesign.com"
+        }
+      ],
       "destination": "https://luminatewebdesign.com/",
       "permanent": true
     },
     {
       "source": "/:path*",
-      "has": [{ "type": "host", "value": "www.luminatewebdesign.com" }],
+      "has": [
+        {
+          "type": "host",
+          "value": "www.luminatewebdesign.com"
+        }
+      ],
       "destination": "https://luminatewebdesign.com/:path*",
       "permanent": true
     },
@@ -46,9 +56,18 @@
       "source": "/terms/index.html",
       "destination": "/terms",
       "permanent": true
+    },
+    {
+      "source": "/faq/index.html",
+      "destination": "/faq",
+      "permanent": true
     }
   ],
   "rewrites": [
+    {
+      "source": "/faq",
+      "destination": "/faq/index.html"
+    },
     {
       "source": "/web-design-augusta-ga",
       "destination": "/web-design-augusta-ga/index.html"
@@ -88,13 +107,28 @@
       "headers": [
         {
           "key": "Content-Security-Policy",
-          "value": "default-src 'self'; script-src 'self' https://www.googletagmanager.com 'sha256-V1TZc5gXElKySsset3jjJxkpaQUW1MYaUoX4ub3J3m4=' 'sha256-McUkKBw4Zk+/Mt6kWy1nHv1eDo4zp+Ynxe6MG8XbStg=' 'sha256-hNkZDZjfhvsEDEewsO5dQk9ZA8QbvTnMN94ouPOMBk0=' 'sha256-0nwgqLKO8FxV2M6S5utecfAAvVKyou7VmBy+GOkFzac=' 'sha256-nD9MtKUtSbbby6favXq/nHGq+AXoO3eoSQnTg1sFYv4=' 'sha256-qI8L5wj7jhPuNr7X5YmvJvwe2DzNDFiTjedF2vnRomA='; script-src-attr 'none'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://www.google-analytics.com https://www.googletagmanager.com; connect-src 'self' https://www.luminateos.app https://www.google-analytics.com https://region1.google-analytics.com https://analytics.google.com https://stats.g.doubleclick.net https://www.googletagmanager.com https://fonts.googleapis.com https://fonts.gstatic.com; frame-src 'none'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; object-src 'none'; upgrade-insecure-requests"
+          "value": "default-src 'self'; script-src 'self' https://www.googletagmanager.com 'sha256-V1TZc5gXElKySsset3jjJxkpaQUW1MYaUoX4ub3J3m4=' 'sha256-McUkKBw4Zk+/Mt6kWy1nHv1eDo4zp+Ynxe6MG8XbStg=' 'sha256-hNkZDZjfhvsEDEewsO5dQk9ZA8QbvTnMN94ouPOMBk0=' 'sha256-0nwgqLKO8FxV2M6S5utecfAAvVKyou7VmBy+GOkFzac=' 'sha256-nD9MtKUtSbbby6favXq/nHGq+AXoO3eoSQnTg1sFYv4=' 'sha256-qI8L5wj7jhPuNr7X5YmvJvwe2DzNDFiTjedF2vnRomA=' 'sha256-9WSb5WLsW+c8dYFh6TQfQzXDKdaMcir5nFrjIKAQEq0=' 'sha256-HE5JYvjTMfnE0fOKOXoSJU+LzGVFi4TB6mRKOlex1+k=' 'sha256-qBU1qBIV7llQz1Qjm/zAnm3Rr1M/pB0uRQdi/z7KF7U=' 'sha256-3u3ZB24mIyGNjPBWMWxP8dWJTXeQjQZHE8FmVGoaBh0=' 'sha256-Ke0iA0TJGSlY7epYcR8WRakv/51t528emnh6+DOZB60=' 'sha256-LmhimuEW1O0visCJASzcEjAeQP1gZUB02nF0yKsDcVM=' 'sha256-bqPEmsSIAsfvZ2Gz3g2qWiooi9QbC1hpjpAwVdUdsM4=' 'sha256-db+3dkdG6iUu1JdvM3TpCTI9nm9qavGi352mlrzk6Yo='; script-src-attr 'none'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://www.google-analytics.com https://www.googletagmanager.com; connect-src 'self' https://www.luminateos.app https://www.google-analytics.com https://region1.google-analytics.com https://analytics.google.com https://stats.g.doubleclick.net https://www.googletagmanager.com https://fonts.googleapis.com https://fonts.gstatic.com; frame-src 'none'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; object-src 'none'; upgrade-insecure-requests"
         },
-        { "key": "X-Frame-Options", "value": "DENY" },
-        { "key": "X-Content-Type-Options", "value": "nosniff" },
-        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" },
-        { "key": "Permissions-Policy", "value": "camera=(), microphone=(), geolocation=(), payment=(), usb=(), bluetooth=(), accelerometer=(), gyroscope=(), magnetometer=(), midi=(), serial=(), hid=(), display-capture=(), browsing-topics=(), interest-cohort=()" },
-        { "key": "Strict-Transport-Security", "value": "max-age=63072000" }
+        {
+          "key": "X-Frame-Options",
+          "value": "DENY"
+        },
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        },
+        {
+          "key": "Permissions-Policy",
+          "value": "camera=(), microphone=(), geolocation=(), payment=(), usb=(), bluetooth=(), accelerometer=(), gyroscope=(), magnetometer=(), midi=(), serial=(), hid=(), display-capture=(), browsing-topics=(), interest-cohort=()"
+        },
+        {
+          "key": "Strict-Transport-Security",
+          "value": "max-age=63072000"
+        }
       ]
     }
   ]

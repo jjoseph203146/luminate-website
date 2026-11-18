@@ -24,10 +24,13 @@
   "@context": "https://schema.org",
   "@graph": [
     {
-      "@type": "ProfessionalService",
+      "@type": [
+        "LocalBusiness",
+        "ProfessionalService"
+      ],
       "@id": "https://luminatewebdesign.com/#business",
-      "name": "Luminate Web Design & Development",
-      "description": "Custom websites and business software for established businesses in Augusta, Evans, Martinez, Grovetown, North Augusta, Aiken, and the Central Savannah River Area.",
+      "name": "Luminate Web Design & Development LLC",
+      "description": "Custom websites for Augusta and CSRA businesses that have outgrown their site. Designed, built, and managed locally, with a written quote before any work begins.",
       "url": "https://luminatewebdesign.com/",
       "email": "jacob@luminatewebdesign.com",
       "image": "https://luminatewebdesign.com/brand_assets/luminatelogo1.png",
@@ -35,6 +38,7 @@
         "@type": "ImageObject",
         "url": "https://luminatewebdesign.com/brand_assets/luminatelogo1.png"
       },
+      "priceRange": "$750-$3,500+",
       "address": {
         "@type": "PostalAddress",
         "addressLocality": "Augusta",
@@ -42,13 +46,66 @@
         "addressCountry": "US"
       },
       "areaServed": [
-        { "@type": "City", "name": "Augusta", "containedInPlace": { "@type": "State", "name": "Georgia" } },
-        { "@type": "City", "name": "Evans", "containedInPlace": { "@type": "State", "name": "Georgia" } },
-        { "@type": "City", "name": "Martinez", "containedInPlace": { "@type": "State", "name": "Georgia" } },
-        { "@type": "City", "name": "Grovetown", "containedInPlace": { "@type": "State", "name": "Georgia" } },
-        { "@type": "City", "name": "North Augusta", "containedInPlace": { "@type": "State", "name": "South Carolina" } },
-        { "@type": "City", "name": "Aiken", "containedInPlace": { "@type": "State", "name": "South Carolina" } },
-        { "@type": "Place", "name": "Central Savannah River Area (CSRA)" }
+        {
+          "@type": "City",
+          "name": "Augusta",
+          "containedInPlace": {
+            "@type": "State",
+            "name": "Georgia"
+          }
+        },
+        {
+          "@type": "City",
+          "name": "Evans",
+          "containedInPlace": {
+            "@type": "State",
+            "name": "Georgia"
+          }
+        },
+        {
+          "@type": "City",
+          "name": "Aiken",
+          "containedInPlace": {
+            "@type": "State",
+            "name": "South Carolina"
+          }
+        },
+        {
+          "@type": "City",
+          "name": "Martinez",
+          "containedInPlace": {
+            "@type": "State",
+            "name": "Georgia"
+          }
+        },
+        {
+          "@type": "City",
+          "name": "Grovetown",
+          "containedInPlace": {
+            "@type": "State",
+            "name": "Georgia"
+          }
+        },
+        {
+          "@type": "City",
+          "name": "Hephzibah",
+          "containedInPlace": {
+            "@type": "State",
+            "name": "Georgia"
+          }
+        },
+        {
+          "@type": "City",
+          "name": "North Augusta",
+          "containedInPlace": {
+            "@type": "State",
+            "name": "South Carolina"
+          }
+        },
+        {
+          "@type": "Place",
+          "name": "Central Savannah River Area (CSRA)"
+        }
       ],
       "sameAs": [
         "https://share.google/DZeKorzz7AalxaM6z",
@@ -302,6 +359,7 @@
         <a class="navlink" href="/#services">Services</a>
         <a class="navlink" href="/portfolio">Work</a>
         <a class="navlink" href="/pricing" aria-current="page">Pricing</a>
+        <a class="navlink" href="/faq">FAQ</a>
         <a class="navlink" href="/#about">About</a>
       </div>
       <div class="flex items-center gap-3">
@@ -316,6 +374,7 @@
       <a class="block px-6 py-4 text-[15px] text-dim border-b hairline" href="/#services">Services</a>
       <a class="block px-6 py-4 text-[15px] text-dim border-b hairline" href="/portfolio">Work</a>
       <a class="block px-6 py-4 text-[15px] text-ink border-b hairline" href="/pricing" aria-current="page">Pricing</a>
+      <a class="block px-6 py-4 text-[15px] text-dim border-b hairline" href="/faq">FAQ</a>
       <a class="block px-6 py-4 text-[15px] text-dim border-b hairline" href="/#about">About</a>
       <a class="block px-6 py-4 text-[15px] text-dim border-b hairline" href="https://billing.stripe.com/p/login/4gM00lbnqbFr9pbfkXgbm00" target="_blank" rel="noopener">Manage Subscription</a>
       <div class="p-4"><a href="/?service=website#connect" class="btn btn-primary w-full">Start your project</a></div>
@@ -343,7 +402,7 @@
 
     <div class="grid lg:grid-cols-3 gap-5" data-reveal>
       <article id="launch" class="surface rounded-2xl p-8 flex flex-col h-full" aria-label="Launch website package">
-        <h3 class="text-[13px] track-wide font-700 text-ink uppercase">Launch</h3>
+        <h2 class="text-[13px] track-wide font-700 text-ink uppercase">Launch</h2>
         <div class="serif text-[34px] font-700 text-ink mt-3">$750<span class="text-[18px] text-dim2">+</span></div>
         <div class="text-[12px] text-dim2 mb-4">starting at</div>
         <p class="text-[13.5px] text-dim leading-relaxed mb-5">For businesses that need a polished, credible online presence.</p>
@@ -361,7 +420,7 @@
 
       <article id="growth" class="floating ring-1 ring-accent/40 rounded-2xl p-8 flex flex-col h-full" aria-label="Growth website package">
         <div class="text-[11px] track-wide text-accent font-700 mb-3">MOST POPULAR</div>
-        <h3 class="text-[13px] track-wide font-700 text-ink uppercase">Growth website</h3>
+        <h2 class="text-[13px] track-wide font-700 text-ink uppercase">Growth website</h2>
         <div class="serif text-[34px] font-700 text-ink mt-3">$1,500<span class="text-[18px] text-dim2">+</span></div>
         <div class="text-[12px] text-dim2 mb-4">starting at</div>
         <p class="text-[13.5px] text-dim leading-relaxed mb-5">Built to turn more of your existing traffic and referrals into inquiries.</p>
@@ -378,7 +437,7 @@
       </article>
 
       <article id="custom-systems" class="surface rounded-2xl p-8 flex flex-col h-full" aria-label="Custom Systems package">
-        <h3 class="text-[13px] track-wide font-700 text-ink uppercase">Custom Systems</h3>
+        <h2 class="text-[13px] track-wide font-700 text-ink uppercase">Custom Systems</h2>
         <div class="serif text-[34px] font-700 text-ink mt-3">$3,500<span class="text-[18px] text-dim2">+</span></div>
         <div class="text-[12px] text-dim2 mb-4">starting at</div>
         <p class="text-[13.5px] text-dim leading-relaxed mb-5">Client portals, dashboards, member areas, custom workflows, e-commerce, and integrations.</p>
@@ -399,7 +458,7 @@
       <div class="flex flex-col lg:flex-row gap-6 lg:gap-10">
         <div class="max-w-[380px] flex-none">
           <div class="text-[11px] track-wide text-dim2 font-700 mb-2">NEED SOMETHING SMALLER?</div>
-          <h3 class="text-[15px] font-700 text-ink">Personal Website</h3>
+          <h2 class="text-[15px] font-700 text-ink">Personal Website</h2>
           <div class="serif text-[34px] font-700 text-ink mt-2 leading-none">$350</div>
           <p class="text-[13px] text-dim2 mt-3 leading-relaxed">For individuals who need a clean, professional presence online — portfolios, résumé or student sites, speaker/musician pages, personal brands, and simple informational pages.</p>
           <p class="text-[12px] text-dim2 mt-2 leading-relaxed">Personal pricing is intended for individual portfolios, résumé sites, and personal brands. Business websites start with Launch.</p>
@@ -448,7 +507,7 @@
     <div class="grid lg:grid-cols-3 gap-5" data-reveal>
       <article class="surface rounded-2xl p-8 flex flex-col h-full" aria-label="Essential Care Website Care plan">
         <div class="text-[11px] track-wide text-dim2 font-600">WEBSITE CARE PLAN</div>
-        <h3 class="text-[13px] track-wide font-700 text-ink uppercase mt-2">Essential Care</h3>
+        <h2 class="text-[13px] track-wide font-700 text-ink uppercase mt-2">Essential Care</h2>
         <div class="serif text-[38px] font-700 text-ink mt-3 leading-none">$35<span class="text-[16px] text-dim2 font-normal"> /month</span></div>
         <div class="mt-5 rounded-xl border hairline bg-navy p-4 flex flex-col justify-center lg:min-h-[122px]">
           <div class="text-[15px] font-700 text-accent leading-snug">Up to 2 small updates per month</div>
@@ -466,7 +525,7 @@
 
       <article class="surface rounded-2xl p-8 flex flex-col h-full" aria-label="Professional Care Website Care plan, $50 per month">
         <div class="text-[11px] track-wide text-dim2 font-600">WEBSITE CARE PLAN</div>
-        <h3 class="text-[13px] track-wide font-700 text-ink uppercase mt-2">Professional Care</h3>
+        <h2 class="text-[13px] track-wide font-700 text-ink uppercase mt-2">Professional Care</h2>
         <div class="serif text-[38px] font-700 text-ink mt-3 leading-none">$50<span class="text-[16px] text-dim2 font-normal"> /month</span></div>
         <div class="mt-5 rounded-xl border hairline bg-navy p-4 flex flex-col justify-center lg:min-h-[122px]">
           <div class="text-[15px] font-700 text-accent leading-snug">Up to 3 small updates per month total</div>
@@ -481,7 +540,7 @@
 
       <article class="surface rounded-2xl p-8 flex flex-col h-full" aria-label="Growth Care Website Care plan">
         <div class="text-[11px] track-wide text-dim2 font-600">WEBSITE CARE PLAN</div>
-        <h3 class="text-[13px] track-wide font-700 text-ink uppercase mt-2">Growth Care</h3>
+        <h2 class="text-[13px] track-wide font-700 text-ink uppercase mt-2">Growth Care</h2>
         <div class="serif text-[38px] font-700 text-ink mt-3 leading-none">$99<span class="text-[16px] text-dim2 font-normal"> /month</span></div>
         <div class="mt-5 rounded-xl border hairline bg-navy p-4 flex flex-col justify-center lg:min-h-[122px]">
           <div class="text-[15px] font-700 text-accent leading-snug">Up to 5 small updates per month total</div>
@@ -527,28 +586,28 @@
     </div>
     <div data-reveal>
       <details class="faq-item rounded-xl mb-3 overflow-hidden border surface" open>
-        <summary class="flex items-center gap-4 px-6 py-5"><span class="flex-1 text-[15px] font-600 text-ink">How is the final price set?</span><span class="faq-icon w-7 h-7 rounded-full flex items-center justify-center flex-none bg-white/5 text-accent" aria-hidden="true">▾</span></summary>
+        <summary class="flex items-center gap-4 px-6 py-5"><h2 class="flex-1 text-[15px] font-600 text-ink">How is the final price set?</h2><span class="faq-icon w-7 h-7 rounded-full flex items-center justify-center flex-none bg-white/5 text-accent" aria-hidden="true">▾</span></summary>
         <div class="px-6 pb-6 text-[13.5px] text-dim leading-relaxed"><p>Every project starts with a conversation, and your final scope and pricing are quoted upfront. Your exact price depends on scope, and you'll get a written quote before work begins.</p></div>
       </details>
       <details class="faq-item rounded-xl mb-3 overflow-hidden border surface">
-        <summary class="flex items-center gap-4 px-6 py-5"><span class="flex-1 text-[15px] font-600 text-ink">Who is the $350 Personal website for?</span><span class="faq-icon w-7 h-7 rounded-full flex items-center justify-center flex-none bg-white/5 text-accent" aria-hidden="true">▾</span></summary>
+        <summary class="flex items-center gap-4 px-6 py-5"><h2 class="flex-1 text-[15px] font-600 text-ink">Who is the $350 Personal website for?</h2><span class="faq-icon w-7 h-7 rounded-full flex items-center justify-center flex-none bg-white/5 text-accent" aria-hidden="true">▾</span></summary>
         <div class="px-6 pb-6 text-[13.5px] text-dim leading-relaxed"><p>Personal pricing is intended for individual portfolios, résumé sites, and personal brands. Business websites start with Launch.</p></div>
       </details>
       <details class="faq-item rounded-xl mb-3 overflow-hidden border surface">
-        <summary class="flex items-center gap-4 px-6 py-5"><span class="flex-1 text-[15px] font-600 text-ink">Is Website Care included in the project price?</span><span class="faq-icon w-7 h-7 rounded-full flex items-center justify-center flex-none bg-white/5 text-accent" aria-hidden="true">▾</span></summary>
-        <div class="px-6 pb-6 text-[13.5px] text-dim leading-relaxed"><p>Website care is optional and billed monthly, separately from your one-time project price. Plans are month-to-month and can be canceled before renewal. Domain costs and third-party subscriptions, licenses, or usage fees are separate.</p></div>
+        <summary class="flex items-center gap-4 px-6 py-5"><h2 class="flex-1 text-[15px] font-600 text-ink">Is Website Care included in the project price?</h2><span class="faq-icon w-7 h-7 rounded-full flex items-center justify-center flex-none bg-white/5 text-accent" aria-hidden="true">▾</span></summary>
+        <div class="px-6 pb-6 text-[13.5px] text-dim leading-relaxed"><p>Website care is optional and billed monthly, separately from your one-time project price.</p><p class="mt-2">Plans are month-to-month and can be canceled before renewal.</p><p class="mt-2">Domain costs and third-party subscriptions, licenses, or usage fees are separate.</p></div>
       </details>
       <details class="faq-item rounded-xl mb-3 overflow-hidden border surface">
-        <summary class="flex items-center gap-4 px-6 py-5"><span class="flex-1 text-[15px] font-600 text-ink">What do the care plans include?</span><span class="faq-icon w-7 h-7 rounded-full flex items-center justify-center flex-none bg-white/5 text-accent" aria-hidden="true">▾</span></summary>
-        <div class="px-6 pb-6 text-[13.5px] text-dim leading-relaxed"><p>Essential is $35/month and includes managed hosting, SSL, deployment management, routine maintenance, uptime checks, a brief monthly service summary, and up to 2 small updates per month. Professional is $50/month and includes Essential care, plus a monthly Google Search Console review, a monthly performance report, and up to 3 small updates per month. Growth is $99/month and includes Professional care, plus an SEO and conversion opportunity review, recommendations, priority support, and up to 5 small updates per month. Custom Systems management starts at $50/month. New pages, redesigns, custom features, and ongoing SEO campaigns are quoted separately.</p></div>
+        <summary class="flex items-center gap-4 px-6 py-5"><h2 class="flex-1 text-[15px] font-600 text-ink">What do the care plans include?</h2><span class="faq-icon w-7 h-7 rounded-full flex items-center justify-center flex-none bg-white/5 text-accent" aria-hidden="true">▾</span></summary>
+        <div class="px-6 pb-6 text-[13.5px] text-dim leading-relaxed"><p>Essential is $35/month and includes managed hosting, SSL, deployment management, routine maintenance, uptime checks, a brief monthly service summary, and up to 2 small updates per month.</p><p class="mt-2">Professional is $50/month and includes Essential care, plus a monthly Google Search Console review, a monthly performance report, and up to 3 small updates per month.</p><p class="mt-2">Growth is $99/month and includes Professional care, plus an SEO and conversion opportunity review, recommendations, priority support, and up to 5 small updates per month.</p><p class="mt-2">Custom Systems management starts at $50/month.</p><p class="mt-2">New pages, redesigns, custom features, and ongoing SEO campaigns are quoted separately.</p></div>
       </details>
       <details class="faq-item rounded-xl mb-3 overflow-hidden border surface">
-        <summary class="flex items-center gap-4 px-6 py-5"><span class="flex-1 text-[15px] font-600 text-ink">What counts as a small update?</span><span class="faq-icon w-7 h-7 rounded-full flex items-center justify-center flex-none bg-white/5 text-accent" aria-hidden="true">▾</span></summary>
-        <div class="px-6 pb-6 text-[13.5px] text-dim leading-relaxed"><p>Small updates are assessed by complexity. Examples include changing business hours, replacing an image, or editing a short section of existing text. Unused updates do not roll over. Response targets apply to the initial acknowledgment or assessment. Resolution timing depends on the request. Search Console and SEO reviews provide findings and recommendations. Implementation is covered only when it fits the included update allowance or is separately approved and quoted.</p></div>
+        <summary class="flex items-center gap-4 px-6 py-5"><h2 class="flex-1 text-[15px] font-600 text-ink">What counts as a small update?</h2><span class="faq-icon w-7 h-7 rounded-full flex items-center justify-center flex-none bg-white/5 text-accent" aria-hidden="true">▾</span></summary>
+        <div class="px-6 pb-6 text-[13.5px] text-dim leading-relaxed"><p>Small updates are assessed by complexity.</p><p class="mt-2">Examples include changing business hours, replacing an image, or editing a short section of existing text.</p><p class="mt-2">Unused updates do not roll over. Response targets apply to the initial acknowledgment or assessment.</p><p class="mt-2">Resolution timing depends on the request.</p><p class="mt-2">Search Console and SEO reviews provide findings and recommendations.</p><p class="mt-2">Implementation is covered only when it fits the included update allowance or is separately approved and quoted.</p></div>
       </details>
       <details class="faq-item rounded-xl mb-3 overflow-hidden border surface">
-        <summary class="flex items-center gap-4 px-6 py-5"><span class="flex-1 text-[15px] font-600 text-ink">How long does a website take?</span><span class="faq-icon w-7 h-7 rounded-full flex items-center justify-center flex-none bg-white/5 text-accent" aria-hidden="true">▾</span></summary>
-        <div class="px-6 pb-6 text-[13.5px] text-dim leading-relaxed"><p>Most marketing sites launch in about 1–2 weeks. Most Launch sites go live in about 1–2 weeks once we have your content. Larger Growth sites and custom systems take longer, and the timeline is set in your quote.</p></div>
+        <summary class="flex items-center gap-4 px-6 py-5"><h2 class="flex-1 text-[15px] font-600 text-ink">How long does a website take?</h2><span class="faq-icon w-7 h-7 rounded-full flex items-center justify-center flex-none bg-white/5 text-accent" aria-hidden="true">▾</span></summary>
+        <div class="px-6 pb-6 text-[13.5px] text-dim leading-relaxed"><p>Most marketing sites launch in about 1–2 weeks.</p><p class="mt-2">Most Launch sites go live in about 1–2 weeks once we have your content.</p><p class="mt-2">Larger Growth sites and custom systems take longer, and the timeline is set in your quote.</p></div>
       </details>
     </div>
   </div>
@@ -559,7 +618,7 @@
     <div class="floating rounded-2xl p-8 sm:p-12 lg:p-14 grid lg:grid-cols-[1.4fr_1fr] gap-10 items-center" data-reveal>
       <div>
         <h2 id="cta-heading" class="serif text-[30px] sm:text-[40px] font-600 track-tight leading-[1.1]">Tell us about the project.</h2>
-        <p class="text-[15px] text-dim leading-relaxed mt-4 max-w-[520px]">Tell us a bit about your business so we come to the conversation prepared. We'll get back to you within one business day. Every project starts with a conversation, and your final scope and pricing are quoted upfront.</p>
+        <p class="text-[15px] text-dim leading-relaxed mt-4 max-w-[520px]">Tell us a bit about your business so we come to the conversation prepared.</p><p class="text-[15px] text-dim leading-relaxed mt-4 max-w-[520px]">We'll get back to you within one business day.</p><p class="text-[15px] text-dim leading-relaxed mt-4 max-w-[520px]">Every project starts with a conversation, and your final scope and pricing are quoted upfront.</p>
       </div>
       <div class="flex flex-col gap-4 lg:items-end">
         <a href="/?service=website#connect" class="btn btn-primary w-full sm:w-auto">Start your project</a>
@@ -593,7 +652,7 @@
       <div>
         <h2 class="text-[13px] font-700 mb-4 text-ink">Company</h2>
         <ul class="space-y-3 text-[13px] text-dim2">
-          <li><a href="/#about" class="hover:text-ink transition-colors">About</a></li>
+          <li><a href="/faq" class="hover:text-ink transition-colors">FAQ</a></li><li><a href="/#about" class="hover:text-ink transition-colors">About</a></li>
           <li><a href="/portfolio" class="hover:text-ink transition-colors">Portfolio</a></li>
           <li><a href="/#connect" class="hover:text-ink transition-colors">Contact</a></li>
           <li><a href="https://billing.stripe.com/p/login/4gM00lbnqbFr9pbfkXgbm00" target="_blank" rel="noopener" class="hover:text-ink transition-colors">Manage Subscription</a></li>

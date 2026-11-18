@@ -24,10 +24,13 @@
   "@context": "https://schema.org",
   "@graph": [
     {
-      "@type": "ProfessionalService",
+      "@type": [
+        "LocalBusiness",
+        "ProfessionalService"
+      ],
       "@id": "https://luminatewebdesign.com/#business",
-      "name": "Luminate Web Design & Development",
-      "description": "Custom websites and business software for established businesses in Augusta, Evans, Martinez, Grovetown, North Augusta, Aiken, and the Central Savannah River Area.",
+      "name": "Luminate Web Design & Development LLC",
+      "description": "Custom websites for Augusta and CSRA businesses that have outgrown their site. Designed, built, and managed locally, with a written quote before any work begins.",
       "url": "https://luminatewebdesign.com/",
       "email": "jacob@luminatewebdesign.com",
       "image": "https://luminatewebdesign.com/brand_assets/luminatelogo1.png",
@@ -35,6 +38,7 @@
         "@type": "ImageObject",
         "url": "https://luminatewebdesign.com/brand_assets/luminatelogo1.png"
       },
+      "priceRange": "$750-$3,500+",
       "address": {
         "@type": "PostalAddress",
         "addressLocality": "Augusta",
@@ -42,13 +46,66 @@
         "addressCountry": "US"
       },
       "areaServed": [
-        { "@type": "City", "name": "Augusta", "containedInPlace": { "@type": "State", "name": "Georgia" } },
-        { "@type": "City", "name": "Evans", "containedInPlace": { "@type": "State", "name": "Georgia" } },
-        { "@type": "City", "name": "Martinez", "containedInPlace": { "@type": "State", "name": "Georgia" } },
-        { "@type": "City", "name": "Grovetown", "containedInPlace": { "@type": "State", "name": "Georgia" } },
-        { "@type": "City", "name": "North Augusta", "containedInPlace": { "@type": "State", "name": "South Carolina" } },
-        { "@type": "City", "name": "Aiken", "containedInPlace": { "@type": "State", "name": "South Carolina" } },
-        { "@type": "Place", "name": "Central Savannah River Area (CSRA)" }
+        {
+          "@type": "City",
+          "name": "Augusta",
+          "containedInPlace": {
+            "@type": "State",
+            "name": "Georgia"
+          }
+        },
+        {
+          "@type": "City",
+          "name": "Evans",
+          "containedInPlace": {
+            "@type": "State",
+            "name": "Georgia"
+          }
+        },
+        {
+          "@type": "City",
+          "name": "Aiken",
+          "containedInPlace": {
+            "@type": "State",
+            "name": "South Carolina"
+          }
+        },
+        {
+          "@type": "City",
+          "name": "Martinez",
+          "containedInPlace": {
+            "@type": "State",
+            "name": "Georgia"
+          }
+        },
+        {
+          "@type": "City",
+          "name": "Grovetown",
+          "containedInPlace": {
+            "@type": "State",
+            "name": "Georgia"
+          }
+        },
+        {
+          "@type": "City",
+          "name": "Hephzibah",
+          "containedInPlace": {
+            "@type": "State",
+            "name": "Georgia"
+          }
+        },
+        {
+          "@type": "City",
+          "name": "North Augusta",
+          "containedInPlace": {
+            "@type": "State",
+            "name": "South Carolina"
+          }
+        },
+        {
+          "@type": "Place",
+          "name": "Central Savannah River Area (CSRA)"
+        }
       ],
       "sameAs": [
         "https://share.google/DZeKorzz7AalxaM6z",
@@ -174,6 +231,7 @@
         <a class="navlink" href="/#services">Services</a>
         <a class="navlink" href="/portfolio">Work</a>
         <a class="navlink" href="/pricing">Pricing</a>
+        <a class="navlink" href="/faq">FAQ</a>
         <a class="navlink" href="/#about">About</a>
       </div>
       <div class="flex items-center gap-3">
@@ -188,6 +246,7 @@
       <a class="block px-6 py-4 text-[15px] text-dim border-b hairline" href="/#services">Services</a>
       <a class="block px-6 py-4 text-[15px] text-dim border-b hairline" href="/portfolio">Work</a>
       <a class="block px-6 py-4 text-[15px] text-dim border-b hairline" href="/pricing">Pricing</a>
+      <a class="block px-6 py-4 text-[15px] text-dim border-b hairline" href="/faq">FAQ</a>
       <a class="block px-6 py-4 text-[15px] text-dim border-b hairline" href="/#about">About</a>
       <a class="block px-6 py-4 text-[15px] text-dim border-b hairline" href="https://billing.stripe.com/p/login/4gM00lbnqbFr9pbfkXgbm00" target="_blank" rel="noopener">Manage Subscription</a>
       <div class="p-4"><a href="/?service=website#connect" class="btn btn-primary w-full">Start your project</a></div>
@@ -213,12 +272,12 @@
       <a href="https://busybconstructionservices.com/" target="_blank" rel="noopener" class="block h-full"><article class="card-hover rounded-2xl overflow-hidden surface group h-full"><div class="aspect-[16/9] w-full relative overflow-hidden"><img src="/images/work/busy-b-construction.webp" alt="Busy B Construction website mockup" loading="lazy" decoding="async" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"><div class="absolute inset-0 flex flex-col justify-end p-5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" style="background:linear-gradient(to top,rgba(10,21,36,.94) 15%,rgba(10,21,36,.2) 65%,transparent 100%)"><span class="text-accent text-[11px] track-wide font-700">Contractor</span><p class="text-dim text-[12.5px] leading-relaxed mt-1.5">A contractor with no way to show proof of past work to new leads. We built a credibility-first site around services and past projects — quote requests now come in pre-qualified instead of cold.</p></div></div><div class="flex justify-between items-center px-5 py-4 text-[12px]"><span class="text-ink border-l-2 border-accent pl-2">Busy B Construction</span><span class="text-dim2">Contractor</span></div></article></a>
       <a href="https://realisticimpressions.com" target="_blank" rel="noopener" class="block h-full"><article class="card-hover rounded-2xl overflow-hidden surface group h-full"><div class="aspect-[16/9] w-full relative overflow-hidden"><img src="/images/work/realisticimpressions1.webp" alt="Realistic Impressions website mockup" loading="lazy" decoding="async" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"><div class="absolute inset-0 flex flex-col justify-end p-5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" style="background:linear-gradient(to top,rgba(10,21,36,.94) 15%,rgba(10,21,36,.2) 65%,transparent 100%)"><span class="text-accent text-[11px] track-wide font-700">T-Shirt Printing</span><p class="text-dim text-[12.5px] leading-relaxed mt-1.5">A print shop where ordering custom apparel meant a phone call and a lot of back-and-forth. We built a bold, modern site that makes ordering feel as quick as the turnaround.</p></div></div><div class="flex justify-between items-center px-5 py-4 text-[12px]"><span class="text-ink border-l-2 border-accent pl-2">Realistic Impressions</span><span class="text-dim2">T-Shirt Printing</span></div></article></a>
       <div class="block h-full"><article class="card-hover rounded-2xl overflow-hidden surface group h-full"><div class="aspect-[16/9] w-full relative overflow-hidden"><img src="/images/work/yinuska.webp" alt="Yinus Kane' clothing store website mockup" loading="lazy" decoding="async" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"><div class="absolute inset-0 flex flex-col justify-end p-5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" style="background:linear-gradient(to top,rgba(10,21,36,.94) 15%,rgba(10,21,36,.2) 65%,transparent 100%)"><span class="text-accent text-[11px] track-wide font-700">Fashion · E-commerce</span><p class="text-[12.5px] text-dim leading-relaxed mt-1.5">A rising clothing brand that needed an online storefront to match its identity. We built a custom e-commerce store organized by collection and category, designed to look as premium as the clothing.</p></div></div><div class="flex justify-between items-center px-5 py-4 text-[12px]"><span class="text-ink border-l-2 border-accent pl-2">Yinus Kane'</span><span class="text-dim2">Fashion · E-commerce</span></div></article></div>
-      <a href="https://odellcleveland.com" target="_blank" rel="noopener" class="block h-full"><article class="card-hover rounded-2xl overflow-hidden surface group h-full"><div class="aspect-[16/9] w-full relative overflow-hidden"><img src="/images/work/odellcleveland.webp" alt="Odell Cleveland website mockup" loading="lazy" decoding="async" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"><div class="absolute inset-0 flex flex-col justify-end p-5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" style="background:linear-gradient(to top,rgba(10,21,36,.94) 15%,rgba(10,21,36,.2) 65%,transparent 100%)"><span class="text-accent text-[11px] track-wide font-700">Faith · Leadership Consulting</span><p class="text-dim text-[12.5px] leading-relaxed mt-1.5">A faith leadership consultant whose expertise wasn't translating into booked strategy sessions. We built a growth-focused site around his stewardship approach — built to convert visitors into booked calls.</p></div></div><div class="flex justify-between items-center px-5 py-4 text-[12px]"><span class="text-ink border-l-2 border-accent pl-2">Odell Cleveland</span><span class="text-dim2">Faith · Leadership Consulting</span></div></article></a>
+      <a href="https://odellcleveland.com" target="_blank" rel="noopener" class="block h-full"><article class="card-hover rounded-2xl overflow-hidden surface group h-full"><div class="aspect-[16/9] w-full relative overflow-hidden"><img src="/images/work/odellcleveland.webp" alt="Odell Cleveland website mockup" loading="lazy" decoding="async" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"><div class="absolute inset-0 flex flex-col justify-end p-5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" style="background:linear-gradient(to top,rgba(10,21,36,.94) 15%,rgba(10,21,36,.2) 65%,transparent 100%)"><span class="text-accent text-[11px] track-wide font-700">Faith · Leadership Consulting</span><p class="text-dim text-[12.5px] leading-relaxed mt-1.5">A faith leadership consultant whose expertise wasn't translating into booked strategy sessions.</p><p class="text-dim text-[12.5px] leading-relaxed mt-1.5">We built a growth-focused site around his stewardship approach — built to convert visitors into booked calls.</p></div></div><div class="flex justify-between items-center px-5 py-4 text-[12px]"><span class="text-ink border-l-2 border-accent pl-2">Odell Cleveland</span><span class="text-dim2">Faith · Leadership Consulting</span></div></article></a>
       <a href="https://www.mondioutdoor.com/" target="_blank" rel="noopener" class="block h-full"><article class="card-hover rounded-2xl overflow-hidden surface group h-full"><div class="aspect-[16/9] w-full relative overflow-hidden"><img src="/images/work/mondi-outdoor-services.webp" alt="Mondi Outdoor Services website mockup" loading="lazy" decoding="async" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"><div class="absolute inset-0 flex flex-col justify-end p-5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" style="background:linear-gradient(to top,rgba(10,21,36,.94) 15%,rgba(10,21,36,.2) 65%,transparent 100%)"><span class="text-accent text-[11px] track-wide font-700">Lawn Care · Landscaping</span><p class="text-dim text-[12.5px] leading-relaxed mt-1.5">Lawn maintenance, landscaping, and property care in Athens and Augusta, Georgia, with a clear free-estimate call to action.</p></div></div><div class="flex justify-between items-center px-5 py-4 text-[12px]"><span class="text-ink border-l-2 border-accent pl-2">Mondi Outdoor Services</span><span class="text-dim2">Lawn Care · Landscaping</span></div></article></a>
       <article class="card-hover rounded-2xl overflow-hidden surface group h-full"><div class="aspect-[16/9] w-full relative overflow-hidden"><img src="/images/work/abib-auto-sales.webp" alt="Abib Auto Sales homepage design" loading="lazy" decoding="async" class="absolute inset-0 w-full h-full object-cover"></div><div class="flex justify-between items-center px-5 py-4 text-[12px]"><span class="text-ink border-l-2 border-accent pl-2">Abib Auto Sales</span><span class="text-dim2">Used Car Dealership</span></div></article>
       <a href="https://www.j15tennisacademy.com/" target="_blank" rel="noopener" class="block h-full"><article class="card-hover rounded-2xl overflow-hidden surface group h-full"><div class="aspect-[16/9] w-full relative overflow-hidden"><img src="/images/work/j15-tennis-academy.webp" alt="J15 Tennis Academy homepage" loading="lazy" decoding="async" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"></div><div class="flex justify-between items-center px-5 py-4 text-[12px]"><span class="text-ink border-l-2 border-accent pl-2">J15 Tennis Academy</span><span class="text-dim2">Sports Coaching</span></div></article></a>
       <a href="https://www.thereishopeministries.org/" target="_blank" rel="noopener" class="block h-full"><article class="card-hover rounded-2xl overflow-hidden surface group h-full"><div class="aspect-[16/9] w-full relative overflow-hidden"><img src="/images/work/hope-ministries.webp" alt="There Is H.O.P.E. Ministries homepage" loading="lazy" decoding="async" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"></div><div class="flex justify-between items-center px-5 py-4 text-[12px]"><span class="text-ink border-l-2 border-accent pl-2">There Is H.O.P.E. Ministries</span><span class="text-dim2">Faith · Nonprofit</span></div></article></a>
-      <article class="card-hover rounded-2xl overflow-hidden surface group h-full"><div class="aspect-[16/9] w-full relative overflow-hidden"><img src="/images/work/elite-shaken-lemonade.webp" alt="Elite Shaken Lemonade website mockup" loading="lazy" decoding="async" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"><div class="absolute inset-0 flex flex-col justify-end p-5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" style="background:linear-gradient(to top,rgba(10,21,36,.94) 15%,rgba(10,21,36,.2) 65%,transparent 100%)"><span class="text-accent text-[11px] track-wide font-700">Food & Beverage</span><p class="text-dim text-[12.5px] leading-relaxed mt-1.5">A growing beverage brand with no central place to showcase flavors or book events. We built a bright, appetite-driving site around locations and event booking — inquiries now come through the site instead of DMs.</p></div></div><div class="flex justify-between items-center px-5 py-4 text-[12px]"><span class="text-ink border-l-2 border-accent pl-2">Elite Shaken Lemonade</span><span class="text-dim2">Food & Beverage</span></div></article>
+      <article class="card-hover rounded-2xl overflow-hidden surface group h-full"><div class="aspect-[16/9] w-full relative overflow-hidden"><img src="/images/work/elite-shaken-lemonade.webp" alt="Elite Shaken Lemonade website mockup" loading="lazy" decoding="async" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"><div class="absolute inset-0 flex flex-col justify-end p-5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" style="background:linear-gradient(to top,rgba(10,21,36,.94) 15%,rgba(10,21,36,.2) 65%,transparent 100%)"><span class="text-accent text-[11px] track-wide font-700">Food & Beverage</span><p class="text-dim text-[12.5px] leading-relaxed mt-1.5">A growing beverage brand with no central place to showcase flavors or book events.</p><p class="text-dim text-[12.5px] leading-relaxed mt-1.5">We built a bright, appetite-driving site around locations and event booking — inquiries now come through the site instead of DMs.</p></div></div><div class="flex justify-between items-center px-5 py-4 text-[12px]"><span class="text-ink border-l-2 border-accent pl-2">Elite Shaken Lemonade</span><span class="text-dim2">Food & Beverage</span></div></article>
       <div class="block h-full"><article class="card-hover rounded-2xl overflow-hidden surface group h-full"><div class="aspect-[16/9] w-full relative overflow-hidden"><img src="/images/work/extra-credit-creations.webp" alt="Extra Credit Creations website mockup" loading="lazy" decoding="async" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"><div class="absolute inset-0 flex flex-col justify-end p-5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" style="background:linear-gradient(to top,rgba(10,21,36,.94) 15%,rgba(10,21,36,.2) 65%,transparent 100%)"><span class="text-accent text-[11px] track-wide font-700">E-Commerce</span><p class="text-dim text-[12.5px] leading-relaxed mt-1.5">A creative e-commerce brand held back by a clunky storefront. We rebuilt browsing and checkout to feel as good as the products themselves — fewer drop-offs between browsing and buying.</p></div></div><div class="flex justify-between items-center px-5 py-4 text-[12px]"><span class="text-ink border-l-2 border-accent pl-2">Extra Credit Creations</span><span class="text-dim2">E-Commerce</span></div></article></div>
       <article class="card-hover rounded-2xl overflow-hidden surface group h-full"><div class="aspect-[16/9] w-full relative overflow-hidden"><img src="/images/work/creations-by-melanie.webp" alt="Creations by Melanie website mockup" loading="lazy" decoding="async" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"><div class="absolute inset-0 flex flex-col justify-end p-5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" style="background:linear-gradient(to top,rgba(10,21,36,.94) 15%,rgba(10,21,36,.2) 65%,transparent 100%)"><span class="text-accent text-[11px] track-wide font-700">Custom Bakery</span><p class="text-dim text-[12.5px] leading-relaxed mt-1.5">A custom bakery relying on word-of-mouth with no visual portfolio online. We built a gallery-driven site with a simple ordering inquiry flow — past work now does the selling before the first message.</p></div></div><div class="flex justify-between items-center px-5 py-4 text-[12px]"><span class="text-ink border-l-2 border-accent pl-2">Creations by Melanie</span><span class="text-dim2">Custom Bakery</span></div></article>
       <div class="block h-full"><article class="card-hover rounded-2xl overflow-hidden surface group h-full"><div class="aspect-[16/9] w-full relative overflow-hidden"><img src="/images/work/mach-academy.webp" alt="MACH Academy website mockup" loading="lazy" decoding="async" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"><div class="absolute inset-0 flex flex-col justify-end p-5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" style="background:linear-gradient(to top,rgba(10,21,36,.94) 15%,rgba(10,21,36,.2) 65%,transparent 100%)"><span class="text-accent text-[11px] track-wide font-700">Nonprofit · Tennis</span><p class="text-dim text-[12.5px] leading-relaxed mt-1.5">A youth tennis nonprofit with impact that wasn't visible to potential donors or families. We built a community-focused site around programs and impact — support and sign-ups now have a clear path in.</p></div></div><div class="flex justify-between items-center px-5 py-4 text-[12px]"><span class="text-ink border-l-2 border-accent pl-2">MACH Academy</span><span class="text-dim2">Nonprofit · Tennis</span></div></article></div>
@@ -264,7 +323,7 @@
       <div><h2 class="text-[13px] font-700 mb-4 text-ink">Services</h2><ul class="space-y-3 text-[13px] text-dim2">
         <li><a href="/web-design-augusta-ga" class="hover:text-ink transition-colors">Custom Web Development</a></li><li><a href="/contractor-website-design-augusta-ga" class="hover:text-ink transition-colors">Contractor Websites</a></li><li><a href="/#services" class="hover:text-ink transition-colors">Custom Software</a></li><li><a href="/#services" class="hover:text-ink transition-colors">Ongoing Management</a></li><li><a href="/#work" class="hover:text-ink transition-colors">Our Work</a></li><li><a href="/pricing" class="hover:text-ink transition-colors">Pricing</a></li></ul></div>
       <div><h2 class="text-[13px] font-700 mb-4 text-ink">Company</h2><ul class="space-y-3 text-[13px] text-dim2">
-        <li><a href="/#about" class="hover:text-ink transition-colors">About</a></li><li><a href="/portfolio" class="hover:text-ink transition-colors" aria-current="page">Portfolio</a></li><li><a href="/?service=website#connect" class="hover:text-ink transition-colors">Contact</a></li><li><a href="https://billing.stripe.com/p/login/4gM00lbnqbFr9pbfkXgbm00" target="_blank" rel="noopener" class="hover:text-ink transition-colors">Manage Subscription</a></li></ul></div>
+        <li><a href="/faq" class="hover:text-ink transition-colors">FAQ</a></li><li><a href="/#about" class="hover:text-ink transition-colors">About</a></li><li><a href="/portfolio" class="hover:text-ink transition-colors" aria-current="page">Portfolio</a></li><li><a href="/?service=website#connect" class="hover:text-ink transition-colors">Contact</a></li><li><a href="https://billing.stripe.com/p/login/4gM00lbnqbFr9pbfkXgbm00" target="_blank" rel="noopener" class="hover:text-ink transition-colors">Manage Subscription</a></li></ul></div>
       <div><h2 class="text-[13px] font-700 mb-4 text-ink">Get in touch</h2><ul class="space-y-3 text-[13px] text-dim2">
         <li><a href="mailto:jacob@luminatewebdesign.com" class="hover:text-ink transition-colors">jacob@luminatewebdesign.com</a></li><li>Augusta &amp; the CSRA</li></ul></div>
     </div>
